@@ -1,9 +1,8 @@
 
 
-const express = require("express");
-const serverless = require('serverless-http');
+//const express = require("express");
 const knex = require("knex");
-const server = express();
+//const server = express();
 const dbConfig = require("./knexfile.js");
 const db = knex(dbConfig.development);
 const cors = require("cors");
