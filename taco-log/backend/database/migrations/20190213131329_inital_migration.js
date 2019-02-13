@@ -1,7 +1,8 @@
 
 exports.up = function(knex) {
     return createUsersTable(knex)
-    .then()
+    .then(createTacolog)
+    .then(Create_Achievements_Table)
       .catch(error => {
         console.log(error);
         reject(error);
@@ -36,23 +37,20 @@ function createUsersTable(knex) {
           users.increments("internal_Id").primary(); // id,
           users
           .integer('ext__user_id')
-          .notNullable()
           .unique();
           users
           .integer('taco_log_id')
           .unique()
           .unsigned()
-          .index()
           .references('id')
-          .inTable('Taco-log_Table')
+          .inTable('Taco-log_Table');
           console.log('users table created');
           users
           .integer('achievements_id')
           .unique()
           .unsigned()
-          .index()
           .references('id')
-          .inTable('Achievements_Table')
+          .inTable('Achievements_Table');
           console.log('users table created');
           resolve(knex);
         })
@@ -109,7 +107,7 @@ function createUsersTable(knex) {
         tacTable.increments("id"); // id,
         tacTable
          .timestamp('created_at').defaultTo(knex.fn.now());
-          console.log('users table created');
+          console.log('Achievements-table created');
           resolve(knex);
         })
         .catch(error => reject(error));
