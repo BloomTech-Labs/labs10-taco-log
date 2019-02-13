@@ -1,20 +1,13 @@
 
 
 //const express = require("express");
-const knex = require("knex");
+//const knex = require("knex");
 //const server = express();
-const dbConfig = require("../knexfile.js");
-const db = knex(dbConfig.development);
-const cors = require("cors");
-server.use(cors());
-server.use(express.json());
-
-
-
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
-
+//const dbConfig = require("../knexfile.js");
+//const db = knex(dbConfig.development);
+//const cors = require("cors");
+//server.use(cors());
+//server.use(express.json());
 
 const http = require('http');
 
