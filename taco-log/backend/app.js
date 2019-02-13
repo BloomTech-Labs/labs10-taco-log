@@ -12,3 +12,5 @@ const http = require ("http");
 server.get("/", (req, res) => {
   res.json({message: "Hello, World"});
 })
+server.listen(process.env.PORT, () =>
+  {console.log("test")});
