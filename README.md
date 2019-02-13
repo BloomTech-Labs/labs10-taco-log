@@ -16,3 +16,6 @@ Node.js
 
 ## Routes
 ***
+
+##Dependencies Used
+google-maps-react
