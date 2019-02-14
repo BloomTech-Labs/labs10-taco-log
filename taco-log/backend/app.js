@@ -1,6 +1,5 @@
 
 const express = require("express");
-const knex = require("knex");
 const server = express();
 const cors = require("cors");
 server.use(cors());
