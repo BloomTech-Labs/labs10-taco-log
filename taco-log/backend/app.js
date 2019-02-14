@@ -1,13 +1,9 @@
 
 const express = require("express");
-//const knex = require("knex");
 const server = express();
-const http = require ("http");
-//const dbConfig = require("../knexfile.js");
-//const db = knex(dbConfig.development);
-//const cors = require("cors");
-//server.use(cors());
-//server.use(express.json());
+const cors = require("cors");
+server.use(cors());
+server.use(express.json());
 const userDb = require('./database/helpers/dbhelper.js');
 
 
@@ -16,9 +12,8 @@ server.get("/", (req, res) => {
 })
 
 server.get('/api/users',(req,res)=>{
-  userDb.find()
-  .then(user =>{
-    console.log('Success', user);
+  userDb.findUser()
+  .then(user =>{    
     res.status(200).json(user)
   })
   .catch(err =>{
@@ -28,11 +23,10 @@ server.get('/api/users',(req,res)=>{
 server.get(`/api/users/:id`,(req,res) =>{
   userDb.findByUserId(req.params.id)
   .then(user=>{
-    console.log('Success',user);
     res.status(200).json(user)
   })
   .catch(err=>res.send(err))
 });
 
-server.listen(process.env.PORT, () =>
+server.listen(process.env.PORT || 5000, () =>
   {console.log("test")});
