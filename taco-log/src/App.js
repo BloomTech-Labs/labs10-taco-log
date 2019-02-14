@@ -10,10 +10,10 @@ class App extends Component {
   }
   componentDidMount(){
     axios
-      .get('https://taco-log-backend.herokuapp.com/')
+      .get('https://tacobe.herokuapp.com/')
       .then(res => {
         console.log(res)
-        this.setState({message: res.message});
+        this.setState({message: res.data.message});
       })
       .catch(err=>{
         console.log(err);
