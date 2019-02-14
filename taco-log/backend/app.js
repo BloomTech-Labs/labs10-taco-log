@@ -16,7 +16,7 @@ server.get("/", (req, res) => {
 })
 
 server.get('/api/users',(req,res)=>{
-  userDb.get()
+  userDb.find()
   .then(user =>{
     console.log('Success', user);
     res.status(200).json(user)
@@ -25,5 +25,14 @@ server.get('/api/users',(req,res)=>{
     res.send(err)
   } )
 });
+server.get(`/api/users/:id`,(req,res) =>{
+  userDb.findByUserId(req.params.id)
+  .then(user=>{
+    console.log('Success',user);
+    res.status(200).json(user)
+  })
+  .catch(err=>res.send(err))
+});
+
 server.listen(process.env.PORT, () =>
   {console.log("test")});
