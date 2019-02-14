@@ -8,8 +8,7 @@ exports.up = function(knex) {
         reject(error);
       });
   };
-  // create table 'users' with a primary key using 'increments()
-
+  
 exports.down = function(knex, Promise) {
     return knex.schema
     .dropTableIfExists('')
@@ -34,7 +33,16 @@ function createUsersTable(knex) {
     return new Promise(function(resolve, reject) {
       knex.schema
         .createTable('users', function(users) {
-          users.increments("internal_Id").primary(); // id,
+          users.increments("internal_Id").primary();// create table 'users' with a primary key using 'increments()
+          users.string('username',128)
+          .notNullable()
+          .unique();
+          users.string('password',128)
+          .notNullable();
+          users.string('department',128)
+          .notNullable(); // id,
+          users.string('email',128)
+          .notNullable();
           users
           .integer('ext__user_id')
           .unique();
