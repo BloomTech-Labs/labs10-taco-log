@@ -38,9 +38,11 @@ function createUsersTable(knex) {
           .notNullable()
           .unique();
           users.string('password',128)
-          .notNullable()
+          .notNullable();
           users.string('department',128)
-          .notNullable() // id,
+          .notNullable(); // id,
+          users.string('email',128)
+          .notNullable();
           users
           .integer('ext__user_id')
           .unique();
