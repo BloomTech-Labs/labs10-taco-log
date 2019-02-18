@@ -3,7 +3,6 @@ import './App.css';
 import axios from 'axios';
 
 import Map from './Components/map.js';
-=======
 import { firebase, provider } from './firebase/firebase';
 
 class App extends Component {
