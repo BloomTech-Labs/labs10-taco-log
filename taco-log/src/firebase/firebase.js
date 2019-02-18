@@ -1,6 +1,6 @@
 import * as firebase from 'firebase';
 
-//connects and enables us to use any firebase service
+//connects and enables us to use any firebase tool
 
 const config = {
     apiKey: "AIzaSyDhGZ712L1Xx_c4iW94hDnNusJ6Zk6zg0w",
@@ -13,6 +13,6 @@ const config = {
   firebase.initializeApp(config);
 
     const provider = new firebase.auth.GoogleAuthProvider();
-    const auth = firebase.auth();
+    //const auth = firebase.auth();
   
-    export { firebase, provider, auth as default };
+    export { firebase, provider };

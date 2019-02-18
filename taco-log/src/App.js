@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
-import { firebase, auth, provider } from 'firebase';
+import { firebase, provider } from './firebase/firebase';
 
 
 
 class App extends Component {
-  state = {
-    message: '',
-    user: null
+  constructor() {
+    super();
+    this.state = {
+      message: '',
+      user: null
+    }
+    this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
   }
+
+
   componentDidMount(){
     axios
       .get('https://tacobe.herokuapp.com/')
@@ -23,13 +30,23 @@ class App extends Component {
   }
 
   login() {
-    auth.signInWithPopup(provider)
+    firebase.auth().signInWithPopup(provider)
+    //firebase.auth().signInWithPopup(provider)
       .then((result)=> {
         const user = result.user;
         this.setState({
-          user
+          user: true
         });
       });
+  }
+
+  logout() {
+    firebase.auth().signOut()
+    .then((result)=> {
+      this.setState({
+        user: null
+      });
+    });
   }
 
   render() {
@@ -40,6 +57,7 @@ class App extends Component {
           {this.state.message}
         </header>
         <button onClick= {this.login}>Login</button>
+        <button onClick= {this.logout}>Log Out</button>
       </div>
     );
   }
