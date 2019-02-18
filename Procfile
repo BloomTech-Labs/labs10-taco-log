@@ -1,1 +1,1 @@
-web: node taco-log/backend/app.js
+web: node backend/app.js
