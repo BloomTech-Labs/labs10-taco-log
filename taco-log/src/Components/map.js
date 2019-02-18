@@ -14,16 +14,19 @@ class Map extends Component {
     this.props.onMapLoad(map)
   }
 
+  //allows the React application to load in first to ensure that the google maps API works fine
+
   componentDidMount() {
     if (!window.google) {
-      var s = document.createElement('script');
-      s.type = 'text/javascript';
-      s.src = `https://maps.google.com/maps/api/js?key=AIzaSyDUwSdMdxb22hcjJE3eJ6qycHz8aofkY0k`;
-      var x = document.getElementsByTagName('script')[0];
-      x.parentNode.insertBefore(s, x);
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      //note: this part here is the google API key, please replace as needed
+      script.src = `https://maps.google.com/maps/api/js?key=AIzaSyDUwSdMdxb22hcjJE3eJ6qycHz8aofkY0k`;
+      const tagname = document.getElementsByTagName('script')[0];
+      tagname.parentNode.insertBefore(script, tagname);
       // Below is important. 
       //We cannot access google.maps until it's finished loading
-      s.addEventListener('load', e => {
+      script.addEventListener('load', e => {
         this.onScriptLoad()
       })
     } else {
