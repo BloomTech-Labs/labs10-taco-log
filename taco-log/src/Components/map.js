@@ -16,10 +16,10 @@ class Map extends Component {
 
   componentDidMount() {
     if (!window.google) {
-      var s = document.createElement('script');
+      const s = document.createElement('script');
       s.type = 'text/javascript';
       s.src = `https://maps.google.com/maps/api/js?key=AIzaSyDUwSdMdxb22hcjJE3eJ6qycHz8aofkY0k`;
-      var x = document.getElementsByTagName('script')[0];
+      const x = document.getElementsByTagName('script')[0];
       x.parentNode.insertBefore(s, x);
       // Below is important. 
       //We cannot access google.maps until it's finished loading
