@@ -5,8 +5,10 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.16.4",
+    "faker": "^4.1.0",
     "knex": "^0.16.3",
     "node": "^11.9.0",
+    "pg": "^7.8.0",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-scripts": "2.1.5",
@@ -27,10 +29,4 @@
     "not ie <= 11",
     "not op_mini all"
   ]
-  "dependencies": {
-    "bootstrap": "^4.3.1",
-    "react": "^16.8.1",
-    "react-dom": "^16.8.1",
-    "reactstrap": "^7.1.0"
-  }
 }
