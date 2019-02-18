@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
-
-
+import Map from './Components/map.js';
 
 class App extends Component {
   state = {
@@ -25,6 +24,20 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
         <p>Taco Log!</p>
+          <Map
+            id="myMap"
+            options={{
+              center: { lat: 41.0082, lng: 28.9784 },
+              zoom: 8
+            }}
+            onMapLoad={map => {
+              let marker = new window.google.maps.Marker({
+                position: { lat: 41.0082, lng: 28.9784 },
+                map: map,
+                title: 'Testing map'
+              });
+            }}
+          />
         {this.state.message}
         </header>
       </div>
