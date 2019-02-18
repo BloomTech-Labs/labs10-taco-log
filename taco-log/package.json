@@ -2,12 +2,18 @@
   "name": "taco-log",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {    
+  "dependencies": {
     "axios": "^0.18.0",
-    "react": "^16.8.1",
-    "react-dom": "^16.8.1",
-    "react-scripts": "2.1.5",    
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "knex": "^0.16.3",
+    "node": "^11.9.0",
+    "sqlite3": "^4.0.6",
     "bootstrap": "^4.3.1",
+    "firebase": "4.2.0",
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2",
+    "react-scripts": "^2.1.5",
     "reactstrap": "^7.1.0"
   },
   "scripts": {
