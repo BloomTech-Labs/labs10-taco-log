@@ -4,6 +4,11 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "knex": "^0.16.3",
+    "node": "^11.9.0",
+    "sqlite3": "^4.0.6",
     "bootstrap": "^4.3.1",
     "firebase": "4.2.0",
     "react": "^16.8.2",
