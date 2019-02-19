@@ -18,9 +18,11 @@ async function getUser(id){
         .where({'user_id': id})
         .join('achievements', 'user_achievements.achievement_id', 'achievements.id')
         .select('achievements.title', 'achievements.description')
-    const { internal_Id, username, email, ext__user_id, taco_log_id } = user[0];
+    const taco_logs = await db('taco-log').where({user_id: id})
+    console.log(taco_logs)
+    const { internal_Id, username, email, ext__user_id } = user[0];
     const result = {
-        internal_Id, username, email, ext__user_id, taco_log_id, achievements
+        internal_Id, username, email, ext__user_id, taco_logs, achievements
     }
     return result;
 }
