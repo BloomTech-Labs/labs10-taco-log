@@ -25,6 +25,7 @@ server.get('/api/users',(req,res)=>{
     res.send(err)
   } )
 });
+
 server.get(`/api/users/:id`, (req,res) =>{
   const {id} = req.params;
   userDb.getUser(id)
@@ -35,6 +36,39 @@ server.get(`/api/users/:id`, (req,res) =>{
     res.send(err)
   } ) 
 });
+
+server.post('/api/user_achievements', (req,res) =>{
+  const relation = req.body
+  if(relation.user_id && relation.achievement_id){
+    db
+    .insert(relation)
+    .into('user_achievements')
+    .then(([id]) => ({ id }))
+    .then(result =>{
+      db('user_achievements')
+      .where('id', result.id)
+      .first()
+      .then(result => {
+        userDb.getUser(result.user_id)
+        .then(result =>{
+          res.status(200).json(result)
+        })
+        .catch(err=>{
+          res.send(err)
+        })
+      })
+      .catch(err=>{
+        res.send(err)
+      })      
+    })
+    .catch(err=>{
+      res.send(err)
+    })
+  } else {
+    res.status(422).json('Must have "user_id" and "achievement_id".')
+  }
+  
+})
 
 server.listen(process.env.PORT || 5000, () =>
   {console.log("test")});
