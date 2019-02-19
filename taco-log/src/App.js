@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
-
-import Map from './Components/map.js';
+import { Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { Button } from 'reactstrap';
+//import Map from './Components/map.js';
 import { firebase, provider } from './firebase/firebase';
+import HomePage from './Components/HomePage';
+import LoginPage from './Components/LoginPage';
+
 
 class App extends Component {
   constructor() {
@@ -12,7 +17,7 @@ class App extends Component {
       message: '',
       user: null
     }
-    this.login = this.login.bind(this);
+    //this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
   }
 
@@ -29,6 +34,7 @@ class App extends Component {
       })
   }
 
+<<<<<<< HEAD
   login() {
     firebase.auth().signInWithPopup(provider)
     //firebase.auth().signInWithPopup(provider)
@@ -40,6 +46,18 @@ class App extends Component {
         console.log(user)
       });
   }
+=======
+  // login() {
+  //   firebase.auth().signInWithPopup(provider)
+  //   //firebase.auth().signInWithPopup(provider)
+  //     .then((result)=> {
+  //       const user = result.user;
+  //       this.setState({
+  //         user: true
+  //       });
+  //     });
+  // }
+>>>>>>> 67eafdde7a9644952b3a20d24e81258a56934c3d
 
   logout() {
     firebase.auth().signOut()
@@ -53,31 +71,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-
-        <p>Taco Log!</p>
-          <Map
-            id="myMap"
-            options={{
-              center: { lat: 41.0082, lng: 28.9784 },
-              zoom: 8
-            }}
-            onMapLoad={map => {
-              let marker = new window.google.maps.Marker({
-                position: { lat: 41.0082, lng: 28.9784 },
-                map: map,
-                title: 'Testing map'
-              });
-            }}
-          />
-        {this.state.message}
-
-          <p>Taco Log!</p>
-          {this.state.message}
-
-        </header>
-        <button onClick= {this.login}>Login</button>
-        <button onClick= {this.logout}>Log Out</button>
+        <Route exact path = '/' component = {LoginPage}/>
+        <Route exact path = '/home' component = {HomePage}/>
+        <Link to = '/'><Button onClick= {this.logout}>Log Out</Button></Link>
       </div>
     );
   }
