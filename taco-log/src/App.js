@@ -37,6 +37,7 @@ class App extends Component {
         this.setState({
           user: true
         });
+        console.log(user)
       });
   }
 
