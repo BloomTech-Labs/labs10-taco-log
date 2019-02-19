@@ -59,6 +59,7 @@ class App extends Component {
       <div className="App">
         <Route exact path = '/' component = {LoginPage}/>
         <Route exact path = '/home' component = {HomePage}/>
+        <Route exact path = '/tacos' component = {LogTaco}/>
         <Link to = '/'><Button onClick= {this.logout}>Log Out</Button></Link>
       </div>
     );

@@ -50,3 +50,5 @@ class LogTaco extends Component {
         );
     }
 }
+
+export default LogTaco;
