@@ -83,9 +83,19 @@ server.post("/api/user_achievements", (req, res) => {
         res.send(err);
       });
   } else {
-    res.status(422).json('Must have "user_id" and "achievement_id".');
-  }
-});
+    res.status(422).json('Must have "user_id" and "achievement_id".')
+  }  
+})
+
+server.get('/api/achievements', (req,res) => {
+  db('achievements')
+  .then(achievements =>{
+    res.status(200).json(achievements)
+  })
+  .catch(err => {
+    res.send(err)
+  })
+})
 
 server.listen(process.env.PORT || 5000, () => {
   console.log("test");
