@@ -47,8 +47,8 @@ server.get("/api/tacos", (req, res) => {
 });
 
 server.post("/api/tacos", (req, res) => {
-  const { taco_location, rating } = req.body;
-  db.insert({ taco_location, rating })
+  const { taco_location, rating, description } = req.body;
+  db.insert({ taco_location, rating, description })
     .into("taco-log")
     .then(taco => {
       res.status(201).json(taco);
