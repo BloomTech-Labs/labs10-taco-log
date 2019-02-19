@@ -34,19 +34,6 @@ class App extends Component {
       })
   }
 
-<<<<<<< HEAD
-  login() {
-    firebase.auth().signInWithPopup(provider)
-    //firebase.auth().signInWithPopup(provider)
-      .then((result)=> {
-        const user = result.user;
-        this.setState({
-          user: true
-        });
-        console.log(user)
-      });
-  }
-=======
   // login() {
   //   firebase.auth().signInWithPopup(provider)
   //   //firebase.auth().signInWithPopup(provider)
@@ -57,7 +44,6 @@ class App extends Component {
   //       });
   //     });
   // }
->>>>>>> 67eafdde7a9644952b3a20d24e81258a56934c3d
 
   logout() {
     firebase.auth().signOut()
