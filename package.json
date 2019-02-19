@@ -1,7 +1,7 @@
 {
   "name": "taco-api",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "license": "MIT",
   "scripts": {
     "start": "node app.js",
@@ -15,8 +15,8 @@
     "express": "^4.16.4",
     "faker": "^4.1.0",
     "knex": "^0.16.3",
+    "node": "^11.10.0",
     "pg": "^7.8.0",
-    "sqlite3": "^4.0.6",
-    "node": "^11.10.0"
+    "sqlite3": "^4.0.6"
   }
 }

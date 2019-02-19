@@ -6,9 +6,10 @@ const createFakerUser = () =>({
   email: faker.internet.email()
 })
 exports.seed = async function(knex, Promise) {
+  await knex('users').del();  
   // Users
   const fakeUsers = [];
-  const desiredFakeUsers = 499;
+  const desiredFakeUsers = 200;
   for(let i=0;i<desiredFakeUsers;i++){
     fakeUsers.push(createFakerUser());
   }
