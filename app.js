@@ -63,14 +63,16 @@ server.get("/api/tacos", (req, res) => {
 });
 
 server.post("/api/tacos", (req, res) => {
-  const taco= req.body;
-  db.insert(taco)
+  const {user_id, taco_location, taco_description, rating} = req.body;
+  db.insert({user_id, taco_location, taco_description, rating})
     .into("taco-log")
     .then(taco => {
       res.status(201).json(taco);
+      console.log(user_id, taco_location, taco_description, rating);
     })
     .catch(err => {
-      res.send(err);
+      res.send(err)
+      console.log(req.body);
     });
 });
 
