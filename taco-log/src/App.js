@@ -26,8 +26,7 @@ class App extends Component {
   componentDidMount(){
     axios
       .get('https://tacobe.herokuapp.com/')
-      .then(res => {
-        console.log(res)
+      .then(res => {        
         this.setState({message: res.data.message});
       })
       .catch(err=>{
@@ -53,7 +52,9 @@ class App extends Component {
         user: null
       });
     });
-  }
+  };
+
+
 
   render() {
     return (

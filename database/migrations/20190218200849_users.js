@@ -4,8 +4,8 @@ exports.up = function(knex) {
     users
       .string("username", 128)      
       .unique();
-    users.string("password", 128).notNullable();
-    users.string("department", 128).notNullable(); // id,
+    users
+      .string("name", 128)    
     users.string("email", 128).notNullable();
     users.integer("ext_user_id").unique();
   });

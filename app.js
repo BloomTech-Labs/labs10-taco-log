@@ -8,6 +8,31 @@ const dbConfig = require("./knexfile");
 const knex = require("knex");
 const db = knex(dbConfig.development);
 
+// const firebase = require('firebase');
+// require('firebase/auth');
+// require('firebase/database');
+// // Initialize Firebase for the application
+// const config = {
+//   apiKey: "AIzaSyDhGZ712L1Xx_c4iW94hDnNusJ6Zk6zg0w",
+//   authDomain: "taco-logs.firebaseapp.com",
+//   databaseURL: "https://taco-logs.firebaseio.com",
+//   projectId: "taco-logs",
+//   storageBucket: "taco-logs.appspot.com",
+//   messagingSenderId: "382029457859"
+//   };
+
+// firebase.initializeApp(config); 
+
+// isAuthenticated = (req, res, next) => {
+//   const user = firebase.auth().currentUser;
+//   if (user !== null) {
+//     req.user = user;
+//     next();
+//   } else {
+//     res.redirect('/login');
+//   }
+// }
+
 //============USER ENDPOINTS===========//
 
 server.get("/", (req, res) => {
@@ -41,8 +66,15 @@ server.post('/api/users', (req,res) => {
   const user = req.body;
   db.insert(user)
     .into('users')
-    .then(user => {
-      res.status(200).json(user);
+    .then(([id]) => ({ id }))
+    .then(result => {
+      userDb.getUser(result.id)
+      .then(result => {
+        res.status(200).json(result);
+      })
+      .catch(err => {
+        res.send(err)
+      })
     })
     .catch(err => {
       res.send(err)
@@ -67,12 +99,10 @@ server.post("/api/tacos", (req, res) => {
   db.insert({user_id, taco_location, taco_description, rating})
     .into("taco-log")
     .then(taco => {
-      res.status(201).json(taco);
-      console.log(user_id, taco_location, taco_description, rating);
+      res.status(201).json(taco);      
     })
     .catch(err => {
-      res.send(err)
-      console.log(req.body);
+      res.send(err)      
     });
 });
 

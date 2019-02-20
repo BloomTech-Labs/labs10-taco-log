@@ -9,7 +9,7 @@ class LoginPage extends Component {
         super();
         this.state= {
             user:null,
-            userInfo: []
+            userInfo: {}
         }
         this.login = this.login.bind(this);
         //this.logout = this.logout.bind(this);
@@ -22,27 +22,50 @@ class LoginPage extends Component {
                 name: result.user.displayName,
                 email: result.user.email,
                 ext_user_id: result.user.uid
-            }
-            console.log(result)
-            axios    
-                .post('http://localhost:5000/api/users', user)
-                .then(res => {
-                    this.setState({userInfo: res})
+            }                       
+            axios
+                .get('http://localhost:5000/api/users') 
+                .then(res => {                    
+                    let post = false
+                    for(let i = 0; i < res.data.length; i++){
+                        if(res.data[i].ext_user_id == user.ext_user_id){
+                           axios.get(`http://localhost:5000/api/users/${res.data[i].internal_id}`)
+                           .then(res =>{                                
+                                this.setState({userInfo: res.data})
+                           })
+                           .catch(err => {
+                                console.log(err);
+                            });
+                        } else {
+                            post = true
+                        }
+                    }
+                    if(post){
+                        axios    
+                            .post('http://localhost:5000/api/users', user)
+                            .then(res => {                    
+                                this.setState({userInfo: res.data})
+                            })
+                            .catch(err => {
+                                console.log(err);
+                            });
+                    }                    
                 })
                 .catch(err => {
                     console.log(err);
                 });
+            
             this.setState({
               user: true
             });
           });
       }
 
-    render() {
+    render() {console.log(this.state.userInfo)
         return (
             <div className= 'login-page'>
                 <p>This is the login page</p>
-                <Link to='/home'><Button onClick= {this.login}>Login</Button></Link>
+                <Button onClick= {this.login}>Login</Button>
             </div>
         )
     }

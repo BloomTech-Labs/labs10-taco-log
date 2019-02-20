@@ -1,8 +1,6 @@
 const faker = require("faker");
 const createFakerUser = () => ({
   username: faker.internet.userName(),
-  password: faker.internet.password(),
-  department: "User",
   email: faker.internet.email()
 });
 exports.seed = async function(knex, Promise) {
