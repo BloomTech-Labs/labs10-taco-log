@@ -8,6 +8,8 @@ const dbConfig = require("./knexfile");
 const knex = require("knex");
 const db = knex(dbConfig.development);
 
+//============USER ENDPOINTS===========//
+
 server.get("/", (req, res) => {
   res.json({ message: "Hello, World" });
 });
@@ -35,6 +37,20 @@ server.get(`/api/users/:id`, (req, res) => {
     });
 });
 
+server.post('/api/users', (req,res) => {
+  const user = req.body;
+  db.insert(user)
+    .into('users')
+    .then(user => {
+      res.status(200).json(user);
+    })
+    .catch(err => {
+      res.send(err)
+    })
+})
+
+//============TACO ENDPOINTS===========//
+
 server.get("/api/tacos", (req, res) => {
   db("taco-log")
     .select()
@@ -47,13 +63,18 @@ server.get("/api/tacos", (req, res) => {
 });
 
 server.post("/api/tacos", (req, res) => {
-  const { taco_location, rating } = req.body;
-  db.insert({ taco_location, rating })
+  const taco= req.body;
+  db.insert(taco)
     .into("taco-log")
     .then(taco => {
       res.status(201).json(taco);
+    })
+    .catch(err => {
+      res.send(err);
     });
 });
+
+//============ACHIEVEMENT ENDPOINTS===========//
 
 server.post("/api/user_achievements", (req, res) => {
   const relation = req.body;
