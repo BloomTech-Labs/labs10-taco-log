@@ -99,7 +99,13 @@ server.post("/api/tacos", (req, res) => {
   db.insert({user_id, taco_location, taco_description, rating})
     .into("taco-log")
     .then(taco => {
-      res.status(201).json(taco);      
+      userDb.getUser(req.body.user_id)
+      .then(result => {
+        res.status(200).json(result);
+      })
+      .catch(err => {
+        res.send(err)
+      })      
     })
     .catch(err => {
       res.send(err)      
@@ -175,8 +181,7 @@ server.put('/api/user_stats/:id', (req, res) =>{
   db('user_stats')
     .where('user_id', id)
     .update(req.body)
-    .then(result => {
-      console.log(result);
+    .then(result => {      
       userDb.getUser(id)
       .then(result => {
         res.status(200).json(result);
