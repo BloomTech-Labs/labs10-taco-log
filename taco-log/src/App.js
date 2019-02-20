@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
-
-import Map from './Components/map.js';
+import { Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { Button } from 'reactstrap';
+//import Map from './Components/map.js';
 import { firebase, provider } from './firebase/firebase';
+import HomePage from './Components/HomePage';
+import LogTaco from './Components/LogTaco'
+import LoginPage from './Components/LoginPage';
+
 
 class App extends Component {
   constructor() {
@@ -12,7 +18,7 @@ class App extends Component {
       message: '',
       user: null
     }
-    this.login = this.login.bind(this);
+    //this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
   }
 
@@ -20,8 +26,7 @@ class App extends Component {
   componentDidMount(){
     axios
       .get('https://tacobe.herokuapp.com/')
-      .then(res => {
-        console.log(res)
+      .then(res => {        
         this.setState({message: res.data.message});
       })
       .catch(err=>{
@@ -29,16 +34,16 @@ class App extends Component {
       })
   }
 
-  login() {
-    firebase.auth().signInWithPopup(provider)
-    //firebase.auth().signInWithPopup(provider)
-      .then((result)=> {
-        const user = result.user;
-        this.setState({
-          user: true
-        });
-      });
-  }
+  // login() {
+  //   firebase.auth().signInWithPopup(provider)
+  //   //firebase.auth().signInWithPopup(provider)
+  //     .then((result)=> {
+  //       const user = result.user;
+  //       this.setState({
+  //         user: true
+  //       });
+  //     });
+  // }
 
   logout() {
     firebase.auth().signOut()
@@ -47,19 +52,17 @@ class App extends Component {
         user: null
       });
     });
-  }
+  };
+
+
 
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-        
-          <p>Taco Log!</p>
-          {this.state.message}
-
-        </header>
-        <button onClick= {this.login}>Login</button>
-        <button onClick= {this.logout}>Log Out</button>
+        <Route exact path = '/' component = {LoginPage}/>
+        <Route exact path = '/home' component = {HomePage}/>
+        <Route exact path = '/tacos' component = {LogTaco}/>
+        <Link to = '/'><Button onClick= {this.logout}>Log Out</Button></Link>
       </div>
     );
   }
