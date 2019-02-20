@@ -32,19 +32,19 @@ class LogTaco extends Component {
             <input
               onChange={this.handleInputChange}
               placeholder="location"
-              value={this.taco_location}
+              value={this.state.taco_location}
               name="taco_location"
             />
             <input
               onChange={this.handleInputChange}
               placeholder="rating"
-              value={this.rating}
+              value={this.state.rating}
               name="rating"
             />
             <input
               onChange={this.handleInputChange}
               placeholder="description"
-              value={this.taco_description}
+              value={this.state.taco_description}
               name="taco_description"
             />
             <button>Submit</button>
