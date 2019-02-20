@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-const host = "http://localhost:5000/api/tacos";
+import axios from "axios";
+const host = "https://taco-log-backend.herokuapp.com/api/tacos";
 
 class LogTaco extends Component {
     constructor() {
@@ -7,7 +8,8 @@ class LogTaco extends Component {
         this.state = {
             taco_location: "",
             taco_description: "",
-            rating: ""
+            rating: "",
+            user_id: "1"
         }
     }
     handleInputChange = e => {
@@ -35,9 +37,9 @@ class LogTaco extends Component {
             />
             <input
               onChange={this.handleInputChange}
-              placeholder="description"
-              value={this.taco_description}
-              name="taco_description"
+              placeholder="rating"
+              value={this.rating}
+              name="rating"
             />
             <input
               onChange={this.handleInputChange}

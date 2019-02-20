@@ -7,6 +7,7 @@ import { Button } from 'reactstrap';
 //import Map from './Components/map.js';
 import { firebase, provider } from './firebase/firebase';
 import HomePage from './Components/HomePage';
+import LogTaco from './Components/LogTaco'
 import LoginPage from './Components/LoginPage';
 
 
