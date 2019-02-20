@@ -24,25 +24,24 @@ class LoginPage extends Component {
                 ext_user_id: result.user.uid
             }                       
             axios
-                .get('http://localhost:5000/api/users') 
+                .get('https://tacobe.herokuapp.com/api/users') 
                 .then(res => {                    
-                    let post = false
+                    let post = true
                     for(let i = 0; i < res.data.length; i++){
                         if(res.data[i].ext_user_id == user.ext_user_id){
-                           axios.get(`http://localhost:5000/api/users/${res.data[i].internal_id}`)
+                           axios.get(`https://tacobe.herokuapp.com/api/users/${res.data[i].internal_id}`)
                            .then(res =>{                                
                                 this.setState({userInfo: res.data})
                            })
                            .catch(err => {
                                 console.log(err);
                             });
-                        } else {
-                            post = true
+                            post = false
                         }
-                    }
+                    }       
                     if(post){
                         axios    
-                            .post('http://localhost:5000/api/users', user)
+                            .post('https://tacobe.herokuapp.com/api/users', user)
                             .then(res => {                    
                                 this.setState({userInfo: res.data})
                             })
