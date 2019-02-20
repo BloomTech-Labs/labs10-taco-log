@@ -1,5 +1,5 @@
 import React from 'react';
-
+import map from './Components/map.js';
 
 <Map
   id="tacoMap"
@@ -15,3 +15,5 @@ import React from 'react';
     });
   }}
 />
+
+export default mapPage;
