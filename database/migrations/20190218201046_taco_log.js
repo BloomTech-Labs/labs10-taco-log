@@ -5,7 +5,7 @@ exports.up = function(knex) {
     .integer('user_id')
     .unsigned()
     .notNullable()
-    .references('internal_Id')
+    .references('internal_id')
     .inTable('users') // id,
   tbl
     .string('taco_location')    
