@@ -170,6 +170,26 @@ server.post('/api/user_stats', (req, res) =>{
     });
 })
 
+server.put('/api/user_stats/:id', (req, res) =>{
+  const {id} = req.params;
+  db('user_stats')
+    .where('user_id', id)
+    .update(req.body)
+    .then(result => {
+      console.log(result);
+      userDb.getUser(id)
+      .then(result => {
+        res.status(200).json(result);
+      })
+      .catch(err => {
+        res.send(err)
+      })
+    })
+    .catch(err => {
+      res.send(err);
+    });
+})
+
 server.listen(process.env.PORT || 5000, () => {
   console.log("test");
 });
