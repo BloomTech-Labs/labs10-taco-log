@@ -129,7 +129,7 @@ server.put('/api/tacos/:id', (req,res) => {
     });
 })
 
-server.delete('/api/tacos/:id', isAuthenticated,  (req,res) => {
+server.delete('/api/tacos/:id',  (req,res) => {
   const {id} = req.params;
   console.log(req.body.user.user_id)
   db('taco-log')

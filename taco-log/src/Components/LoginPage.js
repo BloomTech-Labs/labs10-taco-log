@@ -155,7 +155,7 @@ class LoginPage extends Component {
         console.log('delete')
         const user = {
             user_id: this.state.userInfo.internal_id
-        }
+        }      
         axios
             .delete(`${url}api/tacos/${id}`, { data: { user } })
             .then(res => {
