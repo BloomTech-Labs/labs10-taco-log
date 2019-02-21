@@ -93,7 +93,6 @@ class LoginPage extends Component {
         let header = {}
         firebase.auth().currentUser.getIdToken(true)
         .then(idToken => {
-            console.log(idToken);
             header = {
                 headers: {
                     Authorization: idToken,
