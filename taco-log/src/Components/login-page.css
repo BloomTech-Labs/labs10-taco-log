@@ -1,0 +1,77 @@
+.login-box {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.taco-image {
+    height: 100%;
+    width:400px;
+}
+
+.card {
+    border:2px solid limegreen;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-right: 100px;
+    width:543px;
+    height: 200px;
+    
+
+}
+
+.card-body{
+    
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 40px;
+}
+
+.google-button {
+    margin-top: 20px;
+    border-radius: 3px;
+    
+    color: #666;
+    background: #fff;
+    border: 1px solid #ccc;
+    
+    transition: all 0.6s;
+    transition-property: background-color, background-position, background-size, border-color;
+    background-position: 50% 50%;
+    background-size: 15000px 15000px;
+    cursor: pointer;
+    border: 1px solid;
+    font-weight: bold;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.28571em;
+    width:165%;
+}
+
+.fb-button {
+    margin-top: 20px;
+    color: #fff;
+    background: #3b5998;
+    border: 1px solid #3b5998;
+    background-repeat: no-repeat;
+    transition: all 0.6s;
+    transition-property: background-color, background-position, background-size, border-color;
+    background-position: 50% 50%;
+    background-size: 15000px 15000px;
+    vertical-align: middle;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.28571em;
+    border-radius: 3px;
+    width:165%;
+}
+
+/* .login-text{
+    font-size: 14px;
+} */
