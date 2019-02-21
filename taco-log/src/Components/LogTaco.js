@@ -1,20 +1,21 @@
 import React, { Component } from "react";
 import axios from "axios";
-const host = "https://taco-log-backend.herokuapp.com/api/tacos";
+const host = "https://taco-log-backend.herokuapp.com/api/tacos/";
 
 class LogTaco extends Component {
-    constructor() {
-        super();
-        this.state = {
-            taco_location: "",
-            taco_description: "",
-            rating: "",
-            user_id: "1"
-        }
-    }
-    handleInputChange = e => {
-        this.setState({ [e.target.name]: e.target.value });
-      };
+  constructor() {
+    super();
+    this.state = {
+      taco_location: "",
+      taco_description: "",
+      rating: "",
+      user_id: "1"
+    };
+  }
+  handleInputChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
 
       newTaco = e => {
         e.preventDefault();
@@ -51,6 +52,7 @@ class LogTaco extends Component {
           </form>
         );
     }
+
 }
 
 export default LogTaco;
