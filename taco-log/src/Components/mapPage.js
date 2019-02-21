@@ -1,19 +1,48 @@
-import React from 'react';
-import map from './Components/map.js';
+import React, { Component } from 'react';
+import Map from './Map';
 
-<Map
-  id="tacoMap"
-  options={{
-    center: { lat: 41.0082, lng: 28.9784 },
-    zoom: 8
-  }}
-  onMapLoad={map => {
-    let marker = new window.google.maps.Marker({
-      position: { lat: 41.0082, lng: 28.9784 },
-      map: map,
-      title: 'Testing map'
+//finds user location, requires approval from user
+function getLocation (callback) {
+  if (navigator.geolocation) {
+    let lat_lng = navigator.geolocation.getCurrentPosition(function(position) {
+      console.log(position);
+      let user_position = {};
+      user_position.lat = position.coords.latitude;
+      user_position.lng = position.coords.longitude;
+      callback(user_position)
     });
-  }}
-/>
+  }
+    else {
+      alert("Geolocation rejected or not supported by browser!");
+    }
+}
 
-export default mapPage;
+//for testing
+getLocation(function(lat_lng) {
+  console.log(lat_lng);
+});
+ 
+class MapPage extends Component {
+  render() {
+    return (
+      <div>
+        <Map
+          id="myMap"
+          options={{
+            center: { lat: 41.0082, lng: 28.9784 },
+            zoom: 8
+          }}
+          onMapLoad={map => {
+            let marker = new window.google.maps.Marker({
+              position: { lat: 41.0082, lng: 28.9784 },
+              map: map,
+              title: 'Testing map'
+            });
+          }}
+        />
+      </div>
+    );
+  }
+}
+
+export default MapPage;
