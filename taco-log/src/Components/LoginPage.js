@@ -6,6 +6,7 @@ import axios from 'axios'
 
 const local = 'http://localhost:5000/'
 const heroku = 'https://tacobe.herokuapp.com/'
+const url = heroku
 
 class LoginPage extends Component {
     constructor() {
@@ -30,12 +31,12 @@ class LoginPage extends Component {
                 ext_user_id: result.user.uid
             }                              
             axios
-                .get(`${local}api/users`) 
+                .get(`${url}api/users`) 
                 .then(res => {                    
                     let post = true
                     for(let i = 0; i < res.data.length; i++){
                         if(res.data[i].ext_user_id === user.ext_user_id){
-                           axios.get(`${local}api/users/${res.data[i].internal_id}`)
+                           axios.get(`${url}api/users/${res.data[i].internal_id}`)
                            .then(res =>{                                
                                 this.setState({userInfo: res.data})
                            })
@@ -47,10 +48,10 @@ class LoginPage extends Component {
                     }       
                     if(post){
                         axios    
-                            .post(`${local}api/users`, user)
+                            .post(`${url}api/users`, user)
                             .then(res => {   
                                 const stats = { user_id: res.data.internal_id}    
-                                axios.post(`${local}api/user_stats`, stats)
+                                axios.post(`${url}api/user_stats`, stats)
                                 .then(res => {
                                     this.setState({userInfo: res.data})
                                 })  
@@ -96,7 +97,7 @@ class LoginPage extends Component {
                 }
             }                  
             axios
-                .post(`${local}api/tacos`, taco, header)
+                .post(`${url}api/tacos`, taco, header)
                 .then(res => {  
                     console.log(res)                  
                     this.setState({
@@ -109,7 +110,7 @@ class LoginPage extends Component {
                     }      
                               
                     axios
-                        .put(`${local}api/user_stats/${res.data.internal_id}`, stats, header)
+                        .put(`${url}api/user_stats/${res.data.internal_id}`, stats, header)
                         .then(res => {  
                             if (res.data.stats[0].tacos_logged >= 5){
                                 const achievement = {
@@ -117,7 +118,7 @@ class LoginPage extends Component {
                                     achievement_id: 2
                                 }                            
                                 axios
-                                    .post(`${local}api/user_achievements`, achievement, header)
+                                    .post(`${url}api/user_achievements`, achievement, header)
                                     .then(res => {
                                         this.setState({
                                             userInfo: res.data
