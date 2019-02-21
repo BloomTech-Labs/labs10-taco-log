@@ -10,6 +10,27 @@ const db = knex(dbConfig.development);
 const admin = require('firebase-admin');
 const serviceAccount = require('./service.js');
 
+// -------Stripe stuff-------
+const stripe = require("stripe")("sk_test_TBvC6DILCL4wgd9SV5nsd8oH");
+server.use(require("body-parser").text());
+
+
+server.post("/charge", async (req, res) => {
+  try {
+    let {status} = await stripe.charges.create({
+      amount: 2000,
+      currency: "usd",
+      description: "An example charge",
+      source: req.body
+    });
+
+    res.json({status});
+  } catch (err) {
+    res.status(500).end();
+  }
+});
+//---------Stripe stuff------------------
+
 
 admin.initializeApp({  
   credential: admin.credential.cert(serviceAccount),
