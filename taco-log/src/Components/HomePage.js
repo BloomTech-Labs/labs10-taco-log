@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import MapPage from './MapPage.js'
+<<<<<<< HEAD
 import {Elements, StripeProvider} from 'react-stripe-elements';
 import CheckoutForm from './CheckoutForm';
+=======
+>>>>>>> c5b4813fe8ff0a0da6b23d09a2ffc48f22906094
 
 
 class HomePage extends Component {
