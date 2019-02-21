@@ -198,7 +198,6 @@ class LoginPage extends Component {
                     </CardBody>
                 </Card>
                 </div>
-<<<<<<< HEAD
                 <p>This is the login page</p>
                 <Button onClick= {this.login}>Login</Button>
                 <div>
@@ -250,8 +249,6 @@ class LoginPage extends Component {
                     :<div></div>                                       
                 }
                               
-=======
->>>>>>> 9fff5b6f5b15d41cc87a6f3a6c50f3e8841acc60
             </div>
          
         )
