@@ -17,6 +17,7 @@ function getLocation (callback) {
     }
 }
 
+
 //for testing
 getLocation(function(lat_lng) {
   console.log(lat_lng);

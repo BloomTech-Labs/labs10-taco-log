@@ -92,7 +92,7 @@ server.get("/api/tacos", (req, res) => {
     });
 });
 
-server.post("/api/tacos", isAuthenticated, (req, res) => {
+server.post("/api/tacos", isAuthenticated,  (req, res) => {
   const {user_id, taco_location, taco_description, rating} = req.body;
   db.insert({user_id, taco_location, taco_description, rating})
     .into("taco-log")
@@ -109,6 +109,45 @@ server.post("/api/tacos", isAuthenticated, (req, res) => {
       res.send(err)      
     });
 });
+
+server.put('/api/tacos/:id', (req,res) => {
+  const {id} = req.params;
+  db('taco-log')
+    .where({id})
+    .update(req.body)
+    .then(taco => {
+      userDb.getUser(req.body.user_id)
+      .then(result => {
+        res.status(200).json(result);
+      })
+      .catch(err => {
+        res.send(err)
+      })  
+    })
+    .catch(err => {
+      res.send(err)      
+    });
+})
+
+server.delete('/api/tacos/:id', isAuthenticated,  (req,res) => {
+  const {id} = req.params;
+  console.log(req.body.user.user_id)
+  db('taco-log')
+    .where({id})
+    .del()
+    .then(result => {      
+      userDb.getUser(req.body.user.user_id)
+      .then(result => {
+        res.status(200).json(result);
+      })
+      .catch(err => {
+        res.send(err)
+      })  
+    })
+    .catch(err => {
+      res.status(500).json({ error: "Unable to delete."})    
+    });
+})
 
 //============ACHIEVEMENT ENDPOINTS===========//
 
