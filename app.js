@@ -7,31 +7,29 @@ const userDb = require("./database/helpers/dbhelper.js");
 const dbConfig = require("./knexfile");
 const knex = require("knex");
 const db = knex(dbConfig.development);
+const admin = require('firebase-admin');
+const serviceAccount = require('./service.js');
 
-// const firebase = require('firebase');
-// require('firebase/auth');
-// require('firebase/database');
-// // Initialize Firebase for the application
-// const config = {
-//   apiKey: "AIzaSyDhGZ712L1Xx_c4iW94hDnNusJ6Zk6zg0w",
-//   authDomain: "taco-logs.firebaseapp.com",
-//   databaseURL: "https://taco-logs.firebaseio.com",
-//   projectId: "taco-logs",
-//   storageBucket: "taco-logs.appspot.com",
-//   messagingSenderId: "382029457859"
-//   };
 
-// firebase.initializeApp(config); 
+admin.initializeApp({  
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: 'https://taco-logs.firebaseio.com'
+}); 
 
-// isAuthenticated = (req, res, next) => {
-//   const user = firebase.auth().currentUser;
-//   if (user !== null) {
-//     req.user = user;
-//     next();
-//   } else {
-//     res.redirect('/login');
-//   }
-// }
+isAuthenticated = (req, res, next) => {
+  const token = req.headers.authorization  
+  admin.auth().verifyIdToken(token)
+    .then(decodedToken =>{
+      if(decodedToken.uid == req.headers.id){
+        next()
+      } else {
+        res.status(422).json('Token not valid.')
+      }
+    })
+    .catch(err => {
+      res.send(err);
+    });  
+}
 
 //============USER ENDPOINTS===========//
 
@@ -94,7 +92,7 @@ server.get("/api/tacos", (req, res) => {
     });
 });
 
-server.post("/api/tacos", (req, res) => {
+server.post("/api/tacos", isAuthenticated, (req, res) => {
   const {user_id, taco_location, taco_description, rating} = req.body;
   db.insert({user_id, taco_location, taco_description, rating})
     .into("taco-log")
@@ -114,7 +112,7 @@ server.post("/api/tacos", (req, res) => {
 
 //============ACHIEVEMENT ENDPOINTS===========//
 
-server.post("/api/user_achievements", (req, res) => {
+server.post("/api/user_achievements", isAuthenticated, (req, res) => {
   const relation = req.body;
   if (relation.user_id && relation.achievement_id) {
     db.insert(relation)
@@ -176,7 +174,7 @@ server.post('/api/user_stats', (req, res) =>{
     });
 })
 
-server.put('/api/user_stats/:id', (req, res) =>{
+server.put('/api/user_stats/:id', isAuthenticated, (req, res) =>{
   const {id} = req.params;
   db('user_stats')
     .where('user_id', id)

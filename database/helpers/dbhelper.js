@@ -19,10 +19,10 @@ async function getUser(id){
         .join('achievements', 'user_achievements.achievement_id', 'achievements.id')
         .select('achievements.title', 'achievements.description')
     const taco_logs = await db('taco-log').where({user_id: id})    
-    const { name, internal_id, username, email, ext__user_id } = user[0];
+    const { name, internal_id, username, email, ext_user_id } = user[0];
     const stats = await db('user_stats').where({user_id: id})
     const result = {
-        internal_id, username, name, email, ext__user_id, taco_logs, achievements, stats
+        internal_id, username, name, email, ext_user_id, taco_logs, achievements, stats
     }
     return result;
 }
