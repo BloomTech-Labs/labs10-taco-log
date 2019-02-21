@@ -150,7 +150,25 @@ class LoginPage extends Component {
         
     };
 
-    render() {
+    deleteTaco = (id) => {
+        // event.preventDefault();
+        console.log('delete')
+        const user = {
+            user_id: this.state.userInfo.internal_id
+        }      
+        axios
+            .delete(`${url}api/tacos/${id}`, { data: { user } })
+            .then(res => {
+                this.setState({
+                    userInfo: res.data
+                })
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+
+    render() {console.log(this.state.userInfo)
         return (             
             <div className= 'login-page'>
                 <div className='login-box'>
@@ -180,6 +198,57 @@ class LoginPage extends Component {
                     </CardBody>
                 </Card>
                 </div>
+                <p>This is the login page</p>
+                <Button onClick= {this.login}>Login</Button>
+                <div>
+                    TACO LOG:
+                    {(this.state.userInfo.taco_logs && this.state.userInfo.taco_logs.length > 0)
+                        ?<div>
+                            {this.state.userInfo.taco_logs.map(log =>
+                                <div key = {log.id}>
+                                    <p>{log.taco_location}</p>
+                                    <p>{log.taco_description}</p>
+                                    <p>{log.rating}</p>
+                                    <button onClick={()=>this.deleteTaco(log.id)}>Delete</button>
+                                </div>
+                            )}
+                        </div>
+                        :<div></div>    
+                    }
+                </div>
+                
+                
+
+
+                <form>
+                    <input
+                    onChange={this.handleInputChange}
+                    placeholder="location"
+                    value={this.state.taco_location}
+                    name="taco_location"
+                    />
+                    <input
+                    onChange={this.handleInputChange}
+                    placeholder="rating"
+                    value={this.state.rating}
+                    name="rating"
+                    />
+                    <input
+                    onChange={this.handleInputChange}
+                    placeholder="description"
+                    value={this.state.taco_description}
+                    name="taco_description"
+                    />
+                    <button onClick = {this.newTaco}>Submit</button>
+                </form>  
+                {(this.state.userInfo.achievements && this.state.userInfo.achievements.length > 0)
+                    ?<div>
+                        <p>Achievement:{this.state.userInfo.achievements[0].title}</p>
+                        <p>Description:{this.state.userInfo.achievements[0].description}</p>
+                    </div>
+                    :<div></div>                                       
+                }
+                              
             </div>
          
         )
