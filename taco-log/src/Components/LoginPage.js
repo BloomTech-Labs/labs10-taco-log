@@ -9,6 +9,7 @@ import './login-page.css';
 
 const local = 'http://localhost:5000/'
 const heroku = 'https://tacobe.herokuapp.com/'
+const url = heroku
 
 class LoginPage extends Component {
     constructor() {
@@ -31,14 +32,14 @@ class LoginPage extends Component {
                 name: result.user.displayName,
                 email: result.user.email,
                 ext_user_id: result.user.uid
-            }                       
+            }                              
             axios
-                .get(`${heroku}api/users`) 
+                .get(`${url}api/users`) 
                 .then(res => {                    
                     let post = true
                     for(let i = 0; i < res.data.length; i++){
-                        if(res.data[i].ext_user_id == user.ext_user_id){
-                           axios.get(`${heroku}api/users/${res.data[i].internal_id}`)
+                        if(res.data[i].ext_user_id === user.ext_user_id){
+                           axios.get(`${url}api/users/${res.data[i].internal_id}`)
                            .then(res =>{                                
                                 this.setState({userInfo: res.data})
                            })
@@ -50,10 +51,10 @@ class LoginPage extends Component {
                     }       
                     if(post){
                         axios    
-                            .post(`${heroku}api/users`, user)
+                            .post(`${url}api/users`, user)
                             .then(res => {   
                                 const stats = { user_id: res.data.internal_id}    
-                                axios.post(`${heroku}api/user_stats`, stats)
+                                axios.post(`${url}api/user_stats`, stats)
                                 .then(res => {
                                     this.setState({userInfo: res.data})
                                 })  
@@ -89,53 +90,68 @@ class LoginPage extends Component {
             taco_description: this.state.taco_description,
             rating: this.state.rating
         }
-        axios
-            .post(`${heroku}api/tacos`, taco)
-            .then(res => {                    
-                this.setState({
-                taco_location: "",
-                taco_description: "",
-                rating: ""
-                });
-                const stats = {
-                    tacos_logged: res.data.taco_logs.length
-                }                
-                axios
-                    .put(`${heroku}api/user_stats/${res.data.internal_id}`, stats)
-                    .then(res => {  
-                        if (res.data.stats[0].tacos_logged >= 5){
-                            const achievement = {
-                                user_id: res.data.internal_id,
-                                achievement_id: 2
-                            }
-                            console.log(achievement)
-                            axios
-                                .post(`${heroku}api/user_achievements`, achievement)
-                                .then(res => {
-                                    this.setState({
-                                        userInfo: res.data
-                                    })
-                                })
-                                .catch(err => {
-                                    console.log(err);
-                                });
-                        }                     
-                        this.setState({
-                            userInfo: res.data
-                        })
-                    })
-                    .catch(err => {
-                        console.log(err);
+        let header = {} 
+        firebase.auth().currentUser.getIdToken(true)
+        .then(idToken => {
+            header = {
+                headers: {
+                    Authorization: idToken, 
+                    id:this.state.userInfo.ext_user_id
+                }
+            }                  
+            axios
+                .post(`${url}api/tacos`, taco, header)
+                .then(res => {  
+                    console.log(res)                  
+                    this.setState({
+                    taco_location: "",
+                    taco_description: "",
+                    rating: ""
                     });
-            })
-            .catch(err => {
-                console.log(err);
-            });
+                    const stats = {
+                        tacos_logged: res.data.taco_logs.length
+                    }      
+                              
+                    axios
+                        .put(`${url}api/user_stats/${res.data.internal_id}`, stats, header)
+                        .then(res => {  
+                            if (res.data.stats[0].tacos_logged >= 5){
+                                const achievement = {
+                                    user_id: res.data.internal_id,
+                                    achievement_id: 2
+                                }                            
+                                axios
+                                    .post(`${url}api/user_achievements`, achievement, header)
+                                    .then(res => {
+                                        this.setState({
+                                            userInfo: res.data
+                                        })
+                                    })
+                                    .catch(err => {
+                                        console.log(err);
+                                    });
+                            }                     
+                            this.setState({
+                                userInfo: res.data
+                            })
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        });
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+        
+        
     };
 
-    render() {console.log(this.state.userInfo)
-        return (
-             
+    render() {
+        return (             
             <div className= 'login-page'>
 <<<<<<< HEAD
                 <div className='login-box'>
