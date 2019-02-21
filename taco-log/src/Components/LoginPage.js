@@ -32,15 +32,15 @@ class LoginPage extends Component {
                 name: result.user.displayName,
                 email: result.user.email,
                 ext_user_id: result.user.uid
-            }                              
+            }
             axios
-                .get(`${url}api/users`) 
-                .then(res => {                    
+                .get(`${url}api/users`)
+                .then(res => {
                     let post = true
                     for(let i = 0; i < res.data.length; i++){
                         if(res.data[i].ext_user_id === user.ext_user_id){
                            axios.get(`${url}api/users/${res.data[i].internal_id}`)
-                           .then(res =>{                                
+                           .then(res =>{
                                 this.setState({userInfo: res.data})
                            })
                            .catch(err => {
@@ -48,30 +48,30 @@ class LoginPage extends Component {
                             });
                             post = false
                         }
-                    }       
+                    }
                     if(post){
-                        axios    
+                        axios
                             .post(`${url}api/users`, user)
-                            .then(res => {   
-                                const stats = { user_id: res.data.internal_id}    
+                            .then(res => {
+                                const stats = { user_id: res.data.internal_id}
                                 axios.post(`${url}api/user_stats`, stats)
                                 .then(res => {
                                     this.setState({userInfo: res.data})
-                                })  
+                                })
                                 .catch(err => {
                                     console.log(err);
-                                });       
-                                
+                                });
+
                             })
                             .catch(err => {
                                 console.log(err);
                             });
-                    }                    
+                    }
                 })
                 .catch(err => {
                     console.log(err);
                 });
-            
+
             this.setState({
               user: true
             });
@@ -90,19 +90,20 @@ class LoginPage extends Component {
             taco_description: this.state.taco_description,
             rating: this.state.rating
         }
-        let header = {} 
+        let header = {}
         firebase.auth().currentUser.getIdToken(true)
         .then(idToken => {
+            console.log(idToken);
             header = {
                 headers: {
-                    Authorization: idToken, 
+                    Authorization: idToken,
                     id:this.state.userInfo.ext_user_id
                 }
-            }                  
+            }
             axios
                 .post(`${url}api/tacos`, taco, header)
-                .then(res => {  
-                    console.log(res)                  
+                .then(res => {
+                    console.log(res)
                     this.setState({
                     taco_location: "",
                     taco_description: "",
@@ -110,16 +111,16 @@ class LoginPage extends Component {
                     });
                     const stats = {
                         tacos_logged: res.data.taco_logs.length
-                    }      
-                              
+                    }
+
                     axios
                         .put(`${url}api/user_stats/${res.data.internal_id}`, stats, header)
-                        .then(res => {  
+                        .then(res => {
                             if (res.data.stats[0].tacos_logged >= 5){
                                 const achievement = {
                                     user_id: res.data.internal_id,
                                     achievement_id: 2
-                                }                            
+                                }
                                 axios
                                     .post(`${url}api/user_achievements`, achievement, header)
                                     .then(res => {
@@ -130,7 +131,7 @@ class LoginPage extends Component {
                                     .catch(err => {
                                         console.log(err);
                                     });
-                            }                     
+                            }
                             this.setState({
                                 userInfo: res.data
                             })
@@ -146,14 +147,13 @@ class LoginPage extends Component {
         .catch(err => {
             console.log(err);
         });
-        
-        
+
+
     };
 
     render() {
-        return (             
+        return (
             <div className= 'login-page'>
-<<<<<<< HEAD
                 <div className='login-box'>
                 <Card className='card'>
                     <CardImg className='taco-image' src={taco} alt="taco image" />
@@ -181,43 +181,10 @@ class LoginPage extends Component {
                     </CardBody>
                 </Card>
                 </div>
-=======
-                <p>This is the login page</p>
-                <Button onClick= {this.login}>Login</Button>
-                <form onSubmit={this.newTaco}>
-                    <input
-                    onChange={this.handleInputChange}
-                    placeholder="location"
-                    value={this.state.taco_location}
-                    name="taco_location"
-                    />
-                    <input
-                    onChange={this.handleInputChange}
-                    placeholder="rating"
-                    value={this.state.rating}
-                    name="rating"
-                    />
-                    <input
-                    onChange={this.handleInputChange}
-                    placeholder="description"
-                    value={this.state.taco_description}
-                    name="taco_description"
-                    />
-                    <button>Submit</button>
-                </form>  
-                {(this.state.userInfo.achievements && this.state.userInfo.achievements.length > 0)
-                    ?<div>
-                        <p>Achievement:{this.state.userInfo.achievements[0].title}</p>
-                        <p>Description:{this.state.userInfo.achievements[0].description}</p>
-                    </div>
-                    :<div></div>                                       
-                }
-                              
->>>>>>> 3bad12c3f80cddbf002053e7a3ac33703809d721
             </div>
-         
+
         )
     }
 }
 
-export default LoginPage; 
+export default LoginPage;
