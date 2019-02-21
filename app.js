@@ -19,7 +19,7 @@ admin.initializeApp({
 isAuthenticated = (req, res, next) => {
   const token = req.headers.authorization  
   admin.auth().verifyIdToken(token)
-    .then(decodedToken =>{
+    .then(decodedToken =>{      
       if(decodedToken.uid == req.headers.id){
         next()
       } else {

@@ -30,12 +30,12 @@ class LoginPage extends Component {
                 ext_user_id: result.user.uid
             }                              
             axios
-                .get(`${heroku}api/users`) 
+                .get(`${local}api/users`) 
                 .then(res => {                    
                     let post = true
                     for(let i = 0; i < res.data.length; i++){
-                        if(res.data[i].ext_user_id == user.ext_user_id){
-                           axios.get(`${heroku}api/users/${res.data[i].internal_id}`)
+                        if(res.data[i].ext_user_id === user.ext_user_id){
+                           axios.get(`${local}api/users/${res.data[i].internal_id}`)
                            .then(res =>{                                
                                 this.setState({userInfo: res.data})
                            })
@@ -47,10 +47,10 @@ class LoginPage extends Component {
                     }       
                     if(post){
                         axios    
-                            .post(`${heroku}api/users`, user)
+                            .post(`${local}api/users`, user)
                             .then(res => {   
                                 const stats = { user_id: res.data.internal_id}    
-                                axios.post(`${heroku}api/user_stats`, stats)
+                                axios.post(`${local}api/user_stats`, stats)
                                 .then(res => {
                                     this.setState({userInfo: res.data})
                                 })  
@@ -94,10 +94,11 @@ class LoginPage extends Component {
                     Authorization: idToken, 
                     id:this.state.userInfo.ext_user_id
                 }
-            }            
+            }                  
             axios
-                .post(`${heroku}api/tacos`, taco, header)
-                .then(res => {                    
+                .post(`${local}api/tacos`, taco, header)
+                .then(res => {  
+                    console.log(res)                  
                     this.setState({
                     taco_location: "",
                     taco_description: "",
@@ -105,9 +106,10 @@ class LoginPage extends Component {
                     });
                     const stats = {
                         tacos_logged: res.data.taco_logs.length
-                    }                
+                    }      
+                              
                     axios
-                        .put(`${heroku}api/user_stats/${res.data.internal_id}`, stats, header)
+                        .put(`${local}api/user_stats/${res.data.internal_id}`, stats, header)
                         .then(res => {  
                             if (res.data.stats[0].tacos_logged >= 5){
                                 const achievement = {
@@ -115,7 +117,7 @@ class LoginPage extends Component {
                                     achievement_id: 2
                                 }                            
                                 axios
-                                    .post(`${heroku}api/user_achievements`, achievement, header)
+                                    .post(`${local}api/user_achievements`, achievement, header)
                                     .then(res => {
                                         this.setState({
                                             userInfo: res.data
