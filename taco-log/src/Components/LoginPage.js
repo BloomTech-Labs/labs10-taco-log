@@ -153,7 +153,6 @@ class LoginPage extends Component {
     render() {
         return (             
             <div className= 'login-page'>
-<<<<<<< HEAD
                 <div className='login-box'>
                 <Card className='card'>
                     <CardImg className='taco-image' src={taco} alt="taco image" />
@@ -181,39 +180,6 @@ class LoginPage extends Component {
                     </CardBody>
                 </Card>
                 </div>
-=======
-                <p>This is the login page</p>
-                <Button onClick= {this.login}>Login</Button>
-                <form onSubmit={this.newTaco}>
-                    <input
-                    onChange={this.handleInputChange}
-                    placeholder="location"
-                    value={this.state.taco_location}
-                    name="taco_location"
-                    />
-                    <input
-                    onChange={this.handleInputChange}
-                    placeholder="rating"
-                    value={this.state.rating}
-                    name="rating"
-                    />
-                    <input
-                    onChange={this.handleInputChange}
-                    placeholder="description"
-                    value={this.state.taco_description}
-                    name="taco_description"
-                    />
-                    <button>Submit</button>
-                </form>  
-                {(this.state.userInfo.achievements && this.state.userInfo.achievements.length > 0)
-                    ?<div>
-                        <p>Achievement:{this.state.userInfo.achievements[0].title}</p>
-                        <p>Description:{this.state.userInfo.achievements[0].description}</p>
-                    </div>
-                    :<div></div>                                       
-                }
-                              
->>>>>>> 3bad12c3f80cddbf002053e7a3ac33703809d721
             </div>
          
         )
