@@ -15,7 +15,10 @@ class LoginPage extends Component {
         super();
         this.state= {
             user:null,
-            userInfo: {}
+            userInfo: {},
+            taco_location: "",
+            taco_description: "",
+            rating: ""
         }
         this.login = this.login.bind(this);
         //this.logout = this.logout.bind(this);
@@ -71,12 +74,70 @@ class LoginPage extends Component {
             this.setState({
               user: true
             });
-          });
-      }
+        });
+    }
+
+    handleInputChange = e => {
+        this.setState({ [e.target.name]: e.target.value });
+    };
+
+    newTaco = e => {
+        e.preventDefault();
+        const taco = {
+            user_id: this.state.userInfo.internal_id,
+            taco_location: this.state.taco_location,
+            taco_description: this.state.taco_description,
+            rating: this.state.rating
+        }
+        axios
+            .post(`${heroku}api/tacos`, taco)
+            .then(res => {                    
+                this.setState({
+                taco_location: "",
+                taco_description: "",
+                rating: ""
+                });
+                const stats = {
+                    tacos_logged: res.data.taco_logs.length
+                }                
+                axios
+                    .put(`${heroku}api/user_stats/${res.data.internal_id}`, stats)
+                    .then(res => {  
+                        if (res.data.stats[0].tacos_logged >= 5){
+                            const achievement = {
+                                user_id: res.data.internal_id,
+                                achievement_id: 2
+                            }
+                            console.log(achievement)
+                            axios
+                                .post(`${heroku}api/user_achievements`, achievement)
+                                .then(res => {
+                                    this.setState({
+                                        userInfo: res.data
+                                    })
+                                })
+                                .catch(err => {
+                                    console.log(err);
+                                });
+                        }                     
+                        this.setState({
+                            userInfo: res.data
+                        })
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    });
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    };
 
     render() {console.log(this.state.userInfo)
         return (
+             
             <div className= 'login-page'>
+<<<<<<< HEAD
                 <div className='login-box'>
                 <Card className='card'>
                     <CardImg className='taco-image' src={taco} alt="taco image" />
@@ -104,7 +165,41 @@ class LoginPage extends Component {
                     </CardBody>
                 </Card>
                 </div>
+=======
+                <p>This is the login page</p>
+                <Button onClick= {this.login}>Login</Button>
+                <form onSubmit={this.newTaco}>
+                    <input
+                    onChange={this.handleInputChange}
+                    placeholder="location"
+                    value={this.state.taco_location}
+                    name="taco_location"
+                    />
+                    <input
+                    onChange={this.handleInputChange}
+                    placeholder="rating"
+                    value={this.state.rating}
+                    name="rating"
+                    />
+                    <input
+                    onChange={this.handleInputChange}
+                    placeholder="description"
+                    value={this.state.taco_description}
+                    name="taco_description"
+                    />
+                    <button>Submit</button>
+                </form>  
+                {(this.state.userInfo.achievements && this.state.userInfo.achievements.length > 0)
+                    ?<div>
+                        <p>Achievement:{this.state.userInfo.achievements[0].title}</p>
+                        <p>Description:{this.state.userInfo.achievements[0].description}</p>
+                    </div>
+                    :<div></div>                                       
+                }
+                              
+>>>>>>> 3bad12c3f80cddbf002053e7a3ac33703809d721
             </div>
+         
         )
     }
 }
