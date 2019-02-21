@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Map from './Map';
 
-//finds user location, browser asks for permission
+//finds user location, requires approval from user
 function getLocation (callback) {
   if (navigator.geolocation) {
     let lat_lng = navigator.geolocation.getCurrentPosition(function(position) {
