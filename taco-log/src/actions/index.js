@@ -14,3 +14,7 @@
 //         payload: todoObj
 //       };
 //     };
+
+import { FETCH_TACOS, ADDDATABASE_TACOS } from './tacoActions';
+
+export default { FETCH_TACOS, ADDDATABASE_TACOS };
