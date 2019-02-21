@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MapPage from './MapPage.js'
+// import MapPage from './MapPage.js'
 
 
 class HomePage extends Component {
