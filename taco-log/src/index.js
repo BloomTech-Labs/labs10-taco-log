@@ -7,10 +7,11 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { firebase } from './firebase/firebase';
 import { Provider } from 'react-redux';
 import RootReducer from './reducers';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
-const store = createStore(RootReducer, applyMiddleware(thunk));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(RootReducer, composeEnhancers(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <Router>

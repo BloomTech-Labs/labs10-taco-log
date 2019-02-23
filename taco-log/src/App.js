@@ -9,6 +9,8 @@ import { firebase, provider } from './firebase/firebase';
 import HomePage from './Components/HomePage';
 import LogTaco from './Components/LogTaco'
 import LoginPage from './Components/LoginPage';
+import { loginUser, logTaco, deleteTaco } from './actions';
+import { connect } from 'react-redux';
 
 
 class App extends Component {
@@ -59,13 +61,19 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Route exact path = '/' component = {LoginPage}/>
-        <Route exact path = '/home' component = {HomePage}/>
-        <Route exact path = '/tacos' component = {LogTaco}/>
+        <Route exact path = '/' render = {(props) => <LoginPage {...this.props} {...props} />} />
+        <Route exact path = '/home' render = {(props) => <HomePage {...this.props} {...props} />} />
+        <Route exact path = '/tacos' render = {(props) => <LogTaco {...this.props} {...props} />}/>
         <Link to = '/'><Button onClick= {this.logout}>Log Out</Button></Link>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    userInfo: state.userReducer.user,
+  }
+}
+
+export default connect(mapStateToProps,{loginUser, logTaco, deleteTaco})(App);
