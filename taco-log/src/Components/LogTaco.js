@@ -15,6 +15,26 @@ class LogTaco extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  // achievementCheck = achievementId => {
+  //   for (let i = 0; i < this.props.userInfo.achievements.length; i++) {
+  //     if (this.props.userInfo.achievements[i].id === achievementId) {
+  //       return true;
+  //     }
+  //   }
+  // };
+  // addAchievement = () => {
+  //   if (
+  //     this.props.userInfo.user_stats.tacos_logged >= 5 &&
+  //     !this.achievementCheck(2)
+  //   ) {
+  //     const achievement = {
+  //       user_id: this.props.userInfo.internal_id,
+  //       achievement_id: 2
+  //     };
+  //     this.props.assignAchievement(achievement, header);
+  //   }
+  // };
+
   newTaco = e => {
     e.preventDefault();
     const taco = {
@@ -33,7 +53,7 @@ class LogTaco extends Component {
             id: this.props.userInfo.ext_user_id
           }
         };
-        this.props.logTaco(taco, header);
+        this.props.logTaco(taco, header);        
       })
       .catch(err => {
         console.log(err);

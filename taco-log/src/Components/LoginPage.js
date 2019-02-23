@@ -46,7 +46,7 @@ class LoginPage extends Component {
   }
 
   render() {
-    console.log(this.props);
+    
     return (
       <div className="login-page">
         <div className="login-box">
