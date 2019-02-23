@@ -14,10 +14,6 @@ import { firebase, provider } from "../firebase/firebase";
 import taco from "../taco.jpg";
 import "./login-page.css";
 
-const local = "http://localhost:5000/";
-const heroku = "https://tacobe.herokuapp.com/";
-const url = local;
-
 class LoginPage extends Component {
   constructor(props) {
     super(props);
@@ -48,47 +44,6 @@ class LoginPage extends Component {
         });
       });
   }
-
-  handleInputChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
-
-  newTaco = e => {
-    e.preventDefault();
-    const taco = {
-      user_id: this.props.userInfo.internal_id,
-      taco_location: this.state.taco_location,
-      taco_description: this.state.taco_description,
-      rating: this.state.rating
-    };
-    firebase
-      .auth()
-      .currentUser.getIdToken(true)
-      .then(idToken => {
-        const header = {
-          headers: {
-            Authorization: idToken,
-            id: this.props.userInfo.ext_user_id
-          }
-        };
-        this.props.logTaco(taco, header);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-    this.setState({
-      taco_location: "",
-      taco_description: "",
-      rating: ""
-    });
-  };
-
-  deleteTaco = id => {
-    const user = {
-      user_id: this.props.userInfo.internal_id
-    };
-    this.props.deleteTaco(id, user);
-  };
 
   render() {
     console.log(this.props);
