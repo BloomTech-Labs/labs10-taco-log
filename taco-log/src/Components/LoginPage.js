@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { startLogin } from '../actions/auth';
 import { Link } from 'react-router-dom';
 import {
   Form,
@@ -10,7 +12,7 @@ import {
   CardTitle,
   CardSubtitle
 } from 'reactstrap';
-import { firebase, provider } from '../firebase/firebase';
+import { firebase, provider, facebookProvider } from '../firebase/firebase';
 import axios from 'axios';
 import taco from '../taco.jpg';
 import './login-page.css';
@@ -30,10 +32,11 @@ class LoginPage extends Component {
       rating: ''
     };
     this.login = this.login.bind(this);
-    //this.logout = this.logout.bind(this);
+    this.facebookLogin = this.facebookLogin.bind(this);
   }
 
   login() {
+    
     firebase
       .auth()
       .signInWithPopup(provider)
@@ -43,6 +46,7 @@ class LoginPage extends Component {
           email: result.user.email,
           ext_user_id: result.user.uid
         };
+        
         axios
           .get(`${url}api/users`)
           .then(res => {
@@ -88,6 +92,63 @@ class LoginPage extends Component {
         });
       });
   }
+
+  facebookLogin () {
+    firebase
+      .auth()
+      .signInWithPopup(facebookProvider)
+      .then(result => {
+        const user = {
+          name: result.user.displayName,
+          email: result.user.email,
+          ext_user_id: result.user.uid
+        };
+        
+        axios
+          .get(`${url}api/users`)
+          .then(res => {
+            let post = true;
+            for (let i = 0; i < res.data.length; i++) {
+              if (res.data[i].ext_user_id === user.ext_user_id) {
+                axios
+                  .get(`${url}api/users/${res.data[i].internal_id}`)
+                  .then(res => {
+                    this.setState({ userInfo: res.data });
+                  })
+                  .catch(err => {
+                    console.log(err);
+                  });
+                post = false;
+              }
+            }
+            if (post) {
+              axios
+                .post(`${url}api/users`, user)
+                .then(res => {
+                  const stats = { user_id: res.data.internal_id };
+                  axios
+                    .post(`${url}api/user_stats`, stats)
+                    .then(res => {
+                      this.setState({ userInfo: res.data });
+                    })
+                    .catch(err => {
+                      console.log(err);
+                    });
+                })
+                .catch(err => {
+                  console.log(err);
+                });
+            }
+          })
+          .catch(err => {
+            console.log(err);
+          });
+
+        this.setState({
+          user: true
+        });
+      });
+}
 
   handleInputChange = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -198,7 +259,7 @@ class LoginPage extends Component {
                   Google
                 </Button>
               
-                <Button className="fb-button" onClick={this.login}>
+                <Button className="fb-button" onClick={this.facebookLogin}>
                   Facebook
                 </Button>
               
@@ -263,4 +324,10 @@ class LoginPage extends Component {
   }
 }
 
-export default LoginPage;
+// export default LoginPage;
+
+const mapDispatchToProps = (dispatch) => ({
+  startLogin: () => dispatch(startLogin())
+});
+
+export default connect(undefined, mapDispatchToProps)(LoginPage);
