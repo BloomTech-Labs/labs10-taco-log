@@ -34,16 +34,6 @@ class App extends Component {
       })
   }
 
-  // login() {
-  //   firebase.auth().signInWithPopup(provider)
-  //   //firebase.auth().signInWithPopup(provider)
-  //     .then((result)=> {
-  //       const user = result.user;
-  //       this.setState({
-  //         user: true
-  //       });
-  //     });
-  // }
 
   logout() {
     firebase.auth().signOut()
@@ -62,7 +52,7 @@ class App extends Component {
         <Route exact path = '/' component = {LoginPage}/>
         <Route exact path = '/home' component = {HomePage}/>
         <Route exact path = '/tacos' component = {LogTaco}/>
-        <Link to = '/'><Button onClick= {this.logout}>Log Out</Button></Link>
+        <Button onClick= {this.logout}>Log Out</Button>
       </div>
     );
   }

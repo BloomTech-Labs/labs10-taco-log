@@ -3,17 +3,19 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 import { firebase } from './firebase/firebase';
 import { Provider } from 'react-redux';
 import RootReducer from './reducers';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
+import createHistory from 'history/createBrowserHistory';
 
 const store = createStore(RootReducer, applyMiddleware(thunk));
+const history = createHistory();
 
 ReactDOM.render(
-  <Router>
+  <Router history= {history}>
     <Provider store={store}>
       <App />
     </Provider>
@@ -29,8 +31,13 @@ serviceWorker.unregister();
 // tests if auth firebase function is being called
 firebase.auth().onAuthStateChanged(user => {
   if (user) {
+    //console.log('uId:', user.uid);
+    if(history.location.pathname ==='/') {
+      history.push('/home');
+    }
     console.log('logged in');
   } else {
+    history.push('/')
     console.log('logged out');
   }
 });
