@@ -19,7 +19,7 @@ import createHistory from 'history/createBrowserHistory';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(RootReducer, composeEnhancers(applyMiddleware(thunk)));
 const history = createHistory();
-<<<<<<< HEAD
+
 const jsx = (
   <Router history= {history}>
     <Provider store={store}>
