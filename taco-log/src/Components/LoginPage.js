@@ -54,33 +54,16 @@ class LoginPage extends Component {
             <CardImg className="taco-image" src={taco} alt="taco image" />
             <CardBody className="card-body">
               <CardTitle className="login-text"> Continue With </CardTitle>
-              {/* <Form>
-                            <Input
-                                placeholder= "Enter Email"
-                                name= "email"
-                                value={this.state.email}
-                                onChange={this.handleChange}
-                            />
-                            <br />
-                            <Input
-                                placeholder= "Enter Password"
-                                name= "password"
-                                value={this.state.password}
-                                onChange={this.handleChange}
-                            />
-                        </Form> */}
-              {/* <Button onClick= {this.emailLogin}>Login</Button>
-                        <CardSubtitle>OR</CardSubtitle> */}
-              <Link to="/home">
+              
+              
                 <Button className="google-button" onClick={this.login}>
                   Google
                 </Button>
-              </Link>
-              <Link to="/home">
+              
                 <Button className="fb-button" onClick={this.login}>
                   Facebook
                 </Button>
-              </Link>
+              
             </CardBody>
           </Card>
         </div>

@@ -74,16 +74,6 @@ class App extends Component {
     }
   }
 
-  // login() {
-  //   firebase.auth().signInWithPopup(provider)
-  //   //firebase.auth().signInWithPopup(provider)
-  //     .then((result)=> {
-  //       const user = result.user;
-  //       this.setState({
-  //         user: true
-  //       });
-  //     });
-  // }
 
   logout() {
     firebase
