@@ -9,6 +9,7 @@ import { firebase, provider } from "./firebase/firebase";
 import HomePage from "./Components/HomePage";
 import LogTaco from "./Components/LogTaco";
 import LoginPage from "./Components/LoginPage";
+import AddStore from './Components/AddStore';
 import { loginUser, logTaco, deleteTaco, assignAchievement } from "./actions";
 import { connect } from "react-redux";
 
@@ -103,6 +104,11 @@ class App extends Component {
           exact
           path="/tacos"
           render={props => <LogTaco {...this.props} {...props} />}
+        />
+          <Route
+          exact
+          path="/addstore"
+          render={props => <AddStore {...this.props} {...props} />}
         />
         <Link to="/">
           <Button onClick={this.logout}>Log Out</Button>
