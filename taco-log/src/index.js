@@ -11,7 +11,7 @@ import RootReducer from './reducers';
 
 import { createStore, applyMiddleware, compose  } from 'redux';
 import { logout, login } from './actions/auth';
-import thunk from 'redux-thunk';
+
 
 import createHistory from 'history/createBrowserHistory';
 
