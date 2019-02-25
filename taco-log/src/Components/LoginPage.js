@@ -1,7 +1,12 @@
+<<<<<<< HEAD
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { startLogin } from '../actions/auth';
 import { Link } from 'react-router-dom';
+=======
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+>>>>>>> 685a5a2b4e90bab40263f1660492c2bbb308be6c
 import {
   Form,
   Input,
@@ -11,6 +16,7 @@ import {
   CardBody,
   CardTitle,
   CardSubtitle
+<<<<<<< HEAD
 } from 'reactstrap';
 import { firebase, provider, facebookProvider } from '../firebase/firebase';
 import axios from 'axios';
@@ -20,16 +26,21 @@ import './login-page.css';
 const local = 'http://localhost:5000/';
 const heroku = 'https://tacobe.herokuapp.com/';
 const url = heroku;
+=======
+} from "reactstrap";
+import { firebase, provider } from "../firebase/firebase";
+import taco from "../taco.jpg";
+import "./login-page.css";
+>>>>>>> 685a5a2b4e90bab40263f1660492c2bbb308be6c
 
 class LoginPage extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       user: null,
-      userInfo: {},
-      taco_location: '',
-      taco_description: '',
-      rating: ''
+      taco_location: "",
+      taco_description: "",
+      rating: ""
     };
     this.login = this.login.bind(this);
     this.facebookLogin = this.facebookLogin.bind(this);
@@ -46,6 +57,7 @@ class LoginPage extends Component {
           email: result.user.email,
           ext_user_id: result.user.uid
         };
+<<<<<<< HEAD
         
         axios
           .get(`${url}api/users`)
@@ -86,6 +98,9 @@ class LoginPage extends Component {
           .catch(err => {
             console.log(err);
           });
+=======
+        this.props.loginUser(user);
+>>>>>>> 685a5a2b4e90bab40263f1660492c2bbb308be6c
 
         this.setState({
           user: true
@@ -93,6 +108,7 @@ class LoginPage extends Component {
       });
   }
 
+<<<<<<< HEAD
   facebookLogin () {
     firebase
       .auth()
@@ -244,8 +260,10 @@ class LoginPage extends Component {
       });
   };
 
+=======
+>>>>>>> 685a5a2b4e90bab40263f1660492c2bbb308be6c
   render() {
-    console.log(this.state.userInfo);
+    
     return (
       <div className="login-page">
         <div className="login-box">
@@ -266,59 +284,6 @@ class LoginPage extends Component {
             </CardBody>
           </Card>
         </div>
-        <p>This is the login page</p>
-        
-        <div>
-          TACO LOG:
-          {this.state.userInfo.taco_logs &&
-          this.state.userInfo.taco_logs.length > 0 ? (
-            <div>
-              {this.state.userInfo.taco_logs.map(log => (
-                <div key={log.id}>
-                  <p>{log.taco_location}</p>
-                  <p>{log.taco_description}</p>
-                  <p>{log.rating}</p>
-                  <button onClick={() => this.deleteTaco(log.id)}>
-                    Delete
-                  </button>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div />
-          )}
-        </div>
-
-        <form>
-          <input
-            onChange={this.handleInputChange}
-            placeholder="location"
-            value={this.state.taco_location}
-            name="taco_location"
-          />
-          <input
-            onChange={this.handleInputChange}
-            placeholder="rating"
-            value={this.state.rating}
-            name="rating"
-          />
-          <input
-            onChange={this.handleInputChange}
-            placeholder="description"
-            value={this.state.taco_description}
-            name="taco_description"
-          />
-          <button onClick={this.newTaco}>Submit</button>
-        </form>
-        {this.state.userInfo.achievements &&
-        this.state.userInfo.achievements.length > 0 ? (
-          <div>
-            <p>Achievement:{this.state.userInfo.achievements[0].title}</p>
-            <p>Description:{this.state.userInfo.achievements[0].description}</p>
-          </div>
-        ) : (
-          <div />
-        )}
       </div>
     );
   }

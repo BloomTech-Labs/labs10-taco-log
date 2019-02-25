@@ -16,5 +16,6 @@
 //     };
 
 import { FETCH_TACOS, ADDDATABASE_TACOS } from './tacoActions';
+import { GET_USER, CREATE_USER, loginUser, ASSIGN_ACHIEVEMENT, UPDATE_STATS, logTaco, DELETE_TACO, deleteTaco, assignAchievement } from './userActions'
 
-export default { FETCH_TACOS, ADDDATABASE_TACOS };
+export { FETCH_TACOS, ADDDATABASE_TACOS, GET_USER, CREATE_USER, loginUser, ASSIGN_ACHIEVEMENT, UPDATE_STATS, logTaco, DELETE_TACO, deleteTaco, assignAchievement };
