@@ -1,12 +1,10 @@
-<<<<<<< HEAD
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { startLogin } from '../actions/auth';
 import { Link } from 'react-router-dom';
-=======
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
->>>>>>> 685a5a2b4e90bab40263f1660492c2bbb308be6c
+
+
 import {
   Form,
   Input,
@@ -16,22 +14,15 @@ import {
   CardBody,
   CardTitle,
   CardSubtitle
-<<<<<<< HEAD
+
 } from 'reactstrap';
 import { firebase, provider, facebookProvider } from '../firebase/firebase';
 import axios from 'axios';
 import taco from '../taco.jpg';
 import './login-page.css';
 
-const local = 'http://localhost:5000/';
-const heroku = 'https://tacobe.herokuapp.com/';
-const url = heroku;
-=======
-} from "reactstrap";
-import { firebase, provider } from "../firebase/firebase";
-import taco from "../taco.jpg";
-import "./login-page.css";
->>>>>>> 685a5a2b4e90bab40263f1660492c2bbb308be6c
+
+
 
 class LoginPage extends Component {
   constructor(props) {
@@ -57,113 +48,28 @@ class LoginPage extends Component {
           email: result.user.email,
           ext_user_id: result.user.uid
         };
-<<<<<<< HEAD
-        
-        axios
-          .get(`${url}api/users`)
-          .then(res => {
-            let post = true;
-            for (let i = 0; i < res.data.length; i++) {
-              if (res.data[i].ext_user_id === user.ext_user_id) {
-                axios
-                  .get(`${url}api/users/${res.data[i].internal_id}`)
-                  .then(res => {
-                    this.setState({ userInfo: res.data });
-                  })
-                  .catch(err => {
-                    console.log(err);
-                  });
-                post = false;
-              }
-            }
-            if (post) {
-              axios
-                .post(`${url}api/users`, user)
-                .then(res => {
-                  const stats = { user_id: res.data.internal_id };
-                  axios
-                    .post(`${url}api/user_stats`, stats)
-                    .then(res => {
-                      this.setState({ userInfo: res.data });
-                    })
-                    .catch(err => {
-                      console.log(err);
-                    });
-                })
-                .catch(err => {
-                  console.log(err);
-                });
-            }
-          })
-          .catch(err => {
-            console.log(err);
-          });
-=======
         this.props.loginUser(user);
->>>>>>> 685a5a2b4e90bab40263f1660492c2bbb308be6c
-
         this.setState({
           user: true
         });
       });
   }
 
-<<<<<<< HEAD
   facebookLogin () {
-    firebase
-      .auth()
-      .signInWithPopup(facebookProvider)
-      .then(result => {
-        const user = {
-          name: result.user.displayName,
-          email: result.user.email,
-          ext_user_id: result.user.uid
-        };
-        
-        axios
-          .get(`${url}api/users`)
-          .then(res => {
-            let post = true;
-            for (let i = 0; i < res.data.length; i++) {
-              if (res.data[i].ext_user_id === user.ext_user_id) {
-                axios
-                  .get(`${url}api/users/${res.data[i].internal_id}`)
-                  .then(res => {
-                    this.setState({ userInfo: res.data });
-                  })
-                  .catch(err => {
-                    console.log(err);
-                  });
-                post = false;
-              }
-            }
-            if (post) {
-              axios
-                .post(`${url}api/users`, user)
-                .then(res => {
-                  const stats = { user_id: res.data.internal_id };
-                  axios
-                    .post(`${url}api/user_stats`, stats)
-                    .then(res => {
-                      this.setState({ userInfo: res.data });
-                    })
-                    .catch(err => {
-                      console.log(err);
-                    });
-                })
-                .catch(err => {
-                  console.log(err);
-                });
-            }
-          })
-          .catch(err => {
-            console.log(err);
+        firebase
+          .auth()
+          .signInWithPopup(provider)
+          .then(result => {
+            const user = {
+              name: result.user.displayName,
+              email: result.user.email,
+              ext_user_id: result.user.uid
+            };
+            this.props.loginUser(user);
+            this.setState({
+              user: true
+            });
           });
-
-        this.setState({
-          user: true
-        });
-      });
 }
 
   handleInputChange = e => {
@@ -259,9 +165,6 @@ class LoginPage extends Component {
         console.log(err);
       });
   };
-
-=======
->>>>>>> 685a5a2b4e90bab40263f1660492c2bbb308be6c
   render() {
     
     return (
