@@ -8,14 +8,11 @@ import { Router } from 'react-router-dom';
 import { firebase } from './firebase/firebase';
 import { Provider } from 'react-redux';
 import RootReducer from './reducers';
-<<<<<<< HEAD
-import { createStore, applyMiddleware } from 'redux';
-import { logout, login } from './actions/auth';
 
-=======
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware, compose  } from 'redux';
+import { logout, login } from './actions/auth';
 import thunk from 'redux-thunk';
->>>>>>> 685a5a2b4e90bab40263f1660492c2bbb308be6c
+
 import createHistory from 'history/createBrowserHistory';
 
 
@@ -24,11 +21,6 @@ const store = createStore(RootReducer, composeEnhancers(applyMiddleware(thunk)))
 const history = createHistory();
 <<<<<<< HEAD
 const jsx = (
-=======
-
-
-ReactDOM.render(
->>>>>>> 685a5a2b4e90bab40263f1660492c2bbb308be6c
   <Router history= {history}>
     <Provider store={store}>
       <App />
