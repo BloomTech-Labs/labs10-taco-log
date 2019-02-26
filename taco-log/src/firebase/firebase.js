@@ -13,6 +13,6 @@ const config = {
   firebase.initializeApp(config);
 
     const provider = new firebase.auth.GoogleAuthProvider();
-    //const auth = firebase.auth();
+    const facebookProvider = new firebase.auth.FacebookAuthProvider();
   
-    export { firebase, provider };
+    export { firebase, provider, facebookProvider};
