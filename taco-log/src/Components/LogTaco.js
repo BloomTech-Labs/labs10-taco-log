@@ -6,7 +6,7 @@ class LogTaco extends Component {
     super(props);
     this.state = {
       taco_location: "",
-      taco_description: "",
+      taco_name: "",
       rating: "",
       place_id: "",
       tortilla: ["Corn", "Flour", "Other"],
@@ -59,7 +59,7 @@ class LogTaco extends Component {
     const taco = {
       user_id: this.props.userInfo.internal_id,
       taco_location: this.state.taco_location,
-      taco_description: this.state.taco_description,
+      taco_name: this.state.taco_name,
       rating: this.state.rating
     };
     firebase
@@ -79,7 +79,7 @@ class LogTaco extends Component {
       });
     this.setState({
       taco_location: "",
-      taco_description: "",
+      taco_name: "",
       rating: ""
     });
   };
@@ -105,8 +105,8 @@ class LogTaco extends Component {
           <input
             onChange={this.handleInputChange}
             placeholder="description"
-            value={this.state.taco_description}
-            name="taco_description"
+            value={this.state.taco_name}
+            name="taco_name"
           />
           <button onClick={this.newTaco}>Submit</button>
         </form>
