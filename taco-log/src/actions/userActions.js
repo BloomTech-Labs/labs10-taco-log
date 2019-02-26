@@ -10,7 +10,7 @@ export const LOCATION_CHANGE = "LOCATION_CHANGE";
 
 const local = "http://localhost:5000/";
 const heroku = "https://tacobe.herokuapp.com/";
-const url = local;
+const url = heroku;
 
 export const loginUser = user => dispatch => {
   axios
