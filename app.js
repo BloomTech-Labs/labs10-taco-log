@@ -101,6 +101,39 @@ server.post("/api/users", (req, res) => {
     });
 });
 
+server.put("/api/users/:id", (req, res) => {
+  const { id } = req.params;
+  db("users")
+    .where({ id })
+    .update(req.body)
+    .then(result => {
+      userDb
+        .getUser(result.id)
+        .then(result => {
+          res.status(200).json(result);
+        })
+        .catch(err => {
+          res.send(err);
+        });
+    })
+    .catch(err => {
+      res.send(err);
+    });
+});
+
+server.delete("/api/users/:id", (req, res) => {
+  const { id } = req.params;
+  db("users")
+    .where({ id })
+    .del()
+    .then(res => {
+      res.status(200).json(res);
+    })
+    .catch(err => {
+      res.send(err);
+    });
+});
+
 //============TACO ENDPOINTS===========//
 
 server.get("/api/tacos", (req, res) => {
@@ -211,6 +244,42 @@ server.get("/api/achievements", (req, res) => {
   db("achievements")
     .then(achievements => {
       res.status(200).json(achievements);
+    })
+    .catch(err => {
+      res.send(err);
+    });
+});
+
+server.post("/api/achievements", (req, res) => {
+  db("achievements")
+    .then(res => {
+      res.status(200).json(res);
+    })
+    .catch(err => {
+      res.send(err);
+    });
+});
+
+server.put("/api/achievements/:id", (req, res) => {
+  const { id } = req.params;
+  db("achievements")
+    .where({ id })
+    .update(req.body)
+    .then(res => {
+      res.status(200).json(res);
+    })
+    .catch(err => {
+      res.send(err);
+    });
+});
+
+server.delete("/api/achievements/:id", (req, res) => {
+  const { id } = req.params;
+  db("achievements")
+    .where({ id })
+    .del()
+    .then(res => {
+      res.status(200).json(res);
     })
     .catch(err => {
       res.send(err);

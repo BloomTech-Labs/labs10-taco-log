@@ -56,7 +56,7 @@ class App extends Component {
   };
 
   componentDidUpdate(prevProps) {
-    if (prevProps.userInfo.user_stats != this.props.userInfo.user_stats) {
+    if (prevProps.userInfo.user_stats !== this.props.userInfo.user_stats) {
       firebase
         .auth()
         .currentUser.getIdToken(true)

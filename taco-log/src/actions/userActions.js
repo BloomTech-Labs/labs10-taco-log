@@ -9,7 +9,7 @@ export const DELETE_TACO = "DELETE_TACO";
 
 const local = "http://localhost:5000/";
 const heroku = "https://tacobe.herokuapp.com/";
-const url = heroku;
+const url = local;
 
 export const loginUser = user => dispatch => {
   axios
