@@ -24,7 +24,7 @@ class LoginPage extends Component {
 
     };
     this.login = this.login.bind(this);
-    //this.logout = this.logout.bind(this);
+    this.facebookLogin = this.facebookLogin.bind(this);
   }
 
   login() {
