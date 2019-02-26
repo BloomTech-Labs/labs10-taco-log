@@ -7,7 +7,11 @@ class LogTaco extends Component {
     this.state = {
       taco_location: "",
       taco_description: "",
-      rating: ""
+      rating: "",
+      place_id: "",
+      tortilla: ["Corn", "Flour", "Other"],
+      meat: ["Al Pastor", "Chicken", "Fish", "Steak", "Choriso"],
+      cheese: ["Manchego", "Fontina", "Swiss", "Mozzarella", "Feta"],
     };
   }
 
@@ -15,6 +19,21 @@ class LogTaco extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  componentDidMount(){
+    const inputElement = document.querySelector('.dropdown');
+    console.log(inputElement);
+    const dropdown = new window.google.maps.places.Autocomplete(inputElement);
+    dropdown.addListener('place_changed',() => {
+        const place = dropdown.getPlace();
+        console.log(place);
+        this.setState({lat:place.geometry.location.lat(),
+            lng:place.geometry.location.lng(),
+            taco_location:place.name,
+            place_id:place.id,
+            staticMap:true
+        })
+    })
+}
   // achievementCheck = achievementId => {
   //   for (let i = 0; i < this.props.userInfo.achievements.length; i++) {
   //     if (this.props.userInfo.achievements[i].id === achievementId) {
@@ -72,6 +91,7 @@ class LogTaco extends Component {
         <form>
           <input
             onChange={this.handleInputChange}
+            class="dropdown"
             placeholder="location"
             value={this.state.taco_location}
             name="taco_location"
