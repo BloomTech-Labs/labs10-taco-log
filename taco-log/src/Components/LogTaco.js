@@ -26,8 +26,7 @@ class LogTaco extends Component {
     dropdown.addListener('place_changed',() => {
         const place = dropdown.getPlace();
         console.log(place);
-        this.setState({lat:place.geometry.location.lat(),
-            lng:place.geometry.location.lng(),
+        this.setState({city:place.vicinity,
             taco_location:place.name,
             place_id:place.id,
             staticMap:true
@@ -60,7 +59,11 @@ class LogTaco extends Component {
       user_id: this.props.userInfo.internal_id,
       taco_location: this.state.taco_location,
       taco_name: this.state.taco_name,
-      rating: this.state.rating
+      rating: this.state.rating,
+      city: this.state.city,
+      location_id: this.state.place_id,
+      ingredients: "sea bream",
+
     };
     firebase
       .auth()
@@ -104,7 +107,7 @@ class LogTaco extends Component {
           />
           <input
             onChange={this.handleInputChange}
-            placeholder="description"
+            placeholder="name"
             value={this.state.taco_name}
             name="taco_name"
           />
