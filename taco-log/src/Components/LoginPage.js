@@ -73,11 +73,11 @@ class LoginPage extends Component {
             <CardBody className="card-body">
               <CardTitle className="login-text"> Continue With </CardTitle>
               
-              
+             
                 <Button className="google-button" onClick={this.login}>
                   Google
                 </Button>
-              
+                
                 <Button className="fb-button" onClick={this.facebookLogin}>
                   Facebook
                 </Button>

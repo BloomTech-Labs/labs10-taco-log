@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 import "./App.css";
 import axios from "axios";
-import { Route } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Route, Switch, Link } from "react-router-dom";
 import { Button } from "reactstrap";
 //import Map from './Components/map.js';
 import { firebase, provider } from "./firebase/firebase";
 import HomePage from "./Components/HomePage";
 import LogTaco from "./Components/LogTaco";
 import LoginPage from "./Components/LoginPage";
-import AddStore from './Components/AddStore';
-import { loginUser, logTaco, deleteTaco, assignAchievement } from "./actions";
+import AddStore from "./Components/AddStore";
+import ProfilePage from "./Components/ProfilePage"
+import { loginUser, logTaco, deleteTaco, assignAchievement, locationChange } from "./actions";
 import { connect } from "react-redux";
 
 class App extends Component {
@@ -75,7 +75,6 @@ class App extends Component {
     }
   }
 
-
   logout() {
     firebase
       .auth()
@@ -87,29 +86,36 @@ class App extends Component {
       });
   }
 
-  render() {
+  render() {console.log(this.props)
     return (
       <div className="App">
         <Route
           exact
           path="/"
           render={props => <LoginPage {...this.props} {...props} />}
-        />
+        />  
+        <Switch>      
         <Route
           exact
           path="/home"
-          render={props => <HomePage {...this.props} {...props} />}
+          render={props => <HomePage {...this.props} {...props} location = {this.props.location} />}
         />
         <Route
           exact
           path="/tacos"
           render={props => <LogTaco {...this.props} {...props} />}
         />
-          <Route
+        <Route
+          exact
+          path="/profile"
+          render={props => <ProfilePage {...this.props} {...props} location = {this.props.location}/>}
+        />
+        <Route
           exact
           path="/addstore"
           render={props => <AddStore {...this.props} {...props} />}
         />
+        </Switch>
         <Link to="/">
           <Button onClick={this.logout}>Log Out</Button>
         </Link>
@@ -126,5 +132,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { loginUser, logTaco, deleteTaco, assignAchievement }
+  { loginUser, logTaco, deleteTaco, assignAchievement, locationChange }
 )(App);
