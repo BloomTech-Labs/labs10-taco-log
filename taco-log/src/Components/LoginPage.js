@@ -1,23 +1,23 @@
 
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { startLogin } from '../actions/auth';
-import { Link } from 'react-router-dom';
+//import { connect } from 'react-redux';
+// import { startLogin } from '../actions/auth';
+// import { Link } from 'react-router-dom';
 
 
 import {
-  Form,
-  Input,
+  // Form,
+  // Input,
   Button,
   Card,
   CardImg,
   CardBody,
-  CardTitle,
-  CardSubtitle
+  CardTitle
+  // CardSubtitle
 
 } from 'reactstrap';
 import { firebase, provider, facebookProvider } from '../firebase/firebase';
-import axios from 'axios';
+//import axios from 'axios';
 import taco from '../taco.jpg';
 import './login-page.css';
 
@@ -100,10 +100,10 @@ class LoginPage extends Component {
   }
 }
 
-// export default LoginPage;
+export default LoginPage;
 
-const mapDispatchToProps = (dispatch) => ({
-  startLogin: () => dispatch(startLogin())
-});
+// const mapDispatchToProps = (dispatch) => ({
+//   startLogin: () => dispatch(startLogin())
+// });
 
-export default connect(undefined, mapDispatchToProps)(LoginPage);
+// export default connect(undefined, mapDispatchToProps)(LoginPage);

@@ -6,5 +6,5 @@ import authReducer from '../reducers/auth';
 export default combineReducers({
   tacoReducer,
   userReducer,
-  auth: authReducer
+  authReducer
 });
