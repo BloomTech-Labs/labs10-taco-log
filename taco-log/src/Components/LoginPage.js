@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { connect } from 'react-redux';	
+import { startLogin } from '../actions/auth';	
+import { Link } from 'react-router-dom';
 import {
   Form,
   Input,
@@ -10,7 +12,7 @@ import {
   CardTitle,
   CardSubtitle
 } from "reactstrap";
-import { firebase, provider } from "../firebase/firebase";
+import { firebase, provider, facebookProvider } from "../firebase/firebase";
 import taco from "../taco.jpg";
 import "./login-page.css";
 
@@ -43,6 +45,24 @@ class LoginPage extends Component {
       });
   }
 
+  facebookLogin () {	
+    firebase	
+   .auth()	
+   .signInWithPopup(facebookProvider)	
+   .then(result => {	
+     const user = {	
+       name: result.user.displayName,	
+       email: result.user.email,	
+       ext_user_id: result.user.uid	
+     };	
+     this.props.loginUser(user);	
+
+      this.setState({	
+       user: true	
+     });	
+   });	
+}
+
   render() {
     
     return (
@@ -58,7 +78,7 @@ class LoginPage extends Component {
                   Google
                 </Button>
               
-                <Button className="fb-button" onClick={this.login}>
+                <Button className="fb-button" onClick={this.facebookLogin}>
                   Facebook
                 </Button>
               
@@ -70,4 +90,8 @@ class LoginPage extends Component {
   }
 }
 
-export default LoginPage;
+const mapDispatchToProps = (dispatch) => ({	
+  startLogin: () => dispatch(startLogin())	
+});	
+
+ export default connect(undefined, mapDispatchToProps)(LoginPage);
