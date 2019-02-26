@@ -6,6 +6,7 @@ export const CREATE_USER = "CREATE_USER";
 export const ASSIGN_ACHIEVEMENT = "ASSIGN_ACHIEVEMENT";
 export const UPDATE_STATS = "UPDATE_STATS";
 export const DELETE_TACO = "DELETE_TACO";
+export const LOCATION_CHANGE = "LOCATION_CHANGE";
 
 const local = "http://localhost:5000/";
 const heroku = "https://tacobe.herokuapp.com/";
@@ -97,3 +98,7 @@ export const deleteTaco = (id, user) => dispatch => {
       console.log(err);
     });
 };
+
+export const locationChange = () => dispatch => {
+  dispatch({type: LOCATION_CHANGE})
+}

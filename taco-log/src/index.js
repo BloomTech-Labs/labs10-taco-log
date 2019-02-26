@@ -54,7 +54,7 @@ firebase.auth().onAuthStateChanged(user => {
   if (user) {
     //console.log('uId:', user.uid);
     store.dispatch(login(user.uid));
-    renderApp();
+    renderApp();    
     if(history.location.pathname ==='/') {
       history.push('/home');
     }

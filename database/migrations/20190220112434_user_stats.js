@@ -10,6 +10,7 @@ exports.up = function(knex) {
         .inTable('users') // id,
     tbl
         .integer('tacos_logged')
+        .defaultTo(0)
     })
 };
   
