@@ -114,9 +114,9 @@ server.get("/api/tacos", (req, res) => {
     });
 });
 
-server.post("/api/tacos", isAuthenticated, (req, res) => {
-  const { user_id, taco_location, taco_description, rating } = req.body;
-  db.insert({ user_id, taco_location, taco_description, rating })
+server.post("/api/tacos", /* isAuthenticated, */ (req, res) => {
+  const taco = req.body;
+  db.insert(taco)
     .into("taco-log")
     .then(taco => {
       userDb
