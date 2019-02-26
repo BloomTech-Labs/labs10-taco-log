@@ -3,11 +3,13 @@ import {
   CREATE_USER,
   ASSIGN_ACHIEVEMENT,
   UPDATE_STATS,
-  DELETE_TACO
+  DELETE_TACO,
+  LOCATION_CHANGE
 } from "../actions";
 
 const initialState = {
-  user: []
+  user: [],
+  location: false
 };
 
 export default (state = initialState, action) => {
@@ -36,6 +38,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         user: action.payload
+      };
+    case LOCATION_CHANGE:
+      return {
+        ...state,
+        location: !state.location
       };
     default:
       return state;

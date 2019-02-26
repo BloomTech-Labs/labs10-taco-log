@@ -5,12 +5,19 @@ import CheckoutForm from "./CheckoutForm";
 import LogTaco from "./LogTaco";
 import TacoList from "./TacoList";
 import AchievementList from "./AchievementList";
+import {Link} from "react-router-dom"
 
-class HomePage extends Component {
-  render() {
+class HomePage extends Component { 
+  link = () => {
+    this.props.locationChange()
+    this.props.history.push('/profile')
+  }
+
+  render() {console.log(this.props.userInfo)
     return (
       <div className="home-page">
         <header className="App-header">
+          <div onClick = {this.link}>Profile</div>
           <p>Taco Log Home Page!</p>
           <AchievementList {...this.props} />
           <LogTaco {...this.props} />
@@ -29,5 +36,6 @@ class HomePage extends Component {
     );
   }
 }
+
 
 export default HomePage;
