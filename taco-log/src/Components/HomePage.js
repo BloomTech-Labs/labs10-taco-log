@@ -19,7 +19,7 @@ class HomePage extends Component {
       <div className="home-page">
         <header className="App-header">
           <div onClick = {this.link}>Profile</div>
-
+          <Header/>
           <p>Taco Log Home Page!</p>          
           <LogTaco {...this.props} />          
           {/* <MapPage /> */}
