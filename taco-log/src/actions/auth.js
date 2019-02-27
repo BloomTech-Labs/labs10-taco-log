@@ -6,19 +6,19 @@ export const login = (uid) => ({
     uid
 });
 
-export const startLogin = () => {
-    return () => {
-        return firebase.auth().signInWithPopup(provider);
-    };
-};
+// export const startLogin = () => {
+//     return () => {
+//         return firebase.auth().signInWithPopup(provider);
+//     };
+// };
 
 
 export const logout = () => ({
     type: 'LOGOUT',
 });
 
-export const startLogout = () => {
-    return () => {
-        return firebase.auth().signOut()
-    };
-};
+// export const startLogout = () => {
+//     return () => {
+//         return firebase.auth().signOut()
+//     };
+// };

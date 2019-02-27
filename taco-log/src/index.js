@@ -8,6 +8,7 @@ import { Router } from 'react-router-dom';
 import { firebase } from './firebase/firebase';
 import { Provider } from 'react-redux';
 import RootReducer from './reducers';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { createStore, applyMiddleware, compose  } from 'redux';
 import { logout, login } from './actions/auth';
