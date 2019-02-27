@@ -117,11 +117,11 @@ class LogTaco extends Component {
   addAchievement = header => {
     if (
       this.props.userInfo.user_stats.tacos_logged >= 5 &&
-      !this.achievementCheck(2)
+      !this.achievementCheck(1)
     ) {
       const achievement = {
         user_id: this.props.userInfo.internal_id,
-        achievement_id: 2
+        achievement_id: 1
       };
       this.props.assignAchievement(achievement, header);
     }
@@ -129,8 +129,36 @@ class LogTaco extends Component {
 
   updateStats = header => {
     const id = this.props.userInfo.internal_id;
+    let lastMeat = this.props.userInfo.taco_logs[this.props.userInfo.taco_logs.length-1].meat
+    
+    if(lastMeat.length > 0){
+      lastMeat = lastMeat.split(",")
+    }
+    
+    let currmeat = this.props.userInfo.user_stats.meats_logged
+    
+    if(currmeat != null){
+      currmeat = currmeat.split(",")
+      if(lastMeat.length > 0){
+        for(let i = 0; i < lastMeat.length; i++){
+          if(currmeat.indexOf(lastMeat[i]) === -1){
+
+            currmeat.push(lastMeat[i])
+            currmeat = currmeat.join()
+          }          
+        }
+      }    
+      
+    } else {
+      if(lastMeat.length > 0){
+        currmeat = lastMeat.join()
+      }      
+    }
+    
+
     const stats = {
-      tacos_logged: this.props.userInfo.taco_logs.length
+      tacos_logged: this.props.userInfo.taco_logs.length,
+      meats_logged: currmeat
     };
     this.props.updateStats(id, stats, header);
   };

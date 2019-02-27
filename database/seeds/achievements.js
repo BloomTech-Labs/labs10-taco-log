@@ -7,11 +7,15 @@ exports.seed = function(knex, Promise) {
       return knex("achievements").insert([
         {
           id: 1,
-          title: "Tuesday Reserved",
-          description: "Log a taco on tuesday for 5 weeks."
+          title: "Beginner Logger",
+          description: "Log 5 tacos."
         },
-        { id: 2, title: "Logger", description: "Log 20 tacos" },
-        { id: 3, title: "Expert Logger", description: "Log 50 tacos" }
+        { id: 2, title: "Intermediate Logger", description: "Log 10 tacos" },
+        { id: 3, title: "Expert Logger", description: "Log 20 tacos" },
+        { id: 4, title: "All Meats", description: "Tried every meat at least once." },
+        { id: 5, title: "All Cheese", description: "Tried every cheese at least once." },
+        { id: 6, title: "All Salsa", description: "Tried every salsa at least once." }
+
       ]);
     });
 };
