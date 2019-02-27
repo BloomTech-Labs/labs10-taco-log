@@ -6,6 +6,7 @@ import LogTaco from "./LogTaco";
 import TacoList from "./TacoList";
 import AchievementList from "./AchievementList";
 import {Link} from "react-router-dom"
+import Header from './Header';
 
 class HomePage extends Component { 
   link = () => {
@@ -19,6 +20,7 @@ class HomePage extends Component {
         <header className="App-header">
           <div onClick = {this.link}>Profile</div>
           <p>Taco Log Home Page!</p>
+          <Header/>
           <AchievementList {...this.props} />
           <LogTaco {...this.props} />
           <TacoList {...this.props} />

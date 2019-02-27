@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import "./App.css";
 import axios from "axios";
 import { Route, Switch, Link } from "react-router-dom";
-import { Button } from "reactstrap";
-//import Map from './Components/map.js';
 import { firebase, provider } from "./firebase/firebase";
 import HomePage from "./Components/HomePage";
 import LogTaco from "./Components/LogTaco";
@@ -116,9 +114,7 @@ class App extends Component {
           render={props => <AddStore {...this.props} {...props} />}
         />
         </Switch>
-        <Link to="/">
-          <Button onClick={this.logout}>Log Out</Button>
-        </Link>
+       
       </div>
     );
   }
