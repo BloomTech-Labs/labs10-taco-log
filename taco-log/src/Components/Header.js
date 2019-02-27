@@ -63,7 +63,7 @@ class Header extends Component {
                 </FormGroup>
               </Form>
               <NavItem>
-                <NavLink href="/profile/">Profile</NavLink>
+                <NavLink href="/profile">Profile</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="/taco">Taco Log</NavLink>
