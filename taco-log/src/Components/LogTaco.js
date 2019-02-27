@@ -195,6 +195,7 @@ class LogTaco extends Component {
     const taco = {
       user_id: this.props.userInfo.internal_id,
       taco_location: this.state.taco_location,
+<<<<<<< HEAD
       taco_description: this.state.taco_description,
       taco_name: this.state.taco_name,
       rating: this.state.rating,
@@ -205,6 +206,14 @@ class LogTaco extends Component {
       cheese: cheese,
       salsa: salsa,
       special_experience: this.state.special_experience
+=======
+      taco_name: this.state.taco_name,
+      rating: this.state.rating,
+      city: this.state.city,
+      location_id: this.state.place_id,
+      ingredients: "sea bream",
+
+>>>>>>> b1c782dd9655b2fea4b3145f2f8f3d4b9d35d221
     };
     firebase
       .auth()
@@ -224,9 +233,13 @@ class LogTaco extends Component {
     this.setState({
       taco_location: "",
       taco_name: "",
+<<<<<<< HEAD
       rating: "",
       taco_description: "",
       special_experience: "0"
+=======
+      rating: ""
+>>>>>>> b1c782dd9655b2fea4b3145f2f8f3d4b9d35d221
     });
   };
 
