@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import axios from "axios";
 import { Route, Switch, Link } from "react-router-dom";
-import { firebase, provider } from "./firebase/firebase";
+import { firebase } from "./firebase/firebase";
 import HomePage from "./Components/HomePage";
 import LogTaco from "./Components/LogTaco";
 import LoginPage from "./Components/LoginPage";
@@ -18,8 +18,7 @@ class App extends Component {
       message: "",
       user: null
     };
-    //this.login = this.login.bind(this);
-    this.logout = this.logout.bind(this);
+    
   }
 
   componentDidMount() {

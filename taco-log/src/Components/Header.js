@@ -16,6 +16,7 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem } from 'reactstrap';
+  import { firebase } from "../firebase/firebase";
 
 
 class Header extends Component {
@@ -24,14 +25,30 @@ class Header extends Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      isOpen: false
+      isOpen: false,
+      user: null
     };
+    this.logout = this.logout.bind(this);
   }
+
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
     });
   }
+
+  logout() {
+    firebase
+      .auth()
+      .signOut()
+      .then(result => {
+        this.setState({
+          user: null
+        });
+      });
+      window.location.reload();
+  }
+
   render() {
     return (
       <div>
@@ -65,7 +82,7 @@ class Header extends Component {
                   </DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem>
-                  <Button onClick={this.props.logout}>Log Out</Button>
+                  <Button onClick={this.logout}>Log Out</Button>
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
