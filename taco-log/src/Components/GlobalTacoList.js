@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import TacoCard from "./TacoCard";
 
-class TacoList extends Component {
+class GlobalTacoList extends Component {
   render() {
     return (
       <div className="taco-list-owrap">
         TACO LOG:
-        {this.props.userInfo.taco_logs &&
-        this.props.userInfo.taco_logs.length > 0 ? (
+        {this.props.tacoInfo &&
+        this.props.tacoInfo.length > 0 ? (
           <div>
-            {this.props.userInfo.taco_logs.map(log => (
+            {this.props.tacoInfo.map(log => (
               <TacoCard
                 {...this.props}
                 key={log.id}
@@ -33,4 +33,4 @@ class TacoList extends Component {
   }
 }
 
-export default TacoList;
+export default GlobalTacoList;
