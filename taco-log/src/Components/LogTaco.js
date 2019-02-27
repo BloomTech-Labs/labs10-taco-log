@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { firebase } from "../firebase/firebase";
+import "../css/logTaco.css";
 
 class LogTaco extends Component {
   constructor(props) {
@@ -20,24 +21,79 @@ class LogTaco extends Component {
         "Creamy Avocado",
         "Tomato Salsa"
       ],
-      selectedTortilla: "",
-      selectedMeat: "",
-      selectedCheese: "",
-      selectedSalsa: ""
+      selectedTortilla: [],
+      selectedMeat: [],
+      selectedCheese: [],
+      selectedSalsa: []
     };
   }
-
-  
 
   handleInputChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  selectTortilla = e => {
+    const selectedTortilla = this.state.selectedTortilla;
+    if (selectedTortilla.indexOf(e.target.id) > -1) {
+      for (let i = selectedTortilla.length - 1; i >= 0; i--) {
+        if (selectedTortilla[i] === e.target.id) {
+          selectedTortilla.splice(i, 1);
+        }
+      }
+    } else {
+      selectedTortilla.push(e.target.id);
+    }
+
+    this.setState({ selectedTortilla: selectedTortilla });
+  };
+  selectMeat = e => {
+    const selectedMeat = this.state.selectedMeat;
+    if (selectedMeat.indexOf(e.target.id) > -1) {
+      for (let i = selectedMeat.length - 1; i >= 0; i--) {
+        if (selectedMeat[i] === e.target.id) {
+          selectedMeat.splice(i, 1);
+        }
+      }
+    } else {
+      selectedMeat.push(e.target.id);
+    }
+
+    this.setState({ selectedMeat: selectedMeat });
+  };
+  selectCheese = e => {
+    const selectedCheese = this.state.selectedCheese;
+    if (selectedCheese.indexOf(e.target.id) > -1) {
+      for (let i = selectedCheese.length - 1; i >= 0; i--) {
+        if (selectedCheese[i] === e.target.id) {
+          selectedCheese.splice(i, 1);
+        }
+      }
+    } else {
+      selectedCheese.push(e.target.id);
+    }
+
+    this.setState({ selectedCheese: selectedCheese });
+  };
+  selectSalsa = e => {
+    const selectedSalsa = this.state.selectedSalsa;
+    if (selectedSalsa.indexOf(e.target.id) > -1) {
+      for (let i = selectedSalsa.length - 1; i >= 0; i--) {
+        if (selectedSalsa[i] === e.target.id) {
+          selectedSalsa.splice(i, 1);
+        }
+      }
+    } else {
+      selectedSalsa.push(e.target.id);
+    }
+
+    this.setState({ selectedSalsa: selectedSalsa });
+  };
+
   componentDidMount() {
-    const inputElement = document.querySelector(".dropdown");    
+    const inputElement = document.querySelector(".dropdown");
     const dropdown = new window.google.maps.places.Autocomplete(inputElement);
     dropdown.addListener("place_changed", () => {
-      const place = dropdown.getPlace();      
+      const place = dropdown.getPlace();
       this.setState({
         address: place.formatted_address,
         taco_location: place.name,
@@ -70,15 +126,31 @@ class LogTaco extends Component {
 
   newTaco = e => {
     e.preventDefault();
+
+    const selectedTortilla = this.state.selectedTortilla
+    const tortilla = selectedTortilla.toString()
+
+    const selectedMeat = this.state.selectedMeat
+    const meat = selectedMeat.toString()
+
+    const selectedCheese = this.state.selectedCheese
+    const cheese = selectedCheese.toString()
+
+    const selectedSalsa = this.state.selectedSalsa
+    const salsa = selectedSalsa.toString()
+
     const taco = {
       user_id: this.props.userInfo.internal_id,
       taco_location: this.state.taco_location,
       taco_description: this.state.taco_description,
       taco_name: this.state.taco_name,
       rating: this.state.rating,
-      city: this.state.city,
-      location_id: this.state.place_id,
-      ingredients: "sea bream"
+      address: this.state.address,
+      location_id: this.state.place_id, 
+      tortilla: tortilla,
+      meat: meat,
+      cheese: cheese,
+      salsa: salsa     
     };
     firebase
       .auth()
@@ -107,27 +179,96 @@ class LogTaco extends Component {
     return (
       <div className="taco-form">
         <p>Log a Taco Here:</p>
-        <div className="taco-map">
-          {this.state.staticMap && (
-            <img
-              src={`https://maps.googleapis.com/maps/api/staticmap?center=${
-                this.state.lat
-              },${
-                this.state.lng
-              }&zoom=14&size=800x150&key=AIzaSyCgxie-2MKM8N9ibIvYVGzuzvVSaXDonrE&markers=${
-                this.state.lat
-              },${this.state.lng}&scale=2`}
-            />
-          )}
+        <input
+          onChange={this.handleInputChange}
+          class="dropdown"
+          placeholder="location"
+          value={this.state.taco_location}
+          name="taco_location"
+        />
+        <div className="title-map-wrap">
+          <div>{this.state.taco_location}</div>
+          <div className="taco-map">
+            {this.state.staticMap && (
+              <img
+                src={`https://maps.googleapis.com/maps/api/staticmap?center=${
+                  this.state.lat
+                },${
+                  this.state.lng
+                }&zoom=14&size=800x150&key=AIzaSyCgxie-2MKM8N9ibIvYVGzuzvVSaXDonrE&markers=${
+                  this.state.lat
+                },${this.state.lng}&scale=2`}
+              />
+            )}
+          </div>
         </div>
+
+        <div className="ingredent-tab-wrap">
+          Tortilla:
+          {this.state.tortilla.map(data => (
+            <div
+              onClick={this.selectTortilla}
+              className={
+                this.state.selectedTortilla.indexOf(data) > -1
+                  ? "ingredent-tab ingredent-tab-selected"
+                  : "ingredent-tab"
+              }
+              id={data}
+            >
+              {data}
+            </div>
+          ))}
+        </div>
+        <div className="ingredent-tab-wrap">
+          Meat:
+          {this.state.meat.map(data => (
+            <div
+              onClick={this.selectMeat}
+              className={
+                this.state.selectedMeat.indexOf(data) > -1
+                  ? "ingredent-tab ingredent-tab-selected"
+                  : "ingredent-tab"
+              }
+              id={data}
+            >
+              {data}
+            </div>
+          ))}
+        </div>
+        <div className="ingredent-tab-wrap">
+          Cheese:
+          {this.state.cheese.map(data => (
+            <div
+              onClick={this.selectCheese}
+              className={
+                this.state.selectedCheese.indexOf(data) > -1
+                  ? "ingredent-tab ingredent-tab-selected"
+                  : "ingredent-tab"
+              }
+              id={data}
+            >
+              {data}
+            </div>
+          ))}
+        </div>
+        <div className="ingredent-tab-wrap">
+          Salsa:
+          {this.state.salsa.map(data => (
+            <div
+              onClick={this.selectSalsa}
+              className={
+                this.state.selectedSalsa.indexOf(data) > -1
+                  ? "ingredent-tab ingredent-tab-selected"
+                  : "ingredent-tab"
+              }
+              id={data}
+            >
+              {data}
+            </div>
+          ))}
+        </div>
+
         <form>
-          <input
-            onChange={this.handleInputChange}
-            class="dropdown"
-            placeholder="location"
-            value={this.state.taco_location}
-            name="taco_location"
-          />
           <input
             onChange={this.handleInputChange}
             placeholder="rating"

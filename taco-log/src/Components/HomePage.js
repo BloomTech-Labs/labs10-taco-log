@@ -3,8 +3,6 @@ import MapPage from "./MapPage.js";
 import { Elements, StripeProvider } from "react-stripe-elements";
 import CheckoutForm from "./CheckoutForm";
 import LogTaco from "./LogTaco";
-import TacoList from "./TacoList";
-import AchievementList from "./AchievementList";
 import {Link} from "react-router-dom"
 
 class HomePage extends Component { 

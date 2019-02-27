@@ -1,0 +1,12 @@
+.ingredent-tab-wrap{
+    display: flex;
+    justify-content: center;   
+}
+
+.ingredent-tab-wrap .ingredent-tab{
+    border: 1px solid black;
+}
+
+.ingredent-tab-wrap .ingredent-tab-selected{
+    background-color: blue
+}
