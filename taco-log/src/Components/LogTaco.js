@@ -134,6 +134,8 @@ class LogTaco extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    console.log(this.props.userInfo.taco_logs.length)
+    console.log(prevProps.userInfo.taco_logs.length)
     if (this.props.userInfo.taco_logs.length !== prevProps.userInfo.taco_logs.length){
       firebase
         .auth()
