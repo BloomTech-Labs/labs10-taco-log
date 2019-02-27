@@ -13,8 +13,13 @@ class TacoCard extends Component {
     return (
       <div>
         <p>{this.props.taco_location}</p>
-        <p>{this.props.taco_description}</p>
+        <p>{this.props.taco_name}</p>
         <p>{this.props.rating}</p>
+        <p>{this.props.tortilla}</p>
+        <p>{this.props.meat}</p>
+        <p>{this.props.cheese}</p>
+        <p>{this.props.salsa}</p>
+        <p>{this.props.created_at}</p>
         <button onClick={() => this.deleteTaco(this.props.id)}>Delete</button>
       </div>
     );

@@ -7,6 +7,7 @@ import HomePage from "./Components/HomePage";
 import Header from "./Components/Header";
 import LogTaco from "./Components/LogTaco";
 import LoginPage from "./Components/LoginPage";
+import Landing from "./Components/Landing";
 import AddStore from "./Components/AddStore";
 import ProfilePage from "./Components/ProfilePage"
 import { loginUser, logTaco, deleteTaco, assignAchievement, locationChange, updateStats, GET_TACO } from "./actions";
@@ -130,6 +131,11 @@ class App extends Component {
           exact
           path="/profile"
           render={props => <ProfilePage {...this.props} {...props} location = {this.props.location}/>}
+        />
+        <Route
+          exact
+          path="/landing"
+          render={props => <Landing {...this.props} {...props} location = {this.props.location}/>}
         />
         <Route
           exact

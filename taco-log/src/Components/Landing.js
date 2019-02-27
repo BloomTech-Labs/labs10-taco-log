@@ -1,15 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import ProfileInfoDisplay from "./ProfileInfoDisplay";
 import GlobalTacoList from "./GlobalTacoList";
-import TacoCard from "./TacoCard";
 
 class Landing extends Component {
+
+    componentDidMount(){
+        this.props.GET_TACO()
+    }
     render() {
         return(
-            <div>< GlobalTacoList {...this.props}/></div>
+            <div>< GlobalTacoList {...this.props}/>
+            <button onClick = {e => console.log(this.props)}>ee</button> </div>
         )
     }
 }
 
-export default Landing;
+export default connect()(Landing);
