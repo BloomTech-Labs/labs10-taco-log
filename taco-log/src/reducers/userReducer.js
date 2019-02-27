@@ -4,7 +4,8 @@ import {
   ASSIGN_ACHIEVEMENT,
   UPDATE_STATS,
   DELETE_TACO,
-  LOCATION_CHANGE
+  LOCATION_CHANGE,
+  LOG_TACO
 } from "../actions";
 
 const initialState = {
@@ -44,6 +45,11 @@ export default (state = initialState, action) => {
         ...state,
         location: !state.location
       };
+    case LOG_TACO:
+      return {
+        ...state,
+        user: action.payload
+      }
     default:
       return state;
   }

@@ -7,6 +7,7 @@ export const ASSIGN_ACHIEVEMENT = "ASSIGN_ACHIEVEMENT";
 export const UPDATE_STATS = "UPDATE_STATS";
 export const DELETE_TACO = "DELETE_TACO";
 export const LOCATION_CHANGE = "LOCATION_CHANGE";
+export const LOG_TACO = "LOG_TACO";
 
 const local = "http://localhost:5000/";
 const heroku = "https://tacobe.herokuapp.com/";
@@ -58,18 +59,7 @@ export const logTaco = (taco, header) => dispatch => {
   axios
     .post(`${url}api/tacos`, taco, header)
     .then(res => {
-      const stats = {
-        tacos_logged: res.data.taco_logs.length
-      };
-
-      axios
-        .put(`${url}api/user_stats/${res.data.internal_id}`, stats, header)
-        .then(res => {          
-          dispatch({ type: UPDATE_STATS, payload: res.data });
-        })
-        .catch(err => {
-          console.log(err);
-        });
+      dispatch({ type: LOG_TACO, payload: res.data });
     })
     .catch(err => {
       console.log(err);
@@ -81,6 +71,18 @@ export const assignAchievement = (achievement, header) => dispatch => {
   .post(`${url}api/user_achievements`, achievement, header)
   .then(res => {
     dispatch({ type: ASSIGN_ACHIEVEMENT, payload: res.data });
+  })
+  .catch(err => {
+    console.log(err);
+  });
+}
+
+export const updateStats = (id, stats, header) => dispatch => {
+  console.log('here')
+  axios
+  .put(`${url}api/user_stats/${id}`, stats, header)
+  .then(res => {          
+    dispatch({ type: UPDATE_STATS, payload: res.data });
   })
   .catch(err => {
     console.log(err);
