@@ -14,7 +14,7 @@ class HomePage extends Component {
 
   
 
-  render() {console.log(this.props.userInfo)
+  render() {
     return (
       <div className="home-page">
         <header className="App-header">
