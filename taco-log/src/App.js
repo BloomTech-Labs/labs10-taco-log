@@ -103,7 +103,7 @@ class App extends Component {
       });
   }
 
-  render() {console.log(this.props)
+  render() {
     return (
       <div className="App">
         <Route
