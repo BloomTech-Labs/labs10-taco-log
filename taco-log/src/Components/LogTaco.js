@@ -129,36 +129,91 @@ class LogTaco extends Component {
 
   updateStats = header => {
     const id = this.props.userInfo.internal_id;
+
     let lastMeat = this.props.userInfo.taco_logs[this.props.userInfo.taco_logs.length-1].meat
     
     if(lastMeat.length > 0){
       lastMeat = lastMeat.split(",")
     }
     
-    let currmeat = this.props.userInfo.user_stats.meats_logged
+    let currMeat = this.props.userInfo.user_stats.meats_logged
     
-    if(currmeat != null){
-      currmeat = currmeat.split(",")
+    if(currMeat != null){
+      currMeat = currMeat.split(",")
       if(lastMeat.length > 0){
         for(let i = 0; i < lastMeat.length; i++){
-          if(currmeat.indexOf(lastMeat[i]) === -1){
+          if(currMeat.indexOf(lastMeat[i]) === -1){
 
-            currmeat.push(lastMeat[i])
-            currmeat = currmeat.join()
+            currMeat.push(lastMeat[i])
+            currMeat = currMeat.join()
           }          
         }
       }    
       
     } else {
       if(lastMeat.length > 0){
-        currmeat = lastMeat.join()
+        currMeat = lastMeat.join()
+      }      
+    }
+
+    let lastCheese = this.props.userInfo.taco_logs[this.props.userInfo.taco_logs.length-1].cheese
+    
+    if(lastCheese.length > 0){
+      lastCheese = lastCheese.split(",")
+    }
+    
+    let currCheese = this.props.userInfo.user_stats.cheese_logged
+    
+    if(currCheese != null){
+      currCheese = currCheese.split(",")
+      if(lastCheese.length > 0){
+        for(let i = 0; i < lastCheese.length; i++){
+          if(currCheese.indexOf(lastCheese[i]) === -1){
+
+            currCheese.push(lastCheese[i])
+            currCheese = currCheese.join()
+          }          
+        }
+      }    
+      
+    } else {
+      if(lastCheese.length > 0){
+        currCheese = lastCheese.join()
+      }      
+    }
+
+    let lastSalsa = this.props.userInfo.taco_logs[this.props.userInfo.taco_logs.length-1].salsa
+    
+    if(lastSalsa.length > 0){
+      lastSalsa = lastSalsa.split(",")
+    }
+    
+    let currSalsa = this.props.userInfo.user_stats.salsa_logged
+    
+    if(currSalsa != null){
+      currSalsa = currSalsa.split(",")
+      if(lastSalsa.length > 0){
+        for(let i = 0; i < lastSalsa.length; i++){
+          if(currSalsa.indexOf(lastSalsa[i]) === -1){
+
+            currSalsa.push(lastSalsa[i])
+            currSalsa = currSalsa.join()
+          }          
+        }
+      }    
+      
+    } else {
+      if(lastSalsa.length > 0){
+        currSalsa = lastSalsa.join()
       }      
     }
     
 
     const stats = {
       tacos_logged: this.props.userInfo.taco_logs.length,
-      meats_logged: currmeat
+      meats_logged: currMeat,
+      cheese_logged: currCheese,
+      salsa_logged: currSalsa
     };
     this.props.updateStats(id, stats, header);
   };
