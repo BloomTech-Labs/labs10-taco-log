@@ -92,7 +92,7 @@ class LogTaco extends Component {
   };
 
   componentDidMount() {
-    const inputElement = document.querySelector(".dropdown");
+    const inputElement = document.querySelector(".google-dropdown");
     const dropdown = new window.google.maps.places.Autocomplete(inputElement);
     dropdown.addListener("place_changed", () => {
       const place = dropdown.getPlace();
@@ -248,7 +248,7 @@ class LogTaco extends Component {
         <p>Log a Taco Here:</p>
         <input
           onChange={this.handleInputChange}
-          class="dropdown"
+          className="google-dropdown"
           placeholder="location"
           value={this.state.taco_location}
           name="taco_location"
