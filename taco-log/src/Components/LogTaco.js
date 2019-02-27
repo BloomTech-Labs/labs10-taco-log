@@ -25,7 +25,7 @@ class LogTaco extends Component {
       selectedMeat: [],
       selectedCheese: [],
       selectedSalsa: [],
-      special_experience: "0",
+      special_experience: 0,
       taco_description: ""
     };
   }
@@ -230,21 +230,19 @@ class LogTaco extends Component {
     });
   };
 
-  toggleSpecialExp = () => {
-    console.log(this.state.special_experience);
-    if (this.state.special_experience === "0") {
+  toggleSpecialExp = () => {    
+    if (this.state.special_experience === 0) {
       this.setState({
-        special_experience: "1"
+        special_experience: 1
       });
     } else {
       this.setState({
-        special_experience: "0"
+        special_experience:0
       });
     }
   };
 
-  render() {
-    console.log(this.state);
+  render() {    
     return (
       <div className="taco-form">
         <p>Log a Taco Here:</p>
@@ -360,7 +358,7 @@ class LogTaco extends Component {
           Special Experience?
         </div>
 
-        {this.state.special_experience === "1" ? (
+        {this.state.special_experience === 1 ? (
           <textarea
             onChange={this.handleInputChange}
             name="taco_description"
