@@ -15,7 +15,37 @@
 //       };
 //     };
 
-import { FETCH_TACOS, ADDDATABASE_TACOS } from './tacoActions';
-import { GET_USER, CREATE_USER, loginUser, ASSIGN_ACHIEVEMENT, UPDATE_STATS, logTaco, DELETE_TACO, deleteTaco, assignAchievement, LOCATION_CHANGE, locationChange } from './userActions'
+import { FETCH_TACOS, ADDDATABASE_TACOS } from "./tacoActions";
+import {
+  GET_USER,
+  CREATE_USER,
+  loginUser,
+  ASSIGN_ACHIEVEMENT,
+  UPDATE_STATS,
+  logTaco,
+  DELETE_TACO,
+  deleteTaco,
+  assignAchievement,
+  LOCATION_CHANGE,
+  locationChange,
+  LOG_TACO,
+  updateStats
+} from "./userActions";
 
-export { FETCH_TACOS, ADDDATABASE_TACOS, GET_USER, CREATE_USER, loginUser, ASSIGN_ACHIEVEMENT, UPDATE_STATS, logTaco, DELETE_TACO, deleteTaco, assignAchievement, LOCATION_CHANGE, locationChange };
+export {
+  FETCH_TACOS,
+  ADDDATABASE_TACOS,
+  GET_USER,
+  CREATE_USER,
+  loginUser,
+  ASSIGN_ACHIEVEMENT,
+  UPDATE_STATS,
+  logTaco,
+  DELETE_TACO,
+  deleteTaco,
+  assignAchievement,
+  LOCATION_CHANGE,
+  locationChange,
+  LOG_TACO,
+  updateStats
+};

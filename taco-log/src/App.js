@@ -8,7 +8,7 @@ import LogTaco from "./Components/LogTaco";
 import LoginPage from "./Components/LoginPage";
 import AddStore from "./Components/AddStore";
 import ProfilePage from "./Components/ProfilePage"
-import { loginUser, logTaco, deleteTaco, assignAchievement, locationChange } from "./actions";
+import { loginUser, logTaco, deleteTaco, assignAchievement, locationChange, updateStats } from "./actions";
 import { connect } from "react-redux";
 
 class App extends Component {
@@ -22,56 +22,74 @@ class App extends Component {
     this.logout = this.logout.bind(this);
   }
 
-  componentDidMount() {
-    axios
-      .get("https://tacobe.herokuapp.com/")
-      .then(res => {
-        this.setState({ message: res.data.message });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
 
-  achievementCheck = achievementId => {
-    for (let i = 0; i < this.props.userInfo.achievements.length; i++) {
-      if (this.props.userInfo.achievements[i].id === achievementId) {
-        return true;
-      }
-    }
-  };
-  addAchievement = header => {
-    if (
-      this.props.userInfo.user_stats.tacos_logged >= 5 &&
-      !this.achievementCheck(2)
-    ) {
-      const achievement = {
-        user_id: this.props.userInfo.internal_id,
-        achievement_id: 2
-      };
-      this.props.assignAchievement(achievement, header);
-    }
-  };
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.userInfo.user_stats !== this.props.userInfo.user_stats) {
-      firebase
-        .auth()
-        .currentUser.getIdToken(true)
-        .then(idToken => {
-          const header = {
-            headers: {
-              Authorization: idToken,
-              id: this.props.userInfo.ext_user_id
-            }
-          };
-          this.addAchievement(header);
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    }
-  }
+  // achievementCheck = achievementId => {
+  //   for (let i = 0; i < this.props.userInfo.achievements.length; i++) {
+  //     if (this.props.userInfo.achievements[i].id === achievementId) {
+  //       return true;
+  //     }
+  //   }
+  // };
+  // addAchievement = header => {
+  //   if (
+  //     this.props.userInfo.user_stats.tacos_logged >= 5 &&
+  //     !this.achievementCheck(2)
+  //   ) {
+  //     const achievement = {
+  //       user_id: this.props.userInfo.internal_id,
+  //       achievement_id: 2
+  //     };
+  //     this.props.assignAchievement(achievement, header);
+  //   }
+  // };
+
+  // updateStats = header => {
+  //   const id = this.props.userInfo.internal_id
+  //   const stats = {
+  //     tacos_logged: this.props.userInfo.taco_logs.length
+  //   };
+  //   this.props.updateStats(id, stats, header)
+  // }
+
+  // componentDidUpdate(prevProps) {
+  //   console.log(this.props.userInfo.taco_logs)
+  //   console.log(prevProps.userInfo.taco_logs)
+  //   // if (this.props.userInfo.taco_logs !== prevProps.userInfo.taco_logs){
+  //   //   firebase
+  //   //     .auth()
+  //   //     .currentUser.getIdToken(true)
+  //   //     .then(idToken => {
+  //   //       const header = {
+  //   //         headers: {
+  //   //           Authorization: idToken,
+  //   //           id: this.props.userInfo.ext_user_id
+  //   //         }
+  //   //       };
+  //   //       this.updateStats(header);
+  //   //     })
+  //   //     .catch(err => {
+  //   //       console.log(err);
+  //   //     });
+  //   // }
+  //   if (prevProps.userInfo.user_stats !== this.props.userInfo.user_stats) {
+  //     firebase
+  //       .auth()
+  //       .currentUser.getIdToken(true)
+  //       .then(idToken => {
+  //         const header = {
+  //           headers: {
+  //             Authorization: idToken,
+  //             id: this.props.userInfo.ext_user_id
+  //           }
+  //         };
+  //         this.addAchievement(header);
+  //       })
+  //       .catch(err => {
+  //         console.log(err);
+  //       });
+  //   }
+  // }
 
   logout() {
     firebase
@@ -128,5 +146,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { loginUser, logTaco, deleteTaco, assignAchievement, locationChange }
+  { loginUser, logTaco, deleteTaco, assignAchievement, locationChange, updateStats }
 )(App);

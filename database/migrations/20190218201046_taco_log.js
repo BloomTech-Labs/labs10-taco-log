@@ -9,8 +9,11 @@ exports.up = function(knex) {
       .inTable("users"); // id,
     tbl.string("taco_location");
     tbl.string("location_id");
-    tbl.string("city");
-    tbl.string("ingredients").notNullable();
+    tbl.string("address");
+    tbl.string("tortilla").notNullable();
+    tbl.string("meat").notNullable();
+    tbl.string("cheese").notNullable();
+    tbl.string("salsa").notNullable();
     tbl.integer("special_experience").defaultTo(0);
     tbl.string("taco_name").notNullable();
     tbl.string("taco_description");
