@@ -14,7 +14,7 @@ exports.up = function(knex) {
     tbl.string("meat").notNullable();
     tbl.string("cheese").notNullable();
     tbl.string("salsa").notNullable();
-    tbl.boolean("special_experience").defaultTo(false);
+    tbl.integer("special_experience").defaultTo(0);
     tbl.string("taco_name").notNullable();
     tbl.string("taco_description");
     tbl.decimal("rating", 0, 5);

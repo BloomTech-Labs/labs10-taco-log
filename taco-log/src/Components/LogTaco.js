@@ -24,7 +24,9 @@ class LogTaco extends Component {
       selectedTortilla: [],
       selectedMeat: [],
       selectedCheese: [],
-      selectedSalsa: []
+      selectedSalsa: [],
+      special_experience: "0",
+      taco_description: ""
     };
   }
 
@@ -126,17 +128,20 @@ class LogTaco extends Component {
   };
 
   updateStats = header => {
-    const id = this.props.userInfo.internal_id
+    const id = this.props.userInfo.internal_id;
     const stats = {
       tacos_logged: this.props.userInfo.taco_logs.length
     };
-    this.props.updateStats(id, stats, header)
-  }
+    this.props.updateStats(id, stats, header);
+  };
 
   componentDidUpdate(prevProps) {
-    console.log(this.props.userInfo.taco_logs.length)
-    console.log(prevProps.userInfo.taco_logs.length)
-    if (this.props.userInfo.taco_logs.length !== prevProps.userInfo.taco_logs.length){
+    if (
+      this.props.userInfo.taco_logs &&
+      prevProps.userInfo.taco_logs &&
+      this.props.userInfo.taco_logs.length !==
+        prevProps.userInfo.taco_logs.length
+    ) {
       firebase
         .auth()
         .currentUser.getIdToken(true)
@@ -147,14 +152,13 @@ class LogTaco extends Component {
               id: this.props.userInfo.ext_user_id
             }
           };
-          this.updateStats(header);          
+          this.updateStats(header);
         })
         .catch(err => {
           console.log(err);
         });
     }
     if (this.props.userInfo.user_stats !== prevProps.userInfo.user_stats) {
-      console.log('here')
       firebase
         .auth()
         .currentUser.getIdToken(true)
@@ -176,17 +180,17 @@ class LogTaco extends Component {
   newTaco = e => {
     e.preventDefault();
 
-    const selectedTortilla = this.state.selectedTortilla
-    const tortilla = selectedTortilla.toString()
+    const selectedTortilla = this.state.selectedTortilla;
+    const tortilla = selectedTortilla.toString();
 
-    const selectedMeat = this.state.selectedMeat
-    const meat = selectedMeat.toString()
+    const selectedMeat = this.state.selectedMeat;
+    const meat = selectedMeat.toString();
 
-    const selectedCheese = this.state.selectedCheese
-    const cheese = selectedCheese.toString()
+    const selectedCheese = this.state.selectedCheese;
+    const cheese = selectedCheese.toString();
 
-    const selectedSalsa = this.state.selectedSalsa
-    const salsa = selectedSalsa.toString()
+    const selectedSalsa = this.state.selectedSalsa;
+    const salsa = selectedSalsa.toString();
 
     const taco = {
       user_id: this.props.userInfo.internal_id,
@@ -195,11 +199,12 @@ class LogTaco extends Component {
       taco_name: this.state.taco_name,
       rating: this.state.rating,
       address: this.state.address,
-      location_id: this.state.place_id, 
+      location_id: this.state.place_id,
       tortilla: tortilla,
       meat: meat,
       cheese: cheese,
-      salsa: salsa     
+      salsa: salsa,
+      special_experience: this.state.special_experience
     };
     firebase
       .auth()
@@ -219,8 +224,23 @@ class LogTaco extends Component {
     this.setState({
       taco_location: "",
       taco_name: "",
-      rating: ""
+      rating: "",
+      taco_description: "",
+      special_experience: "0"
     });
+  };
+
+  toggleSpecialExp = () => {
+    console.log(this.state.special_experience);
+    if (this.state.special_experience === "0") {
+      this.setState({
+        special_experience: "1"
+      });
+    } else {
+      this.setState({
+        special_experience: "0"
+      });
+    }
   };
 
   render() {
@@ -251,7 +271,6 @@ class LogTaco extends Component {
             )}
           </div>
         </div>
-
         <div className="ingredent-tab-wrap">
           Tortilla:
           {this.state.tortilla.map(data => (
@@ -316,7 +335,6 @@ class LogTaco extends Component {
             </div>
           ))}
         </div>
-
         <form>
           <input
             onChange={this.handleInputChange}
@@ -332,6 +350,27 @@ class LogTaco extends Component {
           />
           <button onClick={this.newTaco}>Submit</button>
         </form>
+        <div>
+          <input
+            onClick={this.toggleSpecialExp}
+            type="checkbox"
+            name="special_experience"
+            value=""
+          />
+          Special Experience?
+        </div>
+
+        {this.state.special_experience === "1" ? (
+          <textarea
+            onChange={this.handleInputChange}
+            name="taco_description"
+            value={this.state.taco_description}
+            rows="10"
+            cols="50"
+          />
+        ) : (
+          <div />
+        )}
       </div>
     );
   }
