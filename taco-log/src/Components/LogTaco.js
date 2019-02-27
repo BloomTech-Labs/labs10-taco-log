@@ -104,25 +104,72 @@ class LogTaco extends Component {
       });
     });
   }
-  // achievementCheck = achievementId => {
-  //   for (let i = 0; i < this.props.userInfo.achievements.length; i++) {
-  //     if (this.props.userInfo.achievements[i].id === achievementId) {
-  //       return true;
-  //     }
-  //   }
-  // };
-  // addAchievement = () => {
-  //   if (
-  //     this.props.userInfo.user_stats.tacos_logged >= 5 &&
-  //     !this.achievementCheck(2)
-  //   ) {
-  //     const achievement = {
-  //       user_id: this.props.userInfo.internal_id,
-  //       achievement_id: 2
-  //     };
-  //     this.props.assignAchievement(achievement, header);
-  //   }
-  // };
+
+  achievementCheck = achievementId => {
+    for (let i = 0; i < this.props.userInfo.achievements.length; i++) {
+      if (this.props.userInfo.achievements[i].id === achievementId) {
+        return true;
+      }
+    }
+  };
+  addAchievement = header => {
+    if (
+      this.props.userInfo.user_stats.tacos_logged >= 5 &&
+      !this.achievementCheck(2)
+    ) {
+      const achievement = {
+        user_id: this.props.userInfo.internal_id,
+        achievement_id: 2
+      };
+      this.props.assignAchievement(achievement, header);
+    }
+  };
+
+  updateStats = header => {
+    const id = this.props.userInfo.internal_id
+    const stats = {
+      tacos_logged: this.props.userInfo.taco_logs.length
+    };
+    this.props.updateStats(id, stats, header)
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.userInfo.taco_logs.length !== prevProps.userInfo.taco_logs.length){
+      firebase
+        .auth()
+        .currentUser.getIdToken(true)
+        .then(idToken => {
+          const header = {
+            headers: {
+              Authorization: idToken,
+              id: this.props.userInfo.ext_user_id
+            }
+          };
+          this.updateStats(header);          
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+    if (this.props.userInfo.user_stats !== prevProps.userInfo.user_stats) {
+      console.log('here')
+      firebase
+        .auth()
+        .currentUser.getIdToken(true)
+        .then(idToken => {
+          const header = {
+            headers: {
+              Authorization: idToken,
+              id: this.props.userInfo.ext_user_id
+            }
+          };
+          this.addAchievement(header);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  }
 
   newTaco = e => {
     e.preventDefault();

@@ -11,6 +11,8 @@ class HomePage extends Component {
     this.props.history.push('/profile')
   }
 
+  
+
   render() {console.log(this.props.userInfo)
     return (
       <div className="home-page">
