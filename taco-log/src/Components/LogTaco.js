@@ -108,15 +108,27 @@ class LogTaco extends Component {
   }
 
   achievementCheck = achievementId => {
+    let check = false
     for (let i = 0; i < this.props.userInfo.achievements.length; i++) {
       if (this.props.userInfo.achievements[i].id === achievementId) {
-        return true;
-      }
+        check = true;
+      }    
     }
+    return check
   };
   addAchievement = header => {
     if (
       this.props.userInfo.user_stats.tacos_logged >= 5 &&
+      !this.achievementCheck(1)
+    ) {
+      const achievement = {
+        user_id: this.props.userInfo.internal_id,
+        achievement_id: 1
+      };
+      this.props.assignAchievement(achievement, header);
+    } 
+     if (
+      this.props.userInfo.user_stats.tacos_logged >= 10 &&
       !this.achievementCheck(2)
     ) {
       const achievement = {
@@ -124,13 +136,137 @@ class LogTaco extends Component {
         achievement_id: 2
       };
       this.props.assignAchievement(achievement, header);
+    } 
+    if (
+      this.props.userInfo.user_stats.tacos_logged >= 20 &&
+      !this.achievementCheck(3)
+    ) {
+      const achievement = {
+        user_id: this.props.userInfo.internal_id,
+        achievement_id: 3
+      };
+      this.props.assignAchievement(achievement, header);
+    }
+    if (
+      this.props.userInfo.user_stats.meats_logged.split(",").length === 5 &&
+      !this.achievementCheck(4)
+    ) {
+      const achievement = {
+        user_id: this.props.userInfo.internal_id,
+        achievement_id: 4
+      };
+      this.props.assignAchievement(achievement, header);
+    }
+
+    if (
+      this.props.userInfo.user_stats.cheese_logged.split(",").length === 5 &&
+      !this.achievementCheck(5)
+    ) {
+      const achievement = {
+        user_id: this.props.userInfo.internal_id,
+        achievement_id: 5
+      };
+      this.props.assignAchievement(achievement, header);
+    } 
+
+    if (
+      this.props.userInfo.user_stats.salsa_logged.split(",").length === 6 &&
+      !this.achievementCheck(6)
+    ) {
+      const achievement = {
+        user_id: this.props.userInfo.internal_id,
+        achievement_id: 6
+      };
+      this.props.assignAchievement(achievement, header);
     }
   };
 
   updateStats = header => {
     const id = this.props.userInfo.internal_id;
+
+    let lastMeat = this.props.userInfo.taco_logs[
+      this.props.userInfo.taco_logs.length - 1
+    ].meat;
+
+    if (lastMeat.length > 0) {
+      lastMeat = lastMeat.split(",");
+    }
+
+    let currMeat = this.props.userInfo.user_stats.meats_logged;
+
+    if (currMeat != null) {
+      let currMeatArr = currMeat.split(",");
+      if (lastMeat.length > 0) {
+        for (let i = 0; i < lastMeat.length; i++) {
+          if (currMeatArr.indexOf(lastMeat[i]) === -1) {
+            currMeatArr.push(lastMeat[i]);
+            currMeat = currMeatArr.join();
+          }
+        }
+      }
+    } else {
+      if (lastMeat.length > 0) {
+        currMeat = lastMeat.join();
+      }
+    }
+
+    let lastCheese = this.props.userInfo.taco_logs[
+      this.props.userInfo.taco_logs.length - 1
+    ].cheese;
+
+    if (lastCheese.length > 0) {
+      lastCheese = lastCheese.split(",");
+    }
+
+    let currCheese = this.props.userInfo.user_stats.cheese_logged;
+
+    if (currCheese != null) {
+      let currCheeseArr = currCheese.split(",");
+      if (lastCheese.length > 0) {
+        for (let i = 0; i < lastCheese.length; i++) {
+          if (currCheeseArr.indexOf(lastCheese[i]) === -1) {
+            currCheeseArr.push(lastCheese[i]);
+            currCheese = currCheeseArr.join();
+          }
+        }
+      }
+    } else {
+      if (lastCheese.length > 0) {
+        currCheese = lastCheese.join();
+      }
+    }
+
+    let lastSalsa = this.props.userInfo.taco_logs[
+      this.props.userInfo.taco_logs.length - 1
+    ].salsa;
+
+    if (lastSalsa.length > 0) {
+      lastSalsa = lastSalsa.split(",");
+    }
+
+    let currSalsa = this.props.userInfo.user_stats.salsa_logged;
+
+    if (currSalsa != null) {
+      let currSalsaArr = currSalsa.split(",");
+      if (lastSalsa.length > 0) {
+        for (let i = 0; i < lastSalsa.length; i++) {
+          if (currSalsaArr.indexOf(lastSalsa[i]) === -1) {
+            currSalsaArr.push(lastSalsa[i]);
+            currSalsa = currSalsaArr.join();
+          }
+        }
+      }
+    } else {
+      if (lastSalsa.length > 0) {
+        currSalsa = lastSalsa.join();
+      }
+    }
+
     const stats = {
-      tacos_logged: this.props.userInfo.taco_logs.length
+      tacos_logged: this.props.userInfo.taco_logs.length,
+      meats_logged: currMeat,
+      cheese_logged: currCheese,
+      salsa_logged: currSalsa
     };
     this.props.updateStats(id, stats, header);
   };
@@ -230,19 +366,19 @@ class LogTaco extends Component {
     });
   };
 
-  toggleSpecialExp = () => {    
+  toggleSpecialExp = () => {
     if (this.state.special_experience === 0) {
       this.setState({
         special_experience: 1
       });
     } else {
       this.setState({
-        special_experience:0
+        special_experience: 0
       });
     }
   };
 
-  render() {    
+  render() {
     return (
       <div className="taco-form">
         <p>Log a Taco Here:</p>
