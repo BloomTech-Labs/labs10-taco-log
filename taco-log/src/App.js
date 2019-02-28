@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import axios from "axios";
 import { Route, Switch, Link } from "react-router-dom";
-import { firebase, provider } from "./firebase/firebase";
+import { firebase } from "./firebase/firebase";
 import HomePage from "./Components/HomePage";
 import Header from "./Components/Header";
 import LogTaco from "./Components/LogTaco";

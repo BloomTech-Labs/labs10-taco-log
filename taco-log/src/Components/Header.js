@@ -48,7 +48,10 @@ class Header extends Component {
       isOpen: !this.state.isOpen
     });
   }
-  render() {console.log(this.props)
+
+
+  render() {
+
     return (
       <div>
         <Navbar color="light" light expand="md">
@@ -83,8 +86,8 @@ class Header extends Component {
                   Options
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem>
-                    <NavLink href="/accountsettings">Settings</NavLink>
+                  <DropdownItem onClick={e => this.customlink("/AccountSettings")}>
+                    <NavLink>Settings</NavLink>
                   </DropdownItem>
                   <DropdownItem>About Us</DropdownItem>
                   <DropdownItem>
