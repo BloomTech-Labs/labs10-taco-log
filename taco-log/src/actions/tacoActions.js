@@ -8,7 +8,7 @@ const link = heroku;
 
 export const GET_TACO = () => dispatch => {
   axios
-    .get(`${link}api/tacos`)
+    .get(`${link}api/tacos/special`)
     .then(res => dispatch({ type: FETCH_TACOS, payload: res.data }, console.log('test')));
 };
 
