@@ -10,7 +10,9 @@ import LoginPage from "./Components/LoginPage";
 import Landing from "./Components/Landing";
 import AddStore from "./Components/AddStore";
 import ProfilePage from "./Components/ProfilePage"
+
 import { loginUser, logTaco, deleteTaco, assignAchievement, locationChange, updateStats, GET_TACO } from "./actions";
+
 import { connect } from "react-redux";
 
 class App extends Component {
@@ -142,6 +144,11 @@ class App extends Component {
           path="/addstore"
           render={props => <AddStore {...this.props} {...props} />}
         />
+          <Route
+            exact
+            path="/accountsettings"
+            render={props => <AccountSettings {...this.props} {...props} />}
+          />
         </Switch>
        
       </div>

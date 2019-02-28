@@ -63,7 +63,7 @@ class Header extends Component {
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>
-                    Settings
+                    <NavLink href="/accountsettings">Settings</NavLink>
                   </DropdownItem>
                   <DropdownItem>
                     About Us
