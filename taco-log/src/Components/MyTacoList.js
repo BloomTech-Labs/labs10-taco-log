@@ -6,7 +6,6 @@ class MyTacoList extends Component {
     return (
       <div className="taco-list-owrap">
         TACO LOG:
-        <button onClick={e => console.log(this.props)}>ee</button>{" "}
         {this.props.expTacos &&
         this.props.expTacos.length > 0 ? (
           <div>
