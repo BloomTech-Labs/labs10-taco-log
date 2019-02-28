@@ -8,6 +8,7 @@ export const UPDATE_STATS = "UPDATE_STATS";
 export const DELETE_TACO = "DELETE_TACO";
 export const LOCATION_CHANGE = "LOCATION_CHANGE";
 export const LOG_TACO = "LOG_TACO";
+export const LOG_OUT = "LOG_OUT";
 
 const local = "http://localhost:5000/";
 const heroku = "https://tacobe.herokuapp.com/";
@@ -103,4 +104,8 @@ export const deleteTaco = (id, user) => dispatch => {
 
 export const locationChange = () => dispatch => {
   dispatch({type: LOCATION_CHANGE})
+}
+
+export const logoutUser = () => dispatch => {
+  dispatch({type: LOG_OUT})
 }

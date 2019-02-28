@@ -12,8 +12,7 @@ class TacoList extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  componentDidMount = () => {
-    console.log("here");
+  componentDidMount = () => {    
     let cities = [];
     for (let i = 0; i < this.props.userInfo.taco_logs.length; i++) {
       let city = this.props.userInfo.taco_logs[i].address.split(",")[1].trim();
