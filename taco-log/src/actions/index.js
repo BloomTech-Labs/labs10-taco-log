@@ -29,7 +29,9 @@ import {
   LOCATION_CHANGE,
   locationChange,
   LOG_TACO,
-  updateStats
+  updateStats,
+  LOG_OUT,
+  logoutUser
 } from "./userActions";
 
 export {
@@ -48,5 +50,7 @@ export {
   locationChange,
   LOG_TACO,
   GET_TACO,
-  updateStats
+  updateStats,
+  LOG_OUT,
+  logoutUser
 };

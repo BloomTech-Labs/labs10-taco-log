@@ -38,7 +38,8 @@ class Header extends Component {
 
   logout() {
     firebase.auth().signOut();
-    this.props.locationChange();
+    this.props.logoutUser();
+    this.props.locationChange();    
     this.props.history.push("/");
   }
 
@@ -47,7 +48,7 @@ class Header extends Component {
       isOpen: !this.state.isOpen
     });
   }
-  render() {
+  render() {console.log(this.props)
     return (
       <div>
         <Navbar color="light" light expand="md">

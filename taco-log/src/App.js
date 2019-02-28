@@ -12,7 +12,7 @@ import AddStore from "./Components/AddStore";
 import ProfilePage from "./Components/ProfilePage";
 import AccountSettings from "./Components/AccountSettings";
 
-import { loginUser, logTaco, deleteTaco, assignAchievement, locationChange, updateStats, GET_TACO } from "./actions";
+import { loginUser, logTaco, deleteTaco, assignAchievement, locationChange, updateStats, GET_TACO, logoutUser } from "./actions";
 
 import { connect } from "react-redux";
 
@@ -109,7 +109,7 @@ class App extends Component {
       <div className="App">
         <Route
           path="/"
-          render={props => <Header {...this.props} {...props} logout = {this.logout} />}
+          render={props => <Header {...this.props} {...props}  />}
         />  
         <Route
           exact
@@ -163,5 +163,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { loginUser, logTaco, deleteTaco, assignAchievement, locationChange, updateStats, GET_TACO }
+  { loginUser, logTaco, deleteTaco, assignAchievement, locationChange, updateStats, GET_TACO, logoutUser }
 )(App);
