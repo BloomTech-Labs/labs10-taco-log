@@ -9,10 +9,11 @@ export const DELETE_TACO = "DELETE_TACO";
 export const LOCATION_CHANGE = "LOCATION_CHANGE";
 export const LOG_TACO = "LOG_TACO";
 export const LOG_OUT = "LOG_OUT";
+export const UPDATE_USER = "UPDATE_USER";
 
 const local = "http://localhost:5000/";
 const heroku = "https://tacobe.herokuapp.com/";
-const url = heroku;
+const url = local;
 
 export const loginUser = user => dispatch => {
   axios
@@ -78,8 +79,7 @@ export const assignAchievement = (achievement, header) => dispatch => {
   });
 }
 
-export const updateStats = (id, stats, header) => dispatch => {
-  console.log('here')
+export const updateStats = (id, stats, header) => dispatch => {  
   axios
   .put(`${url}api/user_stats/${id}`, stats, header)
   .then(res => {          
@@ -108,4 +108,15 @@ export const locationChange = () => dispatch => {
 
 export const logoutUser = () => dispatch => {
   dispatch({type: LOG_OUT})
+}
+
+export const updateUser = (id, changes) => dispatch => {
+  axios
+  .put(`${url}api/users/${id}`, changes)
+  .then(res => {          
+    dispatch({ type: UPDATE_USER, payload: res.data });
+  })
+  .catch(err => {
+    console.log(err);
+  });
 }

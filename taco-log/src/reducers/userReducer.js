@@ -6,7 +6,8 @@ import {
   DELETE_TACO,
   LOCATION_CHANGE,
   LOG_TACO,
-  LOG_OUT
+  LOG_OUT,
+  UPDATE_USER
 } from "../actions";
 
 const initialState = {
@@ -56,6 +57,11 @@ export default (state = initialState, action) => {
         ...state,
         user: []
       };
+    case UPDATE_USER:
+      return {
+        ...state,
+        user: []
+      }
     default:
       return state;
   }
