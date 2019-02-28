@@ -24,7 +24,7 @@ class App extends Component {
       user: null
     };
     //this.login = this.login.bind(this);
-    this.logout = this.logout.bind(this);
+    // this.logout = this.logout.bind(this);
   }
 
 
@@ -96,23 +96,20 @@ class App extends Component {
   //   }
   // }
 
-  logout() {
-    firebase
-      .auth()
-      .signOut()
-      .then(result => {
-        this.setState({
-          user: null
-        });
-      });
-  }
+  // logout() {
+  //   firebase
+  //     .auth()
+  //     .signOut()
+  //     this.props.locationChange()
+  //     this.props.history.push('/')
+  // }
 
-  render() {
+  render() {console.log(this.props)
     return (
       <div className="App">
         <Route
           path="/"
-          render={props => <Header {...this.props} {...props} />}
+          render={props => <Header {...this.props} {...props} logout = {this.logout} />}
         />  
         <Route
           exact
@@ -123,7 +120,7 @@ class App extends Component {
         <Route
           exact
           path="/home"
-          render={props => <HomePage {...this.props} {...props} location = {this.props.location} />}
+          render={props => <HomePage {...this.props} {...props}  />}
         />
         <Route
           exact
@@ -133,12 +130,12 @@ class App extends Component {
         <Route
           exact
           path="/profile"
-          render={props => <ProfilePage {...this.props} {...props} location = {this.props.location}/>}
+          render={props => <ProfilePage {...this.props} {...props} />}
         />
         <Route
           exact
           path="/landing"
-          render={props => <Landing {...this.props} {...props} location = {this.props.location}/>}
+          render={props => <Landing {...this.props} {...props} />}
         />
         <Route
           exact

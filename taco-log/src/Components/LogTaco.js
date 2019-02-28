@@ -363,7 +363,11 @@ class LogTaco extends Component {
       taco_name: "",
       rating: "",
       taco_description: "",
-      special_experience: "0"
+      special_experience: "0",
+      selectedTortilla: [],
+      selectedMeat: [],
+      selectedCheese: [],
+      selectedSalsa: [],
     });
   };
 

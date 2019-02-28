@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {CardElement, injectStripe} from 'react-stripe-elements';
 import StripeCheckout from 'react-stripe-checkout'; 
+import {Button} from "reactstrap"
 
 class CheckoutForm extends Component {
   constructor(props) {
@@ -28,9 +29,6 @@ class CheckoutForm extends Component {
     if (this.state.complete) return <h1>Purchase Complete</h1>;
 
     return (
-      <div className="checkout">
-        <p>Would you like to leave a tip?</p>
-        {/* <CardElement /> */}
         <StripeCheckout
                   amount="9.99"
                   name="Taco logs"
@@ -40,10 +38,10 @@ class CheckoutForm extends Component {
                   currency="USD"
                   token={res => this.onToken(this.createOrder)}
                 >
-                  <button>Leave a tip!</button>
+                  Leave a tip!
         </StripeCheckout> 
         
-      </div>
+      
     );
   }
 }
