@@ -48,7 +48,10 @@ class Header extends Component {
       isOpen: !this.state.isOpen
     });
   }
-  render() {console.log(this.props)
+
+
+  render() {
+
     return (
       <div>
         <Navbar color="light" light expand="md">

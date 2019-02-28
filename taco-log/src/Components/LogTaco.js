@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { firebase } from "../firebase/firebase";
+import { Form, Input, Button, FormGroup, Container, Row, Col } from "reactstrap";
 import "../css/logTaco.css";
 
 class LogTaco extends Component {
@@ -410,10 +411,12 @@ class LogTaco extends Component {
             )}
           </div>
         </div>
-        <div className="ingredent-tab-wrap">
+        <Container>
+
+        <Row className="ingredent-tab-wrap">
           Tortilla:
           {this.state.tortilla.map(data => (
-            <div
+            <Col xs="3"
               onClick={this.selectTortilla}
               className={
                 this.state.selectedTortilla.indexOf(data) > -1
@@ -423,13 +426,14 @@ class LogTaco extends Component {
               id={data}
             >
               {data}
-            </div>
+            </Col>
           ))}
-        </div>
-        <div className="ingredent-tab-wrap">
+        </Row>
+
+        <Row className="ingredent-tab-wrap">
           Meat:
           {this.state.meat.map(data => (
-            <div
+            <Col xs="3"
               onClick={this.selectMeat}
               className={
                 this.state.selectedMeat.indexOf(data) > -1
@@ -439,13 +443,14 @@ class LogTaco extends Component {
               id={data}
             >
               {data}
-            </div>
+            </Col>
           ))}
-        </div>
-        <div className="ingredent-tab-wrap">
+        </Row>
+        
+        <Row className="ingredent-tab-wrap">
           Cheese:
           {this.state.cheese.map(data => (
-            <div
+            <Col xs="3"
               onClick={this.selectCheese}
               className={
                 this.state.selectedCheese.indexOf(data) > -1
@@ -455,13 +460,14 @@ class LogTaco extends Component {
               id={data}
             >
               {data}
-            </div>
+            </Col>
           ))}
-        </div>
-        <div className="ingredent-tab-wrap">
+        </Row>
+        
+        <Row className="ingredent-tab-wrap">
           Salsa:
           {this.state.salsa.map(data => (
-            <div
+            <Col xs="3"
               onClick={this.selectSalsa}
               className={
                 this.state.selectedSalsa.indexOf(data) > -1
@@ -471,24 +477,28 @@ class LogTaco extends Component {
               id={data}
             >
               {data}
-            </div>
+            </Col>
           ))}
-        </div>
-        <form>
-          <input
+        </Row>
+        
+        </Container>
+        <Form>
+        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+          <Input 
             onChange={this.handleInputChange}
             placeholder="rating"
             value={this.state.rating}
             name="rating"
           />
-          <input
+          <Input
             onChange={this.handleInputChange}
             placeholder="name"
             value={this.state.taco_name}
             name="taco_name"
           />
-          <button onClick={this.newTaco}>Submit</button>
-        </form>
+          <Button onClick={this.newTaco}>Submit</Button>
+          </FormGroup>
+        </Form>
         <div>
           <input
             onClick={this.toggleSpecialExp}
