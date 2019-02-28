@@ -38,7 +38,8 @@ class Header extends Component {
 
   logout() {
     firebase.auth().signOut();
-    this.props.locationChange();
+    this.props.logoutUser();
+    this.props.locationChange();    
     this.props.history.push("/");
   }
 
@@ -48,7 +49,9 @@ class Header extends Component {
     });
   }
 
+
   render() {
+
     return (
       <div>
         <Navbar color="light" light expand="md">
