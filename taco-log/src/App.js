@@ -9,7 +9,8 @@ import LogTaco from "./Components/LogTaco";
 import LoginPage from "./Components/LoginPage";
 import Landing from "./Components/Landing";
 import AddStore from "./Components/AddStore";
-import ProfilePage from "./Components/ProfilePage"
+import ProfilePage from "./Components/ProfilePage";
+import AccountSettings from "./Components/AccountSettings";
 
 import { loginUser, logTaco, deleteTaco, assignAchievement, locationChange, updateStats, GET_TACO } from "./actions";
 
