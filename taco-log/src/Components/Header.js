@@ -86,8 +86,8 @@ class Header extends Component {
                   Options
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem>
-                    <NavLink href="/accountsettings">Settings</NavLink>
+                  <DropdownItem onClick={e => this.customlink("/AccountSettings")}>
+                    <NavLink>Settings</NavLink>
                   </DropdownItem>
                   <DropdownItem>About Us</DropdownItem>
                   <DropdownItem>
