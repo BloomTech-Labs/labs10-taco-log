@@ -147,7 +147,19 @@ server.get("/api/tacos", (req, res) => {
     });
 });
 
-server.post("/api/tacos", /* isAuthenticated, */ (req, res) => {
+server.get("/api/tacos/special", (req, res) => {
+  db("taco-log")
+  .select()
+    .where("special_experience", 1)
+    .then(taco => {
+      res.status(200).json(taco);
+    })
+    .catch(err => {
+      res.send(err);
+    });
+});
+
+server.post("/api/tacos", isAuthenticated, (req, res) => {
   const taco = req.body;
   db.insert(taco)
     .into("taco-log")

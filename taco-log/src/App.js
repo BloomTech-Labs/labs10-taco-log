@@ -4,11 +4,16 @@ import axios from "axios";
 import { Route, Switch, Link } from "react-router-dom";
 import { firebase } from "./firebase/firebase";
 import HomePage from "./Components/HomePage";
+import Header from "./Components/Header";
 import LogTaco from "./Components/LogTaco";
 import LoginPage from "./Components/LoginPage";
+import Landing from "./Components/Landing";
 import AddStore from "./Components/AddStore";
-import ProfilePage from "./Components/ProfilePage"
-import { loginUser, logTaco, deleteTaco, assignAchievement, locationChange, updateStats } from "./actions";
+import ProfilePage from "./Components/ProfilePage";
+import AccountSettings from "./Components/AccountSettings";
+
+import { loginUser, logTaco, deleteTaco, assignAchievement, locationChange, updateStats, GET_TACO } from "./actions";
+
 import { connect } from "react-redux";
 
 class App extends Component {
@@ -18,7 +23,8 @@ class App extends Component {
       message: "",
       user: null
     };
-    
+    //this.login = this.login.bind(this);
+    // this.logout = this.logout.bind(this);
   }
 
 
@@ -90,20 +96,21 @@ class App extends Component {
   //   }
   // }
 
-  logout() {
-    firebase
-      .auth()
-      .signOut()
-      .then(result => {
-        this.setState({
-          user: null
-        });
-      });
-  }
+  // logout() {
+  //   firebase
+  //     .auth()
+  //     .signOut()
+  //     this.props.locationChange()
+  //     this.props.history.push('/')
+  // }
 
   render() {console.log(this.props)
     return (
       <div className="App">
+        <Route
+          path="/"
+          render={props => <Header {...this.props} {...props} logout = {this.logout} />}
+        />  
         <Route
           exact
           path="/"
@@ -113,7 +120,7 @@ class App extends Component {
         <Route
           exact
           path="/home"
-          render={props => <HomePage {...this.props} {...props} location = {this.props.location} />}
+          render={props => <HomePage {...this.props} {...props}  />}
         />
         <Route
           exact
@@ -123,13 +130,23 @@ class App extends Component {
         <Route
           exact
           path="/profile"
-          render={props => <ProfilePage {...this.props} {...props} location = {this.props.location}/>}
+          render={props => <ProfilePage {...this.props} {...props} />}
+        />
+        <Route
+          exact
+          path="/landing"
+          render={props => <Landing {...this.props} {...props} />}
         />
         <Route
           exact
           path="/addstore"
           render={props => <AddStore {...this.props} {...props} />}
         />
+          <Route
+            exact
+            path="/accountsettings"
+            render={props => <AccountSettings {...this.props} {...props} />}
+          />
         </Switch>
        
       </div>
@@ -139,11 +156,12 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    userInfo: state.userReducer.user
+    userInfo: state.userReducer.user,
+    tacoInfo: state.tacoReducer.tacos
   };
 };
 
 export default connect(
   mapStateToProps,
-  { loginUser, logTaco, deleteTaco, assignAchievement, locationChange, updateStats }
+  { loginUser, logTaco, deleteTaco, assignAchievement, locationChange, updateStats, GET_TACO }
 )(App);

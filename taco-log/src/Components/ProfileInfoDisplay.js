@@ -1,15 +1,24 @@
 import React, { Component } from "react";
+import { Card, CardBody, CardTitle } from "reactstrap";
 
 class ProfileInfoDisplay extends Component {
   render() {
     return (
-      <div className="p-info-dis">
-        <h2 className="p-info-name">{this.props.userInfo.name}</h2>
-        <span>Email: {this.props.userInfo.email}</span>
-        <span>
-          Total Tacos Logged: {this.props.userInfo.user_stats.tacos_logged} 
-        </span>
+      <Card>
+      <div>
+        {this.props.userInfo.length != 0 ? (
+          <CardBody className="p-info-dis">
+            <CardTitle className="p-info-name">{this.props.userInfo.name}</CardTitle>
+            <CardTitle>Email: {this.props.userInfo.email}</CardTitle>
+            <CardTitle>
+              Total Tacos Logged: {this.props.userInfo.user_stats.tacos_logged}
+            </CardTitle>
+          </CardBody>
+        ) : (
+          <div />
+        )}
       </div>
+      </Card>
     );
   }
 }

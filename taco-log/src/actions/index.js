@@ -15,7 +15,7 @@
 //       };
 //     };
 
-import { FETCH_TACOS, ADDDATABASE_TACOS } from "./tacoActions";
+import { FETCH_TACOS, GET_TACO, ADDDATABASE_TACOS } from "./tacoActions";
 import {
   GET_USER,
   CREATE_USER,
@@ -47,5 +47,6 @@ export {
   LOCATION_CHANGE,
   locationChange,
   LOG_TACO,
+  GET_TACO,
   updateStats
 };

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { firebase } from "../firebase/firebase";
+import { Form, Input, Button, FormGroup, Container, Row, Col } from "reactstrap";
 import "../css/logTaco.css";
 
 class LogTaco extends Component {
@@ -25,7 +26,7 @@ class LogTaco extends Component {
       selectedMeat: [],
       selectedCheese: [],
       selectedSalsa: [],
-      special_experience: "0",
+      special_experience: 0,
       taco_description: ""
     };
   }
@@ -92,7 +93,7 @@ class LogTaco extends Component {
   };
 
   componentDidMount() {
-    const inputElement = document.querySelector(".dropdown");
+    const inputElement = document.querySelector(".google-dropdown");
     const dropdown = new window.google.maps.places.Autocomplete(inputElement);
     dropdown.addListener("place_changed", () => {
       const place = dropdown.getPlace();
@@ -108,15 +109,27 @@ class LogTaco extends Component {
   }
 
   achievementCheck = achievementId => {
+    let check = false
     for (let i = 0; i < this.props.userInfo.achievements.length; i++) {
       if (this.props.userInfo.achievements[i].id === achievementId) {
-        return true;
-      }
+        check = true;
+      }    
     }
+    return check
   };
   addAchievement = header => {
     if (
       this.props.userInfo.user_stats.tacos_logged >= 5 &&
+      !this.achievementCheck(1)
+    ) {
+      const achievement = {
+        user_id: this.props.userInfo.internal_id,
+        achievement_id: 1
+      };
+      this.props.assignAchievement(achievement, header);
+    } 
+     if (
+      this.props.userInfo.user_stats.tacos_logged >= 10 &&
       !this.achievementCheck(2)
     ) {
       const achievement = {
@@ -124,13 +137,137 @@ class LogTaco extends Component {
         achievement_id: 2
       };
       this.props.assignAchievement(achievement, header);
+    } 
+    if (
+      this.props.userInfo.user_stats.tacos_logged >= 20 &&
+      !this.achievementCheck(3)
+    ) {
+      const achievement = {
+        user_id: this.props.userInfo.internal_id,
+        achievement_id: 3
+      };
+      this.props.assignAchievement(achievement, header);
+    }
+    if (
+      this.props.userInfo.user_stats.meats_logged.split(",").length === 5 &&
+      !this.achievementCheck(4)
+    ) {
+      const achievement = {
+        user_id: this.props.userInfo.internal_id,
+        achievement_id: 4
+      };
+      this.props.assignAchievement(achievement, header);
+    }
+
+    if (
+      this.props.userInfo.user_stats.cheese_logged.split(",").length === 5 &&
+      !this.achievementCheck(5)
+    ) {
+      const achievement = {
+        user_id: this.props.userInfo.internal_id,
+        achievement_id: 5
+      };
+      this.props.assignAchievement(achievement, header);
+    } 
+
+    if (
+      this.props.userInfo.user_stats.salsa_logged.split(",").length === 6 &&
+      !this.achievementCheck(6)
+    ) {
+      const achievement = {
+        user_id: this.props.userInfo.internal_id,
+        achievement_id: 6
+      };
+      this.props.assignAchievement(achievement, header);
     }
   };
 
   updateStats = header => {
     const id = this.props.userInfo.internal_id;
+
+    let lastMeat = this.props.userInfo.taco_logs[
+      this.props.userInfo.taco_logs.length - 1
+    ].meat;
+
+    if (lastMeat.length > 0) {
+      lastMeat = lastMeat.split(",");
+    }
+
+    let currMeat = this.props.userInfo.user_stats.meats_logged;
+
+    if (currMeat != null) {
+      let currMeatArr = currMeat.split(",");
+      if (lastMeat.length > 0) {
+        for (let i = 0; i < lastMeat.length; i++) {
+          if (currMeatArr.indexOf(lastMeat[i]) === -1) {
+            currMeatArr.push(lastMeat[i]);
+            currMeat = currMeatArr.join();
+          }
+        }
+      }
+    } else {
+      if (lastMeat.length > 0) {
+        currMeat = lastMeat.join();
+      }
+    }
+
+    let lastCheese = this.props.userInfo.taco_logs[
+      this.props.userInfo.taco_logs.length - 1
+    ].cheese;
+
+    if (lastCheese.length > 0) {
+      lastCheese = lastCheese.split(",");
+    }
+
+    let currCheese = this.props.userInfo.user_stats.cheese_logged;
+
+    if (currCheese != null) {
+      let currCheeseArr = currCheese.split(",");
+      if (lastCheese.length > 0) {
+        for (let i = 0; i < lastCheese.length; i++) {
+          if (currCheeseArr.indexOf(lastCheese[i]) === -1) {
+            currCheeseArr.push(lastCheese[i]);
+            currCheese = currCheeseArr.join();
+          }
+        }
+      }
+    } else {
+      if (lastCheese.length > 0) {
+        currCheese = lastCheese.join();
+      }
+    }
+
+    let lastSalsa = this.props.userInfo.taco_logs[
+      this.props.userInfo.taco_logs.length - 1
+    ].salsa;
+
+    if (lastSalsa.length > 0) {
+      lastSalsa = lastSalsa.split(",");
+    }
+
+    let currSalsa = this.props.userInfo.user_stats.salsa_logged;
+
+    if (currSalsa != null) {
+      let currSalsaArr = currSalsa.split(",");
+      if (lastSalsa.length > 0) {
+        for (let i = 0; i < lastSalsa.length; i++) {
+          if (currSalsaArr.indexOf(lastSalsa[i]) === -1) {
+            currSalsaArr.push(lastSalsa[i]);
+            currSalsa = currSalsaArr.join();
+          }
+        }
+      }
+    } else {
+      if (lastSalsa.length > 0) {
+        currSalsa = lastSalsa.join();
+      }
+    }
+
     const stats = {
-      tacos_logged: this.props.userInfo.taco_logs.length
+      tacos_logged: this.props.userInfo.taco_logs.length,
+      meats_logged: currMeat,
+      cheese_logged: currCheese,
+      salsa_logged: currSalsa
     };
     this.props.updateStats(id, stats, header);
   };
@@ -205,6 +342,7 @@ class LogTaco extends Component {
       cheese: cheese,
       salsa: salsa,
       special_experience: this.state.special_experience
+
     };
     firebase
       .auth()
@@ -226,31 +364,33 @@ class LogTaco extends Component {
       taco_name: "",
       rating: "",
       taco_description: "",
-      special_experience: "0"
+      special_experience: "0",
+      selectedTortilla: [],
+      selectedMeat: [],
+      selectedCheese: [],
+      selectedSalsa: [],
     });
   };
 
   toggleSpecialExp = () => {
-    console.log(this.state.special_experience);
-    if (this.state.special_experience === "0") {
+    if (this.state.special_experience === 0) {
       this.setState({
-        special_experience: "1"
+        special_experience: 1
       });
     } else {
       this.setState({
-        special_experience: "0"
+        special_experience: 0
       });
     }
   };
 
   render() {
-    console.log(this.state);
     return (
       <div className="taco-form">
         <p>Log a Taco Here:</p>
         <input
           onChange={this.handleInputChange}
-          class="dropdown"
+          className="google-dropdown"
           placeholder="location"
           value={this.state.taco_location}
           name="taco_location"
@@ -271,10 +411,12 @@ class LogTaco extends Component {
             )}
           </div>
         </div>
-        <div className="ingredent-tab-wrap">
+        <Container>
+
+        <Row className="ingredent-tab-wrap">
           Tortilla:
           {this.state.tortilla.map(data => (
-            <div
+            <Col xs="3"
               onClick={this.selectTortilla}
               className={
                 this.state.selectedTortilla.indexOf(data) > -1
@@ -284,13 +426,14 @@ class LogTaco extends Component {
               id={data}
             >
               {data}
-            </div>
+            </Col>
           ))}
-        </div>
-        <div className="ingredent-tab-wrap">
+        </Row>
+
+        <Row className="ingredent-tab-wrap">
           Meat:
           {this.state.meat.map(data => (
-            <div
+            <Col xs="3"
               onClick={this.selectMeat}
               className={
                 this.state.selectedMeat.indexOf(data) > -1
@@ -300,13 +443,14 @@ class LogTaco extends Component {
               id={data}
             >
               {data}
-            </div>
+            </Col>
           ))}
-        </div>
-        <div className="ingredent-tab-wrap">
+        </Row>
+        
+        <Row className="ingredent-tab-wrap">
           Cheese:
           {this.state.cheese.map(data => (
-            <div
+            <Col xs="3"
               onClick={this.selectCheese}
               className={
                 this.state.selectedCheese.indexOf(data) > -1
@@ -316,13 +460,14 @@ class LogTaco extends Component {
               id={data}
             >
               {data}
-            </div>
+            </Col>
           ))}
-        </div>
-        <div className="ingredent-tab-wrap">
+        </Row>
+        
+        <Row className="ingredent-tab-wrap">
           Salsa:
           {this.state.salsa.map(data => (
-            <div
+            <Col xs="3"
               onClick={this.selectSalsa}
               className={
                 this.state.selectedSalsa.indexOf(data) > -1
@@ -332,24 +477,28 @@ class LogTaco extends Component {
               id={data}
             >
               {data}
-            </div>
+            </Col>
           ))}
-        </div>
-        <form>
-          <input
+        </Row>
+        
+        </Container>
+        <Form>
+        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+          <Input 
             onChange={this.handleInputChange}
             placeholder="rating"
             value={this.state.rating}
             name="rating"
           />
-          <input
+          <Input
             onChange={this.handleInputChange}
             placeholder="name"
             value={this.state.taco_name}
             name="taco_name"
           />
-          <button onClick={this.newTaco}>Submit</button>
-        </form>
+          <Button onClick={this.newTaco}>Submit</Button>
+          </FormGroup>
+        </Form>
         <div>
           <input
             onClick={this.toggleSpecialExp}
@@ -360,7 +509,7 @@ class LogTaco extends Component {
           Special Experience?
         </div>
 
-        {this.state.special_experience === "1" ? (
+        {this.state.special_experience === 1 ? (
           <textarea
             onChange={this.handleInputChange}
             name="taco_description"
