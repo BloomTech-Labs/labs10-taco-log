@@ -60,7 +60,7 @@ export default (state = initialState, action) => {
     case UPDATE_USER:
       return {
         ...state,
-        user: []
+        user: action.payload
       }
     default:
       return state;
