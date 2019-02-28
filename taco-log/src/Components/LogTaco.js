@@ -341,6 +341,7 @@ class LogTaco extends Component {
       cheese: cheese,
       salsa: salsa,
       special_experience: this.state.special_experience
+
     };
     firebase
       .auth()

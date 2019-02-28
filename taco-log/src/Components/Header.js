@@ -27,6 +27,12 @@ class Header extends Component {
       isOpen: false
     };
   }
+
+  customlink = (url) => {
+    this.props.locationChange()
+    this.props.history.push(url)
+  }
+
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
@@ -36,7 +42,7 @@ class Header extends Component {
     return (
       <div>
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">Taco Home</NavbarBrand>
+          <NavbarBrand onClick={(e) => this.customlink("/landing/")}>Taco Home</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
@@ -46,12 +52,11 @@ class Header extends Component {
                 </FormGroup>
               </Form>
               <NavItem>
-                <NavLink href="/profile/">Profile</NavLink>
+                <NavLink onClick={(e) => this.customlink("/profile")}>Profile</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/taco">Taco Log</NavLink>
+                <NavLink onClick={(e) => this.customlink("/home")}>Taco Log</NavLink>
               </NavItem>
-              
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
                   Options

@@ -4,12 +4,16 @@ import axios from "axios";
 import { Route, Switch, Link } from "react-router-dom";
 import { firebase, provider } from "./firebase/firebase";
 import HomePage from "./Components/HomePage";
+import Header from "./Components/Header";
 import LogTaco from "./Components/LogTaco";
 import LoginPage from "./Components/LoginPage";
+import Landing from "./Components/Landing";
 import AddStore from "./Components/AddStore";
-import ProfilePage from "./Components/ProfilePage"
+import ProfilePage from "./Components/ProfilePage";
 import AccountSettings from "./Components/AccountSettings";
-import { loginUser, logTaco, deleteTaco, assignAchievement, locationChange, updateStats } from "./actions";
+
+import { loginUser, logTaco, deleteTaco, assignAchievement, locationChange, updateStats, GET_TACO } from "./actions";
+
 import { connect } from "react-redux";
 
 class App extends Component {
@@ -107,6 +111,10 @@ class App extends Component {
     return (
       <div className="App">
         <Route
+          path="/"
+          render={props => <Header {...this.props} {...props} />}
+        />  
+        <Route
           exact
           path="/"
           render={props => <LoginPage {...this.props} {...props} />}
@@ -129,6 +137,11 @@ class App extends Component {
         />
         <Route
           exact
+          path="/landing"
+          render={props => <Landing {...this.props} {...props} location = {this.props.location}/>}
+        />
+        <Route
+          exact
           path="/addstore"
           render={props => <AddStore {...this.props} {...props} />}
         />
@@ -146,11 +159,12 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    userInfo: state.userReducer.user
+    userInfo: state.userReducer.user,
+    tacoInfo: state.tacoReducer.tacos
   };
 };
 
 export default connect(
   mapStateToProps,
-  { loginUser, logTaco, deleteTaco, assignAchievement, locationChange, updateStats }
+  { loginUser, logTaco, deleteTaco, assignAchievement, locationChange, updateStats, GET_TACO }
 )(App);
