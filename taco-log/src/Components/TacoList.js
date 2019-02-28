@@ -17,7 +17,10 @@ class TacoList extends Component {
     let cities = [];
     for (let i = 0; i < this.props.userInfo.taco_logs.length; i++) {
       let city = this.props.userInfo.taco_logs[i].address.split(",")[1].trim();
-      cities.push(city);
+      if(cities.indexOf(city) === -1){
+        cities.push(city);
+      }
+      
     }
     this.setState({
       cities: cities
