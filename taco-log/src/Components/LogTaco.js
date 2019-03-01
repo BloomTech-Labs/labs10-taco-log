@@ -399,7 +399,7 @@ class LogTaco extends Component {
           <div>{this.state.taco_location}</div>
           <div className="taco-map">
             {this.state.staticMap && (
-              <img
+              <img className="taco-map-box"
                 src={`https://maps.googleapis.com/maps/api/staticmap?center=${
                   this.state.lat
                 },${
