@@ -8,5 +8,9 @@
 }
 
 .ingredent-tab-wrap .ingredent-tab-selected{
-    background-color: blue
+    background-color: blue;
+}
+
+.title-map-wrap .taco-map .taco-map-box{
+    width: 100%;
 }
