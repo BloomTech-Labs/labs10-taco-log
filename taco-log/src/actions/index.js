@@ -31,7 +31,10 @@ import {
   LOG_TACO,
   updateStats,
   LOG_OUT,
-  logoutUser
+  logoutUser,
+  UPDATE_USER,
+  updateUser
+
 } from "./userActions";
 
 export {
@@ -52,5 +55,7 @@ export {
   GET_TACO,
   updateStats,
   LOG_OUT,
-  logoutUser
+  logoutUser,
+  UPDATE_USER,
+  updateUser
 };

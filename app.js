@@ -103,9 +103,12 @@ server.post("/api/users", (req, res) => {
 
 server.put("/api/users/:id", (req, res) => {
   const { id } = req.params;
+  console.log(req.body);
+  const changes = req.body;
+
   db("users")
-    .where({ id })
-    .update(req.body)
+    .where("internal_id", id)
+    .update(changes)
     .then(result => {
       userDb
         .getUser(result.id)
@@ -114,7 +117,7 @@ server.put("/api/users/:id", (req, res) => {
         })
         .catch(err => {
           res.send(err);
-        });
+        });      
     })
     .catch(err => {
       res.send(err);
@@ -124,7 +127,7 @@ server.put("/api/users/:id", (req, res) => {
 server.delete("/api/users/:id", (req, res) => {
   const { id } = req.params;
   db("users")
-    .where({ id })
+    .where("internal_id", id)
     .del()
     .then(res => {
       res.status(200).json(res);
@@ -149,7 +152,7 @@ server.get("/api/tacos", (req, res) => {
 
 server.get("/api/tacos/special", (req, res) => {
   db("taco-log")
-  .select()
+    .select()
     .where("special_experience", 1)
     .then(taco => {
       res.status(200).json(taco);
