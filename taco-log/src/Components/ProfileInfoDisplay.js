@@ -6,7 +6,7 @@ class ProfileInfoDisplay extends Component {
     return (
       <Card>
       <div>
-        {this.props.userInfo.length != 0 ? (
+        {this.props.userInfo.length !== 0 ? (
           <CardBody className="p-info-dis">
             <CardTitle className="p-info-name">{this.props.userInfo.name}</CardTitle>
             <CardTitle>Email: {this.props.userInfo.email}</CardTitle>
