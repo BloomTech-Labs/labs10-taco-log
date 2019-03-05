@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { firebase } from "../firebase/firebase";
 import { Form, Input, Button, FormGroup, Container, Row, Col } from "reactstrap";
+import tacoIcon from "../img/taco.png";
 import "../css/logTaco.css";
 
 class LogTaco extends Component {
@@ -384,8 +385,17 @@ class LogTaco extends Component {
     }
   };
 
+  toggleRating = e => {
+    console.log(e.target.id);
+      this.setState({
+        rating: e.target.id
+      });
+  };
+
+
   render() {
     return (
+      <Container>
       <div className="taco-form">
         <p>Log a Taco Here:</p>
         <input
@@ -416,7 +426,7 @@ class LogTaco extends Component {
         <Row className="ingredent-tab-wrap">
           Tortilla:
           {this.state.tortilla.map(data => (
-            <Col xs="3"
+            <Col xs="1"
               onClick={this.selectTortilla}
               className={
                 this.state.selectedTortilla.indexOf(data) > -1
@@ -433,7 +443,7 @@ class LogTaco extends Component {
         <Row className="ingredent-tab-wrap">
           Meat:
           {this.state.meat.map(data => (
-            <Col xs="3"
+            <Col xs="1"
               onClick={this.selectMeat}
               className={
                 this.state.selectedMeat.indexOf(data) > -1
@@ -450,7 +460,7 @@ class LogTaco extends Component {
         <Row className="ingredent-tab-wrap">
           Cheese:
           {this.state.cheese.map(data => (
-            <Col xs="3"
+            <Col xs="1"
               onClick={this.selectCheese}
               className={
                 this.state.selectedCheese.indexOf(data) > -1
@@ -467,7 +477,7 @@ class LogTaco extends Component {
         <Row className="ingredent-tab-wrap">
           Salsa:
           {this.state.salsa.map(data => (
-            <Col xs="3"
+            <Col xs="1"
               onClick={this.selectSalsa}
               className={
                 this.state.selectedSalsa.indexOf(data) > -1
@@ -484,12 +494,17 @@ class LogTaco extends Component {
         </Container>
         <Form>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-          <Input 
+          {/* <Input 
             onChange={this.handleInputChange}
             placeholder="rating"
             value={this.state.rating}
             name="rating"
-          />
+          /> */}
+          <img src={tacoIcon} onClick={(e) => this.toggleRating(e)} className='taco-icon' id="1"/>
+          <img src={tacoIcon} onClick={(e) => this.toggleRating(e)} className='taco-icon' id="2"/>
+          <img src={tacoIcon} onClick={(e) => this.toggleRating(e)} className='taco-icon' id="3"/>
+          <img src={tacoIcon} onClick={(e) => this.toggleRating(e)} className='taco-icon' id="4"/>
+          <img src={tacoIcon} onClick={(e) => this.toggleRating(e)} className='taco-icon' id="5"/>
           <Input
             onChange={this.handleInputChange}
             placeholder="name"
@@ -521,6 +536,7 @@ class LogTaco extends Component {
           <div />
         )}
       </div>
+      </Container>
     );
   }
 }
