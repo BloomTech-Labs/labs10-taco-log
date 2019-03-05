@@ -6,6 +6,19 @@
   justify-content: center;
 }
 
+/* .footer{
+  position: relative;
+  min-height: 100vh;
+} */
 .nav{
   background-color: #06BA63;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.github-logo{
+  width:100px;
+  max-height: 100%;
+  max-width: 100%;
 }
