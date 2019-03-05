@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { firebase } from "../firebase/firebase";
 import { Form, Input, Button, FormGroup, Container, Row, Col } from "reactstrap";
 import tacoIcon from "../img/taco.png";
+import tacoColor from "../img/taco-color.png"
+import tacoGrey from "../img/taco-grey.png"
 import "../css/logTaco.css";
 
 class LogTaco extends Component {
@@ -500,11 +502,11 @@ class LogTaco extends Component {
             value={this.state.rating}
             name="rating"
           /> */}
-          <img src={tacoIcon} onClick={(e) => this.toggleRating(e)} className='taco-icon' id="1"/>
-          <img src={tacoIcon} onClick={(e) => this.toggleRating(e)} className='taco-icon' id="2"/>
-          <img src={tacoIcon} onClick={(e) => this.toggleRating(e)} className='taco-icon' id="3"/>
-          <img src={tacoIcon} onClick={(e) => this.toggleRating(e)} className='taco-icon' id="4"/>
-          <img src={tacoIcon} onClick={(e) => this.toggleRating(e)} className='taco-icon' id="5"/>
+          <img src={(this.state.rating >= 1)?tacoColor:tacoGrey} onClick={(e) => this.toggleRating(e)} className='taco-icon' id="1" alt = "taco-icon"/>
+          <img src={(this.state.rating >= 2)?tacoColor:tacoGrey} onClick={(e) => this.toggleRating(e)} className='taco-icon' id="2" alt = "taco-icon"/>
+          <img src={(this.state.rating >= 3)?tacoColor:tacoGrey} onClick={(e) => this.toggleRating(e)} className='taco-icon' id="3" alt = "taco-icon"/>
+          <img src={(this.state.rating >= 4)?tacoColor:tacoGrey} onClick={(e) => this.toggleRating(e)} className='taco-icon' id="4" alt = "taco-icon"/>
+          <img src={(this.state.rating >= 5)?tacoColor:tacoGrey} onClick={(e) => this.toggleRating(e)} className='taco-icon' id="5" alt = "taco-icon"/>
           <Input
             onChange={this.handleInputChange}
             placeholder="name"
