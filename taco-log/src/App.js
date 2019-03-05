@@ -11,6 +11,7 @@ import Landing from "./Components/Landing";
 import AddStore from "./Components/AddStore";
 import ProfilePage from "./Components/ProfilePage";
 import AccountSettings from "./Components/AccountSettings";
+import Footer from "./Components/Footer";
 
 import { loginUser, logTaco, deleteTaco, assignAchievement, locationChange, updateStats, GET_TACO, logoutUser, updateUser } from "./actions";
 
@@ -70,6 +71,11 @@ class App extends Component {
             path="/accountsettings"
             render={props => <AccountSettings {...this.props} {...props} />}
           />
+          <Route 
+            exact
+            path="/"
+            render={props => <Footer {...this.props} {...props} /> }
+        />
         </Switch>
        
       </div>
