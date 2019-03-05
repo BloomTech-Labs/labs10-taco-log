@@ -39,7 +39,7 @@ class App extends Component {
           exact
           path="/"
           render={props => <LoginPage {...this.props} {...props} />}
-        />  
+        />
         <Switch>      
         <Route
           exact
@@ -71,13 +71,11 @@ class App extends Component {
             path="/accountsettings"
             render={props => <AccountSettings {...this.props} {...props} />}
           />
-          <Route 
-            exact
-            path="/"
-            render={props => <Footer {...this.props} {...props} /> }
-        />
         </Switch>
-       
+        <Route
+          path="/"
+          render={props => <Footer {...this.props} {...props} />}
+        />
       </div>
     );
   }
