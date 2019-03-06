@@ -514,7 +514,7 @@ class LogTaco extends Component {
           <img src={(this.state.rating >= 5)?tacoColor:tacoGrey} onClick={(e) => this.toggleRating(e)} className='taco-icon' id="5" alt = "taco-icon"/>
           <Input
             onChange={this.handleInputChange}
-            placeholder="name"
+            placeholder="What was the name of the taco you had here? Or you can put in whatever you want to call it if it was something custom to you!"
             value={this.state.taco_name}
             name="taco_name"
           />
