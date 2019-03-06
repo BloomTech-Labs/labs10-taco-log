@@ -12,7 +12,7 @@ import ProfilePage from "./Components/ProfilePage";
 import AccountSettings from "./Components/AccountSettings";
 import Footer from "./Components/Footer";
 
-import { loginUser, logTaco, deleteTaco, assignAchievement, locationChange, updateStats, GET_TACO, logoutUser, updateUser } from "./actions";
+import { loginUser, logTaco, deleteTaco, assignAchievement, locationChange, updateStats, GET_TACO, logoutUser, updateUser, fetchAchievements } from "./actions";
 
 import { connect } from "react-redux";
 
@@ -77,11 +77,12 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     userInfo: state.userReducer.user,
-    tacoInfo: state.tacoReducer.tacos
+    tacoInfo: state.tacoReducer.tacos,
+    achievements: state.achievementReducer.achievements
   };
 };
 
 export default connect(
   mapStateToProps,
-  { loginUser, logTaco, deleteTaco, assignAchievement, locationChange, updateStats, GET_TACO, logoutUser, updateUser }
+  { loginUser, logTaco, deleteTaco, assignAchievement, locationChange, updateStats, GET_TACO, logoutUser, updateUser, fetchAchievements }
 )(App);

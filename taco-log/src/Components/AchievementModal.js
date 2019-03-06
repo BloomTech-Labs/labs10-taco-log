@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import AchievementCard from "./AchievementCard";
 
-class AchievementList extends Component {
+class AchievementModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,15 +32,15 @@ class AchievementList extends Component {
     return (
       <div className="achievement-list-owrap">
         Achievements:
-        <div onClick={()=>this.toggleModal()}>All Achievements</div>
+        <div onClick={this.toggleModal}>All Achievements</div>
         {this.state.modal ? (
           <div>
             {this.props.achievements.map(achievement => (
               <AchievementCard
                 imgsrc={
                   this.achievementCheck(achievement.id)
-                    ? require(`../img/achievement-${achievement.id}-color.png`)
-                    : require(`../img/achievement-${achievement.id}-grey.png`)
+                    ? `../img/achievement-${achievement.id}-color`
+                    : `../img/achievement-${achievement.id}-grey`
                 }
                 key={achievement.id}
                 id = {achievement.id}
@@ -57,7 +57,6 @@ class AchievementList extends Component {
           <div>
             {this.props.userInfo.achievements.map(achievement => (
               <AchievementCard
-              imgsrc={require(`../img/achievement-${achievement.id}-color.png`)}
                 key={achievement.id}
                 title={achievement.title}
                 description={achievement.description}
@@ -72,4 +71,4 @@ class AchievementList extends Component {
   }
 }
 
-export default AchievementList;
+export default AchievementModal;

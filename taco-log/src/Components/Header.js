@@ -50,6 +50,7 @@ class Header extends Component {
           email: result.user.email,
           ext_user_id: result.user.uid
         };
+        this.props.loginUser(user)
         this.setState({
           user
         });

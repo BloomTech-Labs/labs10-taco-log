@@ -2,11 +2,22 @@
     display:flex;
     align-items: center;
     justify-content: center;
+    max-width:80%;
+}
+
+.ingredient-container{
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-end;
 }
 
 .ingredient-tab-wrap{
-    justify-content: center;
-    padding: 1%;
+    justify-content:space-between;
+    width:100%;
+    padding:2%;
+}
+.ingredient-category{
+    justify-self:flex-start;
 }
 
 .taco-form{
@@ -40,3 +51,7 @@
     height:100px;
     width:100px;
    }
+
+.google-dropdown{
+    width: 450px;
+}
