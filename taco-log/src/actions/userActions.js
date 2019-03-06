@@ -120,3 +120,4 @@ export const updateUser = (id, changes) => dispatch => {
     console.log(err);
   });
 }
+

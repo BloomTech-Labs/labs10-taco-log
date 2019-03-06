@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import tacoColor from "../img/taco-color.png";
 import tacoGrey from "../img/taco-grey.png";
+import "../css/TacoCard.css"
 
 class TacoCard extends Component {
   deleteTaco = id => {
@@ -12,10 +13,10 @@ class TacoCard extends Component {
 
   render() {
     return (
-      <div>
-        <p>{this.props.taco_location}</p>
-        <p>{this.props.taco_name}</p>
-        <p>          
+      <div className = "taco-card-wrap">
+        <div className = "taco-card-title">{this.props.taco_location}</div>
+        <div className = "taco-card-address">{this.props.address}</div>
+        <div className = "rating-icons">          
           <img
             src={this.props.rating >= 1 ? tacoColor : tacoGrey}
             className="taco-icon"
@@ -46,13 +47,9 @@ class TacoCard extends Component {
             id="5"
             alt = "taco-icon"
           />
-        </p>
-        <p>{this.props.tortilla}</p>
-        <p>{this.props.meat}</p>
-        <p>{this.props.cheese}</p>
-        <p>{this.props.salsa}</p>
+        </div>        
         <p>{this.props.created_at}</p>
-        <button onClick={() => this.deleteTaco(this.props.id)}>Delete</button>
+        {/* <button onClick={() => this.deleteTaco(this.props.id)}>Delete</button> */}
       </div>
     );
   }
