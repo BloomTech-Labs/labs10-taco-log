@@ -95,7 +95,7 @@ class Header extends Component {
       <div className="nav-container">
         <Navbar light expand="md">
           <NavbarBrand onClick={e => this.customlink("/landing/")}>
-            Taco Home
+            Taco Log
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
@@ -125,7 +125,7 @@ class Header extends Component {
               }
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
-                  Options
+                  
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem onClick={e => this.customlink("/AccountSettings")}>
