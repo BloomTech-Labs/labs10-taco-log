@@ -16,6 +16,7 @@
 //     };
 
 import { FETCH_TACOS, GET_TACO, ADDDATABASE_TACOS } from "./tacoActions";
+import { FETCH_ACHIEVEMENTS, fetchAchievements } from "./achievementActions";
 import {
   GET_USER,
   CREATE_USER,
@@ -34,7 +35,6 @@ import {
   logoutUser,
   UPDATE_USER,
   updateUser
-
 } from "./userActions";
 
 export {
@@ -57,5 +57,7 @@ export {
   LOG_OUT,
   logoutUser,
   UPDATE_USER,
-  updateUser
+  updateUser,
+  FETCH_ACHIEVEMENTS,
+  fetchAchievements
 };
