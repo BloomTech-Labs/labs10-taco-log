@@ -1,3 +1,8 @@
+.profile-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .profile-page .log-badges-switch{
     display: flex;
     justify-content: center;

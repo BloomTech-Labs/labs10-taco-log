@@ -31,9 +31,8 @@ class AchievementList extends Component {
 
   render() {
     return (
-      <div className="achievement-list-owrap">
-        Achievements:
-        <div onClick={() => this.toggleModal()}>All Achievements</div>
+      <div className="achievement-list-owrap">        
+        <div className="all-toggle" onClick={() => this.toggleModal()}>All Badges</div>
         <div
           className={
             this.state.modal ? "achievement-modal display" : "achievement-modal"
@@ -62,7 +61,7 @@ class AchievementList extends Component {
         </div>
         {this.props.userInfo.achievements &&
         this.props.userInfo.achievements.length > 0 ? (
-          <div>
+          <div className="personal-achievement-wrap">
             {this.props.userInfo.achievements.map(achievement => (
               <AchievementCard
                 imgsrc={require(`../img/achievement-${
