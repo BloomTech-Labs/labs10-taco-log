@@ -99,6 +99,7 @@ class LogTaco extends Component {
     const dropdown = new window.google.maps.places.Autocomplete(inputElement);
     dropdown.addListener("place_changed", () => {
       const place = dropdown.getPlace();
+      console.log(place)
       this.setState({
         address: place.formatted_address,
         taco_location: place.name,
@@ -416,7 +417,9 @@ class LogTaco extends Component {
                   this.state.lat
                 },${
                   this.state.lng
+
                 }&zoom=14&size=300x100&key=AIzaSyCgxie-2MKM8N9ibIvYVGzuzvVSaXDonrE&markers=${
+
                   this.state.lat
                 },${this.state.lng}&scale=2`}
               />
