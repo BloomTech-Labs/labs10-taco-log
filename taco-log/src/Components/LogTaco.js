@@ -535,6 +535,7 @@ class LogTaco extends Component {
           <textarea
             onChange={this.handleInputChange}
             name="taco_description"
+            placeholder="Did you have a great taco experience in this restaurant? Write about it here!"
             value={this.state.taco_description}
             rows="10"
             cols="50"
