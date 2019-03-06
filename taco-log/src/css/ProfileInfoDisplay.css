@@ -1,0 +1,16 @@
+.img-name-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:5px;
+}
+.img-name-container .p-img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    
+}
+.img-name-container .p-info-name{
+    font-weight: bold;
+    font-size: 1.6rem;
+}
