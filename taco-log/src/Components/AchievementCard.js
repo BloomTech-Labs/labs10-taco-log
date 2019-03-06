@@ -10,8 +10,8 @@ class AchievementCard extends Component {
         className = "achievement-icon"
         id = {this.props.id}
          />
-        <p>Achievement:{this.props.title}</p>
-        <p>Description:{this.props.description}</p>
+        <p>{this.props.title}</p>
+        <p>{this.props.description}</p>
       </div>
     );
   }

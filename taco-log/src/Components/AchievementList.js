@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import AchievementCard from "./AchievementCard";
+import "../css/AchievementList.css";
 
 class AchievementList extends Component {
   constructor(props) {
@@ -32,32 +33,41 @@ class AchievementList extends Component {
     return (
       <div className="achievement-list-owrap">
         Achievements:
-        <div onClick={()=>this.toggleModal()}>All Achievements</div>
-        {this.state.modal ? (
-          <div>
-            {this.props.achievements.map(achievement => (
-              <AchievementCard
-                imgsrc={
-                  this.achievementCheck(achievement.id)
-                    ? require(`../img/achievement-${achievement.id}-color.png`)
-                    : require(`../img/achievement-${achievement.id}-grey.png`)
-                }
-                key={achievement.id}
-                id = {achievement.id}
-                title={achievement.title}
-                description={achievement.description}
-              />
-            ))}
+        <div onClick={() => this.toggleModal()}>All Achievements</div>
+        <div
+          className={
+            this.state.modal ? "achievement-modal display" : "achievement-modal"
+          }
+        >
+          <div className="content">
+            <img className="exit-icon" src = {require('../img/exit-icon.png')} onClick={() => this.toggleModal()} />
+            <div className="inner-wrap">
+              {this.props.achievements.map(achievement => (
+                <AchievementCard
+                  imgsrc={
+                    this.achievementCheck(achievement.id)
+                      ? require(`../img/achievement-${
+                          achievement.id
+                        }-color.png`)
+                      : require(`../img/achievement-${achievement.id}-grey.png`)
+                  }
+                  key={achievement.id}
+                  id={achievement.id}
+                  title={achievement.title}
+                  description={achievement.description}
+                />
+              ))}
+            </div>
           </div>
-        ) : (
-          <div />
-        )}
+        </div>
         {this.props.userInfo.achievements &&
         this.props.userInfo.achievements.length > 0 ? (
           <div>
             {this.props.userInfo.achievements.map(achievement => (
               <AchievementCard
-              imgsrc={require(`../img/achievement-${achievement.id}-color.png`)}
+                imgsrc={require(`../img/achievement-${
+                  achievement.id
+                }-color.png`)}
                 key={achievement.id}
                 title={achievement.title}
                 description={achievement.description}
@@ -65,7 +75,9 @@ class AchievementList extends Component {
             ))}
           </div>
         ) : (
-          <div />
+          <div>
+            You do not have any achievements yet.
+            </div>
         )}
       </div>
     );
