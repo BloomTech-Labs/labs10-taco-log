@@ -6,7 +6,6 @@ import { firebase } from "./firebase/firebase";
 import HomePage from "./Components/HomePage";
 import Header from "./Components/Header";
 import LogTaco from "./Components/LogTaco";
-import LoginPage from "./Components/LoginPage";
 import Landing from "./Components/Landing";
 import AddStore from "./Components/AddStore";
 import ProfilePage from "./Components/ProfilePage";
@@ -20,25 +19,20 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      message: "",
-      user: null
+      message: ""
     };
 
   }
 
-
   render() {
+    
     return (
       <div className="App">
         <Route
           path="/"
           render={props => <Header {...this.props} {...props}  />}
         />  
-        <Route
-          exact
-          path="/"
-          render={props => <LoginPage {...this.props} {...props} />}
-        />  
+       
         <Switch>      
         <Route
           exact
@@ -57,7 +51,7 @@ class App extends Component {
         />
         <Route
           exact
-          path="/landing"
+          path="/"
           render={props => <Landing {...this.props} {...props} />}
         />
         <Route

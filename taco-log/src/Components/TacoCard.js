@@ -1,4 +1,12 @@
 import React, { Component } from "react";
+import "../css/tacoCard.css";
+// import {
+//   Card,
+//   CardImg,
+//   CardBody,
+//   Button,
+//   CardTitle
+// } from 'reactstrap';
 import { firebase } from "../firebase/firebase";
 
 class TacoCard extends Component {
@@ -11,16 +19,18 @@ class TacoCard extends Component {
 
   render() {
     return (
-      <div>
-        <p>{this.props.taco_location}</p>
-        <p>{this.props.taco_name}</p>
-        <p>{this.props.rating}</p>
-        <p>{this.props.tortilla}</p>
-        <p>{this.props.meat}</p>
-        <p>{this.props.cheese}</p>
-        <p>{this.props.salsa}</p>
-        <p>{this.props.created_at}</p>
-        <button onClick={() => this.deleteTaco(this.props.id)}>Delete</button>
+      <div className= "review-container">
+        <div className= "reviews">
+          <span>{this.props.taco_location}</span>
+          <span>{this.props.taco_name}</span>
+          <span>{this.props.rating}</span>
+          <span>{this.props.tortilla}</span>
+          <span>{this.props.meat}</span>
+          <span>{this.props.cheese}</span>
+          <span>{this.props.salsa}</span>
+          <span>{this.props.created_at}</span>
+          <button onClick={() => this.deleteTaco(this.props.id)}>Delete</button>
+        </div>
       </div>
     );
   }

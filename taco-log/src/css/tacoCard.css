@@ -1,0 +1,13 @@
+
+.review-container{
+    border:1px solid black;
+    width:50%;
+}
+
+.reviews {
+    border:1px solid red;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+

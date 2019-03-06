@@ -1,0 +1,53 @@
+.nav-container {
+    background-color: E6EFB3;
+}
+
+.button-div {
+    display: flex;
+    flex-direction: row;
+}
+
+.button-div .google-button {
+    margin: 20px 10px;
+    border-radius: 3px;
+    
+    color: #666;
+    background: #fff;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    border: 1px solid;
+    font-weight: bold;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.28571em;
+    width:100%;
+    height: 50%;
+}
+
+.button-div .fb-button {
+    margin: 20px 10px;
+    color: #fff;
+    background: #3b5998;
+    border: 1px solid #3b5998;
+    background-repeat: no-repeat;
+
+    vertical-align: middle;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.28571em;
+    border-radius: 3px;
+    width:100%;
+    height: 50%;
+}
+
+.dropdown{
+    margin-top:15px;
+}
+
+.nav-div{
+    display: flex;
+    flex-direction: row;
+    margin: 15px;
+}

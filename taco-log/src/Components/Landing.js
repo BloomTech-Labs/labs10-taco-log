@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import GlobalTacoList from "./GlobalTacoList";
 import MyTacoList from "./MyTacoList";
+import taco from '../taco.jpg';
+
+import "../css/landing.css";
 
 class Landing extends Component {
   constructor(props) {
@@ -16,6 +19,8 @@ class Landing extends Component {
       selectedTab: e.target.id
     });
   };
+
+  
   componentDidMount() {
     this.props.GET_TACO();
     let expTacos = [];
@@ -34,6 +39,10 @@ class Landing extends Component {
   render() {
     return (
       <div>
+        <div className="img-container">
+          <img className="taco-img" src={taco} alt="taco image" />
+        </div>
+        
         <div
           onClick={this.handleToggle}
           id="global"
@@ -53,7 +62,9 @@ class Landing extends Component {
               ? "selected-tab local-tab"
               : "local-tab"
           }
-        >My Special Experiences</div>
+          >My Special Experiences
+        </div>
+        
         <div>
           {this.state.selectedTab === "global" ? ( 
           <GlobalTacoList {...this.props} />
@@ -62,6 +73,7 @@ class Landing extends Component {
           )
           }
         </div>
+        
       </div>
     );
   }
