@@ -35,15 +35,6 @@ const renderApp = () => {
     hasRendered = true;
   }
 };
-// ReactDOM.render(jsx, document.getElementById('root')
-// );
-
-// const hasRendered = false;
-// const renderApp= () => {
-//   if (hasRendered) {
-
-//   }
-// }
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
@@ -59,7 +50,7 @@ firebase.auth().onAuthStateChanged(user => {
     if(history.location.pathname ==='/') {
       history.push('/home');
     }
-    console.log('logged in');
+    console.log(user, 'logged in');
   } else {
     store.dispatch(logout());
     renderApp();

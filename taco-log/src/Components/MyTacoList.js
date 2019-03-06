@@ -5,7 +5,7 @@ class MyTacoList extends Component {
   render() {
     return (
       <div className="taco-list-owrap">
-        TACO LOG:
+        
         {this.props.expTacos &&
         this.props.expTacos.length > 0 ? (
           <div>

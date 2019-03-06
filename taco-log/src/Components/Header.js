@@ -16,9 +16,10 @@ import {
   DropdownMenu,
   DropdownItem
 } from "reactstrap";
-import { firebase } from "../firebase/firebase";
+import { firebase, provider, facebookProvider } from '../firebase/firebase';
 import { Elements, StripeProvider } from "react-stripe-elements";
 import CheckoutForm from "./CheckoutForm";
+import "../css/header.css"
 
 class Header extends Component {
   constructor(props) {
@@ -26,9 +27,12 @@ class Header extends Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      isOpen: false
+      isOpen: false,
+      user: null
     };
     this.logout = this.logout.bind(this);
+    this.login = this.login.bind(this);
+    this.facebookLogin = this.facebookLogin.bind(this);
   }
 
   customlink = url => {
@@ -36,11 +40,46 @@ class Header extends Component {
     this.props.history.push(url);
   };
 
+  login() {
+    firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then(result => {
+        const user = {
+          name: result.user.displayName,
+          email: result.user.email,
+          ext_user_id: result.user.uid
+        };
+        this.setState({
+          user
+        });
+      });
+  }
+
+  facebookLogin () {	
+    firebase	
+   .auth()	
+   .signInWithPopup(facebookProvider)	
+   .then(result => {	
+     const user = {	
+       name: result.user.displayName,	
+       email: result.user.email,	
+       ext_user_id: result.user.uid	
+     };	
+     this.props.loginUser(user);	
+
+      this.setState({	
+       user
+     });	
+   });	
+}
+
   logout() {
     firebase.auth().signOut();
     this.props.logoutUser();
     this.props.locationChange();    
     this.props.history.push("/");
+    
   }
 
   toggle() {
@@ -51,17 +90,17 @@ class Header extends Component {
 
 
   render() {
-
+    console.log("user:", this.state.user)
     return (
-      <div>
-        <Navbar color="light" light expand="md">
+      <div className="nav-container">
+        <Navbar light expand="md">
           <NavbarBrand onClick={e => this.customlink("/landing/")}>
             Taco Home
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-              <Form>
+              {/* <Form>
                 <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
                   <Input
                     type="search"
@@ -70,17 +109,20 @@ class Header extends Component {
                     placeholder="Search Taco"
                   />
                 </FormGroup>
-              </Form>
-              <NavItem>
-                <NavLink onClick={e => this.customlink("/profile")}>
-                  Profile
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink onClick={e => this.customlink("/home")}>
-                  Taco Log
-                </NavLink>
-              </NavItem>
+              </Form> */}
+              {this.state.user
+                ? <div className="nav-div">
+                    <NavLink onClick={e => this.customlink("/profile")}>
+                      Profile
+                    </NavLink>
+                    <NavLink onClick={e => this.customlink("/home")}>
+                      Taco Log
+                    </NavLink> </div>
+                : <div className="button-div">
+                    <button className="google-button" onClick={this.login}> Google </button> 
+                    <button className="fb-button" onClick={this.facebookLogin}> Facebook </button>
+                  </div>
+              }
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
                   Options

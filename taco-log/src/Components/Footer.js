@@ -5,8 +5,8 @@ import GithubLogo from "../img/github-logo.png";
 
 const Footer = (props) => {
   return (
-    <div classname='footer'>
-      <Nav classname='footer-nav'>
+    <div className='footer'>
+      <Nav className='footer-nav'>
         <NavItem>
           <NavLink href="https://github.com/Lambda-School-Labs/labs10-taco-log"><img className="github-logo" src={GithubLogo} alt="Github"/></NavLink>
         </NavItem>
