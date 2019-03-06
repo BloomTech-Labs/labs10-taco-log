@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Nav, NavLink, NavItem } from 'reactstrap';
 import "../css/Footer.css";
+import GithubLogo from "../img/github-logo.png";
 
 const Footer = (props) => {
   return (
-    <div>
-      <Breadcrumb>
-      <BreadcrumbItem active>About</BreadcrumbItem>
-      </Breadcrumb>
+    <div classname='footer'>
+      <Nav classname='footer-nav'>
+        <NavItem>
+          <NavLink href="https://github.com/Lambda-School-Labs/labs10-taco-log"><img className="github-logo" src={GithubLogo} alt="Github"/></NavLink>
+        </NavItem>
+      </Nav>
     </div>
   );
 };

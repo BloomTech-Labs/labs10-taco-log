@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { firebase } from "../firebase/firebase";
 import { Form, Input, Button, FormGroup, Container, Row, Col } from "reactstrap";
-import tacoIcon from "../img/taco.png";
 import tacoColor from "../img/taco-color.png"
 import tacoGrey from "../img/taco-grey.png"
 import "../css/logTaco.css";
@@ -398,9 +397,10 @@ class LogTaco extends Component {
 
   render() {
     return (
-      <Container>
+      <Container className="log-taco-container">
       <div className="taco-form">
         <p>Log a Taco Here:</p>
+        <Row sm="6" className="search-map-container">
         <input
           onChange={this.handleInputChange}
           className="google-dropdown"
@@ -417,24 +417,27 @@ class LogTaco extends Component {
                   this.state.lat
                 },${
                   this.state.lng
-                }&zoom=15&size=800x150&key=AIzaSyCgxie-2MKM8N9ibIvYVGzuzvVSaXDonrE&markers=${
+
+                }&zoom=14&size=300x100&key=AIzaSyCgxie-2MKM8N9ibIvYVGzuzvVSaXDonrE&markers=${
+
                   this.state.lat
                 },${this.state.lng}&scale=2`}
               />
             )}
           </div>
         </div>
+        </Row>
         <Container>
 
-        <Row className="ingredent-tab-wrap">
+        <Row className="ingredient-tab-wrap">
           Tortilla:
           {this.state.tortilla.map(data => (
             <Col xs="1"
               onClick={this.selectTortilla}
               className={
                 this.state.selectedTortilla.indexOf(data) > -1
-                  ? "ingredent-tab ingredent-tab-selected"
-                  : "ingredent-tab"
+                  ? "ingredient-tab ingredient-tab-selected"
+                  : "ingredient-tab"
               }
               id={data}
             >
@@ -443,15 +446,15 @@ class LogTaco extends Component {
           ))}
         </Row>
 
-        <Row className="ingredent-tab-wrap">
+        <Row className="ingredient-tab-wrap">
           Meat:
           {this.state.meat.map(data => (
             <Col xs="1"
               onClick={this.selectMeat}
               className={
                 this.state.selectedMeat.indexOf(data) > -1
-                  ? "ingredent-tab ingredent-tab-selected"
-                  : "ingredent-tab"
+                  ? "ingredient-tab ingredient-tab-selected"
+                  : "ingredient-tab"
               }
               id={data}
             >
@@ -459,16 +462,16 @@ class LogTaco extends Component {
             </Col>
           ))}
         </Row>
-        
-        <Row className="ingredent-tab-wrap">
+        <div className="ingredient-container">
+        <Row className="ingredient-tab-wrap">
           Cheese:
           {this.state.cheese.map(data => (
             <Col xs="1"
               onClick={this.selectCheese}
               className={
                 this.state.selectedCheese.indexOf(data) > -1
-                  ? "ingredent-tab ingredent-tab-selected"
-                  : "ingredent-tab"
+                  ? "ingredient-tab ingredient-tab-selected"
+                  : "ingredient-tab"
               }
               id={data}
             >
@@ -476,16 +479,17 @@ class LogTaco extends Component {
             </Col>
           ))}
         </Row>
-        
-        <Row className="ingredent-tab-wrap">
+        </div>
+
+        <Row className="ingredient-tab-wrap">
           Salsa:
           {this.state.salsa.map(data => (
             <Col xs="1"
               onClick={this.selectSalsa}
               className={
                 this.state.selectedSalsa.indexOf(data) > -1
-                  ? "ingredent-tab ingredent-tab-selected"
-                  : "ingredent-tab"
+                  ? "ingredient-tab ingredient-tab-selected"
+                  : "ingredient-tab"
               }
               id={data}
             >

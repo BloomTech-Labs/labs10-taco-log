@@ -1,13 +1,29 @@
-.ingredent-tab-wrap{
-    display: flex;
-    justify-content: center;   
+.log-taco-container{
+    display:flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.ingredent-tab-wrap .ingredent-tab{
+.ingredient-tab-wrap{
+    justify-content: center;
+    padding: 1%;
+}
+
+.taco-form{
+    width: 100%;
+}
+
+.ingredient-list-wrapper{
+    align-items: center;
+    justify-content: center;
+}
+
+.ingredient-tab-wrap .ingredient-tab{
     border: 1px solid black;
+    box-shadow: 1px 2px black;
 }
 
-.ingredent-tab-wrap .ingredent-tab-selected{
+.ingredient-tab-wrap .ingredient-tab-selected{
     background-color: blue;
 }
 
@@ -16,6 +32,10 @@
     height: 100%;
 }
 
+.search-map-container{
+    justify-content: center;
+    width: 100%;
+}
 .taco-icon{
     height:100px;
     width:100px;
