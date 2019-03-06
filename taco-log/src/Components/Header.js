@@ -45,10 +45,12 @@ class Header extends Component {
       .auth()
       .signInWithPopup(provider)
       .then(result => {
+        console.log(result)
         const user = {
           name: result.user.displayName,
           email: result.user.email,
-          ext_user_id: result.user.uid
+          ext_user_id: result.user.uid,
+          photoURL:result.user.photoURL
         };
         this.props.loginUser(user)
         this.setState({
