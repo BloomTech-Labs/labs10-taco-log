@@ -404,7 +404,7 @@ class LogTaco extends Component {
         <input
           onChange={this.handleInputChange}
           className="google-dropdown"
-          placeholder="location"
+          placeholder="Look up where you had your taco here so you can get started!"
           value={this.state.taco_location}
           name="taco_location"
         />
