@@ -42,29 +42,28 @@ class Landing extends Component {
         <div className="img-container">
           <img className="taco-img" src={taco} alt="taco image" />
         </div>
-        
-        <div
-          onClick={this.handleToggle}
-          id="global"
-          className={
-            this.state.selectedTab === "global"
+        <div className="tab">
+          <div
+            onClick={this.handleToggle}
+            id="global"
+            className={
+              this.state.selectedTab === "global"
               ? "selected-tab global-tab"
               : "global-tab"
-          }
-        >
-          Global Special Experiences
-        </div>
-        <div
-          onClick={this.handleToggle}
-          id="local"
-          className={
-            this.state.selectedTab === "local"
+            }
+          >Global Special Experiences
+          </div>
+          <div
+            onClick={this.handleToggle}
+            id="local"
+            className={
+              this.state.selectedTab === "local"
               ? "selected-tab local-tab"
               : "local-tab"
-          }
-          >My Special Experiences
+            }
+            >My Special Experiences
         </div>
-        
+        </div>
         <div>
           {this.state.selectedTab === "global" ? ( 
           <GlobalTacoList {...this.props} />

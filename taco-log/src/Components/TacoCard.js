@@ -1,12 +1,4 @@
 import React, { Component } from "react";
-import "../css/tacoCard.css";
-// import {
-//   Card,
-//   CardImg,
-//   CardBody,
-//   Button,
-//   CardTitle
-// } from 'reactstrap';
 import { firebase } from "../firebase/firebase";
 import tacoColor from "../img/taco-color.png";
 import tacoGrey from "../img/taco-grey.png";

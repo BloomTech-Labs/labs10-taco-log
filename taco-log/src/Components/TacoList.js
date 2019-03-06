@@ -58,7 +58,7 @@ class TacoList extends Component {
           </select>
         </div>
         <div className="taco-list-owrap">
-          TACO LOG:
+          
           {this.state.cityfilter === "All" ? (
             <div className="taco-list-iwrap">
               {this.props.userInfo.taco_logs.map(log => (

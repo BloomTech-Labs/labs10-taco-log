@@ -8,3 +8,26 @@
     height: 500px;
 }
 
+.tab {
+    border-bottom: 1px solid #753b1c;
+    margin: 30px 20px;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.global-tab{
+    border:1px solid #753b1c;
+    border-radius: 3px;
+    border-bottom: 0px;
+    margin: 0px 10px;
+    cursor: pointer;
+}
+
+.local-tab{
+    border:1px solid #753b1c;
+    border-radius: 3px;
+    border-bottom: 0px;
+    margin: 0px 10px;
+    cursor: pointer;
+}
