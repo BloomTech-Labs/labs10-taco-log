@@ -1,0 +1,5 @@
+.taco-list-iwrap{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import TacoCard from "./TacoCard";
+import "../css/TacoList.css"
 
 class TacoList extends Component {
   constructor(props) {
@@ -48,6 +49,7 @@ class TacoList extends Component {
     return (
       <div>
         <div>
+          Filter by City:
           <select value={this.state.cityfilter} onChange={this.handleChange}>
             <option value="All">All</option>
             {this.state.cities.map(city => (
@@ -58,7 +60,7 @@ class TacoList extends Component {
         <div className="taco-list-owrap">
           TACO LOG:
           {this.state.cityfilter === "All" ? (
-            <div>
+            <div className="taco-list-iwrap">
               {this.props.userInfo.taco_logs.map(log => (
                 <TacoCard
                   {...this.props}
@@ -72,17 +74,18 @@ class TacoList extends Component {
                   cheese={log.cheese}
                   salsa={log.salsa}
                   created_at={log.created_at}
+                  address = {log.address}
                 />
               ))}
             </div>
           ) : (
-            <div>
+            <div className="taco-list-iwrap">
               {this.state.filteredLogs.map(log => (
                 <TacoCard
                 {...this.props}
                 key={log.id}
                 id={log.id}
-                taco_location={log.taco_location}
+                taco_location={log.taco_location}            
                 taco_description={log.taco_description}
                 rating={log.rating}
                 tortilla={log.tortilla}
@@ -90,6 +93,7 @@ class TacoList extends Component {
                 cheese={log.cheese}
                 salsa={log.salsa}
                 created_at={log.created_at}
+                address = {log.address}
               />
               ))}
             </div>

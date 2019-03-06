@@ -10,6 +10,7 @@ import Landing from "./Components/Landing";
 import AddStore from "./Components/AddStore";
 import ProfilePage from "./Components/ProfilePage";
 import AccountSettings from "./Components/AccountSettings";
+import Footer from "./Components/Footer";
 
 import { loginUser, logTaco, deleteTaco, assignAchievement, locationChange, updateStats, GET_TACO, logoutUser, updateUser } from "./actions";
 
@@ -32,7 +33,6 @@ class App extends Component {
           path="/"
           render={props => <Header {...this.props} {...props}  />}
         />  
-       
         <Switch>      
         <Route
           exact
@@ -65,7 +65,10 @@ class App extends Component {
             render={props => <AccountSettings {...this.props} {...props} />}
           />
         </Switch>
-       
+        <Route
+          path="/"
+          render={props => <Footer {...this.props} {...props} />}
+        />
       </div>
     );
   }
