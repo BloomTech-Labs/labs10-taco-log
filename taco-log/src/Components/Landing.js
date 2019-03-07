@@ -44,6 +44,10 @@ class Landing extends Component {
         <h1>Hi there. Welcome to Taco Logs.</h1>
         <h4>Want go go ahead and get started? </h4>
         <h4>Go ahead and login with Google or Facebook to get started!</h4>
+        {/* Google login buttons and stuff should be here */}
+        <div className="img-leading">
+        <h4>If you'd like to learn more, go ahead and scroll down.</h4>
+        </div>
         </div>
         </div>
         <div className="tab">
