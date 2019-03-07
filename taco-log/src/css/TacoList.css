@@ -4,3 +4,24 @@
     flex-wrap: wrap;
     margin: 10px 80px;
 }
+
+
+.taco-list-iwrap{
+    display: flex;
+}
+
+
+.btn-p-wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.taco-log-link{
+    border: 1px solid #00447b;
+    background-color: #6aa7da;
+    height: 30px;
+    width: 100px;
+    margin: 5px;
+    border-radius: 5px;
+}

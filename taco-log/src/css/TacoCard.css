@@ -18,6 +18,7 @@
 .taco-card-wrap .rating-icons{
     display:flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
     width:50%;
 }
 .taco-card-wrap .rating-icons .taco-icon{
