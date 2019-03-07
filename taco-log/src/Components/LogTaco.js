@@ -11,7 +11,7 @@ class LogTaco extends Component {
     this.state = {
       taco_location: "",
       taco_name: "",
-      rating: "",
+      rating: null,
       place_id: "",
       tortilla: ["Corn", "Flour", "Other"],
       meat: ["Al Pastor", "Chicken", "Fish", "Steak", "Choriso"],
@@ -388,14 +388,18 @@ class LogTaco extends Component {
   };
 
   toggleRating = e => {
-    console.log(e.target.id);
+    if(this.state.rating === '1' && e.target.id === "1"){
+      this.setState({ rating: '0' })
+    }else{
       this.setState({
         rating: e.target.id
       });
+    }
+      
   };
 
 
-  render() {
+  render() {console.log(this.state.rating)
     return (
       <Container className="log-taco-container">
       <div className="taco-form">

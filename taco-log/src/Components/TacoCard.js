@@ -19,7 +19,8 @@ class TacoCard extends Component {
       <div className = "taco-card-wrap">
         <div className = "taco-card-title">{this.props.taco_location}</div>
         <div className = "taco-card-address">{this.props.address}</div>
-        <div className = "rating-icons">          
+        <div className = "rating-icons">    
+          <img      
             src={this.props.rating >= 1 ? tacoColor : tacoGrey}
             className="taco-icon"
             id="1"
