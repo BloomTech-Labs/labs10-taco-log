@@ -30,7 +30,7 @@
 }
 
 .tab {
-    border-bottom: 1px solid #753b1c;
+    border-bottom: 1px solid #00447b;
     margin: 30px 20px;
     display: flex;
     justify-content: center;
@@ -38,7 +38,7 @@
 }
 
 .global-tab{
-    border:1px solid #753b1c;
+    border:1px solid #00447b;
     border-radius: 3px;
     border-bottom: 0px;
     margin: 0px 10px;
@@ -46,7 +46,7 @@
 }
 
 .local-tab{
-    border:1px solid #753b1c;
+    border:1px solid #00447b;
     border-radius: 3px;
     border-bottom: 0px;
     margin: 0px 10px;
