@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import GlobalTacoList from "./GlobalTacoList";
 import MyTacoList from "./MyTacoList";
 import taco from '../taco.jpg';
-
+import landingPageCover from "../img/landingpagecover.jpg";
 import "../css/landing.css";
 
 class Landing extends Component {
@@ -40,7 +40,9 @@ class Landing extends Component {
     return (
       <div>
         <div className="img-container">
-          <img className="taco-img" src={taco} alt="taco image" />
+        <div className="">
+        <h2>Hello!</h2>
+        </div>
         </div>
         <div className="tab">
           <div

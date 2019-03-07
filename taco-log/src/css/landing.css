@@ -4,8 +4,20 @@
 }
 
 .img-container{
-    border:2px solid black;
-    height: 500px;
+  background-image: url('../img/landingpagecover.jpg');
+  background-size: cover;
+  border: 2px solid black;
+  height: 750px;
+  width: 100%;
+}
+
+.img-container-cover{
+    padding-top: 30px;
+    height: 570px;
+    background-color: #333;
+    background-size: cover;
+    background-position: 50%;
+
 }
 
 .tab {
