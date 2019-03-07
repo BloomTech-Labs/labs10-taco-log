@@ -151,9 +151,9 @@ server.get("/api/tacos", (req, res) => {
 });
 
 server.get("/api/tacos/special", (req, res) => {
-  db("taco-log")
-    .select()
-    .where("special_experience", 1)
+  db("taco-log")    
+    .where("special_experience", 1)    
+    .join("users","taco-log.user_id", "users.internal_id")    
     .then(taco => {
       res.status(200).json(taco);
     })

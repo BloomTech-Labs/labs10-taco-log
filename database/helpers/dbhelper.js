@@ -2,8 +2,8 @@ const db = require('../dbConfig.js');
 
 module.exports ={
     findUser,
-    getUser
-      
+    getUser,
+    getSpecialTacos
   
 };
 function findUser(id){
