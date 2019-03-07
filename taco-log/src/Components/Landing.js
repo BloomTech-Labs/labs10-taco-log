@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import GlobalTacoList from "./GlobalTacoList";
 import MyTacoList from "./MyTacoList";
+import LandingPageFiller from "./LandingPageFiller";
 import taco from '../taco.jpg';
 import landingPageCover from "../img/landingpagecover.jpg";
 import "../css/landing.css";
@@ -71,6 +72,7 @@ class Landing extends Component {
             }
             >My Special Experiences
         </div>
+        
         </div>
         <div>
           {this.state.selectedTab === "global" ? ( 
@@ -80,7 +82,9 @@ class Landing extends Component {
           )
           }
         </div>
-        
+        <div>
+          <LandingPageFiller />
+        </div>
       </div>
     );
   }
