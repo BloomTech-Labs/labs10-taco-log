@@ -124,19 +124,34 @@ class Header extends Component {
               </Form> */}
               {this.state.user
                 ? <div className="nav-div">
+                <div className='navbar-buttons'> 
                     <NavLink onClick={e => this.customlink("/profile")}>
+                    <Button className='nav-button'>
                       Profile
+                      </Button>
                     </NavLink>
                     <NavLink onClick={e => this.customlink("/home")}>
+                    <Button className='nav-button'>
                       Taco Log
-                    </NavLink> </div>
+                      </Button>
+                    </NavLink>
+                  <Button className='nav-button' onClick={this.logout}>Log Out</Button>
+                  <Button className='nav-button'>
+                  <StripeProvider apiKey="pk_test_wWgYjRm8woZFFe75so0wo6jp">
+                    <Elements>
+                      <CheckoutForm />
+                    </Elements>
+                  </StripeProvider>
+                  </Button>
+                  </div>
+                     </div>
                 : <div className="button-div">
                     <button className="google-button" onClick={this.login}> <img className="google-logo" src={google} alt="google logo" /> Google </button> 
                     <div className="fb-button" onClick={this.facebookLogin}> <img className="facebook-logo" src={facebook} alt="facebook logo" /> Facebook </div>
                   </div>
                   
               }
-              <UncontrolledDropdown nav inNavbar>
+              {/* <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
                   
                 </DropdownToggle>
@@ -146,18 +161,11 @@ class Header extends Component {
                   </DropdownItem>
                   <DropdownItem>About Us</DropdownItem>
                   <DropdownItem>
-                    <StripeProvider apiKey="pk_test_wWgYjRm8woZFFe75so0wo6jp">
-                      <Elements>
-                        <CheckoutForm />
-                      </Elements>
-                    </StripeProvider>
+
                   </DropdownItem>
                   <DropdownItem divider />
-                  <DropdownItem>
-                    <Button onClick={this.logout}>Log Out</Button>
-                  </DropdownItem>
                 </DropdownMenu>
-              </UncontrolledDropdown>
+              </UncontrolledDropdown> */}
             </Nav>
           </Collapse>
         </Navbar>
