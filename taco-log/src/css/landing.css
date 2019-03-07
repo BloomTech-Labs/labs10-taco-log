@@ -13,12 +13,15 @@
   height: 750px;
   width: 100%;
   text-align: center;
+  position: absolute;
+  
+  top:0;
 }
 
 
 .img-intro
 {
-    position: absolute;
+    /* position: absolute; */
     width: 100%;
     padding-top: 250px;
     font-family: Helvetica,Verdana,sans-serif;
@@ -53,7 +56,7 @@
     cursor: pointer;
 }
 
-.blurb {
+/* .blurb {
     border: 2px solid #753b1c;
     width: 25%;
     height: 100%;
@@ -67,19 +70,27 @@
 
 .blurb-text{
     margin: 20px 10px;
-}
+} */
 
 .mid-section {
     
     display: flex;
     justify-content: space-around;
+    margin-top: 700px;
 
 }
 
 .fade-button{
-    border:1px solid black;
+    border:1px solid white;
     margin:20px 10px;
-    width:50%;
+    width:20%;
+    cursor: pointer;
+}
+
+.fade-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .button-div .google-button {

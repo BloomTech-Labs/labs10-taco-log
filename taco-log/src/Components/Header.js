@@ -22,6 +22,7 @@ import CheckoutForm from "./CheckoutForm";
 import "../css/header.css"
 import google from '../google.png';
 import facebook from '../facebook.png';
+
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -97,7 +98,11 @@ class Header extends Component {
   render() {
     console.log("user:", this.state.user)
     return (
-      <div className="nav-container">
+      <div className=
+        {this.props.history.location.pathname ==='/'
+          ? "nav-container-landing"
+          : "nav-container"
+        }>
         <Navbar light expand="md">
           <NavbarBrand onClick={e => this.customlink("/landing/")}>
             Taco Log

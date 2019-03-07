@@ -1,7 +1,18 @@
 .nav-container {
     background-color: #00447b;
     color: white;
+    
+    
 }
+
+.nav-container-landing{
+    background-color: none;
+    color: white;
+    position: relative;
+    z-index: 1;
+}
+
+
 
 .button-div {
     display: flex;
@@ -21,7 +32,20 @@
     /* padding-bottom: 5px; */
     width: 15%;
     height: 30px;
+    color:white;
 }
+.navbar-light .navbar-nav .nav-link{
+    color: white;
+    
+}
+
+.dropdown .nav-item{
+    color:white;
+}
+
+/* a:hover {
+    background-color: white;
+} */
 
 .button-div .google-button {
     display: flex;
@@ -66,6 +90,7 @@
     flex-direction: row;
     margin: 15px;
     cursor: pointer;
+    color:white;
 }
 
 .facebook-logo{
