@@ -388,7 +388,7 @@ class LogTaco extends Component {
   };
 
   toggleRating = e => {
-    if(this.state.rating === '1'){
+    if(this.state.rating === '1' && e.target.id === "1"){
       this.setState({ rating: '0' })
     }else{
       this.setState({
