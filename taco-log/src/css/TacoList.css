@@ -1,6 +1,6 @@
 .taco-list-owrap{
     display: flex;
     justify-content: space-around;
-    flex-direction: column;
+    flex-wrap: wrap;
     margin: 10px 80px;
 }
