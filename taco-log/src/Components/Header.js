@@ -85,9 +85,7 @@ class Header extends Component {
     this.props.logoutUser();
     this.props.locationChange();    
     this.props.history.push("/");
-    this.setState({
-      user: null
-    })
+    
   }
 
   toggle() {
