@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import GlobalTacoList from "./GlobalTacoList";
 import MyTacoList from "./MyTacoList";
+import { Fade } from 'reactstrap';
 import taco from '../taco.jpg';
-
+import google from '../google.png';
+import facebook from '../facebook.png';
 import "../css/landing.css";
 
 class Landing extends Component {
@@ -11,14 +13,23 @@ class Landing extends Component {
     super(props);
     this.state = {
       exptacos: [],
-      selectedTab: "global"
+      selectedTab: "global",
+      fadeIn: false
     };
+    this.toggleFade = this.toggleFade.bind(this);
   }
+
   handleToggle = e => {
     this.setState({
       selectedTab: e.target.id
     });
   };
+
+  toggleFade() {
+    this.setState({
+        fadeIn: !this.state.fadeIn
+    });
+}
 
   
   componentDidMount() {
@@ -62,18 +73,29 @@ class Landing extends Component {
               : "local-tab"
             }
             >My Special Experiences
-        </div>
+          </div>
         </div>
        
-        <div>
-          {this.state.selectedTab === "global" ? ( 
-          <GlobalTacoList {...this.props} />
-          ) : (
-          <MyTacoList {...this.state} />
-          )
-          }
+       <div className="mid-section">
+          <div>
+            {this.state.selectedTab === "global" ? ( 
+            <GlobalTacoList {...this.props} />
+            ) : (
+            <MyTacoList {...this.state} />
+            )
+            }
+          </div>
+          <div className="blurb"> 
+            <span className="blurb-text">Taco Log is the go to place for taco connoisseurs to keep track of their taco experiences and even earn Taco-mplishments! Sign in using Google or facebook to get started, no sign up needed!</span> 
+            <div className="fade-button" onClick={this.toggleFade}>Sign in</div>
+            <Fade className="fade" in={this.state.fadeIn}>
+              <div className="button-div">
+                <div className="google-button" onClick={this.login}> <img className="google-logo" src={google} alt="google logo" /> Google </div> 
+                <div className="fb-button" onClick={this.facebookLogin}> <img className="facebook-logo" src={facebook} alt="facebook logo" /> Facebook </div>
+              </div>
+            </Fade>
+          </div>
         </div>
-        
       </div>
     );
   }
