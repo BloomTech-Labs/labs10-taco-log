@@ -2,8 +2,8 @@ const db = require('../dbConfig.js');
 
 module.exports ={
     findUser,
-    getUser
-      
+    getUser,
+    getSpecialTacos
   
 };
 function findUser(id){
@@ -28,3 +28,7 @@ async function getUser(id){
     return result;
 }
 
+async function getSpecialTacos(){
+    const tacos = await db('taco-log').where("special_experience", 1).join
+    
+}
