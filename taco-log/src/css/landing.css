@@ -12,24 +12,17 @@
   border: 2px solid black;
   height: 750px;
   width: 100%;
+  text-align: center;
 }
 
-.img-container-cover{
-    display: flex;
-    padding-top: 30px;
-    height: 570px;
-    background-color: #333;
-    background-size: cover;
-    background-position: 50%;
-
-}
 
 .img-intro
 {
-    margin-top: 0;
+    position: absolute;
+    width: 100%;
+    padding-top: 300px;
+    padding-right: 20%;
     font-family: Helvetica,Verdana,sans-serif;
-    display: flex;
-    justify-content: flex-start;
     color: #E6E6FA;
 }
 
