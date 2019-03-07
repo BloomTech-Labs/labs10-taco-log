@@ -40,8 +40,10 @@ class Landing extends Component {
     return (
       <div>
         <div className="img-container">
-        <div className="">
-        <h2>Hello!</h2>
+        <div className="img-intro">
+        <h1>Hi there. Welcome to Taco Logs.</h1>
+        <h4>Want go go ahead and get started? </h4>
+        <h4>Go ahead and login with Google or Facebook let's get started!</h4>
         </div>
         </div>
         <div className="tab">
