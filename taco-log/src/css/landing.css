@@ -3,8 +3,11 @@
     height: 100%;
 }
 
-.img-container{
-  background-image: url('../img/landingpagecover.jpg');
+.img-container{ 
+    /* left as a reference incase of fallback or change in design */
+  /* background-image: url('../img/landingpagecover.jpg'); */ 
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../img/landingpagecover.jpg');
+  background-blend-mode: darken;
   background-size: cover;
   border: 2px solid black;
   height: 750px;
@@ -12,12 +15,22 @@
 }
 
 .img-container-cover{
+    display: flex;
     padding-top: 30px;
     height: 570px;
     background-color: #333;
     background-size: cover;
     background-position: 50%;
 
+}
+
+.img-intro
+{
+    margin-top: 0;
+    font-family: Helvetica,Verdana,sans-serif;
+    display: flex;
+    justify-content: flex-start;
+    color: #E6E6FA;
 }
 
 .tab {
