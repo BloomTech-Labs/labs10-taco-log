@@ -3,9 +3,6 @@ import { connect } from "react-redux";
 import GlobalTacoList from "./GlobalTacoList";
 import MyTacoList from "./MyTacoList";
 import LandingPageFiller from "./LandingPageFiller";
-
-import taco from '../taco.jpg';
-
 import { Fade } from 'reactstrap';
 import google from '../google.png';
 import facebook from '../facebook.png';
