@@ -71,26 +71,14 @@
 
 .google-dropdown{
     width: 450px;
-<<<<<<< HEAD
-=======
     max-height: 200px;
     max-width: 450px;
->>>>>>> ec41ac638619e2212d78137ae837c120b1699d79
 }
 
 @media only screen and (max-width: 750px) {
     .ingredient-tab-wrap .ingredient-tab{
-        text-align: center;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: .75rem;
-        border: 1px solid lightblue;
-        background-color: #6aa7da;
-        border-radius: 4px;
         padding: 0% 15% 0% 0%;
     }
-<<<<<<< HEAD
-  }
-=======
   }
 
 
@@ -98,4 +86,3 @@
     max-width: 700px;
 }
 
->>>>>>> ec41ac638619e2212d78137ae837c120b1699d79
