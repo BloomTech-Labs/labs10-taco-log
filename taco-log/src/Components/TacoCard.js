@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { firebase } from "../firebase/firebase";
 import tacoColor from "../img/taco-color.png";
 import tacoGrey from "../img/taco-grey.png";
-import "../css/tacoCard.css";
+import "../css/TacoCard.css";
 
 
 

@@ -1,11 +1,12 @@
 .p-info-dis{
-    border: 1px solid #753b1c;
-    background-color: #efce7b;
+    border: 1px solid #00447b;
+    background-color: #6aa7da;
     border-radius: 5px;
     padding: 25px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 10px;
 }
 .img-name-container{
     display: flex;
@@ -26,7 +27,7 @@
 }
 
 .p-info-dis .p-email-logged-wrap{
-    background-color: beige;
+    background-color: lightblue;
     border-radius: 5px;
     padding:5px;
     margin-top: 10px;
