@@ -60,4 +60,10 @@
 
 .google-dropdown{
     width: 450px;
+    max-height: 200px;
+    max-width: 450px;
+}
+
+.taco-map-box{
+    max-width: 700px;
 }
