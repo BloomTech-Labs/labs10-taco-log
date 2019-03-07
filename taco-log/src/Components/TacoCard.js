@@ -19,7 +19,8 @@ class TacoCard extends Component {
       <div className = "taco-card-wrap">
         <div className = "taco-card-title">{this.props.taco_location}</div>
         <div className = "taco-card-address">{this.props.address}</div>
-        <div className = "rating-icons">    
+        <div className = "taco-card-ingredients">{this.props.tortilla}, {this.props.meat}, {this.props.cheese}, {this.props.salsa}</div>
+        <div className = "rating-icons">
           <img      
             src={this.props.rating >= 1 ? tacoColor : tacoGrey}
             className="taco-icon"
@@ -50,7 +51,8 @@ class TacoCard extends Component {
             id="5"
             alt = "taco-icon"
           />
-        </div>        
+        </div>
+        <div className="taco-card-description"> {this.props.taco_description} </div>          
         <p>{this.props.created_at}</p>
         {/* <button onClick={() => this.deleteTaco(this.props.id)}>Delete</button> */}
       </div>
