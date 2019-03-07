@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { firebase } from "../firebase/firebase";
 import tacoColor from "../img/taco-color.png";
 import tacoGrey from "../img/taco-grey.png";
-import "../css/tacoCard.css";
+import "../css/TacoCard.css";
 
 
 
@@ -19,7 +19,8 @@ class TacoCard extends Component {
       <div className = "taco-card-wrap">
         <div className = "taco-card-title">{this.props.taco_location}</div>
         <div className = "taco-card-address">{this.props.address}</div>
-        <div className = "rating-icons">          
+        <div className = "rating-icons">    
+          <img      
             src={this.props.rating >= 1 ? tacoColor : tacoGrey}
             className="taco-icon"
             id="1"

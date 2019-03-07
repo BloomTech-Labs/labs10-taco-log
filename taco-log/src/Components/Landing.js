@@ -67,6 +67,7 @@ class Landing extends Component {
                 </div>
               </Fade>
             </div>
+            {/* Google login buttons and stuff should be here */}
             <div className="img-leading">
               <h4>If you'd like to learn more, go ahead and scroll down.</h4>
             </div>
@@ -78,30 +79,30 @@ class Landing extends Component {
             id="global"
             className={
               this.state.selectedTab === "global"
-              ? "selected-tab global-tab"
-              : "global-tab"
+                ? "selected-tab global-tab"
+                : "global-tab"
             }
-          >Global Special Experiences
+          >
+            Global Special Experiences
           </div>
           <div
             onClick={this.handleToggle}
             id="local"
             className={
               this.state.selectedTab === "local"
-              ? "selected-tab local-tab"
-              : "local-tab"
+                ? "selected-tab local-tab"
+                : "local-tab"
             }
             >My Special Experiences
           </div>
         </div>
         
         <div>
-          {this.state.selectedTab === "global" ? ( 
-          <GlobalTacoList {...this.props} />
+          {this.state.selectedTab === "global" ? (
+            <GlobalTacoList {...this.props} />
           ) : (
-          <MyTacoList {...this.state} />
-          )
-          }
+            <MyTacoList {...this.state} />
+          )}
         </div>
         <div className="mid-section">
           <LandingPageFiller />

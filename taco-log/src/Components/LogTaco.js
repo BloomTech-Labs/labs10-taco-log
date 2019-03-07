@@ -11,7 +11,7 @@ class LogTaco extends Component {
     this.state = {
       taco_location: "",
       taco_name: "",
-      rating: "",
+      rating: null,
       place_id: "",
       tortilla: ["Corn", "Flour", "Other"],
       meat: ["Al Pastor", "Chicken", "Fish", "Steak", "Choriso"],
@@ -388,14 +388,18 @@ class LogTaco extends Component {
   };
 
   toggleRating = e => {
-    console.log(e.target.id);
+    if(this.state.rating === '1' && e.target.id === "1"){
+      this.setState({ rating: '0' })
+    }else{
       this.setState({
         rating: e.target.id
       });
+    }
+      
   };
 
 
-  render() {
+  render() {console.log(this.state.rating)
     return (
       <Container className="log-taco-container">
       <div className="taco-form">
@@ -408,8 +412,9 @@ class LogTaco extends Component {
           value={this.state.taco_location}
           name="taco_location"
         />
+          </Row>
         <div className="title-map-wrap">
-          <div>{this.state.taco_location}</div>
+          {/* <div>{this.state.taco_location}</div> */}
           <div className="taco-map">
             {this.state.staticMap && (
               <img className="taco-map-box"
@@ -426,11 +431,10 @@ class LogTaco extends Component {
             )}
           </div>
         </div>
-        </Row>
         <Container>
 
+          Tortilla
         <Row className="ingredient-tab-wrap">
-          Tortilla:
           {this.state.tortilla.map(data => (
             <Col xs="1"
               onClick={this.selectTortilla}
@@ -446,8 +450,8 @@ class LogTaco extends Component {
           ))}
         </Row>
 
+          Meat
         <Row className="ingredient-tab-wrap">
-          Meat:
           {this.state.meat.map(data => (
             <Col xs="1"
               onClick={this.selectMeat}
@@ -462,12 +466,12 @@ class LogTaco extends Component {
             </Col>
           ))}
         </Row>
-        <div className="ingredient-container">
+          Cheese
         <Row className="ingredient-tab-wrap">
-          Cheese:
           {this.state.cheese.map(data => (
             <Col xs="1"
               onClick={this.selectCheese}
+              id="cheese"
               className={
                 this.state.selectedCheese.indexOf(data) > -1
                   ? "ingredient-tab ingredient-tab-selected"
@@ -479,10 +483,9 @@ class LogTaco extends Component {
             </Col>
           ))}
         </Row>
-        </div>
 
+          Salsa
         <Row className="ingredient-tab-wrap">
-          Salsa:
           {this.state.salsa.map(data => (
             <Col xs="1"
               onClick={this.selectSalsa}

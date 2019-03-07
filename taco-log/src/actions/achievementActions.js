@@ -4,7 +4,7 @@ export const FETCH_ACHIEVEMENTS = 'FETCH_ACHIEVEMENTS';
 
 const local = 'http://localhost:5000/';
 const heroku = 'https://tacobe.herokuapp.com/';
-const link = local;
+const link = heroku;
 
 export const fetchAchievements = () => dispatch => {
     axios
