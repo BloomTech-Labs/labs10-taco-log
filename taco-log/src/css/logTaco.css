@@ -69,6 +69,8 @@
 
 .google-dropdown{
     width: 450px;
+    max-height: 200px;
+    max-width: 450px;
 }
 
 @media only screen and (max-width: 750px) {
@@ -82,3 +84,9 @@
         padding: 0% 15% 0% 0%;
     }
   }
+
+
+.taco-map-box{
+    max-width: 700px;
+}
+

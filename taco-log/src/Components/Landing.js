@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import GlobalTacoList from "./GlobalTacoList";
 import MyTacoList from "./MyTacoList";
 import LandingPageFiller from "./LandingPageFiller";
-import taco from '../taco.jpg';
+import taco from "../taco.jpg";
 import landingPageCover from "../img/landingpagecover.jpg";
 import "../css/landing.css";
 
@@ -21,7 +21,6 @@ class Landing extends Component {
     });
   };
 
-  
   componentDidMount() {
     this.props.GET_TACO();
     let expTacos = [];
@@ -41,15 +40,15 @@ class Landing extends Component {
     return (
       <div>
         <div className="img-container">
-        <div className="img-intro">
-        <h1>Hi there. Welcome to Taco Logs.</h1>
-        <h4>Want to go ahead and get started? </h4>
-        <h4>Go ahead and login with Google or Facebook to get started!</h4>
-        {/* Google login buttons and stuff should be here */}
-        <div className="img-leading">
-        <h4>If you'd like to learn more, go ahead and scroll down.</h4>
-        </div>
-        </div>
+          <div className="img-intro">
+            <h1>Hi there. Welcome to Taco Logs.</h1>
+            <h4>Want to go ahead and get started? </h4>
+            <h4>Go ahead and login with Google or Facebook to get started!</h4>
+            {/* Google login buttons and stuff should be here */}
+            <div className="img-leading">
+              <h4>If you'd like to learn more, go ahead and scroll down.</h4>
+            </div>
+          </div>
         </div>
         <div className="tab">
           <div
@@ -57,30 +56,30 @@ class Landing extends Component {
             id="global"
             className={
               this.state.selectedTab === "global"
-              ? "selected-tab global-tab"
-              : "global-tab"
+                ? "selected-tab global-tab"
+                : "global-tab"
             }
-          >Global Special Experiences
+          >
+            Global Special Experiences
           </div>
           <div
             onClick={this.handleToggle}
             id="local"
             className={
               this.state.selectedTab === "local"
-              ? "selected-tab local-tab"
-              : "local-tab"
+                ? "selected-tab local-tab"
+                : "local-tab"
             }
-            >My Special Experiences
-        </div>
-        
+          >
+            My Special Experiences
+          </div>
         </div>
         <div>
-          {this.state.selectedTab === "global" ? ( 
-          <GlobalTacoList {...this.props} />
+          {this.state.selectedTab === "global" ? (
+            <GlobalTacoList {...this.props} />
           ) : (
-          <MyTacoList {...this.state} />
-          )
-          }
+            <MyTacoList {...this.state} />
+          )}
         </div>
         <div>
           <LandingPageFiller />

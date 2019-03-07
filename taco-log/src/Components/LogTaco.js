@@ -412,8 +412,9 @@ class LogTaco extends Component {
           value={this.state.taco_location}
           name="taco_location"
         />
+          </Row>
         <div className="title-map-wrap">
-          <div>{this.state.taco_location}</div>
+          {/* <div>{this.state.taco_location}</div> */}
           <div className="taco-map">
             {this.state.staticMap && (
               <img className="taco-map-box"
@@ -430,7 +431,6 @@ class LogTaco extends Component {
             )}
           </div>
         </div>
-        </Row>
         <Container>
 
           Tortilla
