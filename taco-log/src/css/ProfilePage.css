@@ -8,14 +8,14 @@
     justify-content: center;
 }
 .profile-page .profile-tab{    
-    border: 1px solid #753b1c;
-    background-color: #efce7b;
+    border: 1px solid #00447b;
+    background-color: #6aa7da;
     height: 30px;
     width: 100px;
     margin: 5px;
 }
 
 .profile-page .selected-tab{
-    background-color: #753b1c;
+    background-color: #00447b;
     color: white;
 }
