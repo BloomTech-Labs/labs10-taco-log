@@ -13,7 +13,7 @@ export const UPDATE_USER = "UPDATE_USER";
 
 const local = "http://localhost:5000/";
 const heroku = "https://tacobe.herokuapp.com/";
-const url = local;
+const url = heroku;
 
 export const loginUser = user => dispatch => {
   axios
