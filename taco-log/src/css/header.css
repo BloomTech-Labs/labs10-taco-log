@@ -1,5 +1,5 @@
 .nav-container {
-    background-color: E6EFB3;
+    background-color: #E6EFB3;
 }
 
 .button-div {
@@ -22,6 +22,7 @@
 }
 
 .button-div .google-button {
+    display: flex;
     margin: 20px 10px;
     border-radius: 3px;
     
@@ -39,12 +40,13 @@
 }
 
 .button-div .fb-button {
+    display: flex;
     margin: 20px 10px;
     color: #fff;
     background: #3b5998;
     border: 1px solid #3b5998;
     background-repeat: no-repeat;
-
+    padding-top: 5px;
     vertical-align: middle;
     cursor: pointer;
     font-weight: bold;
@@ -54,10 +56,24 @@
     border-radius: 3px;
     width:100%;
     height: 50%;
+    padding-right: 5px;
 }
 
 .nav-div{
     display: flex;
     flex-direction: row;
     margin: 15px;
+}
+
+.facebook-logo{
+    height: 15px;
+    width:15px;
+    margin-right: 3px;
+}
+
+.google-logo {
+    height: 15px;
+    width: 15px;
+    margin-top: 2px;
+    margin-right: 3px;
 }

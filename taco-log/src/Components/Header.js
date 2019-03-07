@@ -20,7 +20,8 @@ import { firebase, provider, facebookProvider } from '../firebase/firebase';
 import { Elements, StripeProvider } from "react-stripe-elements";
 import CheckoutForm from "./CheckoutForm";
 import "../css/header.css"
-
+import google from '../google.png';
+import facebook from '../facebook.png';
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -120,9 +121,10 @@ class Header extends Component {
                       Taco Log
                     </NavLink> </div>
                 : <div className="button-div">
-                    <button className="google-button" onClick={this.login}> Google </button> 
-                    <button className="fb-button" onClick={this.facebookLogin}> Facebook </button>
+                    <button className="google-button" onClick={this.login}> <img className="google-logo" src={google} alt="google logo" /> Google </button> 
+                    <div className="fb-button" onClick={this.facebookLogin}> <img className="facebook-logo" src={facebook} alt="facebook logo" /> Facebook </div>
                   </div>
+                  
               }
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
