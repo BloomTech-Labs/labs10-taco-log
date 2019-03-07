@@ -33,11 +33,11 @@
 }
 
 .content {
-  background-color: #efce7b;
+  background-color: #6aa7da;
   margin: 15% auto;
   padding: 20px;
   width: 80%;
-  border: 2px solid #753b1c;
+  border: 2px solid #00447b;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -57,8 +57,8 @@
 }
 
 .personal-achievement-wrap{
-    background-color: #efce7b;
-    border: 2px solid #753b1c;
+    background-color: #6aa7da;
+    border: 2px solid #00447b;
     border-radius: 5px;
     width: 100%;
 }
