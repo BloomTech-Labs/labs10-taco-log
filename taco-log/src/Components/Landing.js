@@ -104,7 +104,7 @@ class Landing extends Component {
         </div>
         
           </div>
-        </div>
+
         
         <div>
           {this.state.selectedTab === "global" ? ( 
@@ -118,6 +118,7 @@ class Landing extends Component {
           <LandingPageFiller />
         </div>
       </div>
+     </div>
     );
   }
 }
