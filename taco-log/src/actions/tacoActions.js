@@ -4,7 +4,7 @@ export const ADDDATABASE_TACOS = 'ADDDATABASE_TACOS';
 
 const local = 'http://localhost:5000/';
 const heroku = 'https://tacobe.herokuapp.com/';
-const link = heroku;
+const link = local;
 
 export const GET_TACO = () => dispatch => {
   axios

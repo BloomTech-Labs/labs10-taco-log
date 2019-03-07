@@ -1,0 +1,33 @@
+.p-info-dis{
+    border: 1px solid #753b1c;
+    background-color: #efce7b;
+    border-radius: 5px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.img-name-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    margin:5px;
+}
+.img-name-container .p-img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    
+}
+.img-name-container .p-info-name{
+    font-weight: bold;
+    font-size: 1.6rem;
+}
+
+.p-info-dis .p-email-logged-wrap{
+    background-color: beige;
+    border-radius: 5px;
+    padding:5px;
+    margin-top: 10px;
+}
