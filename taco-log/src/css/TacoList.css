@@ -5,6 +5,10 @@
     margin: 10px 80px;
 }
 
+.taco-list-iwrap{
+    display: flex;
+}
+
 .btn-p-wrap{
     display: flex;
     flex-direction: column;
