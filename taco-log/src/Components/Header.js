@@ -142,7 +142,7 @@ class Header extends Component {
                   
               }
               <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle id= "click" nav caret>
+                <DropdownToggle id= "click"nav caret>
                   
                 </DropdownToggle>
                 <DropdownMenu right>

@@ -21,9 +21,11 @@ class AchievementList extends Component {
     const userAchevements = this.props.userInfo.achievements;
     if (userAchevements.length > 0) {
       for (let i = 0; i <= userAchevements.length; i++) {
-        if (userAchevements[i].id === id) {
+        if (userAchevements[i].id == id) {
+          console.log("true")
           return true;
         }
+        console.log("false")
         return false;
       }
     }
@@ -42,14 +44,8 @@ class AchievementList extends Component {
             <img className="exit-icon" src = {require('../img/exit-icon.png')} onClick={() => this.toggleModal()} />
             <div className="inner-wrap">
               {this.props.achievements.map(achievement => (
-                <AchievementCard
-                  imgsrc={
-                    this.achievementCheck(achievement.id)
-                      ? require(`../img/achievement-${
-                          achievement.id
-                        }-color.png`)
-                      : require(`../img/achievement-${achievement.id}-grey.png`)
-                  }
+                <AchievementCard        
+                  {...this.props}          
                   key={achievement.id}
                   id={achievement.id}
                   title={achievement.title}
@@ -64,9 +60,8 @@ class AchievementList extends Component {
           <div className="personal-achievement-wrap">
             {this.props.userInfo.achievements.map(achievement => (
               <AchievementCard
-                imgsrc={require(`../img/achievement-${
-                  achievement.id
-                }-color.png`)}
+                {...this.props} 
+                id={achievement.id}
                 key={achievement.id}
                 title={achievement.title}
                 description={achievement.description}

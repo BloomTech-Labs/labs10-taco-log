@@ -109,3 +109,7 @@
 #click {
     color: white;
 }
+.navbar-buttons{
+    display: flex;
+    justify-content: space-evenly;
+}

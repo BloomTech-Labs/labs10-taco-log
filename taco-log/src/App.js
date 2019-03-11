@@ -9,6 +9,7 @@ import LogTaco from "./Components/LogTaco";
 import Landing from "./Components/Landing";
 import AddStore from "./Components/AddStore";
 import ProfilePage from "./Components/ProfilePage";
+import UserHome from "./Components/UserHome";
 import AccountSettings from "./Components/AccountSettings";
 // import Footer from "./Components/Footer";
 
@@ -63,6 +64,11 @@ class App extends Component {
             exact
             path="/accountsettings"
             render={props => <AccountSettings {...this.props} {...props} />}
+          />
+          <Route
+            exact
+            path="/userhome"
+            render={props => <UserHome {...this.props} {...props} />}
           />
         </Switch>
         {/* <Route
