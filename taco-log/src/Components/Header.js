@@ -45,7 +45,7 @@ class Header extends Component {
 
   componentWillMount() {
     this.setState({user:localStorage})
-  };
+  }; 
 
   login() {
     firebase
@@ -111,7 +111,7 @@ class Header extends Component {
           : "nav-container"
         }>
         <Navbar light expand="md">
-          <NavbarBrand onClick={e => this.customlink("/landing/")}>
+          <NavbarBrand onClick={e => this.customlink("/")}>
             Taco Log
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />

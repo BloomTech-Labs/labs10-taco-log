@@ -51,7 +51,7 @@ class Landing extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="landing-container">
         <div className="img-container">
         <div className="img-intro">
         <h1>Hi there. Welcome to Taco Logs.</h1>
@@ -72,7 +72,7 @@ class Landing extends Component {
         </div>
         </div>
         </div>
-        <div className="tab">
+        {/* <div className="tab">
           <div
             onClick={this.handleToggle}
             id="global"
@@ -104,8 +104,9 @@ class Landing extends Component {
           <MyTacoList {...this.state} />
           )
           }
-        </div>
+        </div> */}
         <div className="mid-section">
+          <GlobalTacoList {...this.props} />
           <LandingPageFiller />
         </div>
       </div>
