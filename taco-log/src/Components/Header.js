@@ -40,6 +40,11 @@ class Header extends Component {
   customlink = url => {
     this.props.locationChange();
     this.props.history.push(url);
+    this.setState({user:localStorage})
+  };
+
+  componentWillMount() {
+    this.setState({user:localStorage})
   };
 
   login() {
@@ -124,11 +129,11 @@ class Header extends Component {
               </Form> */}
               {this.state.user
                 ? <div className="nav-div">
-                    <NavLink onClick={e => this.customlink("/profile")}>
+                    <NavLink id ="click" onClick={e => this.customlink("/profile")}>
                       Profile
                     </NavLink>
-                    <NavLink onClick={e => this.customlink("/home")}>
-                      Taco Log
+                    <NavLink id ="click" onClick={e => this.customlink("/home")}>
+                      Home
                     </NavLink> </div>
                 : <div className="button-div">
                     <button className="google-button" onClick={this.login}> <img className="google-logo" src={google} alt="google logo" /> Google </button> 
@@ -137,7 +142,7 @@ class Header extends Component {
                   
               }
               <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
+                <DropdownToggle id= "click" nav caret>
                   
                 </DropdownToggle>
                 <DropdownMenu right>

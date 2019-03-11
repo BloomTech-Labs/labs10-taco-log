@@ -55,7 +55,7 @@ firebase.auth().onAuthStateChanged(user => {
       console.log("visited:", visted);
     }
     console.log(user, 'logged in');
-  } else {
+  } else if (!user) {
     store.dispatch(logout());
     renderApp();
     history.push('/')    

@@ -19,6 +19,10 @@ class ProfilePage extends Component {
     this.props.history.push("/");
     this.props.locationChange();
   }
+  static getDerivedStateFromProps(props, state) {
+
+  }
+
   render() {
     console.log(this.props);
     return (
