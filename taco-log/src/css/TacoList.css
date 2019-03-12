@@ -2,8 +2,30 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    border:2px solid red;
     margin: 10px 80px;
 }
+
+/* for the special taco experiences on the front page */
+.special-taco-list-owrap{
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 10px 80px;
+    margin-top: 700px;
+}
+
+/* The groupings of the special taco list, please try not to break. */
+.special-taco-list-group {
+    display: flex;
+}
+
+
+.taco-list-iwrap{
+    display: flex;
+}
+
 
 .btn-p-wrap{
     display: flex;

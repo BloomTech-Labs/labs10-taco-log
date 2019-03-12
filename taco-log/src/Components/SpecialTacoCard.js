@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { firebase } from "../firebase/firebase";
 import tacoColor from "../img/taco-color.png";
 import tacoGrey from "../img/taco-grey.png";
-import "../css/TacoCard.css";
+// import "../css/SpecialTacoCard.css";
 
 
 
-class TacoCard extends Component {
+class SpecialTacoCard extends Component {
   deleteTaco = id => {
     const user = {
       user_id: this.props.userInfo.internal_id
@@ -16,43 +16,43 @@ class TacoCard extends Component {
 
   render() {
     return (
-      <div className = "taco-card-wrap">
-        <div className = "taco-card-title">{this.props.taco_location}</div>
-        <div className = "taco-card-address">{this.props.address}</div>
-        <div className = "taco-card-ingredients">{this.props.tortilla}, {this.props.meat}, {this.props.cheese}, {this.props.salsa}</div>
-        <div className = "rating-icons">
+      <div className = "special-taco-card-wrap">
+        {/* <div className = "taco-card-id">{this.props.id}</div> */}
+        <div className = "special-taco-card-title">{this.props.taco_location}</div>
+        <div className = "special-taco-card-address">{this.props.address}</div>
+        <div className = "special-rating-icons">    
           <img      
             src={this.props.rating >= 1 ? tacoColor : tacoGrey}
-            className="taco-icon"
+            className="special-taco-icon"
             id="1"
-            alt = "taco-icon"
+            alt= "special-taco-icon"
           />
           <img
             src={this.props.rating >= 2 ? tacoColor : tacoGrey}
-            className="taco-icon"
+            className="special-taco-icon"
             id="2"
-            alt = "taco-icon"
+            alt= "special-taco-icon"
           />
           <img
             src={this.props.rating >= 3 ? tacoColor : tacoGrey}
-            className="taco-icon"
+            className="special-taco-icon"
             id="3"
-            alt = "taco-icon"
+            alt= "special-taco-icon"
           />
           <img
             src={this.props.rating >= 4 ? tacoColor : tacoGrey}
-            className="taco-icon"
+            className="special-taco-icon"
             id="4"
-            alt = "taco-icon"
+            alt= "special-taco-icon"
           />
           <img
             src={this.props.rating >= 5 ? tacoColor : tacoGrey}
-            className="taco-icon"
+            className="special-taco-icon"
             id="5"
-            alt = "taco-icon"
+            alt = "special-taco-icon"
           />
-        </div>
-        <div className="taco-card-description"> {this.props.taco_description} </div>          
+        </div> 
+        <p>{this.props.taco_description}</p>       
         <p>{this.props.created_at}</p>
         {/* <button onClick={() => this.deleteTaco(this.props.id)}>Delete</button> */}
       </div>
@@ -60,4 +60,4 @@ class TacoCard extends Component {
   }
 }
 
-export default TacoCard;
+export default SpecialTacoCard;

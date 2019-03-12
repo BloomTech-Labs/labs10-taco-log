@@ -1,14 +1,65 @@
 .nav-container {
     background-color: #00447b;
     color: white;
+    
+    
 }
+
+.nav-container-landing{
+    background-color: none;
+    color: white;
+    position: relative;
+    z-index: 1;
+}
+
+
 
 .button-div {
     display: flex;
     flex-direction: row;
 }
 
+.navbar-brand{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    cursor: pointer;
+}
+
+.dropdown {
+    /* border:1px solid #753b1c; */
+    margin-top: 15px;
+    padding-right: 9px;
+    /* padding-bottom: 5px; */
+    width: 15%;
+    height: 30px;
+    color:white;
+}
+.navbar-light .navbar-nav .nav-link{
+    color: white;
+    
+}
+
+.dropdown .nav-item{
+    color:white;
+}
+
+.fade {
+    display: flex;
+}
+
+.signIn {
+    border:1px solid white;
+    margin: 21px 10px 0px 0px;
+    width: 70px;
+    height: 30px;
+    font-size: 15px;
+    border-radius: 3px;
+    padding-top: 2px;
+    cursor: pointer;
+}
+
 .button-div .google-button {
+    display: flex;
     margin: 20px 10px;
     border-radius: 3px;
     
@@ -26,12 +77,13 @@
 }
 
 .button-div .fb-button {
+    display: flex;
     margin: 20px 10px;
     color: #fff;
     background: #3b5998;
     border: 1px solid #3b5998;
     background-repeat: no-repeat;
-
+    padding-top: 5px;
     vertical-align: middle;
     cursor: pointer;
     font-weight: bold;
@@ -41,14 +93,42 @@
     border-radius: 3px;
     width:100%;
     height: 50%;
-}
-
-.dropdown{
-    margin-top:15px;
+    padding-right: 5px;
 }
 
 .nav-div{
     display: flex;
     flex-direction: row;
     margin: 15px;
+    cursor: pointer;
+    color:white;
+}
+
+.facebook-logo{
+    height: 15px;
+    width:15px;
+    margin-right: 3px;
+}
+
+.google-logo {
+    height: 15px;
+    width: 15px;
+    margin-top: 2px;
+    margin-right: 3px;
+}
+
+#click {
+    color: white;
+}
+.navbar-buttons{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.disappear{
+    display: none;
+}
+
+.appear {
+    display:flex;
 }

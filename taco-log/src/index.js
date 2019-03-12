@@ -27,7 +27,9 @@ const jsx = (
       <App />
     </Provider>
   </Router>
-);
+); 
+//ReactDOM.render(jsx, document.getElementById('root'));
+
 let hasRendered = false;
 const renderApp = () => {
   if (!hasRendered) {
@@ -43,15 +45,19 @@ serviceWorker.unregister();
 
 // tests if auth firebase function is being called
 firebase.auth().onAuthStateChanged(user => {
+  let visted= false;
+  console.log("visited:", visted);
   if (user) {
     //console.log('uId:', user.uid);
     store.dispatch(login(user.uid));
     renderApp();    
-    if(history.location.pathname ==='/') {
+    if(history.location.pathname ==='/' && visted===false) {
       history.push('/home');
+      visted= true;
+      console.log("visited:", visted);
     }
     console.log(user, 'logged in');
-  } else {
+  } else if (user===null) {
     store.dispatch(logout());
     renderApp();
     history.push('/')    

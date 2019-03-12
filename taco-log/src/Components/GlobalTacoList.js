@@ -1,16 +1,16 @@
 import React, { Component } from "react";
-import TacoCard from "./TacoCard";
+import SpecialTacoCard from "./SpecialTacoCard";
 
 class GlobalTacoList extends Component {
   render() {
     return (
-      <div className="taco-list-owrap">
+      <div className="special-taco-list-owrap">
         
         {this.props.tacoInfo &&
         this.props.tacoInfo.length > 0 ? (
-          <div>
+          <div className="special-taco-list-group">
             {this.props.tacoInfo.map(log => (
-              <TacoCard
+              <SpecialTacoCard
                 {...this.props}
                 key={log.id}
                 id={log.id}
@@ -22,6 +22,7 @@ class GlobalTacoList extends Component {
                 cheese={log.cheese}
                 salsa={log.salsa}
                 created_at={log.created_at}
+                special_experience={log.special_experience}
               />
             ))}
           </div>
