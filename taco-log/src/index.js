@@ -27,7 +27,9 @@ const jsx = (
       <App />
     </Provider>
   </Router>
-);
+); 
+//ReactDOM.render(jsx, document.getElementById('root'));
+
 let hasRendered = false;
 const renderApp = () => {
   if (!hasRendered) {
@@ -55,7 +57,7 @@ firebase.auth().onAuthStateChanged(user => {
       console.log("visited:", visted);
     }
     console.log(user, 'logged in');
-  } else {
+  } else if (user===null) {
     store.dispatch(logout());
     renderApp();
     history.push('/')    

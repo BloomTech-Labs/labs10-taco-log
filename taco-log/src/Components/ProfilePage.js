@@ -7,7 +7,8 @@ import "../css/ProfilePage.css"
 
 class ProfilePage extends Component {
   state = {
-    selectedTab: "logs"
+    selectedTab: "logs",
+    user: null
   };
 
   handleToggle = e => {
@@ -19,6 +20,11 @@ class ProfilePage extends Component {
     this.props.history.push("/");
     this.props.locationChange();
   }
+
+  // componentWillMount () {
+  //   this.setState({user:localStorage})
+  // }
+
   render() {
     console.log(this.props);
     return (

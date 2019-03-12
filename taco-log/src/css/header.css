@@ -43,9 +43,20 @@
     color:white;
 }
 
-/* a:hover {
-    background-color: white;
-} */
+.fade {
+    display: flex;
+}
+
+.signIn {
+    border:1px solid white;
+    margin: 21px 10px 0px 0px;
+    width: 70px;
+    height: 30px;
+    font-size: 15px;
+    border-radius: 3px;
+    padding-top: 2px;
+    cursor: pointer;
+}
 
 .button-div .google-button {
     display: flex;
@@ -106,7 +117,18 @@
     margin-right: 3px;
 }
 
+#click {
+    color: white;
+}
 .navbar-buttons{
     display: flex;
     justify-content: space-evenly;
+}
+
+.disappear{
+    display: none;
+}
+
+.appear {
+    display:flex;
 }

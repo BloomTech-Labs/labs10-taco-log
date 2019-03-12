@@ -2,6 +2,7 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    border:2px solid red;
     margin: 10px 80px;
 }
 
