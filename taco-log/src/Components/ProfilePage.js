@@ -3,8 +3,9 @@ import ProfileInfoDisplay from "./ProfileInfoDisplay";
 import TacoList from "./TacoList";
 import AchievementList from "./AchievementList";
 import { connect } from "react-redux";
-import "../css/ProfilePage.css"
-
+import "../css/ProfilePage.css";
+import tacoGrey from "../img/taco-grey.png";
+import medalGrey from "../img/achievement-3-grey.png"
 
 class ProfilePage extends Component {
   state = {
@@ -16,18 +17,21 @@ class ProfilePage extends Component {
       selectedTab: e.target.id
     });
   };
-  loginPush() {    
+  loginPush() {
     this.props.history.push("/");
     this.props.locationChange();
   }
-  render() {    
+  render() {
     return (
       <div>
         {this.props.userInfo.length !== 0 ? (
           <div className="profile-page">
-            
-              <ProfileInfoDisplay {...this.props} />
-              <div className = "log-badges-switch">
+            <ProfileInfoDisplay {...this.props} />
+            <div className="profile-inner-wrap">
+              <div className="log-badges-switch">
+                <div className = "switch-title">
+                  {this.props.userInfo.name}'s Profile
+                </div>
                 <div
                   onClick={this.handleToggle}
                   id="logs"
@@ -37,7 +41,7 @@ class ProfilePage extends Component {
                       : "profile-tab"
                   }
                 >
-                  My Log
+                  <img id="logs" className = "switch-img" src = {require('../img/taco-grey.png')} />My Log
                 </div>
                 <div
                   onClick={this.handleToggle}
@@ -48,15 +52,18 @@ class ProfilePage extends Component {
                       : "profile-tab"
                   }
                 >
-                  My Badges
+                  <img id="badges" className = "switch-img" src = {medalGrey} />My Badges
                 </div>
               </div>
-              {this.state.selectedTab === "logs" ? (
+              <div className = "p-content-wrap">
+                {this.state.selectedTab === "logs" ? (
                 <TacoList {...this.props} />
               ) : (
                 <AchievementList {...this.props} />
               )}
-            
+              </div>
+              
+            </div>
           </div>
         ) : (
           this.loginPush()

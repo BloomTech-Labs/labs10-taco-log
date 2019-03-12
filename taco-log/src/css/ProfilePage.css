@@ -3,20 +3,43 @@
     flex-direction: column;
     align-items: center;
 }
-.profile-page .log-badges-switch{
-    display: flex;
-    justify-content: center;
-}
-.profile-page .profile-tab{    
-    border: 1px solid #00447b;
-    background-color: #6aa7da;
-    height: 30px;
-    width: 100px;
-    margin: 5px;
-    border-radius: 5px;
+
+.profile-page .profile-inner-wrap{
+    max-width: 1000px;
+    width: 100%;  
+    display: flex;    
+    justify-content: space-between;
+    padding-top: 20px; 
 }
 
-.profile-page .selected-tab{
-    background-color: #00447b;
-    color: white;
+.profile-page .log-badges-switch{
+    display: flex;
+    flex-direction: column;        
+}
+
+.profile-page .log-badges-switch .switch-title{
+    border-bottom: 1px solid #e6e6e6;
+    padding-bottom: 10px;
+}
+
+.profile-page .log-badges-switch .switch-img{
+    margin-right: 5px;
+    height: 24px;
+    width: 24px;
+}
+
+.profile-page .profile-tab{           
+    height: 30px;
+    width: 217px;      
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.profile-page .selected-tab{    
+    border-left: 5px solid #00447b;
+    background: #f5f5f5;
+}
+
+.profile-page .p-content-wrap{
+    align-self: center;
+    margin: 0 auto;
 }
