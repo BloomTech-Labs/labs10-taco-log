@@ -54,7 +54,7 @@ class Landing extends Component {
             <h1>Welcome to Taco Logs</h1>
             <h4>Home of the Taco Enthusiast!</h4>
             <div className="form">
-              <FormGroup className="form-group">
+              <FormGroup className="form-group-landing">
                 <input
                   className="input"
                   type="search"
