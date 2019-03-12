@@ -5,6 +5,15 @@
     margin: 10px 80px;
 }
 
+/* for the special taco experiences on the front page */
+.special-taco-list-owrap{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 10px 80px;
+    margin-top: 700px;
+}
+
 
 .taco-list-iwrap{
     display: flex;
