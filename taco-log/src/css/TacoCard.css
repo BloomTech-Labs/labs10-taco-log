@@ -32,16 +32,16 @@ temp fix while there's a bug with how special taco cards not taking in the speci
 
 /* specal taco cards on front page section */
 .special-taco-card-wrap{
-    border: 1px solid #00447b;
-    background-color: green;
+    border: 1px solid #e6e6e6;
+    background-color: #fff;
     margin:5px;
     width: 100%;
-    max-width: 400px;
-    display: flex;
-    flex-direction: row;
+    max-width: 300px;
+    /* display: flex;
+    flex-direction: row; */
     justify-content: center;
     align-items: center;
-}
+}   
 
 .special-taco-card-wrap .special-taco-card-title{
     font-weight: bold;

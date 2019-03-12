@@ -8,7 +8,7 @@ class GlobalTacoList extends Component {
         
         {this.props.tacoInfo &&
         this.props.tacoInfo.length > 0 ? (
-          <div>
+          <div className="special-taco-list-group">
             {this.props.tacoInfo.map(log => (
               <SpecialTacoCard
                 {...this.props}
