@@ -5,6 +5,7 @@ import AchievementList from "./AchievementList";
 import { connect } from "react-redux";
 import "../css/ProfilePage.css"
 
+
 class ProfilePage extends Component {
   state = {
     selectedTab: "logs"
@@ -19,8 +20,7 @@ class ProfilePage extends Component {
     this.props.history.push("/");
     this.props.locationChange();
   }
-  render() {
-    console.log(this.props);
+  render() {    
     return (
       <div>
         {this.props.userInfo.length !== 0 ? (

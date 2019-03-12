@@ -32,7 +32,7 @@
   display: block;
 }
 
-.content {
+.achievement-modal .content {
   background-color: #6aa7da;
   margin: 15% auto;
   padding: 20px;
@@ -43,13 +43,13 @@
   flex-direction: column;
 }
 
-.content .exit-icon{
+.achievement-modal .content .exit-icon{
     height: 50px;
     width: 50px;
     align-self: flex-end;
 }
 
-.content .inner-wrap {
+.achievement-modal .content .inner-wrap {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
