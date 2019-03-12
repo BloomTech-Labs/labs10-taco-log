@@ -28,39 +28,43 @@
 
 .img-intro {
     width: 100%;
+    display: flex;
+    flex-direction: column;
     padding-top: 250px;
     font-family: Helvetica,Verdana,sans-serif;
     color: #E6E6FA;
-}
-
-.img-leading{
-    padding-top: 100px;
-}
-
-/* .tab {
-    border-bottom: 1px solid #00447b;
-    margin-top: 800px;
-    display: flex;
-    justify-content: center;
     
+   
+}
+.form-group{
+    display: flex;
+    flex-direction: row;
+    width:50%;
+    margin-left: 300px;
 }
 
-.global-tab{
-    border:1px solid #00447b;
-    border-radius: 3px;
-    border-bottom: 0px;
-    margin: 0px 10px;
-    cursor: pointer;
+.form-control {
+    width: 200px;
+    height: 45px;
+    margin-top: 60px;
 }
 
-.local-tab{
-    border:1px solid #00447b;
+.button {
+    height: 45px;
+    margin-top: 60px;
     border-radius: 3px;
-    border-bottom: 0px;
-    margin: 0px 10px;
-    cursor: pointer;
-} */
+    background-color: #307B93;
+    border: 1px solid #307B93;
+    color:white;
+}
 
+.input {
+    width: 600px;
+    height: 45px;
+    margin-top: 60px;
+    border-radius: 3px;
+    border-style: none;
+}
 
 
 .mid-section {
@@ -72,53 +76,4 @@
 
 }
 
-.fade-button{
-    border:1px solid white;
-    margin:20px 10px;
-    width:20%;
-    cursor: pointer;
-}
 
-.fade-div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.button-div .google-button {
-    display: flex;
-    margin: 20px 10px;
-    border-radius: 3px;
-    padding: 5px 7px;
-    color: #666;
-    background: #fff;
-    border: 1px solid #ccc;
-    cursor: pointer;
-    border: 1px solid;
-    font-weight: bold;
-    text-align: center;
-    font-size: 14px;
-    line-height: 1.28571em;
-    width:100%;
-    height: 30px;
-}
-
-.button-div .fb-button {
-    display: flex;
-    margin: 20px 10px;
-    color: #fff;
-    background: #3b5998;
-    border: 1px solid #3b5998;
-    background-repeat: no-repeat;
-    padding-top: 5px;
-    vertical-align: middle;
-    cursor: pointer;
-    font-weight: bold;
-    text-align: center;
-    font-size: 14px;
-    line-height: 1.28571em;
-    border-radius: 3px;
-    width:100%;
-    height: 30px;
-    padding-right: 5px;
-}

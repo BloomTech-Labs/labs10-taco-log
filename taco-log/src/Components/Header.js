@@ -1,15 +1,12 @@
 import React, { Component } from "react";
 import {
-  Input,
-  Form,
-  FormGroup,
+  Fade,
   Button,
   Collapse,
   Navbar,
   NavbarToggler,
   NavbarBrand,
   Nav,
-  NavItem,
   NavLink,
   UncontrolledDropdown,
   DropdownToggle,
@@ -23,6 +20,7 @@ import "../css/header.css"
 import google from '../google.png';
 import facebook from '../facebook.png';
 
+
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -30,11 +28,13 @@ class Header extends Component {
     this.toggle = this.toggle.bind(this);
     this.state = {
       isOpen: false,
+      fadeIn: false,
       user: null
     };
     this.logout = this.logout.bind(this);
     this.login = this.login.bind(this);
     this.facebookLogin = this.facebookLogin.bind(this);
+    this.toggleFade = this.toggleFade.bind(this);
   }
 
   customlink = url => {
@@ -43,9 +43,9 @@ class Header extends Component {
     this.setState({user:localStorage})
   };
 
-  componentWillMount() {
-    this.setState({user:localStorage})
-  }; 
+  // componentWillMount() {
+  //   this.setState({user:localStorage})
+  // }; 
 
   login() {
     firebase
@@ -101,8 +101,17 @@ class Header extends Component {
     });
   }
 
+  toggleFade() {
+    this.setState({
+        fadeIn: !this.state.fadeIn
+    });
+    
+}
+
+
 
   render() {
+    
     console.log("user:", this.state.user)
     return (
       <div className=
@@ -117,16 +126,6 @@ class Header extends Component {
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-              {/* <Form>
-                <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-                  <Input
-                    type="search"
-                    name="search"
-                    id="search"
-                    placeholder="Search Taco"
-                  />
-                </FormGroup>
-              </Form> */}
               {this.state.user
                 ? <div className="nav-div">
                     <NavLink id ="click" onClick={e => this.customlink("/profile")}>
@@ -136,8 +135,16 @@ class Header extends Component {
                       Home
                     </NavLink> </div>
                 : <div className="button-div">
-                    <button className="google-button" onClick={this.login}> <img className="google-logo" src={google} alt="google logo" /> Google </button> 
-                    <div className="fb-button" onClick={this.facebookLogin}> <img className="facebook-logo" src={facebook} alt="facebook logo" /> Facebook </div>
+                    <div className="signIn" onClick={this.toggleFade}> Sign In </div>
+                    <Fade in={this.state.fadeIn} className="fade">
+                      {this.state.fadeIn
+                        ? <div className="appear">
+                            <button className="google-button" onClick={this.login}> <img className="google-logo" src={google} alt="google logo" /> Google </button> 
+                            <div className="fb-button" onClick={this.facebookLogin}> <img className="facebook-logo" src={facebook} alt="facebook logo" /> Facebook </div>
+                          </div>
+                        : <div className="disappear"></div>
+                      }
+                    </Fade>
                   </div>
                   
               }
