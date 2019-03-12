@@ -28,6 +28,7 @@ class LogTaco extends Component {
       selectedMeat: [],
       selectedCheese: [],
       selectedSalsa: [],
+      selectedTab: 0,
       special_experience: 0,
       taco_description: ""
     };
@@ -388,7 +389,7 @@ class LogTaco extends Component {
   };
 
   toggleRating = e => {
-    if(this.state.rating === '1' && e.target.id === "1"){
+    if(this.state.rating === e.target.id){
       this.setState({ rating: '0' })
     }else{
       this.setState({
@@ -396,6 +397,16 @@ class LogTaco extends Component {
       });
     }
       
+  };
+
+  toggleIngredientTab = e => {
+    if(this.state.selectedTab !== e.target.id) {
+      this.setState({ selectedTab: e.target.id})
+    }else{
+      this.setState({
+        selectedTab: "0"
+      });
+    }
   };
 
 
@@ -434,9 +445,9 @@ class LogTaco extends Component {
 
         <Container>
 
-          Tortilla
         <Row className="ingredient-tab-wrap">
-          {this.state.tortilla.map(data => (
+        <img src={(this.state.selectedTab === "1")?tacoColor:tacoGrey} onClick={e => this.toggleIngredientTab(e)} id="1" />
+          {this.state.selectedTab === "1" ? this.state.tortilla.map(data => (
             <Col xs="1"
               onClick={this.selectTortilla}
               className={
@@ -448,12 +459,12 @@ class LogTaco extends Component {
             >
               {data}
             </Col>
-          ))}
+          )) : <p>Test: tortilla unselected</p> }
         </Row>
 
-          Meat
         <Row className="ingredient-tab-wrap">
-          {this.state.meat.map(data => (
+        <img src={(this.state.selectedTab === "2")?tacoColor:tacoGrey} onClick={e => this.toggleIngredientTab(e)} id="2" />
+          {this.state.selectedTab === "2" ? this.state.meat.map(data => (
             <Col xs="1"
               onClick={this.selectMeat}
               className={
@@ -465,11 +476,11 @@ class LogTaco extends Component {
             >
               {data}
             </Col>
-          ))}
+          )): <p> Test: meats unselcted </p>}
         </Row>
-          Cheese
         <Row className="ingredient-tab-wrap">
-          {this.state.cheese.map(data => (
+        <img src={(this.state.selectedTab === "3")?tacoColor:tacoGrey} onClick={e => this.toggleIngredientTab(e)} id="3" />
+          {this.state.selectedTab === "3" ? this.state.cheese.map(data => (
             <Col xs="1"
               onClick={this.selectCheese}
               id="cheese"
@@ -482,12 +493,12 @@ class LogTaco extends Component {
             >
               {data}
             </Col>
-          ))}
+          )) : <p>Test: cheese unselected</p>}
         </Row>
 
-          Salsa
         <Row className="ingredient-tab-wrap">
-          {this.state.salsa.map(data => (
+        <img src={(this.state.selectedTab === "4") ? tacoColor:tacoGrey} onClick={e => this.toggleIngredientTab(e)} id="4" />
+          {this.state.selectedTab === "4" ? this.state.salsa.map(data => (
             <Col xs="1"
               onClick={this.selectSalsa}
               className={
@@ -499,7 +510,7 @@ class LogTaco extends Component {
             >
               {data}
             </Col>
-          ))}
+          )): <p>Test: salsa unselected</p>}
         </Row>
         
         </Container>

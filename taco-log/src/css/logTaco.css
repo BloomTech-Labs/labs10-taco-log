@@ -20,6 +20,10 @@
     width:100%;
     padding:2%;
 }
+.ingredient-tab{
+    display: hidden;
+}
+
 .ingredient-category{
     justify-self:flex-start;
 }
