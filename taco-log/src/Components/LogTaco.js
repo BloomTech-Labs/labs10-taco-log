@@ -3,6 +3,7 @@ import { firebase } from "../firebase/firebase";
 import { Form, Input, Button, FormGroup, Container, Row, Col } from "reactstrap";
 import tacoColor from "../img/taco-color.png"
 import tacoGrey from "../img/taco-grey.png"
+import FirstTaco from "./FirstTaco"
 import "../css/logTaco.css";
 
 class LogTaco extends Component {
@@ -30,7 +31,8 @@ class LogTaco extends Component {
       selectedSalsa: [],
       selectedTab: 0,
       special_experience: 0,
-      taco_description: ""
+      taco_description: "",
+      tacos_logged: 0
     };
   }
 
@@ -408,13 +410,32 @@ class LogTaco extends Component {
       });
     }
   };
+  grabTacosLogged = e => {
+    if (this.state.userInfo) {
+    this.setState({tacos_logged: this.props.userInfo.user_stats.tacos_logged})
+    }
+  }
+
+  mapPlacetoState = e => {
+    this.setState({
+      address: this.props.place.formatted_address,
+      taco_location: this.props.place.name,
+      place_id: this.props.place.id,
+      staticMap: true,
+      lat: this.props.place.geometry.location.lat(),
+      lng: this.props.place.geometry.location.lng()
+    })
+  }
 
 
-  render() {console.log(this.state.rating)
+  render() {
     return (
       <Container className="log-taco-container">
+      {this.props.userInfo ? this.grabTacosLogged() : console.log("No user")}
+      {(this.state.tacos_logged === 0) ? <FirstTaco {...this.props} {...this.state}/> : 
       <div className="taco-form">
         <p>Log a Taco Here:</p>
+        {(this.props.place) ? this.mapPlacetoState() :
         <Row sm="6" className="search-map-container">
         <input
           onChange={this.handleInputChange}
@@ -424,8 +445,8 @@ class LogTaco extends Component {
           name="taco_location"
         />
           </Row>
-        <div className="title-map-wrap">
-          {/* <div>{this.state.taco_location}</div> */}
+        }
+{/*         <div className="title-map-wrap">
           <div className="taco-map">
             {this.state.staticMap && (
               <img className="taco-map-box"
@@ -441,7 +462,7 @@ class LogTaco extends Component {
               />
             )}
           </div>
-        </div>
+        </div> */}
 
         <Container>
 
@@ -558,7 +579,7 @@ class LogTaco extends Component {
         ) : (
           <div />
         )}
-      </div>
+      </div>}
       </Container>
     );
   }
