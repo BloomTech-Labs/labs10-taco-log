@@ -13,6 +13,7 @@ import {
   DropdownMenu,
   DropdownItem
 } from "reactstrap";
+import { connect } from 'react-redux';
 import { firebase, provider, facebookProvider } from '../firebase/firebase';
 import { Elements, StripeProvider } from "react-stripe-elements";
 import CheckoutForm from "./CheckoutForm";
@@ -120,7 +121,7 @@ class Header extends Component {
           : "nav-container"
         }>
         <Navbar light expand="md">
-          <NavbarBrand onClick={e => this.customlink("/")}>
+          <NavbarBrand id="click" onClick={e => this.customlink("/")}>
             Taco Log
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
@@ -178,4 +179,10 @@ class Header extends Component {
   }
 }
 
-export default Header;
+
+const mapStateToProps = state => {
+  return { user: state.user };
+};
+
+export default connect (mapStateToProps) (Header);
+
