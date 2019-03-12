@@ -4,11 +4,11 @@ import SpecialTacoCard from "./SpecialTacoCard";
 class GlobalTacoList extends Component {
   render() {
     return (
-      <div className="taco-list-owrap">
+      <div className="special-taco-list-owrap">
         
         {this.props.tacoInfo &&
         this.props.tacoInfo.length > 0 ? (
-          <div>
+          <div className="special-taco-list-group">
             {this.props.tacoInfo.map(log => (
               <SpecialTacoCard
                 {...this.props}

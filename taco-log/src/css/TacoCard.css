@@ -27,3 +27,36 @@
     width:100%;
     height: 100%;
 }
+/* 
+temp fix while there's a bug with how special taco cards not taking in the specialtacocard.css */
+
+/* specal taco cards on front page section */
+.special-taco-card-wrap{
+    border: 1px solid #e6e6e6;
+    background-color: #fff;
+    margin:5px;
+    width: 100%;
+    max-width: 300px;
+    /* display: flex;
+    flex-direction: row; */
+    justify-content: center;
+    align-items: center;
+}   
+
+.special-taco-card-wrap .special-taco-card-title{
+    font-weight: bold;
+    padding: 5px;
+}
+
+.special-taco-card-wrap .special-rating-icons{
+    display:flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width:50%;
+}
+.special-taco-card-wrap .special-rating-icons .special-taco-icon{
+    max-width: 50px;
+    max-height: 50px;
+    width:100%;
+    height: 100%;
+}
