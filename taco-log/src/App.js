@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import axios from "axios";
 import { Route, Switch, Link } from "react-router-dom";
-import { firebase } from "./firebase/firebase";
 import HomePage from "./Components/HomePage";
 import Header from "./Components/Header";
 import LogTaco from "./Components/LogTaco";
@@ -32,8 +30,7 @@ class App extends Component {
     
   }
 
-  render() {
-    console.log(this.props)
+  render() {    
     return (
       <div className="App">
         <Route
@@ -81,8 +78,7 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  console.log(state)
+const mapStateToProps = state => {  
   return {
     userInfo: state.userReducer.user,
     tacoInfo: state.tacoReducer.tacos,
