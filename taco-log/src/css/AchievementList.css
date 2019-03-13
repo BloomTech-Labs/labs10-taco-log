@@ -89,7 +89,7 @@
   align-items: center;
 }
 
-@media (max-width: 450px){
+@media (max-width: 700px){
   .achievement-list-owrap {
     align-items: center;
     padding-top:20px;
