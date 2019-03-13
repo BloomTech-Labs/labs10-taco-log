@@ -19,3 +19,8 @@ Node.js
 
 ##Dependencies Used
 google-maps-react
+
+
+##Acknowledgements 
+
+Photo by Kaboompics.com from Pexels
