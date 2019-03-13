@@ -115,7 +115,14 @@ export const updateUser = (id, changes) => dispatch => {
   axios
     .put(`${url}api/users/${id}`, changes)
     .then(res => {
-      dispatch({ type: UPDATE_USER, payload: res.data });
+      axios
+      .get(`${url}api/users/${id}`)
+      .then(res => {
+        dispatch({ type: GET_USER, payload: res.data });
+      })
+      .catch(err => {
+        console.log(err);
+      });
     })
     .catch(err => {
       console.log(err);

@@ -32,7 +32,7 @@
     border-top: 1px solid #e6e6e6;
 }
 
-@media (max-width: 450px){
+@media (max-width: 700px){
     .taco-list-container{
         align-items: center;
         padding-top:20px;
