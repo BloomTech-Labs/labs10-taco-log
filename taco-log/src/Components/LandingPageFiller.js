@@ -8,28 +8,26 @@ export default class LandingPageFiller extends React.Component {
   render() {
     return(
     <Container className= "filler-container">
-      <div className="row1">
-
+      <Row className="row1">
           <div className='image-container' >
             <img className="taco-image" src={tacoFiller} /> 
           </div>
-
-          <div  className="text-box">
+          <Col  className="text-box">
             <h2 className="headliner">Simply put, tacos are delicious.</h2>
             <span className ="taco-text"> But how many tacos have you've eaten? What was your taco journey really like?</span>
             <span className="taco-text"> With Taco Logs, you can start keeping track of your tacoventures in the world.</span>
             <span className="taco-text"> Simply put in where you had it and what was in your taco, name it, and presto, you have a taco logged!</span>
-          </div>
-      </div>
+          </Col>
+      </Row>
       <Row className="row2">
-          <Col xs="6" className="text-box">
+          <Col className="text-box">
             <h2 className="headliner">About</h2>
             <span className="taco-text"> This was a Lambda Labs project. </span>
             <span className="taco-text"> We're still learning as we go on so if you'd like to take a look at our <a href='https://github.com/Lambda-School-Labs/labs10-taco-log'>Github repo</a> and give feedback or make your own from it, feel free! We appreciate any insight or help.</span>
           </Col>
-          <Col className="taco-image2" xs="6">
+          <div className="image-container2" >
             <img className="taco-image" src={tacoFiller2} />
-          </Col>
+          </div>
       </Row>
     </Container>
     );
