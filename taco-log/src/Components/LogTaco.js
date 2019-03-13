@@ -3,6 +3,20 @@ import { firebase } from "../firebase/firebase";
 import { Form, Input, Button, FormGroup, Container, Row, Col } from "reactstrap";
 import tacoColor from "../img/taco-color.png"
 import tacoGrey from "../img/taco-grey.png"
+
+import meatColor from "../img/achievement-4-color.png"
+import meatGrey from "../img/achievement-4-grey.png"
+import tortillaColor from "../img/tortillas (1).png"
+import tortillaGrey from "../img/tortillas (1).png"
+import cheeseColor from "../img/achievement-5-color.png"
+import cheeseGrey from "../img/achievement-5-grey.png"
+import salsaColor from "../img/achievement-6-color.png"
+import salsaGrey from "../img/achievement-6-grey.png"
+
+
+
+
+
 import FirstTaco from "./FirstTaco"
 import "../css/logTaco.css";
 
@@ -469,7 +483,7 @@ class LogTaco extends Component {
         <Container>
 
         <Row className="ingredient-tab-wrap">
-        <img src={(this.state.selectedTab === "1")?tacoColor:tacoGrey} onClick={e => this.toggleIngredientTab(e)} id="1" />
+        <img src={(this.state.selectedTab === "1")?tortillaColor:tortillaGrey} onClick={e => this.toggleIngredientTab(e)} id="1" />
           {this.state.selectedTab === "1" ? this.state.tortilla.map(data => (
             <Col xs="1"
               onClick={this.selectTortilla}
@@ -486,7 +500,7 @@ class LogTaco extends Component {
         </Row>
 
         <Row className="ingredient-tab-wrap">
-        <img src={(this.state.selectedTab === "2")?tacoColor:tacoGrey} onClick={e => this.toggleIngredientTab(e)} id="2" />
+        <img src={(this.state.selectedTab === "2")?meatColor:meatGrey} onClick={e => this.toggleIngredientTab(e)} id="2" />
           {this.state.selectedTab === "2" ? this.state.meat.map(data => (
             <Col xs="1"
               onClick={this.selectMeat}
@@ -502,7 +516,7 @@ class LogTaco extends Component {
           )): <p> Test: meats unselcted </p>}
         </Row>
         <Row className="ingredient-tab-wrap">
-        <img src={(this.state.selectedTab === "3")?tacoColor:tacoGrey} onClick={e => this.toggleIngredientTab(e)} id="3" />
+        <img src={(this.state.selectedTab === "3")?cheeseColor:cheeseGrey} onClick={e => this.toggleIngredientTab(e)} id="3" />
           {this.state.selectedTab === "3" ? this.state.cheese.map(data => (
             <Col xs="1"
               onClick={this.selectCheese}
@@ -520,7 +534,7 @@ class LogTaco extends Component {
         </Row>
 
         <Row className="ingredient-tab-wrap">
-        <img src={(this.state.selectedTab === "4") ? tacoColor:tacoGrey} onClick={e => this.toggleIngredientTab(e)} id="4" />
+        <img src={(this.state.selectedTab === "4") ? salsaColor:salsaGrey} onClick={e => this.toggleIngredientTab(e)} id="4" />
           {this.state.selectedTab === "4" ? this.state.salsa.map(data => (
             <Col xs="1"
               onClick={this.selectSalsa}

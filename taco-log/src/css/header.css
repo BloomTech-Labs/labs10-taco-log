@@ -27,7 +27,7 @@
 
 .dropdown {
     /* border:1px solid #753b1c; */
-    margin-top: 15px;
+    margin-top: 5px;
     padding-right: 9px;
     /* padding-bottom: 5px; */
     width: 15%;
@@ -99,7 +99,7 @@
 .nav-div{
     display: flex;
     flex-direction: row;
-    margin-top: 15px;
+    margin-top: 5px;
     cursor: pointer;
     color:white;
 }
@@ -138,7 +138,7 @@
 
 
 /* -----------Mobile styles----------- */
-@media (max-width: 400px) {
+@media (max-width: 490px) {
     
    .nav-div {
        
