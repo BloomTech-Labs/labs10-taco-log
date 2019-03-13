@@ -40,10 +40,8 @@ class ProfileInfoDisplay extends Component {
   render() {
     return (
       <div className="p-info-top">
-        <div className="p-info-dis">
-          {/* <img className="p-img" src={this.props.userInfo.photoURL} /> */}
+        <div className="p-info-dis">          
           <div className="p-info-content">
-            {/* <div className="dummy-img" /> */}
             <img className="p-img" src={this.props.userInfo.photoURL} />
             <div className="info-column">
               <div className="p-info-name">{this.props.userInfo.name}</div>
