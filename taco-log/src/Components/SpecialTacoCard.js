@@ -18,6 +18,7 @@ class SpecialTacoCard extends Component {
     return (
       <div className = "special-taco-card-wrap">
         {/* <div className = "taco-card-id">{this.props.id}</div> */}
+        <div className = "special-taco-card-taconame"> {this.props.taco_name}</div>
         <div className = "special-taco-card-title">{this.props.taco_location}</div>
         <div className = "special-taco-card-address">{this.props.address}</div>
         <div className = "special-rating-icons">    
