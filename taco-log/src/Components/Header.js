@@ -51,8 +51,7 @@ class Header extends Component {
     firebase
       .auth()
       .signInWithPopup(provider)
-      .then(result => {
-        console.log(result)
+      .then(result => {        
         const user = {
           name: result.user.displayName,
           email: result.user.email,
@@ -125,8 +124,8 @@ class Header extends Component {
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              {this.state.user
+            <Nav className="ml-auto" navbar>              
+              {this.props.userLoggedIn
                 ? <div className="nav-div">
                     <NavLink id ="click" onClick={e => this.customlink("/profile")}>
                       Profile

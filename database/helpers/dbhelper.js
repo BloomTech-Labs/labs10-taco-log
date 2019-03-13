@@ -2,9 +2,7 @@ const db = require('../dbConfig.js');
 
 module.exports ={
     findUser,
-    getUser,
-    getSpecialTacos
-  
+    getUser
 };
 function findUser(id){
     if (id){
