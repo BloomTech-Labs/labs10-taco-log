@@ -34,11 +34,12 @@ class ProfilePage extends Component {
           <div className="profile-page">
             <ProfileInfoDisplay {...this.props} />
             <div className="profile-inner-wrap">
-              <div className="log-badges-switch">
+              <div className="log-badges-switch-wrap">
                 <div className = "switch-title">
                   {this.props.userInfo.name}'s Profile
                 </div>
-                <div
+                <div className="log-badges-switch">
+                  <div
                   onClick={this.handleToggle}
                   id="logs"
                   className={
@@ -60,6 +61,8 @@ class ProfilePage extends Component {
                 >
                   <img id="badges" className = "switch-img" src = {medalGrey} />My Badges
                 </div>
+                </div>
+                
               </div>
               <div className = "p-content-wrap">
                 {this.state.selectedTab === "logs" ? (
