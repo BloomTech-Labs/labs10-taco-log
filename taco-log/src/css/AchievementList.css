@@ -88,3 +88,18 @@
   justify-content: center;
   align-items: center;
 }
+
+@media (max-width: 450px){
+  .achievement-list-owrap {
+    align-items: center;
+    padding-top:20px;
+  }
+  .achievement-list-owrap .achievement-list-title-btn-wrap{
+    align-items: center;
+  }
+  .achievement-list-owrap .personal-achievement-wrap {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+}
