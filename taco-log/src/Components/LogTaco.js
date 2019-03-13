@@ -32,7 +32,8 @@ class LogTaco extends Component {
       selectedTab: 0,
       special_experience: 0,
       taco_description: "",
-      tacos_logged: 0
+      tacos_logged: 0,
+      photo:""
     };
   }
 
@@ -109,7 +110,8 @@ class LogTaco extends Component {
         place_id: place.id,
         staticMap: true,
         lat: place.geometry.location.lat(),
-        lng: place.geometry.location.lng()
+        lng: place.geometry.location.lng(), 
+        photo: place.photos[0].getUrl()
       });
     });
   }
@@ -347,8 +349,8 @@ class LogTaco extends Component {
       meat: meat,
       cheese: cheese,
       salsa: salsa,
-      special_experience: this.state.special_experience
-
+      special_experience: this.state.special_experience,
+      photo: this.state.photo
     };
     firebase
       .auth()
@@ -410,29 +412,29 @@ class LogTaco extends Component {
       });
     }
   };
-  grabTacosLogged = e => {
-    if (this.state.userInfo) {
-    this.setState({tacos_logged: this.props.userInfo.user_stats.tacos_logged})
-    }
-  }
+  // grabTacosLogged = e => {
+  //   if (this.state.userInfo) {
+  //   this.setState({tacos_logged: this.props.userInfo.user_stats.tacos_logged})
+  //   }
+  // }
 
-  mapPlacetoState = e => {
-    this.setState({
-      address: this.props.place.formatted_address,
-      taco_location: this.props.place.name,
-      place_id: this.props.place.id,
-      staticMap: true,
-      lat: this.props.place.geometry.location.lat(),
-      lng: this.props.place.geometry.location.lng()
-    })
-  }
+  // mapPlacetoState = e => {
+  //   this.setState({
+  //     address: this.props.place.formatted_address,
+  //     taco_location: this.props.place.name,
+  //     place_id: this.props.place.id,
+  //     staticMap: true,
+  //     lat: this.props.place.geometry.location.lat(),
+  //     lng: this.props.place.geometry.location.lng()
+  //   })
+  // }
 
 
-  render() {
+  render() {    
     return (
       <Container className="log-taco-container">
-      {this.props.userInfo ? this.grabTacosLogged() : console.log("No user")}
-      {(this.state.tacos_logged === 0) ? <FirstTaco {...this.props} {...this.state}/> : 
+      {/* {this.props.userInfo ? this.grabTacosLogged() : console.log("No user")} */}
+      {/* {(this.state.tacos_logged === 0) ? <FirstTaco {...this.props} {...this.state}/> : } */}
       <div className="taco-form">
         <p>Log a Taco Here:</p>
         {(this.props.place) ? this.mapPlacetoState() :
@@ -579,7 +581,7 @@ class LogTaco extends Component {
         ) : (
           <div />
         )}
-      </div>}
+      </div>
       </Container>
     );
   }

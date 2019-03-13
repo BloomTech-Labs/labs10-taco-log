@@ -34,7 +34,8 @@ import {
   LOG_OUT,
   logoutUser,
   UPDATE_USER,
-  updateUser
+  updateUser,
+  fetchUser
 } from "./userActions";
 
 export {
@@ -59,5 +60,6 @@ export {
   UPDATE_USER,
   updateUser,
   FETCH_ACHIEVEMENTS,
-  fetchAchievements
+  fetchAchievements,
+  fetchUser
 };
