@@ -1,10 +1,25 @@
 .taco-card-wrap{
     border-bottom: 1px solid #e6e6e6;      
     width: 100%;    
-    display: flex;    
-    justify-content: space-between;
-    align-items: flex-start;
+    display: flex;  
+    align-items: center;
     padding: 10px 5px;
+    height: 120px;
+}
+
+.taco-card-wrap .taco-card-content{
+    width: 100%;
+    display: flex;       
+    justify-content: space-between; 
+    align-items: flex-start;
+    padding-left: 20px;
+}
+
+.taco-card-wrap .taco-card-img{
+    height: 100%;
+    width: 100%;
+    max-width: 100px;
+    max-height:100px; 
 }
 
 .taco-card-wrap .taco-rating-column{

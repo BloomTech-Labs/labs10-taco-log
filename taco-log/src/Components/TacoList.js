@@ -74,6 +74,7 @@ class TacoList extends Component {
                     salsa={log.salsa}
                     created_at={log.created_at}
                     address={log.address}
+                    photo={log.photo}
                   />
                 ))}
               </div>
@@ -93,6 +94,7 @@ class TacoList extends Component {
                     salsa={log.salsa}
                     created_at={log.created_at}
                     address={log.address}
+                    photo={log.photo}
                   />
                 ))}
               </div>

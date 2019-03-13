@@ -15,51 +15,55 @@ class TacoCard extends Component {
   render() {
     return (
       <div className="taco-card-wrap">
-        <div className="taco-rating-column">
-          <div className="taco-card-title">{this.props.taco_location}</div>
-          <div className="rating-icons">
-            <img
-              src={this.props.rating >= 1 ? tacoColor : tacoGrey}
-              className="taco-icon"
-              id="1"
-              alt="taco-icon"
-            />
-            <img
-              src={this.props.rating >= 2 ? tacoColor : tacoGrey}
-              className="taco-icon"
-              id="2"
-              alt="taco-icon"
-            />
-            <img
-              src={this.props.rating >= 3 ? tacoColor : tacoGrey}
-              className="taco-icon"
-              id="3"
-              alt="taco-icon"
-            />
-            <img
-              src={this.props.rating >= 4 ? tacoColor : tacoGrey}
-              className="taco-icon"
-              id="4"
-              alt="taco-icon"
-            />
-            <img
-              src={this.props.rating >= 5 ? tacoColor : tacoGrey}
-              className="taco-icon"
-              id="5"
-              alt="taco-icon"
-            />
+        <img className="taco-card-img" src={this.props.photo} />
+        <div className="taco-card-content">
+          <div className="taco-rating-column">
+            <div className="taco-card-title">{this.props.taco_location}</div>
+            <div className="rating-icons">
+              <img
+                src={this.props.rating >= 1 ? tacoColor : tacoGrey}
+                className="taco-icon"
+                id="1"
+                alt="taco-icon"
+              />
+              <img
+                src={this.props.rating >= 2 ? tacoColor : tacoGrey}
+                className="taco-icon"
+                id="2"
+                alt="taco-icon"
+              />
+              <img
+                src={this.props.rating >= 3 ? tacoColor : tacoGrey}
+                className="taco-icon"
+                id="3"
+                alt="taco-icon"
+              />
+              <img
+                src={this.props.rating >= 4 ? tacoColor : tacoGrey}
+                className="taco-icon"
+                id="4"
+                alt="taco-icon"
+              />
+              <img
+                src={this.props.rating >= 5 ? tacoColor : tacoGrey}
+                className="taco-icon"
+                id="5"
+                alt="taco-icon"
+              />
+            </div>
+            <div>{this.props.created_at}</div>
           </div>
-          <div>{this.props.created_at}</div>
+
+          <div className="taco-card-full-address">
+            <div className="taco-card-address">
+              {this.props.address.split(",")[0].trim()}
+            </div>
+            <div className="taco-card-city">
+              {this.props.address.split(",")[1].trim()}
+            </div>
+          </div>
         </div>
 
-        <div className="taco-card-full-address">
-          <div className="taco-card-address">
-            {this.props.address.split(",")[0].trim()}
-          </div>
-          <div className="taco-card-city">
-            {this.props.address.split(",")[1].trim()}
-          </div>
-        </div>
         {/* <button onClick={() => this.deleteTaco(this.props.id)}>Delete</button> */}
       </div>
     );

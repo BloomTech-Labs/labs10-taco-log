@@ -349,8 +349,8 @@ class LogTaco extends Component {
       meat: meat,
       cheese: cheese,
       salsa: salsa,
-      special_experience: this.state.special_experience
-
+      special_experience: this.state.special_experience,
+      photo: this.state.photo
     };
     firebase
       .auth()
@@ -430,8 +430,7 @@ class LogTaco extends Component {
   // }
 
 
-  render() {
-    console.log(this.state.photo)
+  render() {    
     return (
       <Container className="log-taco-container">
       {/* {this.props.userInfo ? this.grabTacosLogged() : console.log("No user")} */}
