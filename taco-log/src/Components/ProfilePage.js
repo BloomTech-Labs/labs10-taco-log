@@ -43,7 +43,7 @@ class ProfilePage extends Component {
                   id="logs"
                   className={
                     this.state.selectedTab === "logs"
-                      ? "selected-tab profile-tab"
+                      ? "profile-tab selected-tab"
                       : "profile-tab"
                   }
                 >
@@ -54,7 +54,7 @@ class ProfilePage extends Component {
                   id="badges"
                   className={
                     this.state.selectedTab === "badges"
-                      ? "selected-tab profile-tab"
+                      ? "profile-tab selected-tab"
                       : "profile-tab"
                   }
                 >
