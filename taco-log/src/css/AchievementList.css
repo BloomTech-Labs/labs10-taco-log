@@ -27,6 +27,9 @@
   height: 30px;
   width: 150px;  
   border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .achievement-modal {
@@ -37,29 +40,27 @@
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.2);
+  overflow: auto;  
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .display {
   display: block;
 }
 
-.achievement-modal .content {
-  background-color: #6aa7da;
+.achievement-modal .content {  
+  background-color: white;
   margin: 15% auto;
   padding: 20px;
-  width: 80%;
-  border: 2px solid #00447b;
+  width: 80%;  
   border-radius: 5px;
   display: flex;
   flex-direction: column;
 }
 
 .achievement-modal .content .exit-icon {
-  height: 50px;
-  width: 50px;
+  height: 24px;
+  width: 24px;
   align-self: flex-end;
 }
 
@@ -70,9 +71,20 @@
   margin: auto;
 }
 
-.personal-achievement-wrap {
-  background-color: #6aa7da;
-  border: 2px solid #00447b;
-  border-radius: 5px;
+.achievement-list-owrap .personal-achievement-wrap {
   width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.taco-log-link{    
+  background-color: #00447b;
+  color: white;
+  height: 30px;
+  width: 100px;
+  margin: 5px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
