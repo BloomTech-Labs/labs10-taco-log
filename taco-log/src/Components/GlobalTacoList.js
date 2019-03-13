@@ -16,6 +16,7 @@ class GlobalTacoList extends Component {
                 id={log.id}
                 taco_location={log.taco_location}
                 taco_description={log.taco_description}
+                taco_name={log.taco_name}
                 rating={log.rating}
                 tortilla={log.tortilla}
                 meat={log.meat}
