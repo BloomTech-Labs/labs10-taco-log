@@ -14,6 +14,7 @@ class GlobalTacoList extends Component {
                 {...this.props}
                 key={log.id}
                 id={log.id}
+                name={log.name}
                 taco_location={log.taco_location}
                 taco_description={log.taco_description}
                 taco_name={log.taco_name}
