@@ -1,9 +1,17 @@
 import React, { Component } from "react";
 import { firebase } from "../firebase/firebase";
-import { Form, Input, Button, FormGroup, Container, Row, Col } from "reactstrap";
-import tacoColor from "../img/taco-color.png"
-import tacoGrey from "../img/taco-grey.png"
-import FirstTaco from "./FirstTaco"
+import {
+  Form,
+  Input,
+  Button,
+  FormGroup,
+  Container,
+  Row,
+  Col
+} from "reactstrap";
+import tacoColor from "../img/taco-color.png";
+import tacoGrey from "../img/taco-grey.png";
+import FirstTaco from "./FirstTaco";
 import "../css/logTaco.css";
 
 class LogTaco extends Component {
@@ -33,7 +41,7 @@ class LogTaco extends Component {
       special_experience: 0,
       taco_description: "",
       tacos_logged: 0,
-      photo:""
+      photo: ""
     };
   }
 
@@ -103,27 +111,27 @@ class LogTaco extends Component {
     const dropdown = new window.google.maps.places.Autocomplete(inputElement);
     dropdown.addListener("place_changed", () => {
       const place = dropdown.getPlace();
-      console.log(place)
+      console.log(place);
       this.setState({
         address: place.formatted_address,
         taco_location: place.name,
         place_id: place.id,
         staticMap: true,
         lat: place.geometry.location.lat(),
-        lng: place.geometry.location.lng(), 
+        lng: place.geometry.location.lng(),
         photo: place.photos[0].getUrl()
       });
     });
   }
 
   achievementCheck = achievementId => {
-    let check = false
+    let check = false;
     for (let i = 0; i < this.props.userInfo.achievements.length; i++) {
       if (this.props.userInfo.achievements[i].id === achievementId) {
         check = true;
-      }    
+      }
     }
-    return check
+    return check;
   };
   addAchievement = header => {
     if (
@@ -135,8 +143,8 @@ class LogTaco extends Component {
         achievement_id: 1
       };
       this.props.assignAchievement(achievement, header);
-    } 
-     if (
+    }
+    if (
       this.props.userInfo.user_stats.tacos_logged >= 10 &&
       !this.achievementCheck(2)
     ) {
@@ -145,7 +153,7 @@ class LogTaco extends Component {
         achievement_id: 2
       };
       this.props.assignAchievement(achievement, header);
-    } 
+    }
     if (
       this.props.userInfo.user_stats.tacos_logged >= 20 &&
       !this.achievementCheck(3)
@@ -176,7 +184,7 @@ class LogTaco extends Component {
         achievement_id: 5
       };
       this.props.assignAchievement(achievement, header);
-    } 
+    }
 
     if (
       this.props.userInfo.user_stats.salsa_logged.split(",").length === 6 &&
@@ -376,7 +384,7 @@ class LogTaco extends Component {
       selectedTortilla: [],
       selectedMeat: [],
       selectedCheese: [],
-      selectedSalsa: [],
+      selectedSalsa: []
     });
   };
 
@@ -393,20 +401,19 @@ class LogTaco extends Component {
   };
 
   toggleRating = e => {
-    if(this.state.rating === e.target.id){
-      this.setState({ rating: '0' })
-    }else{
+    if (this.state.rating === e.target.id) {
+      this.setState({ rating: "0" });
+    } else {
       this.setState({
         rating: e.target.id
       });
     }
-      
   };
 
   toggleIngredientTab = e => {
-    if(this.state.selectedTab !== e.target.id) {
-      this.setState({ selectedTab: e.target.id})
-    }else{
+    if (this.state.selectedTab !== e.target.id) {
+      this.setState({ selectedTab: e.target.id });
+    } else {
       this.setState({
         selectedTab: "0"
       });
@@ -429,26 +436,28 @@ class LogTaco extends Component {
   //   })
   // }
 
-
-  render() {    
+  render() {
     return (
       <Container className="log-taco-container">
-
-      {/* {this.props.userInfo ? this.grabTacosLogged() : console.log("No user")} */}
-      <div className="taco-form">
-        <Container className="search-map-container quadrant">
-        {(this.props.place) ? <p>{this.mapPlacetoState()} {this.state.place.taco_location}</p>:
-        <Row className="search-map-container">
-        <input
-          onChange={this.handleInputChange}
-          className="google-dropdown"
-          placeholder="Look up where you had your taco here so you can get started!"
-          value={this.state.taco_location}
-          name="taco_location"
-        />
-          </Row>
-        }
-{/*         <div className="title-map-wrap">
+        {/* {this.props.userInfo ? this.grabTacosLogged() : console.log("No user")} */}
+        <div className="taco-form">
+          <Container className="search-map-container quadrant">
+            {this.props.place ? (
+              <p>
+                {this.mapPlacetoState()} {this.state.place.taco_location}
+              </p>
+            ) : (
+              <Row className="search-bar">
+                <input
+                  onChange={this.handleInputChange}
+                  className="google-dropdown"
+                  placeholder="Look up where you had your taco here so you can get started!"
+                  value={this.state.taco_location}
+                  name="taco_location"
+                />
+              </Row>
+            )}
+            {/*         <div className="title-map-wrap">
           <div className="taco-map">
             {this.state.staticMap && (
               <img className="taco-map-box"
@@ -465,126 +474,198 @@ class LogTaco extends Component {
             )}
           </div>
         </div> */}
-        </Container>
-        <Input
-            className="ingredient-container quadrant"
+          <Row>
+              {this.state.place_id ? 
+              <div className="location-information">
+                <img className='location-photo' src={`${this.state.photo}`}/>
+                <p>{this.state.address}</p>
+              </div> : <div/>}
+              </Row>
+          </Container>
+          <Input
+            className="name-container quadrant"
             onChange={this.handleInputChange}
             placeholder="What was the name of the taco you had here? Or you can put in whatever you want to call it if it was something custom to you!"
             value={this.state.taco_name}
             name="taco_name"
           />
-      <Container className="ingredient-container quadrant">
-        <Row className="ingredient-tab-wrap">
-        <img src={(this.state.selectedTab === "1")?tacoColor:tacoGrey} onClick={e => this.toggleIngredientTab(e)} className='ingredient-icon' id="1" />
-          {this.state.selectedTab === "1" ? this.state.tortilla.map(data => (
-            <Col 
-              onClick={this.selectTortilla}
-              className={
-                this.state.selectedTortilla.indexOf(data) > -1
-                  ? "ingredient-tab ingredient-tab-selected"
-                  : "ingredient-tab"
-              }
-              id={data}
-            >
-              {data}
-            </Col>
-          )) : <p>Test: tortilla unselected</p> }
-        </Row>
+          <Container className="ingredient-container quadrant">
+            <Row className="ingredient-tab-wrap">
+              <img
+                src={this.state.selectedTab === "1" ? tacoColor : tacoGrey}
+                onClick={e => this.toggleIngredientTab(e)}
+                className="ingredient-icon"
+                id="1"
+              />
+              {this.state.selectedTab === "1" ? (
+                this.state.tortilla.map(data => (
+                  <Col
+                    onClick={this.selectTortilla}
+                    className={
+                      this.state.selectedTortilla.indexOf(data) > -1
+                        ? "ingredient-tab ingredient-tab-selected"
+                        : "ingredient-tab"
+                    }
+                    id={data}
+                  >
+                    {data}
+                  </Col>
+                ))
+              ) : (
+                <p>Test: tortilla unselected</p>
+              )}
+            </Row>
 
-        <Row className="ingredient-tab-wrap">
-        <img src={(this.state.selectedTab === "2")?tacoColor:tacoGrey} onClick={e => this.toggleIngredientTab(e)} className='ingredient-icon' id="2" />
-          {this.state.selectedTab === "2" ? this.state.meat.map(data => (
-            <Col 
-              onClick={this.selectMeat}
-              className={
-                this.state.selectedMeat.indexOf(data) > -1
-                  ? "ingredient-tab ingredient-tab-selected"
-                  : "ingredient-tab"
-              }
-              id={data}
-            >
-              {data}
-            </Col>
-          )): <p> Test: meats unselcted </p>}
-        </Row>
-        <Row className="ingredient-tab-wrap">
-        <img src={(this.state.selectedTab === "3")?tacoColor:tacoGrey} onClick={e => this.toggleIngredientTab(e)} className='ingredient-icon' id="3" />
-          {this.state.selectedTab === "3" ? this.state.cheese.map(data => (
-            <Col 
-              onClick={this.selectCheese}
-              id="cheese"
-              className={
-                this.state.selectedCheese.indexOf(data) > -1
-                  ? "ingredient-tab ingredient-tab-selected"
-                  : "ingredient-tab"
-              }
-              id={data}
-            >
-              {data}
-            </Col>
-          )) : <p>Test: cheese unselected</p>}
-        </Row>
+            <Row className="ingredient-tab-wrap">
+              <img
+                src={this.state.selectedTab === "2" ? tacoColor : tacoGrey}
+                onClick={e => this.toggleIngredientTab(e)}
+                className="ingredient-icon"
+                id="2"
+              />
+              {this.state.selectedTab === "2" ? (
+                this.state.meat.map(data => (
+                  <Col
+                    onClick={this.selectMeat}
+                    className={
+                      this.state.selectedMeat.indexOf(data) > -1
+                        ? "ingredient-tab ingredient-tab-selected"
+                        : "ingredient-tab"
+                    }
+                    id={data}
+                  >
+                    {data}
+                  </Col>
+                ))
+              ) : (
+                <p> Test: meats unselcted </p>
+              )}
+            </Row>
+            <Row className="ingredient-tab-wrap">
+              <img
+                src={this.state.selectedTab === "3" ? tacoColor : tacoGrey}
+                onClick={e => this.toggleIngredientTab(e)}
+                className="ingredient-icon"
+                id="3"
+              />
+              {this.state.selectedTab === "3" ? (
+                this.state.cheese.map(data => (
+                  <Col
+                    onClick={this.selectCheese}
+                    id="cheese"
+                    className={
+                      this.state.selectedCheese.indexOf(data) > -1
+                        ? "ingredient-tab ingredient-tab-selected"
+                        : "ingredient-tab"
+                    }
+                    id={data}
+                  >
+                    {data}
+                  </Col>
+                ))
+              ) : (
+                <p>Test: cheese unselected</p>
+              )}
+            </Row>
 
-        <Row className="ingredient-tab-wrap">
-        <img src={(this.state.selectedTab === "4") ? tacoColor:tacoGrey} onClick={e => this.toggleIngredientTab(e)} className='ingredient-icon' id="4" />
-          {this.state.selectedTab === "4" ? this.state.salsa.map(data => (
-            <Col 
-              onClick={this.selectSalsa}
-              className={
-                this.state.selectedSalsa.indexOf(data) > -1
-                  ? "ingredient-tab ingredient-tab-selected"
-                  : "ingredient-tab"
-              }
-              id={data}
-            >
-              {data}
-            </Col>
-          )): <p>Test: salsa unselected</p>}
-        </Row>
-        </Container>
-        <Container className="special-experience-container quadrant">
-          <img src={(this.state.rating >= 1)?tacoColor:tacoGrey} onClick={(e) => this.toggleRating(e)} className='taco-icon' id="1" alt = "taco-icon"/>
-          <img src={(this.state.rating >= 2)?tacoColor:tacoGrey} onClick={(e) => this.toggleRating(e)} className='taco-icon' id="2" alt = "taco-icon"/>
-          <img src={(this.state.rating >= 3)?tacoColor:tacoGrey} onClick={(e) => this.toggleRating(e)} className='taco-icon' id="3" alt = "taco-icon"/>
-          <img src={(this.state.rating >= 4)?tacoColor:tacoGrey} onClick={(e) => this.toggleRating(e)} className='taco-icon' id="4" alt = "taco-icon"/>
-          <img src={(this.state.rating >= 5)?tacoColor:tacoGrey} onClick={(e) => this.toggleRating(e)} className='taco-icon' id="5" alt = "taco-icon"/>
-        <div>
-          <input
-            onClick={this.toggleSpecialExp}
-            type="checkbox"
-            name="special_experience"
-            value=""
-          />
-          Special Experience?
-        </div>
+            <Row className="ingredient-tab-wrap">
+              <img
+                src={this.state.selectedTab === "4" ? tacoColor : tacoGrey}
+                onClick={e => this.toggleIngredientTab(e)}
+                className="ingredient-icon"
+                id="4"
+              />
+              {this.state.selectedTab === "4" ? (
+                this.state.salsa.map(data => (
+                  <Col
+                    onClick={this.selectSalsa}
+                    className={
+                      this.state.selectedSalsa.indexOf(data) > -1
+                        ? "ingredient-tab ingredient-tab-selected"
+                        : "ingredient-tab"
+                    }
+                    id={data}
+                  >
+                    {data}
+                  </Col>
+                ))
+              ) : (
+                <p>Test: salsa unselected</p>
+              )}
+            </Row>
+          </Container>
+          <Container className="special-experience-container quadrant">
+            <img
+              src={this.state.rating >= 1 ? tacoColor : tacoGrey}
+              onClick={e => this.toggleRating(e)}
+              className="taco-icon"
+              id="1"
+              alt="taco-icon"
+            />
+            <img
+              src={this.state.rating >= 2 ? tacoColor : tacoGrey}
+              onClick={e => this.toggleRating(e)}
+              className="taco-icon"
+              id="2"
+              alt="taco-icon"
+            />
+            <img
+              src={this.state.rating >= 3 ? tacoColor : tacoGrey}
+              onClick={e => this.toggleRating(e)}
+              className="taco-icon"
+              id="3"
+              alt="taco-icon"
+            />
+            <img
+              src={this.state.rating >= 4 ? tacoColor : tacoGrey}
+              onClick={e => this.toggleRating(e)}
+              className="taco-icon"
+              id="4"
+              alt="taco-icon"
+            />
+            <img
+              src={this.state.rating >= 5 ? tacoColor : tacoGrey}
+              onClick={e => this.toggleRating(e)}
+              className="taco-icon"
+              id="5"
+              alt="taco-icon"
+            />
+            <div>
+              <input
+                onClick={this.toggleSpecialExp}
+                type="checkbox"
+                name="special_experience"
+                value=""
+              />
+              Special Experience?
+            </div>
 
-        {this.state.special_experience === 1 ? (
-          <textarea
-            onChange={this.handleInputChange}
-            name="taco_description"
-            placeholder="Did you have a great taco experience in this restaurant? Write about it here!"
-            value={this.state.taco_description}
-            rows="10"
-            cols="50"
-          />
-        ) : (
-          <div />
-        )}
-        </Container>
-        <Form>
-        <FormGroup className="rating-icons">
-          {/* <Input 
+            {this.state.special_experience === 1 ? (
+              <textarea
+                onChange={this.handleInputChange}
+                name="taco_description"
+                placeholder="Did you have a great taco experience in this restaurant? Write about it here!"
+                value={this.state.taco_description}
+                rows="10"
+                cols="50"
+              />
+            ) : (
+              <div />
+            )}
+          </Container>
+          <Form>
+            <FormGroup className="rating-icons">
+              {/* <Input 
             onChange={this.handleInputChange}
             placeholder="rating"
             value={this.state.rating}
             name="rating"
           /> */}
-        
-          <Button onClick={this.newTaco}>Submit</Button>
-          </FormGroup>
-        </Form>
-      </div>
 
+              <Button onClick={this.newTaco}>Submit</Button>
+            </FormGroup>
+          </Form>
+        </div>
       </Container>
     );
   }
