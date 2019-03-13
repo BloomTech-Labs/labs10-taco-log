@@ -61,7 +61,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         user: action.payload
-      }
+      };
     default:
       return state;
   }

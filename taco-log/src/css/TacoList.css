@@ -1,9 +1,35 @@
-.taco-list-owrap{
+.taco-list-container{
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    border:2px solid red;
-    margin: 10px 80px;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;    
+    padding: 0 30px;
+}
+
+.taco-list-container .taco-list-title{
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #00447b;  
+    margin-bottom: 10px;  
+}
+
+.taco-list-container .taco-list-inner-container{
+    width: 100%;  
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.taco-list-container .taco-list-inner-container .city-filter select{
+    margin-left: 5px;
+    margin-bottom: 20px;
+}
+
+.taco-list-container .taco-list-inner-container .taco-list-wrap{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid #e6e6e6;
 }
 
 /* for the special taco experiences on the front page */
@@ -33,9 +59,9 @@
     align-items: center;
 }
 
-.taco-log-link{
-    border: 1px solid #00447b;
-    background-color: #6aa7da;
+.taco-log-link{    
+    background-color: #00447b;
+    color: white;
     height: 30px;
     width: 100px;
     margin: 5px;

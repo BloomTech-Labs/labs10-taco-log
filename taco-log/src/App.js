@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import axios from "axios";
 import { Route, Switch, Link } from "react-router-dom";
-import { firebase } from "./firebase/firebase";
 import HomePage from "./Components/HomePage";
 import Header from "./Components/Header";
 import LogTaco from "./Components/LogTaco";
@@ -13,7 +11,7 @@ import UserHome from "./Components/UserHome";
 import AccountSettings from "./Components/AccountSettings";
 // import Footer from "./Components/Footer";
 
-import { loginUser, logTaco, deleteTaco, assignAchievement, locationChange, updateStats, GET_TACO, logoutUser, updateUser, fetchAchievements } from "./actions";
+import { loginUser, logTaco, deleteTaco, assignAchievement, locationChange, updateStats, GET_TACO, logoutUser, updateUser, fetchAchievements, fetchUser } from "./actions";
 
 import { connect } from "react-redux";
 
@@ -23,11 +21,17 @@ class App extends Component {
     this.state = {
       message: ""
     };
-
   }
 
-  render() {
+  componentDidMount(){
+    const id = localStorage.getItem('user_id')    
+    if(id){
+      this.props.fetchUser(id)
+    }
     
+  }
+
+  render() {    
     return (
       <div className="App">
         <Route
@@ -80,15 +84,16 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = state => {  
   return {
     userInfo: state.userReducer.user,
     tacoInfo: state.tacoReducer.tacos,
-    achievements: state.achievementReducer.achievements
+    achievements: state.achievementReducer.achievements,
+    userLoggedIn: state.authReducer.userLoggedIn
   };
 };
 
 export default connect(
   mapStateToProps,
-  { loginUser, logTaco, deleteTaco, assignAchievement, locationChange, updateStats, GET_TACO, logoutUser, updateUser, fetchAchievements }
+  { loginUser, logTaco, deleteTaco, assignAchievement, locationChange, updateStats, GET_TACO, logoutUser, updateUser, fetchAchievements, fetchUser }
 )(App);

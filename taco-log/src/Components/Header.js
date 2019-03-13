@@ -13,6 +13,7 @@ import {
   DropdownMenu,
   DropdownItem
 } from "reactstrap";
+import { connect } from 'react-redux';
 import { firebase, provider, facebookProvider } from '../firebase/firebase';
 import { Elements, StripeProvider } from "react-stripe-elements";
 import CheckoutForm from "./CheckoutForm";
@@ -51,8 +52,7 @@ class Header extends Component {
     firebase
       .auth()
       .signInWithPopup(provider)
-      .then(result => {
-        console.log(result)
+      .then(result => {        
         const user = {
           name: result.user.displayName,
           email: result.user.email,
@@ -120,13 +120,16 @@ class Header extends Component {
           : "nav-container"
         }>
         <Navbar light expand="md">
-          <NavbarBrand onClick={e => this.customlink("/")}>
+          <NavbarBrand id="click" onClick={e => this.customlink("/")}>
             Taco Log
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
+
+
           <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              {this.state.user
+            <Nav className="ml-auto" navbar>              
+              {this.props.userLoggedIn
+
                 ? <div className="nav-div">
                     <NavLink id ="click" onClick={e => this.customlink("/profile")}>
                       Profile
@@ -149,7 +152,7 @@ class Header extends Component {
                   
               }
               <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle id= "click"nav caret>
+                <DropdownToggle id= "click" nav caret>
                   
                 </DropdownToggle>
                 <DropdownMenu right>
@@ -178,4 +181,10 @@ class Header extends Component {
   }
 }
 
-export default Header;
+
+const mapStateToProps = state => {
+  return { user: state.user };
+};
+
+export default connect (mapStateToProps) (Header);
+
