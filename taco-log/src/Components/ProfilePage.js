@@ -66,7 +66,8 @@ class ProfilePage extends Component {
             </div>
           </div>
         ) : (
-          this.loginPush()
+          // this.loginPush()
+          <div />
         )}
       </div>
     );

@@ -116,7 +116,7 @@ class Header extends Component {
                   />
                 </FormGroup>
               </Form> */}
-              {this.state.user
+              {this.props.userLoggedIn
                 ? <div className="nav-div">
                     <NavLink onClick={e => this.customlink("/profile")}>
                       Profile

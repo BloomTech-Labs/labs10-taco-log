@@ -12,7 +12,7 @@ import ProfilePage from "./Components/ProfilePage";
 import AccountSettings from "./Components/AccountSettings";
 // import Footer from "./Components/Footer";
 
-import { loginUser, logTaco, deleteTaco, assignAchievement, locationChange, updateStats, GET_TACO, logoutUser, updateUser, fetchAchievements } from "./actions";
+import { loginUser, logTaco, deleteTaco, assignAchievement, locationChange, updateStats, GET_TACO, logoutUser, updateUser, fetchAchievements, fetchUser } from "./actions";
 
 import { connect } from "react-redux";
 
@@ -22,11 +22,18 @@ class App extends Component {
     this.state = {
       message: ""
     };
+  }
 
+  componentDidMount(){
+    const id = localStorage.getItem('user_id')    
+    if(id){
+      this.props.fetchUser(id)
+    }
+    
   }
 
   render() {
-    
+    console.log(this.props)
     return (
       <div className="App">
         <Route
@@ -75,14 +82,16 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state)
   return {
     userInfo: state.userReducer.user,
     tacoInfo: state.tacoReducer.tacos,
-    achievements: state.achievementReducer.achievements
+    achievements: state.achievementReducer.achievements,
+    userLoggedIn: state.authReducer.userLoggedIn
   };
 };
 
 export default connect(
   mapStateToProps,
-  { loginUser, logTaco, deleteTaco, assignAchievement, locationChange, updateStats, GET_TACO, logoutUser, updateUser, fetchAchievements }
+  { loginUser, logTaco, deleteTaco, assignAchievement, locationChange, updateStats, GET_TACO, logoutUser, updateUser, fetchAchievements, fetchUser }
 )(App);
