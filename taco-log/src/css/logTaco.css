@@ -27,7 +27,9 @@
     flex: 1;
 }
 .location-photo{
-    width:20%;
+    display: block;
+    max-width: 20%;
+    max-height: 100%;
 }
 .google-dropdown{
     width: 100%;
