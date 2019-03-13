@@ -431,11 +431,11 @@ class LogTaco extends Component {
   render() {
     return (
       <Container className="log-taco-container">
-      {this.props.userInfo ? this.grabTacosLogged() : console.log("No user")}
-      {(this.state.tacos_logged === 0) ? <FirstTaco {...this.props} {...this.state}/> : 
+      {this.props.userInfo.internal_id ? this.grabTacosLogged() : console.log("No user")}
+      {(this.state.tacos_logged > 999) ? <FirstTaco {...this}/> : 
       <div className="taco-form">
-        <p>Log a Taco Here:</p>
-        {(this.props.place) ? this.mapPlacetoState() :
+        <Container className="search-map-container">
+        {(this.props.place) ? <p>{this.mapPlacetoState()} {this.state.place.taco_location}</p>:
         <Row sm="6" className="search-map-container">
         <input
           onChange={this.handleInputChange}
@@ -463,11 +463,11 @@ class LogTaco extends Component {
             )}
           </div>
         </div> */}
-
-        <Container>
-
+        </Container>
+        
+      <Container className="ingredient-container">
         <Row className="ingredient-tab-wrap">
-        <img src={(this.state.selectedTab === "1")?tacoColor:tacoGrey} onClick={e => this.toggleIngredientTab(e)} id="1" />
+        <img src={(this.state.selectedTab === "1")?tacoColor:tacoGrey} onClick={e => this.toggleIngredientTab(e)} className='ingredient-icon' id="1" />
           {this.state.selectedTab === "1" ? this.state.tortilla.map(data => (
             <Col xs="1"
               onClick={this.selectTortilla}
@@ -484,7 +484,7 @@ class LogTaco extends Component {
         </Row>
 
         <Row className="ingredient-tab-wrap">
-        <img src={(this.state.selectedTab === "2")?tacoColor:tacoGrey} onClick={e => this.toggleIngredientTab(e)} id="2" />
+        <img src={(this.state.selectedTab === "2")?tacoColor:tacoGrey} onClick={e => this.toggleIngredientTab(e)} className='ingredient-icon' id="2" />
           {this.state.selectedTab === "2" ? this.state.meat.map(data => (
             <Col xs="1"
               onClick={this.selectMeat}
@@ -500,7 +500,7 @@ class LogTaco extends Component {
           )): <p> Test: meats unselcted </p>}
         </Row>
         <Row className="ingredient-tab-wrap">
-        <img src={(this.state.selectedTab === "3")?tacoColor:tacoGrey} onClick={e => this.toggleIngredientTab(e)} id="3" />
+        <img src={(this.state.selectedTab === "3")?tacoColor:tacoGrey} onClick={e => this.toggleIngredientTab(e)} className='ingredient-icon' id="3" />
           {this.state.selectedTab === "3" ? this.state.cheese.map(data => (
             <Col xs="1"
               onClick={this.selectCheese}
@@ -518,7 +518,7 @@ class LogTaco extends Component {
         </Row>
 
         <Row className="ingredient-tab-wrap">
-        <img src={(this.state.selectedTab === "4") ? tacoColor:tacoGrey} onClick={e => this.toggleIngredientTab(e)} id="4" />
+        <img src={(this.state.selectedTab === "4") ? tacoColor:tacoGrey} onClick={e => this.toggleIngredientTab(e)} className='ingredient-icon' id="4" />
           {this.state.selectedTab === "4" ? this.state.salsa.map(data => (
             <Col xs="1"
               onClick={this.selectSalsa}
@@ -533,8 +533,8 @@ class LogTaco extends Component {
             </Col>
           )): <p>Test: salsa unselected</p>}
         </Row>
-        
         </Container>
+        
         <Form>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
           {/* <Input 
@@ -557,6 +557,7 @@ class LogTaco extends Component {
           <Button onClick={this.newTaco}>Submit</Button>
           </FormGroup>
         </Form>
+          <Container className="special-experience-container">
         <div>
           <input
             onClick={this.toggleSpecialExp}
@@ -579,6 +580,7 @@ class LogTaco extends Component {
         ) : (
           <div />
         )}
+        </Container>
       </div>}
       </Container>
     );

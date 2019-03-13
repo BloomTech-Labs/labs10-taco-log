@@ -2,41 +2,29 @@
     font-size: .85rem;
 }
 
-.log-taco-container{
+ .log-taco-container{
     display:flex;
-    align-items: center;
     justify-content: center;
-    max-width:100%;
-}
+    flex-direction: row;
+} 
 
-.ingredient-container{
+  .taco-form{
+    display:flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+}  
+ .ingredient-container{
+    width: 25%;
+    background-color: green;
+} 
+
+/* .ingredient-tab-wrap{
     display: flex;
-    flex-direction: column;
-    justify-content:flex-end;
-}
-
-.ingredient-tab-wrap{
     justify-content:space-between;
-    width:100%;
     padding:2%;
-}
-.ingredient-tab{
-    display: hidden;
-}
-
-.ingredient-category{
-    justify-self:flex-start;
-}
-
-.taco-form{
-    width: 100%;
-}
-
-.ingredient-list-wrapper{
-    align-items: center;
-    justify-content: center;
-    flex-grow: 1;
-}
+    flex: 1;
+} */
 
 .ingredient-tab-wrap .ingredient-tab{
     text-align: center;
@@ -48,24 +36,29 @@
     padding: 0% 0% 0% 0%;
 }
 
-.ingredient-tab .ingredient-tab-selected{
+/* .ingredient-tab .ingredient-tab-selected{
     width: 100%;
-}
+} */
 
 .ingredient-tab-wrap .ingredient-tab-selected{
     background-color: lightblue;
     opacity: .7;
 }
 
-.title-map-wrap .taco-map .taco-map-box{
+/* .title-map-wrap .taco-map .taco-map-box{
     width: 100%;
     height: 100%;
-}
+} */
 
 .search-map-container{
     justify-content: center;
-    width: 100%;
+    width: 25%;
 }
+
+.ingredient-icon{
+    height: 100%;
+}
+
 .taco-icon{
     height:20%;
     width:20%;
@@ -79,11 +72,11 @@
     max-width: 450px;
 }
 
-@media only screen and (max-width: 750px) {
+/* @media only screen and (max-width: 750px) {
     .ingredient-tab-wrap .ingredient-tab{
         padding: 0% 15% 0% 0%;
     }
-  }
+  } */
 
 
 .taco-map-box{
