@@ -3,6 +3,7 @@ import { firebase } from "../firebase/firebase";
 import { Form, Input, Button, FormGroup, Container, Row, Col } from "reactstrap";
 import tacoColor from "../img/taco-color.png"
 import tacoGrey from "../img/taco-grey.png"
+import FirstTaco from "./FirstTaco"
 import "../css/logTaco.css";
 
 class LogTaco extends Component {
@@ -28,8 +29,10 @@ class LogTaco extends Component {
       selectedMeat: [],
       selectedCheese: [],
       selectedSalsa: [],
+      selectedTab: 0,
       special_experience: 0,
-      taco_description: ""
+      taco_description: "",
+      tacos_logged: 0
     };
   }
 
@@ -388,7 +391,7 @@ class LogTaco extends Component {
   };
 
   toggleRating = e => {
-    if(this.state.rating === '1' && e.target.id === "1"){
+    if(this.state.rating === e.target.id){
       this.setState({ rating: '0' })
     }else{
       this.setState({
@@ -398,12 +401,41 @@ class LogTaco extends Component {
       
   };
 
+  toggleIngredientTab = e => {
+    if(this.state.selectedTab !== e.target.id) {
+      this.setState({ selectedTab: e.target.id})
+    }else{
+      this.setState({
+        selectedTab: "0"
+      });
+    }
+  };
+  grabTacosLogged = e => {
+    if (this.state.userInfo) {
+    this.setState({tacos_logged: this.props.userInfo.user_stats.tacos_logged})
+    }
+  }
 
-  render() {console.log(this.state.rating)
+  mapPlacetoState = e => {
+    this.setState({
+      address: this.props.place.formatted_address,
+      taco_location: this.props.place.name,
+      place_id: this.props.place.id,
+      staticMap: true,
+      lat: this.props.place.geometry.location.lat(),
+      lng: this.props.place.geometry.location.lng()
+    })
+  }
+
+
+  render() {
     return (
       <Container className="log-taco-container">
+      {this.props.userInfo ? this.grabTacosLogged() : console.log("No user")}
+      {(this.state.tacos_logged === 0) ? <FirstTaco {...this.props} {...this.state}/> : 
       <div className="taco-form">
         <p>Log a Taco Here:</p>
+        {(this.props.place) ? this.mapPlacetoState() :
         <Row sm="6" className="search-map-container">
         <input
           onChange={this.handleInputChange}
@@ -413,8 +445,8 @@ class LogTaco extends Component {
           name="taco_location"
         />
           </Row>
-        <div className="title-map-wrap">
-          {/* <div>{this.state.taco_location}</div> */}
+        }
+{/*         <div className="title-map-wrap">
           <div className="taco-map">
             {this.state.staticMap && (
               <img className="taco-map-box"
@@ -430,12 +462,13 @@ class LogTaco extends Component {
               />
             )}
           </div>
-        </div>
+        </div> */}
+
         <Container>
 
         <Row className="ingredient-tab-wrap">
-          Tortilla:
-          {this.state.tortilla.map(data => (
+        <img src={(this.state.selectedTab === "1")?tacoColor:tacoGrey} onClick={e => this.toggleIngredientTab(e)} id="1" />
+          {this.state.selectedTab === "1" ? this.state.tortilla.map(data => (
             <Col xs="1"
               onClick={this.selectTortilla}
               className={
@@ -447,12 +480,12 @@ class LogTaco extends Component {
             >
               {data}
             </Col>
-          ))}
+          )) : <p>Test: tortilla unselected</p> }
         </Row>
 
         <Row className="ingredient-tab-wrap">
-          Meat:
-          {this.state.meat.map(data => (
+        <img src={(this.state.selectedTab === "2")?tacoColor:tacoGrey} onClick={e => this.toggleIngredientTab(e)} id="2" />
+          {this.state.selectedTab === "2" ? this.state.meat.map(data => (
             <Col xs="1"
               onClick={this.selectMeat}
               className={
@@ -464,14 +497,14 @@ class LogTaco extends Component {
             >
               {data}
             </Col>
-          ))}
+          )): <p> Test: meats unselcted </p>}
         </Row>
-        <div className="ingredient-container">
         <Row className="ingredient-tab-wrap">
-          Cheese:
-          {this.state.cheese.map(data => (
+        <img src={(this.state.selectedTab === "3")?tacoColor:tacoGrey} onClick={e => this.toggleIngredientTab(e)} id="3" />
+          {this.state.selectedTab === "3" ? this.state.cheese.map(data => (
             <Col xs="1"
               onClick={this.selectCheese}
+              id="cheese"
               className={
                 this.state.selectedCheese.indexOf(data) > -1
                   ? "ingredient-tab ingredient-tab-selected"
@@ -481,13 +514,12 @@ class LogTaco extends Component {
             >
               {data}
             </Col>
-          ))}
+          )) : <p>Test: cheese unselected</p>}
         </Row>
-        </div>
 
         <Row className="ingredient-tab-wrap">
-          Salsa:
-          {this.state.salsa.map(data => (
+        <img src={(this.state.selectedTab === "4") ? tacoColor:tacoGrey} onClick={e => this.toggleIngredientTab(e)} id="4" />
+          {this.state.selectedTab === "4" ? this.state.salsa.map(data => (
             <Col xs="1"
               onClick={this.selectSalsa}
               className={
@@ -499,7 +531,7 @@ class LogTaco extends Component {
             >
               {data}
             </Col>
-          ))}
+          )): <p>Test: salsa unselected</p>}
         </Row>
         
         </Container>
@@ -547,7 +579,7 @@ class LogTaco extends Component {
         ) : (
           <div />
         )}
-      </div>
+      </div>}
       </Container>
     );
   }

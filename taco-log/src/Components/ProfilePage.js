@@ -9,7 +9,8 @@ import medalGrey from "../img/achievement-3-grey.png"
 
 class ProfilePage extends Component {
   state = {
-    selectedTab: "logs"
+    selectedTab: "logs",
+    user: null
   };
 
   handleToggle = e => {
@@ -21,6 +22,11 @@ class ProfilePage extends Component {
     this.props.history.push("/");
     this.props.locationChange();
   }
+
+  // componentWillMount () {
+  //   this.setState({user:localStorage})
+  // }
+
   render() {
     return (
       <div>

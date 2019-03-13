@@ -1,26 +1,67 @@
 .taco-card-wrap{
-    border: 1px solid #753b1c;
-    background-color: #efce7b;
-    margin:5px;
-    width: 100%;
-    max-width: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    border-bottom: 1px solid #e6e6e6;      
+    width: 100%;    
+    display: flex;    
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px 5px;
 }
 
-.taco-card-wrap .taco-card-title{
+.taco-card-wrap .taco-rating-column{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.taco-card-wrap .taco-rating-column .taco-card-title{
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.taco-card-wrap .taco-card-full-address{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.taco-card-wrap .rating-icons{
+    display:flex;    
+    width:50%;
+}
+.taco-card-wrap .rating-icons .taco-icon{
+    max-width: 24px;
+    max-height: 24px;
+    width:100%;
+    height: 100%;
+}
+/* 
+temp fix while there's a bug with how special taco cards not taking in the specialtacocard.css */
+
+/* specal taco cards on front page section */
+.special-taco-card-wrap{
+    border: 1px solid #e6e6e6;
+    background-color: #fff;
+    margin:5px;
+    width: 100%;
+    max-width: 300px;
+    /* display: flex;
+    flex-direction: row; */
+    justify-content: center;
+    align-items: center;
+}   
+
+.special-taco-card-wrap .special-taco-card-title{
     font-weight: bold;
     padding: 5px;
 }
 
-.taco-card-wrap .rating-icons{
+.special-taco-card-wrap .special-rating-icons{
     display:flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
     width:50%;
 }
-.taco-card-wrap .rating-icons .taco-icon{
+.special-taco-card-wrap .special-rating-icons .special-taco-icon{
     max-width: 50px;
     max-height: 50px;
     width:100%;

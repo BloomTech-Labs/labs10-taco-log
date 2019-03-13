@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Form, FormGroup, Input, Button } from 'reactstrap';
 import GlobalTacoList from "./GlobalTacoList";
-import MyTacoList from "./MyTacoList";
 import LandingPageFiller from "./LandingPageFiller";
-import taco from "../taco.jpg";
-import landingPageCover from "../img/landingpagecover.jpg";
+// import landingPageCover from "../img/landingpagecover.jpg";
 import "../css/landing.css";
 
 class Landing extends Component {
@@ -12,15 +11,26 @@ class Landing extends Component {
     super(props);
     this.state = {
       exptacos: [],
-      selectedTab: "global"
+      selectedTab: "global",
+      fadeIn: false
     };
+    this.toggleFade = this.toggleFade.bind(this);
   }
+
   handleToggle = e => {
     this.setState({
       selectedTab: e.target.id
     });
   };
 
+
+  toggleFade() {
+    this.setState({
+        fadeIn: !this.state.fadeIn
+    });
+}
+
+  
   componentDidMount() {
     this.props.GET_TACO();
     let expTacos = [];
@@ -38,50 +48,31 @@ class Landing extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="landing-container">
         <div className="img-container">
           <div className="img-intro">
-            <h1>Hi there. Welcome to Taco Logs.</h1>
-            <h4>Want to go ahead and get started? </h4>
-            <h4>Go ahead and login with Google or Facebook to get started!</h4>
-            {/* Google login buttons and stuff should be here */}
-            <div className="img-leading">
-              <h4>If you'd like to learn more, go ahead and scroll down.</h4>
+            <h1>Welcome to Taco Logs</h1>
+            <h4>Home of the Taco Enthusiast!</h4>
+            <div className="form">
+              <FormGroup className="form-group-landing">
+                <input
+                  className="input"
+                  type="search"
+                  name="search"
+                  id="search"
+                  placeholder="Find Taco"
+                />
+                <button className="button"> Search </button>
+              </FormGroup>
+              <h4>Find a taco to log!</h4>
+              
             </div>
+            
           </div>
         </div>
-        <div className="tab">
-          <div
-            onClick={this.handleToggle}
-            id="global"
-            className={
-              this.state.selectedTab === "global"
-                ? "selected-tab global-tab"
-                : "global-tab"
-            }
-          >
-            Global Special Experiences
-          </div>
-          <div
-            onClick={this.handleToggle}
-            id="local"
-            className={
-              this.state.selectedTab === "local"
-                ? "selected-tab local-tab"
-                : "local-tab"
-            }
-          >
-            My Special Experiences
-          </div>
-        </div>
-        <div>
-          {this.state.selectedTab === "global" ? (
-            <GlobalTacoList {...this.props} />
-          ) : (
-            <MyTacoList {...this.state} />
-          )}
-        </div>
-        <div>
+        
+        <div className="mid-section">
+          <GlobalTacoList {...this.props} />
           <LandingPageFiller />
         </div>
       </div>
