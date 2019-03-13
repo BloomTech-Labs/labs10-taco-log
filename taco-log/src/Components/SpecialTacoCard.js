@@ -17,41 +17,42 @@ class SpecialTacoCard extends Component {
   render() {
     return (
       <div className = "special-taco-card-wrap">
-        {/* <div className = "taco-card-id">{this.props.id}</div> */}
-        <div className = "special-taco-card-title">{this.props.taco_location}</div>
-        <div className = "special-taco-card-address">{this.props.address}</div>
-        <div className = "special-rating-icons">    
-          <img      
+        <div className = "taco-card-id">{this.props.taco_name}</div>
+        <div className="special-taco-card-title">at {this.props.taco_location}</div>
+        <div className="special-rating-icons">
+          <img
             src={this.props.rating >= 1 ? tacoColor : tacoGrey}
             className="special-taco-icon"
             id="1"
-            alt= "special-taco-icon"
+            alt="special-taco-icon"
           />
           <img
             src={this.props.rating >= 2 ? tacoColor : tacoGrey}
             className="special-taco-icon"
             id="2"
-            alt= "special-taco-icon"
+            alt="special-taco-icon"
           />
           <img
             src={this.props.rating >= 3 ? tacoColor : tacoGrey}
             className="special-taco-icon"
             id="3"
-            alt= "special-taco-icon"
+            alt="special-taco-icon"
           />
           <img
             src={this.props.rating >= 4 ? tacoColor : tacoGrey}
             className="special-taco-icon"
             id="4"
-            alt= "special-taco-icon"
+            alt="special-taco-icon"
           />
           <img
             src={this.props.rating >= 5 ? tacoColor : tacoGrey}
             className="special-taco-icon"
             id="5"
-            alt = "special-taco-icon"
+            alt="special-taco-icon"
           />
         </div> 
+        <div className = "special-taco-card-address">{this.props.address}</div>
+
         <p>{this.props.taco_description}</p>       
         <p>{this.props.created_at}</p>
         {/* <button onClick={() => this.deleteTaco(this.props.id)}>Delete</button> */}

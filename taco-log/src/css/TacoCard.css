@@ -52,11 +52,12 @@ temp fix while there's a bug with how special taco cards not taking in the speci
     display:flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    width:50%;
+    width:100%;
 }
 .special-taco-card-wrap .special-rating-icons .special-taco-icon{
     max-width: 50px;
     max-height: 50px;
     width:100%;
     height: 100%;
+    
 }
