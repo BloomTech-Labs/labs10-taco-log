@@ -156,10 +156,10 @@ class Header extends Component {
                   
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem onClick={e => this.customlink("/AccountSettings")}>
+                  {/* <DropdownItem onClick={e => this.customlink("/AccountSettings")}>
                     <NavLink>Settings</NavLink>
                   </DropdownItem>
-                  <DropdownItem>About Us</DropdownItem>
+                  <DropdownItem>About Us</DropdownItem> */}
                   <DropdownItem>
                     <StripeProvider apiKey="pk_test_wWgYjRm8woZFFe75so0wo6jp">
                       <Elements>
