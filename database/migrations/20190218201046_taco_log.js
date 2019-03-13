@@ -19,6 +19,7 @@ exports.up = function(knex) {
     tbl.string("taco_description");
     tbl.decimal("rating", 0, 5);
     tbl.timestamp("created_at").defaultTo(knex.fn.now());
+    tbl.string("photo")
   });
 };
 

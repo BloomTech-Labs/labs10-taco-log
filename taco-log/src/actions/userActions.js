@@ -30,6 +30,7 @@ export const loginUser = user => dispatch => {
             .catch(err => {
               console.log(err);
             });
+          localStorage.setItem("user_id", res.data[i].internal_id);
           post = false;
         }
       }
@@ -46,6 +47,7 @@ export const loginUser = user => dispatch => {
               .catch(err => {
                 console.log(err);
               });
+            localStorage.setItem("user_id", res.data.internal_id);
           })
           .catch(err => {
             console.log(err);
@@ -70,26 +72,25 @@ export const logTaco = (taco, header) => dispatch => {
 
 export const assignAchievement = (achievement, header) => dispatch => {
   axios
-  .post(`${url}api/user_achievements`, achievement, header)
-  .then(res => {
-    dispatch({ type: ASSIGN_ACHIEVEMENT, payload: res.data });
-  })
-  .catch(err => {
-    console.log(err);
-  });
-}
+    .post(`${url}api/user_achievements`, achievement, header)
+    .then(res => {
+      dispatch({ type: ASSIGN_ACHIEVEMENT, payload: res.data });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
 
-export const updateStats = (id, stats, header) => dispatch => {  
+export const updateStats = (id, stats, header) => dispatch => {
   axios
-  .put(`${url}api/user_stats/${id}`, stats, header)
-  .then(res => {          
-    dispatch({ type: UPDATE_STATS, payload: res.data });
-  })
-  .catch(err => {
-    console.log(err);
-  });
-}
-
+    .put(`${url}api/user_stats/${id}`, stats, header)
+    .then(res => {
+      dispatch({ type: UPDATE_STATS, payload: res.data });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
 
 export const deleteTaco = (id, user) => dispatch => {
   axios
@@ -103,21 +104,31 @@ export const deleteTaco = (id, user) => dispatch => {
 };
 
 export const locationChange = () => dispatch => {
-  dispatch({type: LOCATION_CHANGE})
-}
+  dispatch({ type: LOCATION_CHANGE });
+};
 
 export const logoutUser = () => dispatch => {
-  dispatch({type: LOG_OUT})
-}
+  dispatch({ type: LOG_OUT });
+};
 
 export const updateUser = (id, changes) => dispatch => {
   axios
-  .put(`${url}api/users/${id}`, changes)
-  .then(res => {          
-    dispatch({ type: UPDATE_USER, payload: res.data });
-  })
-  .catch(err => {
-    console.log(err);
-  });
-}
+    .put(`${url}api/users/${id}`, changes)
+    .then(res => {
+      dispatch({ type: UPDATE_USER, payload: res.data });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
 
+export const fetchUser = id => dispatch => {
+  axios
+    .get(`${url}api/users/${id}`)
+    .then(res => {
+      dispatch({ type: GET_USER, payload: res.data });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};

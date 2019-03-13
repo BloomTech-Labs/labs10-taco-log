@@ -22,30 +22,44 @@ class AchievementList extends Component {
     if (userAchevements.length > 0) {
       for (let i = 0; i <= userAchevements.length; i++) {
         if (userAchevements[i].id == id) {
-          console.log("true")
+          console.log("true");
           return true;
         }
-        console.log("false")
+        console.log("false");
         return false;
       }
     }
   }
 
+  logLink(){
+    this.props.locationChange();
+    this.props.history.push("/home");
+  }
+
   render() {
     return (
-      <div className="achievement-list-owrap">        
-        <div className="all-toggle" onClick={() => this.toggleModal()}>All Badges</div>
+      <div className="achievement-list-owrap">
+        <div className="achievement-list-title-btn-wrap">
+          <div className="achievement-list-title">My Badges</div>
+          <div className="all-toggle" onClick={() => this.toggleModal()}>
+            View All Badges
+          </div>
+        </div>
         <div
           className={
             this.state.modal ? "achievement-modal display" : "achievement-modal"
           }
         >
           <div className="content">
-            <img className="exit-icon" src = {require('../img/exit-icon.png')} onClick={() => this.toggleModal()} />
+            <img
+              className="exit-icon"
+              src={require("../img/exit-icon.png")}
+              onClick={() => this.toggleModal()}
+            />
             <div className="inner-wrap">
               {this.props.achievements.map(achievement => (
-                <AchievementCard        
-                  {...this.props}          
+                <AchievementCard
+                  {...this.props}
                   key={achievement.id}
                   id={achievement.id}
                   title={achievement.title}
@@ -60,7 +74,7 @@ class AchievementList extends Component {
           <div className="personal-achievement-wrap">
             {this.props.userInfo.achievements.map(achievement => (
               <AchievementCard
-                {...this.props} 
+                {...this.props}
                 id={achievement.id}
                 key={achievement.id}
                 title={achievement.title}
@@ -70,8 +84,13 @@ class AchievementList extends Component {
           </div>
         ) : (
           <div>
-            You do not have any achievements yet.
+            <p>You do not have any badges yet.</p>
+            <div className = "btn-p-wrap">
+              <p>Start logging tacos to earn badges!</p>
+              <div onClick = {()=>this.logLink()} className = "taco-log-link">Log a Taco</div>
             </div>
+          </div>
+          
         )}
       </div>
     );

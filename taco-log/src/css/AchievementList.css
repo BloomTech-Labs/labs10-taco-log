@@ -1,18 +1,32 @@
-.achievement-list-owrap{
-    display: flex;
+.achievement-list-owrap {
+  display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 80%;
+  align-items: flex-start;
+  width: 100%;
+  padding: 0 30px;
 }
 
-.achievement-list-owrap .all-toggle{
-    align-self: flex-end;
-    border: 1px solid #00447b;
-    background-color: #6aa7da;
-    height: 30px;
-    width: 100px;
-    margin: 5px;
-    border-radius: 5px;
+.achievement-list-owrap .achievement-list-title-btn-wrap{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.achievement-list-owrap .achievement-list-title-btn-wrap .achievement-list-title{
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #00447b;  
+  margin-bottom: 10px; 
+}
+
+.achievement-list-owrap .all-toggle {
+  align-self: flex-end;
+  color: white;
+  background-color: #00447b;
+  height: 30px;
+  width: 150px;  
+  border-radius: 5px;
 }
 
 .achievement-modal {
@@ -32,7 +46,7 @@
   display: block;
 }
 
-.content {
+.achievement-modal .content {
   background-color: #6aa7da;
   margin: 15% auto;
   padding: 20px;
@@ -43,22 +57,22 @@
   flex-direction: column;
 }
 
-.content .exit-icon{
-    height: 50px;
-    width: 50px;
-    align-self: flex-end;
+.achievement-modal .content .exit-icon {
+  height: 50px;
+  width: 50px;
+  align-self: flex-end;
 }
 
-.content .inner-wrap {
+.achievement-modal .content .inner-wrap {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin: auto;
 }
 
-.personal-achievement-wrap{
-    background-color: #6aa7da;
-    border: 2px solid #00447b;
-    border-radius: 5px;
-    width: 100%;
+.personal-achievement-wrap {
+  background-color: #6aa7da;
+  border: 2px solid #00447b;
+  border-radius: 5px;
+  width: 100%;
 }
