@@ -39,7 +39,7 @@ class ProfileInfoDisplay extends Component {
     this.setState({ modal: !this.state.modal });
   }
 
-  render() {console.log(this.props.userInfo)
+  render() {
     return (
       <div className="p-info-top">
         <div className={this.state.modal ? "edit-modal display" : "edit-modal"}>
