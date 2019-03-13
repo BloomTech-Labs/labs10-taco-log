@@ -483,7 +483,7 @@ class LogTaco extends Component {
           <Row>
               {this.state.place_id ? 
               <div className="location-information">
-                <img className='location-photo' src={`${this.state.photo}`}/>
+                <div className="location-image-wrap"><img className='location-photo' src={`${this.state.photo}`}/></div>
                 <p>{this.state.address}</p>
               </div> : <div/>}
               </Row>
@@ -569,12 +569,6 @@ class LogTaco extends Component {
         <Container className="special-experience-container quadrant">
         <Form>
         <FormGroup className="rating-icons">
-          <Input 
-            onChange={this.handleInputChange}
-            placeholder="rating"
-            value={this.state.rating}
-            name="rating"
-          />
           <img src={(this.state.rating >= 1)?tacoColor:tacoGrey} onClick={(e) => this.toggleRating(e)} className='taco-icon' id="1" alt = "taco-icon"/>
           <img src={(this.state.rating >= 2)?tacoColor:tacoGrey} onClick={(e) => this.toggleRating(e)} className='taco-icon' id="2" alt = "taco-icon"/>
           <img src={(this.state.rating >= 3)?tacoColor:tacoGrey} onClick={(e) => this.toggleRating(e)} className='taco-icon' id="3" alt = "taco-icon"/>

@@ -26,9 +26,13 @@
     justify-content: flex-start;
     flex: 1;
 }
+.location-image-wrap{
+    max-width: 120px;
+    height: 120px;
+}
 .location-photo{
     display: block;
-    max-width: 20%;
+    max-width: 100%;
     max-height: 100%;
 }
 .google-dropdown{
