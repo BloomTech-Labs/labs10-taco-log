@@ -2,7 +2,6 @@
 .landing-container {
     display: flex;
     flex-direction: column;
-    
 }
 
 .taco-img{
@@ -85,3 +84,16 @@
 
 
 
+/* -----------Mobile styles----------- */
+@media (max-width: 400px) {
+    
+    /* .landing-container {
+      border: 2px solid red; 
+    } */
+
+    .form-group-landing{
+        margin-left: 100px;
+    }
+
+  }
+/* ----------Mobile styles ----------*/

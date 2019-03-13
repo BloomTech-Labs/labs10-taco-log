@@ -125,7 +125,7 @@ class Header extends Component {
             Taco Log
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
+          <Collapse id="click" isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               {this.state.user
                 ? <div className="nav-div">
@@ -150,7 +150,7 @@ class Header extends Component {
                   
               }
               <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle id= "click"nav caret>
+                <DropdownToggle id= "click" nav caret>
                   
                 </DropdownToggle>
                 <DropdownMenu right>

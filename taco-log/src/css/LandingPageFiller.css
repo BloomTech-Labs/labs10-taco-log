@@ -4,15 +4,21 @@
   max-width: 500px;
   
 }
-.image-container {
+
+.image-container .col {
   height: 100%;
   width:100%;
   margin-right: 50px;
+  padding:0px;
 }
 
-.taco-image2{
-  padding-right:0px;
+.image-container2 .col {
+  height: 100%;
+  width:100%;
+  padding: 0px;
 }
+
+
 
 .headliner {
   margin-bottom: 30px;
@@ -31,8 +37,8 @@
 .row1 {
   margin: 40px 0px;
   border: 1px solid #00447b;
-  display: flex;
-  justify-content: space-between;
+  
+  
 }
 
 .row2 {
@@ -40,3 +46,26 @@
   border: 1px solid #00447b;
 }
 
+/* -----------Mobile styles----------- */
+@media (max-width: 400px) {
+    
+  /* .filler-container {
+    border:2px solid blue;
+  } */
+
+  .row1 {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .row2 {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .text-box {
+    margin-bottom: 20px;
+  }
+
+}
+/* ----------Mobile styles ----------*/

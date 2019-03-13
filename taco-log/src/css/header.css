@@ -99,7 +99,7 @@
 .nav-div{
     display: flex;
     flex-direction: row;
-    margin: 15px;
+    margin-top: 15px;
     cursor: pointer;
     color:white;
 }
@@ -133,3 +133,27 @@
 .appear {
     display:flex;
 }
+
+
+
+
+/* -----------Mobile styles----------- */
+@media (max-width: 400px) {
+    
+   .nav-div {
+       
+       display: flex;
+       flex-direction: column;
+       justify-content: space-around;
+       align-items: flex-start;
+       margin: 5px 0px;
+       
+   }
+
+   .dropdown {
+       margin:0;
+       padding-right: 40px;
+   }
+
+  }
+/* ----------Mobile styles ----------*/
