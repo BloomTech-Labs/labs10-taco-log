@@ -433,12 +433,12 @@ class LogTaco extends Component {
   render() {    
     return (
       <Container className="log-taco-container">
+
       {/* {this.props.userInfo ? this.grabTacosLogged() : console.log("No user")} */}
-      {/* {(this.state.tacos_logged === 0) ? <FirstTaco {...this.props} {...this.state}/> : } */}
       <div className="taco-form">
-        <p>Log a Taco Here:</p>
-        {(this.props.place) ? this.mapPlacetoState() :
-        <Row sm="6" className="search-map-container">
+        <Container className="search-map-container quadrant">
+        {(this.props.place) ? <p>{this.mapPlacetoState()} {this.state.place.taco_location}</p>:
+        <Row className="search-map-container">
         <input
           onChange={this.handleInputChange}
           className="google-dropdown"
@@ -465,13 +465,19 @@ class LogTaco extends Component {
             )}
           </div>
         </div> */}
-
-        <Container>
-
+        </Container>
+        <Input
+            className="ingredient-container quadrant"
+            onChange={this.handleInputChange}
+            placeholder="What was the name of the taco you had here? Or you can put in whatever you want to call it if it was something custom to you!"
+            value={this.state.taco_name}
+            name="taco_name"
+          />
+      <Container className="ingredient-container quadrant">
         <Row className="ingredient-tab-wrap">
-        <img src={(this.state.selectedTab === "1")?tacoColor:tacoGrey} onClick={e => this.toggleIngredientTab(e)} id="1" />
+        <img src={(this.state.selectedTab === "1")?tacoColor:tacoGrey} onClick={e => this.toggleIngredientTab(e)} className='ingredient-icon' id="1" />
           {this.state.selectedTab === "1" ? this.state.tortilla.map(data => (
-            <Col xs="1"
+            <Col 
               onClick={this.selectTortilla}
               className={
                 this.state.selectedTortilla.indexOf(data) > -1
@@ -486,9 +492,9 @@ class LogTaco extends Component {
         </Row>
 
         <Row className="ingredient-tab-wrap">
-        <img src={(this.state.selectedTab === "2")?tacoColor:tacoGrey} onClick={e => this.toggleIngredientTab(e)} id="2" />
+        <img src={(this.state.selectedTab === "2")?tacoColor:tacoGrey} onClick={e => this.toggleIngredientTab(e)} className='ingredient-icon' id="2" />
           {this.state.selectedTab === "2" ? this.state.meat.map(data => (
-            <Col xs="1"
+            <Col 
               onClick={this.selectMeat}
               className={
                 this.state.selectedMeat.indexOf(data) > -1
@@ -502,9 +508,9 @@ class LogTaco extends Component {
           )): <p> Test: meats unselcted </p>}
         </Row>
         <Row className="ingredient-tab-wrap">
-        <img src={(this.state.selectedTab === "3")?tacoColor:tacoGrey} onClick={e => this.toggleIngredientTab(e)} id="3" />
+        <img src={(this.state.selectedTab === "3")?tacoColor:tacoGrey} onClick={e => this.toggleIngredientTab(e)} className='ingredient-icon' id="3" />
           {this.state.selectedTab === "3" ? this.state.cheese.map(data => (
-            <Col xs="1"
+            <Col 
               onClick={this.selectCheese}
               id="cheese"
               className={
@@ -520,9 +526,9 @@ class LogTaco extends Component {
         </Row>
 
         <Row className="ingredient-tab-wrap">
-        <img src={(this.state.selectedTab === "4") ? tacoColor:tacoGrey} onClick={e => this.toggleIngredientTab(e)} id="4" />
+        <img src={(this.state.selectedTab === "4") ? tacoColor:tacoGrey} onClick={e => this.toggleIngredientTab(e)} className='ingredient-icon' id="4" />
           {this.state.selectedTab === "4" ? this.state.salsa.map(data => (
-            <Col xs="1"
+            <Col 
               onClick={this.selectSalsa}
               className={
                 this.state.selectedSalsa.indexOf(data) > -1
@@ -535,30 +541,13 @@ class LogTaco extends Component {
             </Col>
           )): <p>Test: salsa unselected</p>}
         </Row>
-        
         </Container>
-        <Form>
-        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-          {/* <Input 
-            onChange={this.handleInputChange}
-            placeholder="rating"
-            value={this.state.rating}
-            name="rating"
-          /> */}
+        <Container className="special-experience-container quadrant">
           <img src={(this.state.rating >= 1)?tacoColor:tacoGrey} onClick={(e) => this.toggleRating(e)} className='taco-icon' id="1" alt = "taco-icon"/>
           <img src={(this.state.rating >= 2)?tacoColor:tacoGrey} onClick={(e) => this.toggleRating(e)} className='taco-icon' id="2" alt = "taco-icon"/>
           <img src={(this.state.rating >= 3)?tacoColor:tacoGrey} onClick={(e) => this.toggleRating(e)} className='taco-icon' id="3" alt = "taco-icon"/>
           <img src={(this.state.rating >= 4)?tacoColor:tacoGrey} onClick={(e) => this.toggleRating(e)} className='taco-icon' id="4" alt = "taco-icon"/>
           <img src={(this.state.rating >= 5)?tacoColor:tacoGrey} onClick={(e) => this.toggleRating(e)} className='taco-icon' id="5" alt = "taco-icon"/>
-          <Input
-            onChange={this.handleInputChange}
-            placeholder="What was the name of the taco you had here? Or you can put in whatever you want to call it if it was something custom to you!"
-            value={this.state.taco_name}
-            name="taco_name"
-          />
-          <Button onClick={this.newTaco}>Submit</Button>
-          </FormGroup>
-        </Form>
         <div>
           <input
             onClick={this.toggleSpecialExp}
@@ -581,7 +570,21 @@ class LogTaco extends Component {
         ) : (
           <div />
         )}
+        </Container>
+        <Form>
+        <FormGroup className="rating-icons">
+          {/* <Input 
+            onChange={this.handleInputChange}
+            placeholder="rating"
+            value={this.state.rating}
+            name="rating"
+          /> */}
+        
+          <Button onClick={this.newTaco}>Submit</Button>
+          </FormGroup>
+        </Form>
       </div>
+
       </Container>
     );
   }
