@@ -75,6 +75,10 @@
   justify-content: center;
 }
 
+.p-info-dis .p-info-content .edit-column .edit-link{
+  cursor: pointer;
+}
+
 .p-info-dis .p-info-content .edit-column .edit-icon {
   height: 24px;
   width: 24px;
