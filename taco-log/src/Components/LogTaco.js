@@ -3,11 +3,10 @@ import { firebase } from "../firebase/firebase";
 import { Form, Input, Button, FormGroup, Container, Row, Col } from "reactstrap";
 import tacoColor from "../img/taco-color.png"
 import tacoGrey from "../img/taco-grey.png"
-
 import meatColor from "../img/achievement-4-color.png"
 import meatGrey from "../img/achievement-4-grey.png"
 import tortillaColor from "../img/tortillas (1).png"
-import tortillaGrey from "../img/tortillas (1).png"
+import tortillaGrey from "../img/gray-tortilla.png"
 import cheeseColor from "../img/achievement-5-color.png"
 import cheeseGrey from "../img/achievement-5-grey.png"
 import salsaColor from "../img/achievement-6-color.png"
@@ -45,8 +44,8 @@ class LogTaco extends Component {
       selectedSalsa: [],
       selectedTab: 0,
       special_experience: 0,
+      firstTime: 0,
       taco_description: "",
-      tacos_logged: 0,
       photo: ""
     };
   }
@@ -115,6 +114,7 @@ class LogTaco extends Component {
   componentDidMount() {
     const inputElement = document.querySelector(".google-dropdown");
     const dropdown = new window.google.maps.places.Autocomplete(inputElement);
+    this.checkFirstTime();
     dropdown.addListener("place_changed", () => {
       const place = dropdown.getPlace();
       console.log(place);
@@ -128,18 +128,6 @@ class LogTaco extends Component {
         photo: place.photos[0].getUrl()
       });
     });
-    if(this.props.landingTaco){
-      this.setState({
-        address: this.props.landingTaco.address,
-        taco_location: this.props.landingTaco.taco_location,
-        place_id: this.props.landingTaco.place_id,
-        staticMap: true,
-        lat: this.props.landingTaco.lat,
-        lng: this.props.landingTaco.lng,
-        photo: this.props.landingTaco.photo
-      });
-      this.props.clearLandingTaco()
-    }
   }
 
   achievementCheck = achievementId => {
@@ -402,7 +390,7 @@ class LogTaco extends Component {
       selectedTortilla: [],
       selectedMeat: [],
       selectedCheese: [],
-      selectedSalsa: []
+      selectedSalsa: [],
     });
   };
 
@@ -437,6 +425,14 @@ class LogTaco extends Component {
       });
     }
   };
+
+  checkFirstTime = e => {
+      if (typeof this.props.userInfo.user_stats !== "undefined") {
+      if (this.props.userInfo.user_stats.tacos_logged < 1) {
+      this.setState({firstTime: 1})
+    }
+  }
+  }
   // grabTacosLogged = e => {
   //   if (this.state.userInfo) {
   //   this.setState({tacos_logged: this.props.userInfo.user_stats.tacos_logged})
@@ -457,7 +453,7 @@ class LogTaco extends Component {
   render() {
     return (
       <Container className="log-taco-container">
-        {/* {this.props.userInfo ? this.grabTacosLogged() : console.log("No user")} */}
+        {(this.state.firstTime === 1) ? console.log("first time") : console.log("returning user")}
         <div className="taco-form">
           <Container className="search-map-container quadrant">
             {this.props.place ? (
@@ -607,6 +603,7 @@ class LogTaco extends Component {
             value={this.state.taco_description}
             rows="10"
             cols="50"
+            maxlength="250"
           />
         ) : (
           <div />

@@ -83,7 +83,7 @@ class ProfileInfoDisplay extends Component {
               </div>
             </div>
             <div className="edit-column">
-              <div onClick={() => this.toggleModal()}>
+              <div className="edit-link" onClick={() => this.toggleModal()}>
                 <img
                   onClick={() => this.toggleModal()}
                   src={require("../img/edit-icon.png")}

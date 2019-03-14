@@ -1,6 +1,7 @@
+
+
 .log-taco-container{
     width: 100%;
-
 }
 .taco-form{
     display: flex;
@@ -11,14 +12,14 @@
 }
 .quadrant:nth-child(2n) {
     flex-basis : 100%;
-    border: solid black;
+    border: solid 1px #666;
 }
 .taco-form .name-container {
     max-width: 50%;
 }
 .taco-form .search-map-container {
     max-width: 50%;
-    border: solid black;
+    border: 1px solid #666;
 }
 .location-information{
     display: flex;
@@ -28,7 +29,7 @@
 }
 .location-image-wrap{
     max-width: 120px;
-    height: 120px;
+    max-height: 120px;
 }
 .location-photo{
     display: block;
@@ -44,6 +45,7 @@
 .taco-form .special-experience-container {
     max-width: 50%;
 }
+
 
 @media only screen and (max-width: 860px) {
     .taco-form{
