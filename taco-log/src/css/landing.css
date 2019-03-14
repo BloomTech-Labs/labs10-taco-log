@@ -25,24 +25,28 @@
 }
 
 .img-intro {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  padding-top: 250px;
-  font-family: Helvetica, Verdana, sans-serif;
-  color: #e6e6fa;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 250px;
+    font-family: Helvetica,Verdana,sans-serif;
+    color: #E6E6FA;
+    
+   
 }
-.form-group-landing {
-  display: flex;
-  flex-direction: row;
-  width: 50%;
-  margin-left: 300px;
+.form-group-landing{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width:100%;
+    
 }
 
-.form-control {
-  width: 200px;
-  height: 45px;
-  margin-top: 60px;
+.form {
+    width: 50%;
+    height: 45px;
+    margin-top: 0px;
 }
 
 .button {
@@ -55,11 +59,11 @@
 }
 
 .input {
-  width: 600px;
-  height: 45px;
-  margin-top: 60px;
-  border-radius: 3px;
-  border-style: none;
+    width: 100%;
+    height: 45px;
+    margin-top: 60px;
+    border-radius: 3px;
+    border-style: none;
 }
 
 .mid-section {
@@ -92,24 +96,59 @@
   display: block;
 }
 
+.modal-btns {
+  width:50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .signin-modal .content {
-  background-color: white;
+  background-color: #307b93;
   margin: 15% auto;
   padding: 20px;
-  width: 80%;
+  width: 40%;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
-/* -----------Mobile styles----------- */
-@media (max-width: 490px) {
-  /* .landing-container {
-      border: 2px solid red; 
-    } */
-
-  .form-group-landing {
-    margin-left: 100px;
-  }
+.google-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  border-radius: 3px;
+  color: #666;
+  background: #fff;
+  border: 2px solid #ccc;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.28571em;
+  width: 50%;
+  height: 30px;
 }
-/* ----------Mobile styles ----------*/
+
+.fb-button {
+  display: flex;
+  margin-top: 10px; 
+  color: #fff;
+  background: #3b5998;
+  border: 1px solid #3b5998;
+  background-repeat: no-repeat;
+  padding: 5px 5px 0px 0px;
+  vertical-align: middle;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.28571em;
+  border-radius: 3px;
+  width: 50%;
+  height: 30px;
+  justify-content: center;
+  
+}
+
