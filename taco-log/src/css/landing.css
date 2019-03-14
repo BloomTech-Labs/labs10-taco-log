@@ -10,8 +10,7 @@
 }
 
 .img-container{ 
-    /* left as a reference incase of fallback or change in design */
-  /* background-image: url('../img/landingpagecover.jpg'); */ 
+
   background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../img/landingpagecover.jpg');
   background-blend-mode: darken;
   background-size: cover;
@@ -29,6 +28,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
     padding-top: 250px;
     font-family: Helvetica,Verdana,sans-serif;
     color: #E6E6FA;
@@ -38,14 +38,15 @@
 .form-group-landing{
     display: flex;
     flex-direction: row;
-    width:50%;
-    margin-left: 300px;
+    justify-content: center;
+    width:100%;
+    
 }
 
-.form-control {
-    width: 200px;
+.form {
+    width: 50%;
     height: 45px;
-    margin-top: 60px;
+    margin-top: 0px;
 }
 
 .button {
@@ -58,7 +59,7 @@
 }
 
 .input {
-    width: 600px;
+    width: 100%;
     height: 45px;
     margin-top: 60px;
     border-radius: 3px;
@@ -83,44 +84,3 @@
 }
 
 
-
-/* -----------Mobile styles----------- */
-@media (max-width: 400px) {
-    
-    .form-group-landing{
-        margin-left: 95px;
-    }
-
-  }
-
-@media (min-width:401px) and (max-width: 490px) {
-    
-    .form-group-landing{
-        margin-left: 120px;
-    }
-
-  }
-/* ----------Mobile styles ----------*/
-
-
-
-/* -----------Tablet styles----------- */
-@media (min-width:491px) and (max-width: 770px) {
-    
-    .form-group-landing{
-        margin-left: 190px;
-    }
-
-  }
-/* ----------Tablet styles ----------*/
-
-
-/* -----------Small PC styles----------- */
-@media (min-width:771px) and (max-width: 991px) {
-    
-    .form-group-landing{
-        margin-left: 250px;
-    }
-
-  }
-/* ----------Small PC styles ----------*/

@@ -123,8 +123,8 @@ class Header extends Component {
           <NavbarBrand id="click" onClick={e => this.customlink("/")}>
             Taco Log
           </NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
-
+          {/* <NavbarToggler onClick={this.toggle} /> */}
+          <h3 id= "collapse" onClick={this.toggle}> {String.fromCharCode(9776)} </h3>
 
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>              

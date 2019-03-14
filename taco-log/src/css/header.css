@@ -121,6 +121,12 @@
     color: white;
     font-size: 16px;
 }
+
+#collapse {
+    cursor: pointer;
+}
+
+
 .navbar-buttons{
     display: flex;
     justify-content: space-evenly;
@@ -156,4 +162,28 @@
    }
 
   }
+
+@media (min-width: 768px) {
+    #collapse {
+        display: none;
+    }
+}
+
+
+@media (max-width:767px) {
+
+    .nav-div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: flex-start;
+        margin: 5px 0px;
+        
+    }
+
+    .dropdown {
+        margin:0;
+        padding-right: 100px;
+    }
+}
 /* ----------Mobile styles ----------*/
