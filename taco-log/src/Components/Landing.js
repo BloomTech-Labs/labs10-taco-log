@@ -30,6 +30,7 @@ class Landing extends Component {
     this.searchTaco = this.searchTaco.bind(this);
     this.login = this.login.bind(this);
     this.facebookLogin = this.facebookLogin.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
   }
 
   handleToggle = e => {
@@ -153,7 +154,7 @@ class Landing extends Component {
           <div className="content">
 
             <div className="modal-text">
-              Please Sign In. No sign up required!
+              Please sign in to continue. No sign up required!
             </div>
             {/* <span onClick={this.toggleModal}> X </span> */}
             <div className="modal-btns">
@@ -176,6 +177,7 @@ class Landing extends Component {
                 Facebook
               </div>
             </div>
+            <span className="close-modal" onClick= {this.toggleModal}>close</span>
           </div>
         </div>
         <div className="img-container">
