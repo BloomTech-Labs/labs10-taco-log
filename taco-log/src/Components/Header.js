@@ -185,8 +185,8 @@ class Header extends Component {
                     </StripeProvider>
                   </DropdownItem>
                   <DropdownItem divider />
-                  <DropdownItem>
-                    <Button onClick={this.logout}>Log Out</Button>
+                  <DropdownItem onClick={this.logout}>
+                  Log Out
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>

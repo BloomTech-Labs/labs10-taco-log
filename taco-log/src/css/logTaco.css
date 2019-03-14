@@ -1,6 +1,7 @@
+
+
 .log-taco-container{
     width: 100%;
-
 }
 .taco-form{
     display: flex;
@@ -28,7 +29,7 @@
 }
 .location-image-wrap{
     max-width: 120px;
-    height: 120px;
+    max-height: 120px;
 }
 .location-photo{
     display: block;
@@ -43,6 +44,11 @@
 }
 .taco-form .special-experience-container {
     max-width: 50%;
+}
+
+.taco-icon {
+    max-width: 20%;
+    max-height: 100px;
 }
 
 @media only screen and (max-width: 860px) {
