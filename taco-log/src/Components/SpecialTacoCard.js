@@ -51,10 +51,9 @@ class SpecialTacoCard extends Component {
             id="5"
             alt = "special-taco-icon"
           />
-          at
-        <Moment format="MMMM Do YYYY">{this.props.created_at}</Moment>
+        <Moment className="special-taco-time" format="MMMM Do YYYY">{this.props.created_at}</Moment>
         </div> 
-        <p>"{this.props.taco_description}"</p>       
+        <p>{this.props.taco_description}</p>       
         {/* <button onClick={() => this.deleteTaco(this.props.id)}>Delete</button> */}
       </div>
     );
