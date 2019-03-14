@@ -38,7 +38,7 @@ handleInputChange = e => {
 };
 
 searchTaco () {
-  if(this.props.user===null) {
+  if(this.props.userLoggedIn!== true) {
     console.log("this is working")
     return (
       <alert>
@@ -82,7 +82,7 @@ searchTaco () {
     });
   }
   render() {
-    console.log("props:", this.props);
+    
     return (
       <div className="landing-container">
         <div className="img-container">

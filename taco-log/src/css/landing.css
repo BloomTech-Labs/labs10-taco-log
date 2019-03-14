@@ -85,15 +85,42 @@
 
 
 /* -----------Mobile styles----------- */
-@media (max-width: 490px) {
+@media (max-width: 400px) {
     
-    /* .landing-container {
-      border: 2px solid red; 
-    } */
-
     .form-group-landing{
-        margin-left: 100px;
+        margin-left: 95px;
+    }
+
+  }
+
+@media (min-width:401px) and (max-width: 490px) {
+    
+    .form-group-landing{
+        margin-left: 120px;
     }
 
   }
 /* ----------Mobile styles ----------*/
+
+
+
+/* -----------Tablet styles----------- */
+@media (min-width:491px) and (max-width: 770px) {
+    
+    .form-group-landing{
+        margin-left: 190px;
+    }
+
+  }
+/* ----------Tablet styles ----------*/
+
+
+/* -----------Small PC styles----------- */
+@media (min-width:771px) and (max-width: 991px) {
+    
+    .form-group-landing{
+        margin-left: 250px;
+    }
+
+  }
+/* ----------Small PC styles ----------*/
