@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./css/Reset.css"
+import "./css/Reset.css";
 import "./App.css";
 import { Route, Switch, Link } from "react-router-dom";
 import HomePage from "./Components/HomePage";
@@ -12,7 +12,21 @@ import UserHome from "./Components/UserHome";
 import AccountSettings from "./Components/AccountSettings";
 // import Footer from "./Components/Footer";
 
-import { loginUser, logTaco, deleteTaco, assignAchievement, locationChange, updateStats, GET_TACO, logoutUser, updateUser, fetchAchievements, fetchUser } from "./actions";
+import {
+  loginUser,
+  logTaco,
+  deleteTaco,
+  assignAchievement,
+  locationChange,
+  updateStats,
+  GET_TACO,
+  logoutUser,
+  updateUser,
+  fetchAchievements,
+  fetchUser,
+  storeLandingTaco,
+  clearLandingTaco
+} from "./actions";
 
 import { connect } from "react-redux";
 
@@ -24,47 +38,46 @@ class App extends Component {
     };
   }
 
-  componentDidMount(){
-    const id = localStorage.getItem('user_id')    
-    if(id){
-      this.props.fetchUser(id)
+  componentDidMount() {
+    const id = localStorage.getItem("user_id");
+    if (id) {
+      this.props.fetchUser(id);
     }
-    
   }
 
-  render() {    
+  render() {
     return (
       <div className="App">
         <Route
           path="/"
-          render={props => <Header {...this.props} {...props}  />}
-        />  
-        <Switch>      
-        <Route
-          exact
-          path="/home"
-          render={props => <HomePage {...this.props} {...props}  />}
+          render={props => <Header {...this.props} {...props} />}
         />
-        <Route
-          exact
-          path="/tacos"
-          render={props => <LogTaco {...this.props} {...props} />}
-        />
-        <Route
-          exact
-          path="/profile"
-          render={props => <ProfilePage {...this.props} {...props} />}
-        />
-        <Route
-          exact
-          path="/"
-          render={props => <Landing {...this.props} {...props} />}
-        />
-        <Route
-          exact
-          path="/addstore"
-          render={props => <AddStore {...this.props} {...props} />}
-        />
+        <Switch>
+          <Route
+            exact
+            path="/home"
+            render={props => <HomePage {...this.props} {...props} />}
+          />
+          <Route
+            exact
+            path="/tacos"
+            render={props => <LogTaco {...this.props} {...props} />}
+          />
+          <Route
+            exact
+            path="/profile"
+            render={props => <ProfilePage {...this.props} {...props} />}
+          />
+          <Route
+            exact
+            path="/"
+            render={props => <Landing {...this.props} {...props} />}
+          />
+          <Route
+            exact
+            path="/addstore"
+            render={props => <AddStore {...this.props} {...props} />}
+          />
           <Route
             exact
             path="/accountsettings"
@@ -85,16 +98,31 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {  
+const mapStateToProps = state => {
   return {
     userInfo: state.userReducer.user,
     tacoInfo: state.tacoReducer.tacos,
     achievements: state.achievementReducer.achievements,
-    userLoggedIn: state.authReducer.userLoggedIn
+    userLoggedIn: state.authReducer.userLoggedIn,
+    landingTaco: state.tacoReducer.landingTaco
   };
 };
 
 export default connect(
   mapStateToProps,
-  { loginUser, logTaco, deleteTaco, assignAchievement, locationChange, updateStats, GET_TACO, logoutUser, updateUser, fetchAchievements, fetchUser }
+  {
+    loginUser,
+    logTaco,
+    deleteTaco,
+    assignAchievement,
+    locationChange,
+    updateStats,
+    GET_TACO,
+    logoutUser,
+    updateUser,
+    fetchAchievements,
+    fetchUser,
+    storeLandingTaco,
+    clearLandingTaco
+  }
 )(App);

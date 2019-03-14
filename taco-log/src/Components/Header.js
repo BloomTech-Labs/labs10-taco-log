@@ -13,14 +13,13 @@ import {
   DropdownMenu,
   DropdownItem
 } from "reactstrap";
-import { connect } from 'react-redux';
-import { firebase, provider, facebookProvider } from '../firebase/firebase';
+import { connect } from "react-redux";
+import { firebase, provider, facebookProvider } from "../firebase/firebase";
 import { Elements, StripeProvider } from "react-stripe-elements";
 import CheckoutForm from "./CheckoutForm";
-import "../css/header.css"
-import google from '../google.png';
-import facebook from '../facebook.png';
-
+import "../css/header.css";
+import google from "../google.png";
+import facebook from "../facebook.png";
 
 class Header extends Component {
   constructor(props) {
@@ -41,58 +40,58 @@ class Header extends Component {
   customlink = url => {
     this.props.locationChange();
     this.props.history.push(url);
-    this.setState({user:localStorage})
+    this.setState({ user: localStorage });
   };
 
   // componentWillMount() {
   //   this.setState({user:localStorage})
-  // }; 
+  // };
 
   login() {
     firebase
       .auth()
       .signInWithPopup(provider)
-      .then(result => {        
+      .then(result => {
         const user = {
           name: result.user.displayName,
           email: result.user.email,
           ext_user_id: result.user.uid,
-          photoURL:result.user.photoURL
+          photoURL: result.user.photoURL
         };
-        this.props.loginUser(user)
+        this.props.loginUser(user);
         this.setState({
           user
         });
       });
   }
 
-  facebookLogin () {	
-    firebase	
-   .auth()	
-   .signInWithPopup(facebookProvider)	
-   .then(result => {	
-     const user = {	
-       name: result.user.displayName,	
-       email: result.user.email,	
-       ext_user_id: result.user.uid,
-       photoURL:result.user.photoURL	
-     };	
-     this.props.loginUser(user);	
+  facebookLogin() {
+    firebase
+      .auth()
+      .signInWithPopup(facebookProvider)
+      .then(result => {
+        const user = {
+          name: result.user.displayName,
+          email: result.user.email,
+          ext_user_id: result.user.uid,
+          photoURL: result.user.photoURL
+        };
+        this.props.loginUser(user);
 
-      this.setState({	
-       user
-     });	
-   });	
-}
+        this.setState({
+          user
+        });
+      });
+  }
 
   logout() {
     firebase.auth().signOut();
     this.props.logoutUser();
-    this.props.locationChange();    
+    this.props.locationChange();
     this.props.history.push("/");
     this.setState({
       user: null
-    })
+    });
   }
 
   toggle() {
@@ -103,58 +102,76 @@ class Header extends Component {
 
   toggleFade() {
     this.setState({
-        fadeIn: !this.state.fadeIn
+      fadeIn: !this.state.fadeIn
     });
-    
-}
-
-
+  }
 
   render() {
-    
-    console.log("user:", this.state.user)
+    console.log("user:", this.state.user);
     return (
-      <div className=
-        {this.props.history.location.pathname ==='/'
-          ? "nav-container-landing"
-          : "nav-container"
-        }>
+      <div
+        className={
+          this.props.history.location.pathname === "/"
+            ? "nav-container-landing"
+            : "nav-container"
+        }
+      >
         <Navbar light expand="md">
           <NavbarBrand id="click" onClick={e => this.customlink("/")}>
             Taco Log
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
 
-
           <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>              
-              {this.props.userLoggedIn
-
-                ? <div className="nav-div">
-                    <NavLink id ="click" onClick={e => this.customlink("/profile")}>
-                      Profile
-                    </NavLink>
-                    <NavLink id ="click" onClick={e => this.customlink("/home")}>
-                      Home
-                    </NavLink> </div>
-                : <div className="button-div">
-                    <div className="signIn" onClick={this.toggleFade}> Sign In </div>
-                    <Fade in={this.state.fadeIn} className="fade">
-                      {this.state.fadeIn
-                        ? <div className="appear">
-                            <button className="google-button" onClick={this.login}> <img className="google-logo" src={google} alt="google logo" /> Google </button> 
-                            <div className="fb-button" onClick={this.facebookLogin}> <img className="facebook-logo" src={facebook} alt="facebook logo" /> Facebook </div>
-                          </div>
-                        : <div className="disappear"></div>
-                      }
-                    </Fade>
+            <Nav className="ml-auto" navbar>
+              {this.props.userLoggedIn ? (
+                <div className="nav-div">
+                  <NavLink
+                    id="click"
+                    onClick={e => this.customlink("/profile")}
+                  >
+                    Profile
+                  </NavLink>
+                  <NavLink id="click" onClick={e => this.customlink("/home")}>
+                    Home
+                  </NavLink>{" "}
+                </div>
+              ) : (
+                <div className="button-div">
+                  <div className="signIn" onClick={this.toggleFade}>
+                    {" "}
+                    Sign In{" "}
                   </div>
-                  
-              }
+                  <Fade in={this.state.fadeIn} className="fade">
+                    {this.state.fadeIn ? (
+                      <div className="appear">
+                        <button className="google-button" onClick={this.login}>
+                          {" "}
+                          <img
+                            className="google-logo"
+                            src={google}
+                            alt="google logo"
+                          />{" "}
+                          Google{" "}
+                        </button>
+                        <div className="fb-button" onClick={this.facebookLogin}>
+                          {" "}
+                          <img
+                            className="facebook-logo"
+                            src={facebook}
+                            alt="facebook logo"
+                          />{" "}
+                          Facebook{" "}
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="disappear" />
+                    )}
+                  </Fade>
+                </div>
+              )}
               <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle id= "click" nav caret>
-                  
-                </DropdownToggle>
+                <DropdownToggle id="click" nav caret />
                 <DropdownMenu right>
                   {/* <DropdownItem onClick={e => this.customlink("/AccountSettings")}>
                     <NavLink>Settings</NavLink>
@@ -181,10 +198,8 @@ class Header extends Component {
   }
 }
 
-
 const mapStateToProps = state => {
   return { user: state.user };
 };
 
-export default connect (mapStateToProps) (Header);
-
+export default connect(mapStateToProps)(Header);
