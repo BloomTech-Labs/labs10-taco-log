@@ -128,6 +128,18 @@ class LogTaco extends Component {
         photo: place.photos[0].getUrl()
       });
     });
+    if(this.props.landingTaco){
+      this.setState({
+        address: this.props.landingTaco.address,
+        taco_location: this.props.landingTaco.taco_location,
+        place_id: this.props.landingTaco.place_id,
+        staticMap: true,
+        lat: this.props.landingTaco.lat,
+        lng: this.props.landingTaco.lng,
+        photo: this.props.landingTaco.photo
+      });
+      this.props.clearLandingTaco()
+    }
   }
 
   achievementCheck = achievementId => {

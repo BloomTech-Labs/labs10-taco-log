@@ -15,7 +15,15 @@
 //       };
 //     };
 
-import { FETCH_TACOS, GET_TACO, ADDDATABASE_TACOS } from "./tacoActions";
+import {
+  FETCH_TACOS,
+  GET_TACO,
+  ADDDATABASE_TACOS,
+  storeLandingTaco,
+  STORE_LANDING_TACO,
+  clearLandingTaco,
+  CLEAR_LANDING_TACO
+} from "./tacoActions";
 import { FETCH_ACHIEVEMENTS, fetchAchievements } from "./achievementActions";
 import {
   GET_USER,
@@ -61,5 +69,9 @@ export {
   updateUser,
   FETCH_ACHIEVEMENTS,
   fetchAchievements,
-  fetchUser
+  fetchUser,
+  storeLandingTaco,
+  STORE_LANDING_TACO,
+  clearLandingTaco,
+  CLEAR_LANDING_TACO
 };
