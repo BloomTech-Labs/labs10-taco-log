@@ -1,54 +1,166 @@
 
-
-.log-taco-container{
-    width: 100%;
+.taco-form {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
 }
-.taco-form{
+.taco-form .taco-form-upper-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.taco-form .taco-form-upper-wrap input{
+    border: 0;
+    border-bottom: 1px solid #e6e6e6;  
+    text-align: center;  
+    width:200px;
+
+}
+
+.taco-form .taco-form-upper-wrap input:focus{
+    outline:0;
+}
+
+.taco-form .taco-form-upper-wrap .search-map-container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.taco-form .taco-form-upper-wrap .search-bar {
+  margin-bottom: 10px;
+}
+.taco-form .taco-form-upper-wrap .search-map-container .location-information {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #e6e6e6;
+  border-top: 1px solid #e6e6e6;
+  padding: 10px 0;
+  width: 100%;
+  max-width: 400px;
+  height: 125px;
+}
+.taco-form
+  .taco-form-upper-wrap
+  .search-map-container
+  .location-information
+  .location-address {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.taco-form
+  .taco-form-upper-wrap
+  .search-map-container
+  .location-information
+  .location-photo {
+  width: 100%;
+  max-width: 100px;
+  height: 100%;
+}
+
+.taco-form .taco-form-upper-wrap .taco-name-rating-wrap .rating-icons{
+    padding: 20px 0;
+}
+  
+
+.taco-form .taco-form-lower-wrap {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.taco-form .taco-form-lower-wrap .ingredient-select-owrap {
+  display: flex;
+  justify-content: space-between;
+  width: 45%;
+  height: 372px;
+}
+
+.taco-form
+  .taco-form-lower-wrap
+  .ingredient-select-owrap
+  .ingredient-cat-container {
+  border-right: 1px solid #e6e6e6;
+  padding: 10px;
+}
+
+.taco-form
+  .taco-form-lower-wrap
+  .ingredient-select-owrap
+  .ingredient-selection {
+  margin: 0 auto;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+}
+.taco-form
+  .taco-form-lower-wrap
+  .ingredient-select-owrap
+  .ingredient-selection
+  .ingredient-tabs {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border-top: 1px solid #e6e6e6;
+}
+
+.taco-form
+  .taco-form-lower-wrap
+  .ingredient-select-owrap
+  .ingredient-selection
+  .display {
+  display: block;
+
+}
+
+.taco-form
+  .taco-form-lower-wrap
+  .ingredient-select-owrap
+  .ingredient-selection
+  .no-display {
+  display: none;
+}
+
+.taco-form
+  .taco-form-lower-wrap
+  .ingredient-select-owrap
+  .ingredient-selection
+  .ingredient-tabs
+  .ingredient-tab {
+  border-bottom: 1px solid #e6e6e6;
+  width: 150px;
+  padding: 5px 0;
+  padding-left: 5px;
+}
+
+.taco-form
+  .taco-form-lower-wrap
+  .ingredient-select-owrap
+  .ingredient-selection
+  .ingredient-tabs
+  .ingredient-tab-selected {
+  border-left: 5px solid #00447b;
+  padding-left: 0px;
+}
+
+.taco-form .taco-form-lower-wrap .special-experience-container {
+  padding-right: 50px;
+}
+
+
+.taco-form .taco-form-lower-wrap .special-experience-container .special-experience-radio-container{
     display: flex;
     justify-content: center;
-    flex: 1;
-    flex-wrap: wrap;
-    width: 100%
-}
-.quadrant:nth-child(2n) {
-    flex-basis : 100%;
-    border: solid 1px #666;
-}
-.taco-form .name-container {
-    max-width: 50%;
-}
-.taco-form .search-map-container {
-    max-width: 50%;
-    border: 1px solid #666;
-}
-.location-information{
-    display: flex;
-    flex-flow: row;
-    justify-content: flex-start;
-    flex: 1;
-}
-.location-image-wrap{
-    max-width: 120px;
-    max-height: 120px;
-}
-.location-photo{
-    display: block;
-    max-width: 100%;
-    max-height: 100%;
-}
-.google-dropdown{
-    width: 100%;
-}
-.taco-form .ingredient-container {
-    max-width: 50%;
-}
-.taco-form .special-experience-container {
-    max-width: 50%;
+    align-items: center;
 }
 
 
-@media only screen and (max-width: 860px) {
-    .taco-form{
-        flex-flow: column;
-    }
-  } 
+.taco-form .taco-form-lower-wrap .special-experience-container .special-experience-radio-container .special-experience-radio-text{
+    margin-right: 5px;
+}
