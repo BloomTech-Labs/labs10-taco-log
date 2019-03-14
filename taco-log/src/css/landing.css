@@ -96,14 +96,59 @@
   display: block;
 }
 
+.modal-btns {
+  width:50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .signin-modal .content {
-  background-color: white;
+  background-color: #307b93;
   margin: 15% auto;
   padding: 20px;
-  width: 80%;
+  width: 40%;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
+.google-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  border-radius: 3px;
+  color: #666;
+  background: #fff;
+  border: 2px solid #ccc;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.28571em;
+  width: 50%;
+  height: 30px;
+}
+
+.fb-button {
+  display: flex;
+  margin-top: 10px; 
+  color: #fff;
+  background: #3b5998;
+  border: 1px solid #3b5998;
+  background-repeat: no-repeat;
+  padding: 5px 5px 0px 0px;
+  vertical-align: middle;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.28571em;
+  border-radius: 3px;
+  width: 50%;
+  height: 30px;
+  justify-content: center;
+  
+}
 
