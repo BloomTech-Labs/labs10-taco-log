@@ -87,6 +87,7 @@ server.post("/api/users", (req, res) => {
     .into("users")
     .then(([id]) => ({ id }))
     .then(result => {
+      console.log(result);
       userDb
         .getUser(result.id)
         .then(result => {
@@ -109,10 +110,12 @@ server.put("/api/users/:id", (req, res) => {
   db("users")
     .where("internal_id", id)
     .update(changes)
-    .then(result => {
+    .then(result => {    
+      console.log(id);
       userDb
-        .getUser(result.id)
+        .getUser(id)
         .then(result => {
+          console.log(result);
           res.status(200).json(result);
         })
         .catch(err => {

@@ -7,7 +7,7 @@ class ProfileInfoDisplay extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
+      name: "",
       email: "",
       modal: false
     };
@@ -15,7 +15,7 @@ class ProfileInfoDisplay extends Component {
 
   componentDidMount() {
     this.setState({
-      username: this.props.userInfo.username,
+      name: this.props.userInfo.name,
       email: this.props.userInfo.email
     });
   }
@@ -24,13 +24,15 @@ class ProfileInfoDisplay extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  submitChanges = id => {
+  submitChanges = e => {    
+    e.preventDefault()  
     const changes = {
-      username: this.state.username,
+      name: this.state.name,
       email: this.state.email
     };
-    this.props.updateUser(id, changes);
-    this.setState({ username: "" });
+    this.props.updateUser(localStorage.getItem("user_id"), changes);    
+    this.toggleModal()
+      
   };
 
   toggleModal() {
@@ -40,21 +42,48 @@ class ProfileInfoDisplay extends Component {
   render() {
     return (
       <div className="p-info-top">
+        <div className={this.state.modal ? "edit-modal display" : "edit-modal"}>
+          <div className="content">
+            <div>Edit your information</div>
+            <div className="title-input-wrap">
+              <div className = "input-title">Display Name</div>
+              <input
+                onChange={this.handleInputChange}
+                placeholder={this.state.name}
+                value={this.state.name}
+                name="name"
+              />
+            </div>
+            <div className="title-input-wrap">
+              <div className = "input-title">Email</div>
+              <input
+                onChange={this.handleInputChange}
+                placeholder={this.state.email}
+                value={this.state.email}
+                name="email"
+              />
+            </div>
+            <div className="edit-btns-wrap">
+              <div className="edit-btn" onClick={this.submitChanges}>Accept</div>
+              <div className="edit-btn" onClick={() => this.toggleModal()}>Cancel</div>
+            </div>
+          </div>
+        </div>
+
         <div className="p-info-dis">
-          {/* <img className="p-img" src={this.props.userInfo.photoURL} /> */}
           <div className="p-info-content">
-            {/* <div className="dummy-img" /> */}
             <img className="p-img" src={this.props.userInfo.photoURL} />
             <div className="info-column">
               <div className="p-info-name">{this.props.userInfo.name}</div>
               <div className="p-info-email">{this.props.userInfo.email}</div>
               <div className="p-info-logged">
                 <img src={tacoColor} className="p-info-logged-img" />
-                <span>{this.props.userInfo.user_stats.tacos_logged}</span> Tacos Logged
+                <span>{this.props.userInfo?this.props.userInfo.user_stats.tacos_logged:0}</span> Tacos
+                Logged
               </div>
             </div>
             <div className="edit-column">
-              <div>
+              <div onClick={() => this.toggleModal()}>
                 <img
                   onClick={() => this.toggleModal()}
                   src={require("../img/edit-icon.png")}

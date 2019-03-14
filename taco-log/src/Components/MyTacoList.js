@@ -14,6 +14,7 @@ class MyTacoList extends Component {
                 {...this.props}
                 key={log.id}
                 id={log.id}
+                taco_name={log.taco_name}
                 taco_location={log.taco_location}
                 taco_description={log.taco_description}
                 rating={log.rating}

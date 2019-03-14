@@ -3,6 +3,7 @@ import { firebase } from "../firebase/firebase";
 import tacoColor from "../img/taco-color.png";
 import tacoGrey from "../img/taco-grey.png";
 import "../css/TacoCard.css";
+import Moment from 'react-moment';
 
 class TacoCard extends Component {
   deleteTaco = id => {
@@ -51,7 +52,7 @@ class TacoCard extends Component {
                 alt="taco-icon"
               />
             </div>
-            <div>{this.props.created_at}</div>
+            <Moment format="MMMM Do YYYY">{this.props.created_at}</Moment>
           </div>
 
           <div className="taco-card-full-address">
