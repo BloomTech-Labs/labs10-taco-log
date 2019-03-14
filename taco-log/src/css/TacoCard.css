@@ -66,7 +66,7 @@ temp fix while there's a bug with how special taco cards not taking in the speci
 }   
 
 .special-taco-card-wrap .special-taco-card-title{
-    font-weight: bold;
+    /* font-weight: bold; */
     padding: 5px;
 }
 
@@ -74,7 +74,7 @@ temp fix while there's a bug with how special taco cards not taking in the speci
     display:flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    width:50%;
+    width:100%;
 }
 .special-taco-card-wrap .special-rating-icons .special-taco-icon{
     max-width: 50px;
