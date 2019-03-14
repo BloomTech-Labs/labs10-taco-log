@@ -609,6 +609,7 @@ class LogTaco extends Component {
             value={this.state.taco_description}
             rows="10"
             cols="50"
+            maxlength="250"
           />
         ) : (
           <div />
