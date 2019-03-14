@@ -151,9 +151,11 @@ class Landing extends Component {
         >
           
           <div className="content">
+
             <div className="modal-text">
               Please Sign In. No sign up required!
             </div>
+            {/* <span onClick={this.toggleModal}> X </span> */}
             <div className="modal-btns">
               <button className="google-button" onClick={this.login}>
                 
@@ -202,7 +204,11 @@ class Landing extends Component {
         </div>
 
         <div className="mid-section">
-          <GlobalTacoList {...this.props} />
+          <div className="global">
+            <div>User Taco Logs</div>
+            <GlobalTacoList {...this.props} />
+          </div>
+          
           <LandingPageFiller />
         </div>
       </div>
