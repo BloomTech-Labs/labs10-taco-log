@@ -31,12 +31,14 @@
 .taco-card-wrap .taco-rating-column .taco-card-title{
     font-weight: bold;
     font-size: 1.2rem;
+    text-align: start;
 }
 
 .taco-card-wrap .taco-card-full-address{
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    text-align: end;
 }
 
 .taco-card-wrap .rating-icons{
