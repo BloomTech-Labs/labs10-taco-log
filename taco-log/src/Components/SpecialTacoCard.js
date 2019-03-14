@@ -3,6 +3,7 @@ import { firebase } from "../firebase/firebase";
 import tacoColor from "../img/taco-color.png";
 import tacoGrey from "../img/taco-grey.png";
 import Moment from 'react-moment';
+import "../css/TacoList.css";
 // import "../css/SpecialTacoCard.css";
 
 
@@ -19,7 +20,10 @@ class SpecialTacoCard extends Component {
     return (
       <div className = "special-taco-card-wrap">
         {/* <div className = "taco-card-id">{this.props.id}</div> */}
-        <div className="special-taco-card-name">{this.props.name} had an special experience at the {this.props.taco_location} and rated it</div>
+        <div className="global-card-header">
+          <div className="special-taco-card-name">{this.props.name}</div>
+          <div className="speacial-taco-card-location"> Logged a taco at {this.props.taco_location} </div>
+        </div>
         <div className = "special-rating-icons"> 
           <img      
             src={this.props.rating >= 1 ? tacoColor : tacoGrey}
@@ -53,7 +57,7 @@ class SpecialTacoCard extends Component {
           />
         <Moment className="special-taco-time" format="MMMM Do YYYY">{this.props.created_at}</Moment>
         </div> 
-        <p>{this.props.taco_description}</p>       
+        <p className="description">{this.props.taco_description}</p>       
         {/* <button onClick={() => this.deleteTaco(this.props.id)}>Delete</button> */}
       </div>
     );

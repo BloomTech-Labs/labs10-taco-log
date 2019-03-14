@@ -37,8 +37,8 @@ class LogTaco extends Component {
       selectedSalsa: [],
       selectedTab: 0,
       special_experience: 0,
+      firstTime: 0,
       taco_description: "",
-      tacos_logged: 0,
       photo: ""
     };
   }
@@ -107,6 +107,7 @@ class LogTaco extends Component {
   componentDidMount() {
     const inputElement = document.querySelector(".google-dropdown");
     const dropdown = new window.google.maps.places.Autocomplete(inputElement);
+    this.checkFirstTime();
     dropdown.addListener("place_changed", () => {
       const place = dropdown.getPlace();
       console.log(place);
@@ -120,6 +121,7 @@ class LogTaco extends Component {
         photo: place.photos[0].getUrl()
       });
     });
+
     if (this.props.landingTaco) {
       this.setState({
         address: this.props.landingTaco.address,
@@ -132,6 +134,7 @@ class LogTaco extends Component {
       });
       this.props.clearLandingTaco();
     }
+
   }
 
   achievementCheck = achievementId => {
@@ -394,7 +397,7 @@ class LogTaco extends Component {
       selectedTortilla: [],
       selectedMeat: [],
       selectedCheese: [],
-      selectedSalsa: []
+      selectedSalsa: [],
     });
   };
 
@@ -430,9 +433,11 @@ class LogTaco extends Component {
     }
   };
 
+
   render() {
     console.log(this.state)
     return (
+
       <div className="taco-form">
         <div className="taco-form-upper-wrap">
           <div className="search-map-container">
@@ -454,6 +459,7 @@ class LogTaco extends Component {
                   <div>{this.state.address.split(",")[1].trim()}</div>
                 </div>
               </div>
+
             ) : (
               <div className="location-information" />
             )}
@@ -505,6 +511,7 @@ class LogTaco extends Component {
             </div>
           </div>
         </div>
+
 
         <div className="taco-form-lower-wrap">
           
@@ -660,6 +667,7 @@ class LogTaco extends Component {
               cols="50"
             />
           </div>
+
         </div>
         {" "}
           <div>
