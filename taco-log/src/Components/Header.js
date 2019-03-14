@@ -151,7 +151,9 @@ class Header extends Component {
                   </div>
                   
               }
-              <UncontrolledDropdown nav inNavbar>
+
+              {this.props.userLoggedIn
+              ?<UncontrolledDropdown nav inNavbar>
                 <DropdownToggle id= "click" nav caret>
                   
                 </DropdownToggle>
@@ -173,6 +175,9 @@ class Header extends Component {
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
+              : <div className="disappear"></div>
+                }
+                
             </Nav>
           </Collapse>
         </Navbar>
