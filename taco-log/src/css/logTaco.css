@@ -21,6 +21,10 @@
     max-width: 50%;
     border: 1px solid #666;
 }
+.taco-form .search-tutorial {
+    max-width: 50%;
+    border: 2px solid orange;
+}
 .location-information{
     display: flex;
     flex-flow: row;

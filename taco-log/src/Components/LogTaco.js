@@ -453,9 +453,15 @@ class LogTaco extends Component {
   render() {
     return (
       <Container className="log-taco-container">
-        {(this.state.firstTime === 1) ? console.log("first time") : console.log("returning user")}
+        {(this.state.firstTime === 1) ? 
+          <Container className="first-time-container">
+          <div className="first-time-welcome">
+            <h1>Tell us your first tale</h1>
+            <p>Here, you can log any taco you eat. Search for where you ate your taco to get started.</p>
+          </div>
+          </Container> : console.log("returning user")}
         <div className="taco-form">
-          <Container className="search-map-container quadrant">
+          <Container className={(this.state.firstTime ===1) ? "search-map-container quadrant search-tutorial" : "search-map-container quadrant"}>
             {this.props.place ? (
               <p>
                 {this.mapPlacetoState()} {this.state.place.taco_location}
@@ -497,13 +503,13 @@ class LogTaco extends Component {
               </Row>
           </Container>
           <Input
-            className="name-container quadrant"
+            className={(this.state.firstTime === 1) ? "name-container name-tutorial quadrant" : "name-container quadrant"}
             onChange={this.handleInputChange}
             placeholder="What was the name of the taco you had here? Or you can put in whatever you want to call it if it was something custom to you!"
             value={this.state.taco_name}
             name="taco_name"
           />
-      <Container className="ingredient-container quadrant">
+      <Container className={(this.state.firstTime === 1) ? "ingredient-tutorial quadrant" : "ingredient-container quadrant"}>
         <Row className="ingredient-tab-wrap">
         <img src={(this.state.selectedTab === "1")?tortillaColor:tortillaGrey} onClick={e => this.toggleIngredientTab(e)} id="1" />
           {this.state.selectedTab === "1" ? this.state.tortilla.map(data => (
@@ -574,7 +580,7 @@ class LogTaco extends Component {
           )): <p>Test: salsa unselected</p>}
         </Row>
         </Container>
-        <Container className="special-experience-container quadrant">
+        <Container className={(this.state.firstTime === 1) ? "special-experience-container special-experience-tutorial quadrant" : "special-experience-container quadrant"}>
         <Form>
         <FormGroup className="rating-icons">
           <img src={(this.state.rating >= 1)?tacoColor:tacoGrey} onClick={(e) => this.toggleRating(e)} className='taco-icon' id="1" alt = "taco-icon"/>
