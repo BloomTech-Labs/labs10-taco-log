@@ -60,12 +60,13 @@ temp fix while there's a bug with how special taco cards not taking in the speci
     border: 1px solid #e6e6e6;
     background-color: #fff;
     margin:5px;
+    
+    max-width: 400px;
     width: 100%;
-    max-width: 300px;
-    /* display: flex;
-    flex-direction: row; */
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }   
 
 .special-taco-card-wrap .special-taco-card-title{
@@ -75,10 +76,11 @@ temp fix while there's a bug with how special taco cards not taking in the speci
 
 .special-taco-card-wrap .special-rating-icons{
     display:flex;
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     flex-wrap: wrap;
     width:100%;
-    margin-bottom: 10px;
+    margin: 5px;
     color: #666;
 }
 .special-taco-card-wrap .special-rating-icons .special-taco-icon{
