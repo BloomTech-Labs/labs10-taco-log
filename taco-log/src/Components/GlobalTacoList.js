@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import SpecialTacoCard from "./SpecialTacoCard";
-
+import "../css/GlobalTacoList.css";
 class GlobalTacoList extends Component {
   render() {
     return (
