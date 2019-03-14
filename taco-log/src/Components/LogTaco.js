@@ -107,7 +107,6 @@ class LogTaco extends Component {
   componentDidMount() {
     const inputElement = document.querySelector(".google-dropdown");
     const dropdown = new window.google.maps.places.Autocomplete(inputElement);
-    this.checkFirstTime();
     dropdown.addListener("place_changed", () => {
       const place = dropdown.getPlace();
       console.log(place);
