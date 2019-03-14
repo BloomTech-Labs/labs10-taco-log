@@ -39,6 +39,7 @@
     justify-content: flex-start;
     align-items: center;
     padding-left: 20px;
+    cursor: pointer;
 }
 
 .profile-page .selected-tab{    

@@ -3,11 +3,10 @@ import { firebase } from "../firebase/firebase";
 import { Form, Input, Button, FormGroup, Container, Row, Col } from "reactstrap";
 import tacoColor from "../img/taco-color.png"
 import tacoGrey from "../img/taco-grey.png"
-
 import meatColor from "../img/achievement-4-color.png"
 import meatGrey from "../img/achievement-4-grey.png"
 import tortillaColor from "../img/tortillas (1).png"
-import tortillaGrey from "../img/tortillas (1).png"
+import tortillaGrey from "../img/gray-tortilla.png"
 import cheeseColor from "../img/achievement-5-color.png"
 import cheeseGrey from "../img/achievement-5-grey.png"
 import salsaColor from "../img/achievement-6-color.png"

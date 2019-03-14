@@ -12,14 +12,14 @@
 }
 .quadrant:nth-child(2n) {
     flex-basis : 100%;
-    border: solid black;
+    border: solid 1px #666;
 }
 .taco-form .name-container {
     max-width: 50%;
 }
 .taco-form .search-map-container {
     max-width: 50%;
-    border: solid black;
+    border: 1px solid #666;
 }
 .location-information{
     display: flex;
@@ -46,9 +46,8 @@
     max-width: 50%;
 }
 
-.taco-icon {
-    max-width: 20%;
-    max-height: 100px;
+.ingredient-tab-wrap {
+    
 }
 
 @media only screen and (max-width: 860px) {

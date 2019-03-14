@@ -143,34 +143,35 @@ class Landing extends Component {
   }
 
   render() {
-    console.log("props:", this.props);
+    
     return (
       <div className="landing-container">
         <div
           className={this.state.modal ? "signin-modal display" : "signin-modal"}
         >
+          
           <div className="content">
             <div className="modal-text">
-              Please Sign In or Register to continue
+              Please Sign In. No sign up required!
             </div>
             <div className="modal-btns">
               <button className="google-button" onClick={this.login}>
-                {" "}
+                
                 <img
                   className="google-logo"
                   src={google}
                   alt="google logo"
-                />{" "}
-                Google{" "}
+                />
+                Google
               </button>
               <div className="fb-button" onClick={this.facebookLogin}>
-                {" "}
+                
                 <img
                   className="facebook-logo"
                   src={facebook}
                   alt="facebook logo"
-                />{" "}
-                Facebook{" "}
+                />
+                Facebook
               </div>
             </div>
           </div>
