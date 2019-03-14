@@ -77,6 +77,7 @@ temp fix while there's a bug with how special taco cards not taking in the speci
     width:100%;
 }
 .special-taco-card-wrap .special-rating-icons .special-taco-icon{
+    display: flex;
     max-width: 50px;
     max-height: 50px;
     width:100%;
