@@ -32,7 +32,7 @@ class AddStore extends Component{
     render(){
         return(
             <div>
-                {this.state.staticMap &&(<img src={`https://maps.googleapis.com/maps/api/staticmap?center=${this.state.lat},${this.state.lng}&zoom=14&size=800x150&key=AIzaSyCgxie-2MKM8N9ibIvYVGzuzvVSaXDonrE&markers=${this.state.lat},${this.state.lng}&scale=2`}/>)}
+                {this.state.staticMap &&(<img src={`https://maps.googleapis.com/maps/api/staticmap?center=${this.state.lat},${this.state.lng}&zoom=14&size=800x150&key=AIzaSyCgxie-2MKM8N9ibIvYVGzuzvVSaXDonrE&markers=${this.state.lat},${this.state.lng}&scale=2`} alt="alt"/>)}
                
             <form>
                 <input type="text" name="dropdown" class="dropdown"></input>

@@ -10,7 +10,7 @@ export default class LandingPageFiller extends React.Component {
     <Container className= "filler-container">
       <Row className="row1">
           <div className='image-container' >
-            <img className="taco-image" src={tacoFiller} /> 
+            <img className="taco-image" src={tacoFiller} alt="taco" /> 
           </div>
           <Col  className="text-box">
             <h2 className="headliner">Simply put, tacos are delicious.</h2>
@@ -26,7 +26,7 @@ export default class LandingPageFiller extends React.Component {
             <span className="taco-text"> We're still learning as we go on so if you'd like to take a look at our <a href='https://github.com/Lambda-School-Labs/labs10-taco-log'>Github repo</a> and give feedback or make your own from it, feel free! We appreciate any insight or help.</span>
           </Col>
           <div className="image-container2" >
-            <img className="taco-image" src={tacoFiller2} />
+            <img className="taco-image" src={tacoFiller2} alt="another"/>
           </div>
       </Row>
     </Container>

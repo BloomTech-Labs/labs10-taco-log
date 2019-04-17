@@ -11,7 +11,7 @@ export const LOG_TACO = "LOG_TACO";
 export const LOG_OUT = "LOG_OUT";
 export const UPDATE_USER = "UPDATE_USER";
 
-const local = "http://localhost:5000/";
+// const local = "http://localhost:5000/";
 const heroku = "https://tacobe.herokuapp.com/";
 const url = heroku;
 

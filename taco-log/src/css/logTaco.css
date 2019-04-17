@@ -3,10 +3,17 @@
   max-width: 1000px;
   width: 100%;
   margin: 0 auto;
+  border:2px solid black;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
 }
 .taco-form .taco-form-upper-wrap {
+  flex-direction: column;
+  align-items: center;
   display: flex;
   justify-content: space-between;
+  /* border:20px solid green; */
 }
 
 .taco-form .taco-form-upper-wrap input{
@@ -26,10 +33,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* border: 1px solid yellow; */
 }
 
 .taco-form .taco-form-upper-wrap .search-bar {
   margin-bottom: 10px;
+  
 }
 .taco-form .taco-form-upper-wrap .search-map-container .location-information {
   display: flex;
@@ -63,13 +72,18 @@
 
 .taco-form .taco-form-upper-wrap .taco-name-rating-wrap .rating-icons{
     padding: 20px 0;
+   
 }
   
 
 .taco-form .taco-form-lower-wrap {
   margin-top: 30px;
   display: flex;
-  justify-content: space-between;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  
 }
 
 
@@ -149,11 +163,6 @@
   padding-left: 0px;
 }
 
-.taco-form .taco-form-lower-wrap .special-experience-container {
-  padding-right: 50px;
-}
-
-
 .taco-form .taco-form-lower-wrap .special-experience-container .special-experience-radio-container{
     display: flex;
     justify-content: center;
@@ -163,4 +172,11 @@
 
 .taco-form .taco-form-lower-wrap .special-experience-container .special-experience-radio-container .special-experience-radio-text{
     margin-right: 5px;
+}
+
+.submit-button {
+  background-color: limegreen;
+  margin: 20px 0px;
+  align-self: center;
+  width: 50%;
 }

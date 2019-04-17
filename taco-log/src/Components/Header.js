@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import {
   Fade,
-  Button,
   Collapse,
   Navbar,
-  NavbarToggler,
   NavbarBrand,
   Nav,
   NavLink,

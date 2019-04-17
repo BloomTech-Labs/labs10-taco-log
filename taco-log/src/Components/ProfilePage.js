@@ -4,7 +4,7 @@ import TacoList from "./TacoList";
 import AchievementList from "./AchievementList";
 import { connect } from "react-redux";
 import "../css/ProfilePage.css";
-import tacoGrey from "../img/taco-grey.png";
+// import tacoGrey from "../img/taco-grey.png";
 import medalGrey from "../img/achievement-3-grey.png"
 
 class ProfilePage extends Component {
@@ -48,7 +48,7 @@ class ProfilePage extends Component {
                       : "profile-tab"
                   }
                 >
-                  <img id="logs" className = "switch-img" src = {require('../img/taco-grey.png')} />My Log
+                  <img id="logs" className = "switch-img" src = {require('../img/taco-grey.png')} alt="swit" />My Log
                 </div>
                 <div
                   onClick={this.handleToggle}
@@ -59,7 +59,7 @@ class ProfilePage extends Component {
                       : "profile-tab"
                   }
                 >
-                  <img id="badges" className = "switch-img" src = {medalGrey} />My Badges
+                  <img id="badges" className = "switch-img" src = {medalGrey} alt="bad"/>My Badges
                 </div>
                 </div>
                 

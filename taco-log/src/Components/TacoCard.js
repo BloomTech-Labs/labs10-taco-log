@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { firebase } from "../firebase/firebase";
+// import { firebase } from "../firebase/firebase";
 import tacoColor from "../img/taco-color.png";
 import tacoGrey from "../img/taco-grey.png";
 import "../css/TacoCard.css";
@@ -16,7 +16,7 @@ class TacoCard extends Component {
   render() {
     return (
       <div className="taco-card-wrap">
-        <img className="taco-card-img" src={this.props.photo} />
+        <img className="taco-card-img" src={this.props.photo} alt="something goes here"/>
         <div className="taco-card-content">
           <div className="taco-rating-column">
             <div className="taco-card-title">{this.props.taco_location}</div>

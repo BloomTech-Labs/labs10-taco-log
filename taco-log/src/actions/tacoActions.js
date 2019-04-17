@@ -4,7 +4,7 @@ export const ADDDATABASE_TACOS = 'ADDDATABASE_TACOS';
 export const STORE_LANDING_TACO = 'STORE_LANDING_TACO';
 export const CLEAR_LANDING_TACO = 'CLEAR_LANDING_TACO';
 
-const local = 'http://localhost:5000/';
+// const local = 'http://localhost:5000/';
 const heroku = 'https://tacobe.herokuapp.com/';
 const link = heroku;
 

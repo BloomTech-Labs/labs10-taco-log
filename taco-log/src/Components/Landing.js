@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Alert, FormGroup, Input, Button } from "reactstrap";
+import { FormGroup } from "reactstrap";
 import GlobalTacoList from "./GlobalTacoList";
 import LandingPageFiller from "./LandingPageFiller";
 // import landingPageCover from "../img/landingpagecover.jpg";
@@ -19,7 +19,6 @@ class Landing extends Component {
       fadeIn: false,
       photo: "",
       address: "",
-      taco_location: "",
       place_id: "",
       staticMap: "",
       lat: "",
@@ -77,7 +76,7 @@ class Landing extends Component {
     if (this.props.userInfo.taco_logs) {
       for (let i = 0; i < this.props.userInfo.taco_logs.length; i++) {
         let exp = this.props.userInfo.taco_logs[i].special_experience;
-        if (exp == 1) {
+        if (exp === 1) {
           expTacos.push(this.props.userInfo.taco_logs[i]);
         }
       }

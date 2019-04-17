@@ -21,7 +21,7 @@ class AchievementList extends Component {
     const userAchevements = this.props.userInfo.achievements;
     if (userAchevements.length > 0) {
       for (let i = 0; i <= userAchevements.length; i++) {
-        if (userAchevements[i].id == id) {
+        if (userAchevements[i].id === id) {
           console.log("true");
           return true;
         }
@@ -53,6 +53,7 @@ class AchievementList extends Component {
           <div className="content">
             <img
               className="exit-icon"
+              alt="bruh"
               src={require("../img/exit-icon.png")}
               onClick={() => this.toggleModal()}
             />

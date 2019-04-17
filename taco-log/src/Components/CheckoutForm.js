@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {CardElement, injectStripe} from 'react-stripe-elements';
+import { injectStripe } from 'react-stripe-elements';
 import StripeCheckout from 'react-stripe-checkout'; 
-import {Button} from "reactstrap"
+// import {Button} from "reactstrap"
 
 class CheckoutForm extends Component {
   constructor(props) {
