@@ -89,8 +89,8 @@
 
 .taco-form .taco-form-lower-wrap .ingredient-select-owrap {
   display: flex;
-  justify-content: space-between;
-  width: 60%;
+
+  width: 56%;
   height: 372px;
   border: 1px solid black;
 }
@@ -184,4 +184,15 @@
   margin: 20px 0px;
   align-self: center;
   width: 50%;
+}
+
+
+
+@media(max-width:500px) {
+
+  .taco-form .taco-form-lower-wrap .ingredient-select-owrap {
+    width:80%;
+     
+  }
+
 }
