@@ -3,10 +3,12 @@
   max-width: 1000px;
   width: 100%;
   margin: 0 auto;
-  border:2px solid black;
-  border-radius: 3px;
+  border: 3px solid black;
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
+  background-color: rgb(124, 187, 241);
+
 }
 .taco-form .taco-form-upper-wrap {
   flex-direction: column;
@@ -92,6 +94,7 @@
 
   width: 56%;
   height: 372px;
+  background-color: aliceblue;
   border: 1px solid black;
 }
 
