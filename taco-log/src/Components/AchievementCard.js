@@ -20,6 +20,7 @@ class AchievementCard extends Component {
           src={this.achievementCheck(this.props.id)}
           className="achievement-icon"
           id={this.props.id}
+          alt="achievment"
         />
         <div className = "achievement-card-info">
           <div className="achievement-title">{this.props.title}</div>

@@ -451,7 +451,7 @@ class LogTaco extends Component {
             </div>
             {this.state.place_id ? (
               <div className="location-information">
-                <img className="location-photo" src={`${this.state.photo}`} />
+                <img className="location-photo" src={`${this.state.photo}`} alt="images"/>
                 <div className="location-name">{this.state.taco_location}</div>
                 <div className="location-address">
                   <div>{this.state.address.split(",")[0].trim()}</div>
@@ -525,6 +525,7 @@ class LogTaco extends Component {
                   }
                   onClick={e => this.toggleIngredientTab(e)}
                   id="1"
+                  alt="bleh"
                 />
               </div>
 
@@ -533,6 +534,7 @@ class LogTaco extends Component {
                   src={this.state.selectedTab === "2" ? meatColor : meatGrey}
                   onClick={e => this.toggleIngredientTab(e)}
                   id="2"
+                  alt="blehh"
                 />
               </div>
               <div className="ingredient-cat-icon">
@@ -542,6 +544,7 @@ class LogTaco extends Component {
                   }
                   onClick={e => this.toggleIngredientTab(e)}
                   id="3"
+                  alt="blehhh"
                 />
               </div>
 
@@ -550,6 +553,7 @@ class LogTaco extends Component {
                   src={this.state.selectedTab === "4" ? salsaColor : salsaGrey}
                   onClick={e => this.toggleIngredientTab(e)}
                   id="4"
+                  alt="blehhhh"
                 />
               </div>
             </div>
@@ -608,7 +612,7 @@ class LogTaco extends Component {
                 {this.state.cheese.map(data => (
                   <div
                     onClick={this.selectCheese}
-                    id="cheese"
+                    // id="cheese"
                     className={
                       this.state.selectedCheese.indexOf(data) > -1
                         ? "ingredient-tab ingredient-tab-selected"
@@ -688,7 +692,7 @@ class LogTaco extends Component {
               : "blank"}{" "}
               salsa(s).
           </div>
-        <button onClick={this.newTaco}>Submit</button>
+        <button className="submit-button" onClick={this.newTaco}>Submit</button>
       </div>
     );
   }

@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import GlobalTacoList from "./GlobalTacoList";
 import MyTacoList from "./MyTacoList";
-import LandingPageFiller from "./LandingPageFiller";
-import taco from '../taco.jpg';
-import landingPageCover from "../img/landingpagecover.jpg";
+// import LandingPageFiller from "./LandingPageFiller";
+// import taco from '../taco.jpg';
+// import landingPageCover from "../img/landingpagecover.jpg";
 import "../css/landing.css";
 
 class UserHome extends Component {
@@ -28,7 +28,7 @@ class UserHome extends Component {
     if (this.props.userInfo.taco_logs) {
       for (let i = 0; i < this.props.userInfo.taco_logs.length; i++) {
         let exp = this.props.userInfo.taco_logs[i].special_experience;
-        if (exp == 1) {
+        if (exp === 1) {
           expTacos.push(this.props.userInfo.taco_logs[i]);
         }
       }

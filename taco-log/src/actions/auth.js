@@ -1,4 +1,4 @@
-import { firebase, provider } from '../firebase/firebase';
+// import { firebase, provider } from '../firebase/firebase';
 
 
 export const login = (uid) => ({

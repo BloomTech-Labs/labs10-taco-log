@@ -3,10 +3,19 @@
   max-width: 1000px;
   width: 100%;
   margin: 0 auto;
+  border: 3px solid black;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(124, 187, 241);
+
 }
 .taco-form .taco-form-upper-wrap {
+  flex-direction: column;
+  align-items: center;
   display: flex;
   justify-content: space-between;
+  /* border:20px solid green; */
 }
 
 .taco-form .taco-form-upper-wrap input{
@@ -26,10 +35,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 20px 0px;
 }
 
 .taco-form .taco-form-upper-wrap .search-bar {
   margin-bottom: 10px;
+  
 }
 .taco-form .taco-form-upper-wrap .search-map-container .location-information {
   display: flex;
@@ -63,21 +74,28 @@
 
 .taco-form .taco-form-upper-wrap .taco-name-rating-wrap .rating-icons{
     padding: 20px 0;
+   
 }
   
 
 .taco-form .taco-form-lower-wrap {
   margin-top: 30px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  
 }
 
 
 .taco-form .taco-form-lower-wrap .ingredient-select-owrap {
   display: flex;
-  justify-content: space-between;
-  width: 45%;
+
+  width: 56%;
   height: 372px;
+  background-color: aliceblue;
+  border: 1px solid black;
 }
 
 .taco-form
@@ -149,11 +167,6 @@
   padding-left: 0px;
 }
 
-.taco-form .taco-form-lower-wrap .special-experience-container {
-  padding-right: 50px;
-}
-
-
 .taco-form .taco-form-lower-wrap .special-experience-container .special-experience-radio-container{
     display: flex;
     justify-content: center;
@@ -163,4 +176,26 @@
 
 .taco-form .taco-form-lower-wrap .special-experience-container .special-experience-radio-container .special-experience-radio-text{
     margin-right: 5px;
+}
+
+.special-experience-container {
+  margin: 30px 0px;
+}
+
+.submit-button {
+  background-color: limegreen;
+  margin: 20px 0px;
+  align-self: center;
+  width: 50%;
+}
+
+
+
+@media(max-width:500px) {
+
+  .taco-form .taco-form-lower-wrap .ingredient-select-owrap {
+    width:80%;
+     
+  }
+
 }

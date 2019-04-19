@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, CardBody, CardTitle } from "reactstrap";
+// import { Card, CardBody, CardTitle } from "reactstrap";
 import "../css/ProfileInfoDisplay.css";
 import tacoColor from "../img/taco-color.png";
 
@@ -72,12 +72,12 @@ class ProfileInfoDisplay extends Component {
 
         <div className="p-info-dis">
           <div className="p-info-content">
-            <img className="p-img" src={this.props.userInfo.photoURL} />
+            <img className="p-img" src={this.props.userInfo.photoURL} alt="p-img"/>
             <div className="info-column">
               <div className="p-info-name">{this.props.userInfo.name}</div>
               <div className="p-info-email">{this.props.userInfo.email}</div>
               <div className="p-info-logged">
-                <img src={tacoColor} className="p-info-logged-img" />
+                <img src={tacoColor} className="p-info-logged-img" alt="something"/>
                 <span>{this.props.userInfo?this.props.userInfo.user_stats.tacos_logged:0}</span> Tacos
                 Logged
               </div>
@@ -88,6 +88,7 @@ class ProfileInfoDisplay extends Component {
                   onClick={() => this.toggleModal()}
                   src={require("../img/edit-icon.png")}
                   className="edit-icon"
+                  alt="edd"
                 />
                 <span>Update Your Profile</span>
               </div>
